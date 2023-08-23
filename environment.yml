@@ -8,6 +8,7 @@ dependencies:
   - git
   - conda-forge::jupyter_contrib_nbextensions
   - conda-forge::jupyterlab
+  - seaborn
   - pip:
     - pip >= 22
     - kaggle
