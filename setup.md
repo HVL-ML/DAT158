@@ -68,7 +68,7 @@ Open the test notebook located at `notebooks/0.0-test.ipynb` using:
 ```bash	
 jupyter notebook
 ```
-Or, if you prefer, use [JupyterLab](https://github.com/jupyterlab/jupyterlab): 
+Or, if you prefer, use [JupyterLab](https://jupyterlab.readthedocs.io/en/latest/): 
 ```bash
 jupyter lab
 ```
