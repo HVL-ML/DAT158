@@ -25,62 +25,55 @@ After you've installed Anaconda:
 2. Run `python --version`.
 3. Ensure the output mentions "Anaconda". If so, proceed to the next step.
 
-## Step 2: Get the course environment up and running
+> Now you're ready to get the course environment up and running
 
 After you have Anaconda set up, follow these steps (Windows users, stick with the "Anaconda Prompt"):
 
-1. **Install Git**:
+## Step 2: Install Git
 
-```bash
-conda install git
-```
+1. Open a terminal (or "Anaconda Prompt" for Windows users).
+2. Run `conda install git`
 
     
-2. **Clone the course repository**:
+## Step 3: Clone the course repository
 
-```bash
-git clone https://github.com/HVL-ML/DAT158
-cd DAT158
-```
+1. Run `git clone https://github.com/HVL-ML/DAT158`.
+2. Change to the course directory by running `cd DAT158`.
 
 
-3. **Set up the Python environment**:
 
-```bash
-conda env update
-```
+## Step 4: Set up the Python environment
 
-
-4. **Activate your environment**:
-```bash	
-conda activate dat158
-```
+1. Make sure that you're in the course directory. If not, run `cd DAT158`.
+2. Run `conda env update`.
 
 
-5. **Add a Jupyter kernel for the course**:
-```bash
-python -m ipykernel install --user --name dat158 --display-name "DAT158"
-```
+## Step 5: Activate your environment
+
+1. Run `conda activate dat158`.
 
 
-6. **Verify your installation**:
+## Step 6: Add a Jupyter kernel for the course
+
+1. Make sure the `dat158` environment is activated. If not, run `conda activate dat158`.
+2. Run `python -m ipykernel install --user --name dat158 --display-name "DAT158"`
+
+## Step 7: Verify your installation
+
+1. Make sure that you're in the course directory. If not, run `cd DAT158`.
+2. Run `jupyter notebook` to open the test notebook located at `notebooks/0.0-test.ipynb`.
+3. Alternatively, run `jupyter lab` to open the test notebook in JupyterLab.
 Open the test notebook located at `notebooks/0.0-test.ipynb` using:
-```bash	
-jupyter notebook
-```
-Or, if you prefer, use [JupyterLab](https://jupyterlab.readthedocs.io/en/latest/): 
-```bash
-jupyter lab
-```
 
-## Troubleshooting Tips
+
+# Troubleshooting Tips
 
 - **GNU/Linux or MacOS activation issue**: If `conda activate dat158` fails, try executing `source ~/.bash_profile` and repeat the activation.
 - **Mac `gcc` error during environment update**: Install [Xcode](https://developer.apple.com/xcode/resources/) from the App Store and then install the **command line tools**.
 
 
 
-## Keeping everything updated
+# Keeping everything updated
 
 The course materials will evolve over time. Ensure you're always up-to-date by regularly executing the following commands:
 
