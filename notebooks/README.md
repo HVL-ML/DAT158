@@ -20,6 +20,7 @@ Here you will find all the Jupyter notebooks used in the course. Make sure to al
 | Notebook    |      1-Click Notebook      |    Video*   |
 |:----------|------|-------|
 | [DAT158-1.1-Simple_examples.ipynb](https://nbviewer.org/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-1.1-Simple_examples.ipynb) |[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-1.1-Simple_examples.ipynb)  | TBA
+| [DAT158-1.2-Intro_to_ML.ipynb](https://nbviewer.org/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-1.2-Intro_to_ML.ipynb) |[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-1.2-Intro_to_ML.ipynb)  | TBA
   
 
 ### Part 2: Machine learning models
