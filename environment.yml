@@ -14,3 +14,5 @@ dependencies:
     - kaggle
     - gradio
     - scikit-learn>1.0
+    - openpyxl
+    - ydata-profiling
