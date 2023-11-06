@@ -139,3 +139,4 @@ extra-miniforelesninger
 *.pkz
 notebooks/dev
 catboost_info
+notebooks/copilot
