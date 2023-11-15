@@ -47,7 +47,7 @@ Available [here](https://github.com/HVL-ML/GenAISoftwareEngineers2023).
 ### Part 3: ML engineering &ndash; machine learning in practice
 | Notebook    |      1-Click Notebook      |    Video*   |
 |:----------|------|-------|
-| TBA | TBA | TBA
+|[DAT158-3.1-PyCaret.ipynb](DAT158-3.1-PyCaret.ipynb)<br>A recap of some of what we've learned so far.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooks/DAT158-3.1-PyCaret.ipynb)|
 
 
 <small>* **Note**: The video walk-throughs don't always correspond precisely to the notebooks.
