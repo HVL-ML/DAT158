@@ -132,6 +132,9 @@ dmypy.json
 # Dev content
 dev/
 
+# MLflow
+mlruns/
+
 # Various
 .DS_Store
 openml
