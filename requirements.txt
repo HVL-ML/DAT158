@@ -1,0 +1,9 @@
+scikit-learn
+numpy
+scipy
+notebook
+matplotlib
+seaborn
+gradio
+ipywidgets
+ydata-profiling
