@@ -18,7 +18,7 @@ Go to [Set up your computer](./setup.md) for step-by-step instructions for how t
 
 The easiest way to get going is to use cloud services like Google Colab, Kaggle Notebooks, or Deepnote (whichever you prefer).
 
- - [Google Colab](https://colab.research.google.com): Select "Open notebook" :arrow_forward: GitHub :arrow_forward: Enter `HVL-ML/DAT158` and select a notebook -- or simply click here: ![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)
+ - [Google Colab](https://colab.research.google.com): Select "Open notebook" :arrow_forward: GitHub :arrow_forward: Enter `HVL-ML/DAT158` and select a notebook -- or simply click here: [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/)
  - [Kaggle Notebooks](https://www.kaggle.com/code): Select "New notebook" :arrow_forward: File :arrow_forward: Import :arrow_forward: GitHub and search for `HVL-ML/DAT158`
  - [DeepNote](https://deepnote.com/): Click here: [![DeepNote](https://deepnote.com/buttons/launch-in-deepnote-small.svg)](https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2FHVL-ML%2FDAT158)
 
