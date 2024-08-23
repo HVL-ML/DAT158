@@ -1,0 +1,373 @@
+[
+  {
+    "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering",
+    "href": "slides/1-intro/lecture3.html#machine-learning-engineering",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#exploratory-data-analysis",
+    "href": "slides/1-intro/lecture3.html#exploratory-data-analysis",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\nGet to know the data\nLook for correlations\n\n(notebooks/DAT158-1.1-Simple_examples.ipynb)\n\n\n\n\n\nIris flowers\n\n\n\n\n\n\nPairwise feature scatter plots"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#data-preparation",
+    "href": "slides/1-intro/lecture3.html#data-preparation",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Data preparation",
+    "text": "Data preparation\nMany (most?) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nMissing data\n\nFill with some value (zero, mean, …) aka imputation\nSkip datapoints containing missing data\nSkip entire feature containing missing data\n\n\n\n\n\n\nText attributes\n\nConvert to categorical values\n\n\n\nocean_proximity\n\ncategorical\n\n\n\n\n\"NEAR BAY\"\n\n0\n\n\n\"INLAND\"\n\n1\n\n\n\"NEAR OCEAN\"\n\n2"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#data-preparation-cont.",
+    "href": "slides/1-intro/lecture3.html#data-preparation-cont.",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Data preparation (cont.)",
+    "text": "Data preparation (cont.)\nMany (most?) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nFeature values have different scales\n\nNormalise values (shift to a range [0, 1])\nStandardize values (shift to have mean equal to 0 and variance equal to 1)\n\n\n\n\n\n\nFeature values are not normally distributed\n\nTransform values (compute e.g. the logarithm)\n\n\n\n\n\nWikiMedia Commons\n\n\n\n\n\nSee notebooks/DAT158-1.5-Regression.ipynb"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#model-training",
+    "href": "slides/1-intro/lecture3.html#model-training",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Model training",
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\)."
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#model-training-1",
+    "href": "slides/1-intro/lecture3.html#model-training-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Model training",
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName \nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#evaluation",
+    "href": "slides/1-intro/lecture3.html#evaluation",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Evaluation",
+    "text": "Evaluation\nHow well does the model perform?\nTo answer this we need a metric that quantifies performance."
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#feature-importance",
+    "href": "slides/1-intro/lecture3.html#feature-importance",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Feature importance",
+    "text": "Feature importance"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#komplett-maskinlæringssystem",
+    "href": "slides/1-intro/lecture3.html#komplett-maskinlæringssystem",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Komplett maskinlæringssystem",
+    "text": "Komplett maskinlæringssystem"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#kunstig-intelligens",
+    "href": "slides/1-intro/lecture3.html#kunstig-intelligens",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Kunstig intelligens",
+    "text": "Kunstig intelligens\nReklame for DAT255"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#opplegg-i-dat158",
+    "href": "slides/1-intro/lecture3.html#opplegg-i-dat158",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Opplegg i DAT158",
+    "text": "Opplegg i DAT158\n\nModuler\nOppgaver / notebooks\nObligatoriske innleveringer"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#ml-engineering-advanced-algorithms",
+    "href": "slides/1-intro/lecture1.html#ml-engineering-advanced-algorithms",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ML engineering 🤝 Advanced algorithms",
+    "text": "ML engineering 🤝 Advanced algorithms"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#practical-information",
+    "href": "slides/1-intro/lecture1.html#practical-information",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Practical information",
+    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Fridays at 12:15, E403 and E443\nFørde: Thursdays at 10.15 (room varies)\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#programming",
+    "href": "slides/1-intro/lecture1.html#programming",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Programming",
+    "text": "Programming\n\n\nThe machine learning part of the course is based on the python programming language\nFree resources for learning python are posted on Canvas, such as\n\nKaggle Learning\nGoogle Edu\n\n\n\n\nTwo options for running python:\n\nUse cloud services, such as\n\nGoogle Colab\nKaggle\nDeepNote\n\nInstall locally"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#python-libraries",
+    "href": "slides/1-intro/lecture1.html#python-libraries",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Python libraries",
+    "text": "Python libraries\n\n\nnumpy allows for simple vectorisation of arrays and matrices\n# Square ten numbers\nimport numpy as np\nnumbers = np.arange(start=0, stop=11)\nsquared_numbers = numbers ** 2  \nprint(squared_numbers)\n(compare to Java:)\npublic class Main {\n  public static void main(String[] args) {\n    int[] numbers = new int[11];\n    for (int i = 0; i &lt;= 10; i++) {\n      numbers[i] = i * i;\n      System.out.println(numbers[i]);\n    }\n  }\n}"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#python-libraries-1",
+    "href": "slides/1-intro/lecture1.html#python-libraries-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Python libraries",
+    "text": "Python libraries\n\n\nnumpy allows for simple vectorisation of arrays and matrices\n# Square ten numbers\nimport numpy as np\nnumbers = np.arange(start=0, stop=11)\nsquared_numbers = numbers ** 2  # no for-loop\nprint(squared_numbers)\n(compare to Java:)\npublic class Main {\n  public static void main(String[] args) {\n    int[] numbers = new int[11];\n    for (int i = 0; i &lt;= 10; i++) {\n      numbers[i] = i * i;\n      System.out.println(numbers[i]);\n    }\n  }\n}\n\n\nscikit-learn has a big selection of machine learning models and functions for data processing and evaluation"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#notebooks",
+    "href": "slides/1-intro/lecture1.html#notebooks",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Notebooks",
+    "text": "Notebooks\nExercises are given in form of Jupyter notebooks\n\nCan mix code, results, and notes (markdown and TeX) in the same file\nThese are partially filled, and you fill the rest\nCan be run locally or in cloud services"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#goals-for-the-ml-part-of-the-course",
+    "href": "slides/1-intro/lecture1.html#goals-for-the-ml-part-of-the-course",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Goals for the ML part of the course",
+    "text": "Goals for the ML part of the course\n\nWhat we will learn:\n\nCentral concepts in ML and data analysis\nDetails of a selection of ML models\nWorkflow for setting up a complete ML-based software product\n\n\n\n\nWhat we will not learn:\n\nNeural networks and more advanced models based on these\nModels taking unstructured data (images, audio, text) as input\nGenerative models (LLMs, diffusion models, …)\n\n\n\n DAT255 Deep learning engineering"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#goals-for-module-1-this-week-and-next",
+    "href": "slides/1-intro/lecture1.html#goals-for-module-1-this-week-and-next",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Goals for module 1 (this week and next)",
+    "text": "Goals for module 1 (this week and next)\n\n\n\n\nGet comfortable with python, including the libraries numpy and scikit-learn\n\n\n\n\n\nOverview of ML and fundamental concepts: Chap 1 of the textbook (The Machine Learning landscape), available here\n\n\n\n\n\nWhat are the parts of a machine learning project Chap 2 (End-to-End Machine Learning Project)\n\n\n\n\n\nClassifying data Chap 3 (Classification)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#examples-of-machine-learning",
+    "href": "slides/1-intro/lecture1.html#examples-of-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "👓 Examples of machine learning",
+    "text": "👓 Examples of machine learning"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#section-14",
+    "href": "slides/1-intro/lecture1.html#section-14",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "Fan, W., Yang, Y., Qi, J. et al., Nat Commun 15, 1347 (2024)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#section-15",
+    "href": "slides/1-intro/lecture1.html#section-15",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "Recommender system"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#eliza-1966",
+    "href": "slides/1-intro/lecture1.html#eliza-1966",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ELIZA (1966)",
+    "text": "ELIZA (1966)\nA chatbot based on symbolic AI\n\n\n\n\nsynon: be am is are was\nkey: xnone\n  decomp: *\n    reasmb: I'm not sure I understand you fully.\n    reasmb: Please go on.\n    reasmb: What does that suggest to you ?\n    reasmb: Do you feel strongly about discussing such things ?\nkey: sorry\n  decomp: *\n    reasmb: Please don't apologise.\n    reasmb: Apologies are not necessary.\n    reasmb: I've told you that apologies are not required.\nkey: apologise\n  decomp: *\n    reasmb: goto sorry\nkey: remember 5\n  decomp: * i remember *\n    reasmb: Do you often think of (2) ?\n    reasmb: Does thinking of (2) bring anything else to mind ?\n    reasmb: What else do you recollect ?\n    reasmb: Why do you recollect (2) just now ?\n    reasmb: What in the present situation reminds you of (2) ?\n    reasmb: What is the connection between me and (2) ?\n  decomp: * do you remember *\n    reasmb: Did you think I would forget (2) ?\n    reasmb: Why do you think I should recall (2) now ?\n    reasmb: What about (2) ?\n    reasmb: goto what\n    reasmb: You mentioned (2) ?\nkey: if 3\n  decomp: * if *\n    reasmb: Do you think its likely that (2) ?\n    reasmb: Do you wish that (2) ?\n    reasmb: What do you know about (2) ?\n    reasmb: Really, if (2) ?\nkey: dreamed 4\n  decomp: * i dreamed *\n    reasmb: Really, (2) ?\n    reasmb: Have you ever fantasized (2) while you were awake ?\n    reasmb: Have you ever dreamed (2) before ?\n    reasmb: goto dream\nkey: dream 3\n  decomp: *\n    reasmb: What does that dream suggest to you ?\n    reasmb: Do you dream often ?\n    reasmb: What persons appear in your dreams ?\n    reasmb: Do you believe that dreams have something to do with your problems ?\nkey: perhaps\n  decomp: *\n    reasmb: You don't seem quite certain.\n    reasmb: Why the uncertain tone ?\n    reasmb: Can't you be more positive ?\n    reasmb: You aren't sure ?"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#traditional-rule-based-programming",
+    "href": "slides/1-intro/lecture1.html#traditional-rule-based-programming",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Traditional (rule-based) programming",
+    "text": "Traditional (rule-based) programming\n\n\n\n\n(Fig. 1-1 in Hands-On ML)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#machine-learning",
+    "href": "slides/1-intro/lecture1.html#machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning",
+    "text": "Machine learning\n\n\n\n\n\n(Fig. 1-2)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#ml-vs-ai",
+    "href": "slides/1-intro/lecture1.html#ml-vs-ai",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ML vs AI",
+    "text": "ML vs AI\n\n\n\nWikiMedia Commons"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#what-is-machine-learning",
+    "href": "slides/1-intro/lecture1.html#what-is-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "What is machine learning?",
+    "text": "What is machine learning?\n\n(One) definition:\n\n\n\nA computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.\n\nTom Mitchell, 1997"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#when-should-we-use-machine-learning",
+    "href": "slides/1-intro/lecture1.html#when-should-we-use-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "When should we use machine learning?",
+    "text": "When should we use machine learning?\n\n\n\nML is good when we have access data, which is\n\ndescriptive of the task we want to solve\navailable in big¹ amounts\n\n\n[1] (We will get back to how much this is)\n\n\n\nML is less useful when\n\nthe data are incomplete or inconsistent\nthe data have simple correlations\nthe underlying (data generating) process can be modelled analytically\n\n\n\n\n\n\nML is bad when\n\nwe need an explainable / interpretable model\nunder certain requirements of privacy\nthe data change (in an unforeseen way) over time\nthe developer don’t know what they are doing"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#different-types-of-machine-learning",
+    "href": "slides/1-intro/lecture1.html#different-types-of-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Different types of machine learning",
+    "text": "Different types of machine learning\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\nLabel is a\n\nclass (categorical): we are doing classification\nvalue (numerical): we are doing regression"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#different-types-of-machine-learning-1",
+    "href": "slides/1-intro/lecture1.html#different-types-of-machine-learning-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Different types of machine learning",
+    "text": "Different types of machine learning\n\n\nSupervised learning:\n\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#some-types-of-data",
+    "href": "slides/1-intro/lecture1.html#some-types-of-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "(Some) types of data",
+    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#about-data",
+    "href": "slides/1-intro/lecture1.html#about-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "About data",
+    "text": "About data\n\nStructured data can be represented in a table:\n\n\nTitanic dataset (from Kaggle)\n\n\nId\nSurvived\nPclass\nName\nSex\nAge\n...\n\n\n\n\n1\n0\n3\nBraund, Mr. Owen Harris\nmale\n22\n\n\n\n2\n1\n1\nCumings, Mrs. John Bradley\nfemale\n38\n\n\n\n3\n1\n3\nHeikkinen, Miss. Laina\nfemale\n-\n\n\n\n4\n1\n1\nFutrelle, Mrs. Jacques Heath\nfemale\n35\n\n\n\n\n\n\n⋮\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfeatures \n\n\n\nbinary\n\n\ncategorical\n\n\nmissing data\n\n\n\n\n\n\n\ndata point (\\(\\mathbf{x}_2\\))\n\n\n\nData are often expressed in mathematical notation as an \\(N \\times M\\)-matrix \\(\\mathbf{X}\\), where\n\n\\(N\\) is the number of data points\n\\(M\\) is the number of features\n\nA single data point is then a vector \\(\\mathbf{x} = (x_1, \\dots, x_M)\\)."
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#sources-of-data",
+    "href": "slides/1-intro/lecture1.html#sources-of-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Sources of data",
+    "text": "Sources of data\n\n\nOpenly available datasets well suited for machine learning:\n\n\nKaggle Datasets\n\n\n\n\nUCI Machine Learning Repository\n\n\n\n\nGoogle Dataset Search\n\n\n\n\nPapersWithCode Datasets\n\n\n\n\nHugging Face datasets\n\n\n\n\nStatistisk Sentralbyrå\n\n(More listed in Chap 2 in the textbook)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#data-challenges",
+    "href": "slides/1-intro/lecture1.html#data-challenges",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Data challenges",
+    "text": "Data challenges\n\n\nToo little data available: Can lead to overfitting: the model gives perfect predictions on known data, but does not generalise to new data\n\n\n\n\n\nUnrepresentative data: New data does not look like known data\n\n\n\n\n\n\n\nGéron Fig. 1-20\n\n\n\n\n\n\n\nGéron Fig. 1-22\n\n\n\n\n\n\nPoor quality: Noise, typing errors, missing entries, rounding errors, …\n\n\n\n\n\n\n\n\nIrrelevant data: Little or no correlation with the observable we want to predict\n\n\n\n\nBias: Data contains correlations you didn’t want (see e.g. stories about COMPAS, Amazon)\n\n\n\n\n\n\n🕒 Very often, most of the time spent on an ML project goes to collecting, cleaning and preparing data."
+  },
+  {
+    "objectID": "slides/1-intro/lecture1.html#machine-learning-engineering",
+    "href": "slides/1-intro/lecture1.html#machine-learning-engineering",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n        \n\n\n\ntheoretical\n\n\napplied\n\n\n\n\nMachine learning models\n\n  \n\n\n\n\nMachine learning engineering\n \n\n\n\n\n\n\n\nData and society"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DAT158",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nslides 1\nslides 2"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#recording-from-yesterday",
+    "href": "slides/1-intro/lecture2.html#recording-from-yesterday",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Recording from yesterday",
+    "text": "Recording from yesterday\nPosted on Canvas"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#practical-information",
+    "href": "slides/1-intro/lecture2.html#practical-information",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Practical information",
+    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Fridays at 12:15, E403 and E443\nFørde: Thursdays at 10.15 (room varies)\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#programming",
+    "href": "slides/1-intro/lecture2.html#programming",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Programming",
+    "text": "Programming\n\n\nThe machine learning part of the course is based on the python programming language\nFree resources for learning python are posted on Canvas, such as\n\nKaggle Learning\nGoogle Edu\n\n\n\n\nTwo options for running python:\n\nUse cloud services, such as\n\nGoogle Colab\nKaggle\nDeepNote\n\nInstall locally"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#notebooks",
+    "href": "slides/1-intro/lecture2.html#notebooks",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Notebooks",
+    "text": "Notebooks\nExercises are given in form of Jupyter notebooks\n\nCan mix code, results, and notes (markdown and TeX) in the same file\nThese are partially filled, and you fill the rest\nCan be run locally or in cloud services"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#section-6",
+    "href": "slides/1-intro/lecture2.html#section-6",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "git clone git@github.com:HVL-ML/DAT158.git"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#python-libraries",
+    "href": "slides/1-intro/lecture2.html#python-libraries",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Python libraries",
+    "text": "Python libraries\n\n\n\n\n\n\n\n\nhttps://numpy.org/\n\n\nnumpy provides fast manipulation of large arrays and matrices\n\n\n\n\n\n\nhttps://scikit-learn.org/\n\n\nscikit-learn has a big selection of machine learning models and functions for data processing and evaluation"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#numpy-arrays",
+    "href": "slides/1-intro/lecture2.html#numpy-arrays",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "numpy arrays",
+    "text": "numpy arrays\nThe core of numpy is the array, on which we can do operations without explicit loops:\nExample: Given a list of numbers, make a new list, where all the elements are multiplied by 2.\n\n\nVanilla python:\n&gt;&gt;&gt; a = [1,2,3]\n&gt;&gt;&gt; b = []\n&gt;&gt;&gt; for elem in a:\n&gt;&gt;&gt;   b.append(elem * 2)\nb\n[2, 4, 6]\n\n\nNumpy:\n&gt;&gt;&gt; import numpy as np\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; b = a * 2\n&gt;&gt;&gt; b\narray([2 4 6])\n\n\n\nArrays can have any number of dimensions – e.g. a 2D matrix is written\n&gt;&gt;&gt; a = np.array([[1,2,3],[4,5,6]])\n&gt;&gt;&gt; print(a)\n[[1 2 3]\n [4 5 6]]\n&gt;&gt;&gt; a.ndim\n2\n&gt;&gt;&gt; a.shape\n(2, 3)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#numpy-arrays-1",
+    "href": "slides/1-intro/lecture2.html#numpy-arrays-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "numpy arrays",
+    "text": "numpy arrays\nIn normal python, elements are sliced from a list using [start : stop]:\n&gt;&gt;&gt; a = [0, 1, 2, 3, 4]\n&gt;&gt;&gt; a[2:4]                  # (remember zero-based indexing)\n[2, 3]    \n&gt;&gt;&gt; a[:]                    # no start or stop -&gt; select everything\n[0, 1, 2, 3, 4]\n\nNumpy extends this to any number of dimensions, separated by ,\n&gt;&gt;&gt; a = np.arange(1,10).reshape(3,3)\n&gt;&gt;&gt; a\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\n\n\nSelect single element:\n&gt;&gt;&gt; a[1, 1]\n5\n\n\n\nSelect row:\n&gt;&gt;&gt; a[1, :]\narray([4, 5, 6])\n\n\n\nSelect column:\n&gt;&gt;&gt; a[:, 1]\narray([2, 5, 8])"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#numpy-arrays-2",
+    "href": "slides/1-intro/lecture2.html#numpy-arrays-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "numpy arrays",
+    "text": "numpy arrays\nOperations on arrays are typically done element-by-element.\n\n\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; np.power(a, 2)\narray([1, 4, 9])\n\n\n&gt;&gt;&gt; b = np.array([4,5,6])\n&gt;&gt;&gt; a * b\narray([ 4, 10, 18])\n\n\n\nIn cases the shapes of two arrays don’t match, numpy will try to make them match(aka broadcasting):\n# I type this\n&gt;&gt;&gt; a * 2\narray([2, 4, 6])\n# ...and numpy does this:\n&gt;&gt;&gt; a * np.array([2, 2, 2])\narray([2, 4, 6])\n\n\n\n\n\nNumpy docs"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#machine-learning",
+    "href": "slides/1-intro/lecture2.html#machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning",
+    "text": "Machine learning\n\n\n\n\n\n(Fig. 1-2)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#what-is-machine-learning",
+    "href": "slides/1-intro/lecture2.html#what-is-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "What is machine learning?",
+    "text": "What is machine learning?\n\n(One) definition:\n\n\n\nA computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.\n\nTom Mitchell, 1997"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#different-types-of-machine-learning",
+    "href": "slides/1-intro/lecture2.html#different-types-of-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Different types of machine learning",
+    "text": "Different types of machine learning\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\nLabel is a\n\nclass (categorical): we are doing classification\nvalue (numerical): we are doing regression"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#different-types-of-machine-learning-1",
+    "href": "slides/1-intro/lecture2.html#different-types-of-machine-learning-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Different types of machine learning",
+    "text": "Different types of machine learning\n\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#some-types-of-data",
+    "href": "slides/1-intro/lecture2.html#some-types-of-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "(Some) types of data",
+    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#about-data",
+    "href": "slides/1-intro/lecture2.html#about-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "About data",
+    "text": "About data\n\nStructured data can be represented in a table:\n\n\nTitanic dataset (from Kaggle)\n\n\nId\nSurvived\nPclass\nName\nSex\nAge\n...\n\n\n\n\n1\n0\n3\nBraund, Mr. Owen Harris\nmale\n22\n\n\n\n2\n1\n1\nCumings, Mrs. John Bradley\nfemale\n38\n\n\n\n3\n1\n3\nHeikkinen, Miss. Laina\nfemale\n-\n\n\n\n4\n1\n1\nFutrelle, Mrs. Jacques Heath\nfemale\n35\n\n\n\n\n\n\n⋮\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfeatures \n\n\n\nbinary\n\n\ncategorical\n\n\nmissing data\n\n\n\n\n\n\n\ndata point (\\(\\mathbf{x}_2\\))\n\n\n\nData are often expressed in mathematical notation as an \\(N \\times M\\)-matrix \\(\\mathbf{X}\\), where\n\n\\(N\\) is the number of data points\n\\(M\\) is the number of features\n\nA single data point is then a vector \\(\\mathbf{x} = (x_1, \\dots, x_M)\\)."
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#sources-of-data",
+    "href": "slides/1-intro/lecture2.html#sources-of-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Sources of data",
+    "text": "Sources of data\n\n\nOpenly available datasets well suited for machine learning:\n\n\nKaggle Datasets\n\n\n\n\nUCI Machine Learning Repository\n\n\n\n\nGoogle Dataset Search\n\n\n\n\nPapersWithCode Datasets\n\n\n\n\nHugging Face datasets\n\n\n\n\nStatistisk Sentralbyrå\n\n(More listed in Chap 2 in the textbook)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#data-challenges",
+    "href": "slides/1-intro/lecture2.html#data-challenges",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Data challenges",
+    "text": "Data challenges\n\n\nToo little data available: Can lead to overfitting: the model gives perfect predictions on known data, but does not generalise to new data\n\n\n\n\n\nUnrepresentative data: New data does not look like known data\n\n\n\n\n\n\n\nGéron Fig. 1-20\n\n\n\n\n\n\n\nGéron Fig. 1-22\n\n\n\n\n\n\nPoor quality: Noise, typing errors, missing entries, rounding errors, …\n\n\n\n\n\n\n\n\nIrrelevant data: Little or no correlation with the observable we want to predict\n\n\n\n\nBias: Data contains correlations you didn’t want (see e.g. stories about COMPAS, Amazon)\n\n\n\n\n\n\n🕒 Very often, most of the time spent on an ML project goes to collecting, cleaning and preparing data."
+  }
+]

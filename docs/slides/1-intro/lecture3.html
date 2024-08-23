@@ -404,699 +404,258 @@ sma@hvl.no
 </div>
 
 </section>
-<section id="ml-engineering-advanced-algorithms" class="slide level2 center" data-background-color="#00838F" style="text-align: center">
-<h2>ML engineering 🤝 Advanced algorithms</h2>
+<section class="slide level2">
+
 <!----------------------------------------------------------------------------->
 </section>
-<section id="section" class="slide level2" data-background-image="figures/emnebeskrivelse.png" data-menu-title="Course description">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-1" class="slide level2" data-background-image="figures/canvas.png" data-menu-title="Canvas">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="practical-information" class="slide level2">
-<h2>Practical information</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="fragment" data-fragment-index="1">
-<ul>
-<li>The ML part consists of <strong>3 modules</strong>:
-<ol type="1">
-<li><span class="color-cyan-dark">Introduction to ML</span></li>
-<li><span class="color-teal-dark">Machine learning models</span></li>
-<li><span class="color-green-dark">End-to-end ML project</span></li>
-</ol></li>
-</ul>
-</div>
-<div class="fragment" data-fragment-index="2">
-<ul>
-<li><strong>Textbook</strong>: <a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/">A. Géron: <em>Hands-On Machine Learning with Scikit-Learn, Keras &amp; TensorFlow</em>, <strong>3rd edition</strong></a></li>
-</ul>
-</div>
-<div class="fragment" data-fragment-index="3">
-<ul>
-<li><strong>Lab</strong>: Work (and get help) with exercises
-<ul>
-<li>Bergen: Fridays at 12:15, E403 and E443</li>
-<li>Førde: Thursdays at 10.15 (room varies)</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment" data-fragment-index="4">
-<ul>
-<li><strong>Mandatory assignments</strong>:
-<ul>
-<li>Multiple choice test after module 1</li>
-<li>Project work after module 3 (but feel free to start early!)</li>
-</ul></li>
-</ul>
-</div>
-</div><div class="column" style="width:40%;">
-<div class="fragment" data-fragment-index="2">
-<div class="quarto-figure quarto-figure-center" style="border: 1rm #F5F5F5; background-color: #F5F5F5;">
+<section id="machine-learning-engineering" class="slide level2">
+<h2>Machine learning engineering</h2>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="figures/book-cover.webp" style="width:50.0%"></p>
-<figcaption><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/">A. Géron: <em>Hands-On Machine Learning with Scikit-Learn, Keras &amp; TensorFlow</em>, <strong>3rd edition</strong></a></figcaption>
+<p><img data-src="figures/geron_fig_1-2.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
 </figure>
 </div>
-</div>
-<div class="fragment" data-fragment-index="5">
-<ul>
-<li>General <strong>info</strong>:
-<ul>
-<li>Announcements on <a href="https://hvl.instructure.com/courses/28927">Canvas</a></li>
-<li>Discord</li>
-</ul></li>
-</ul>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="programming" class="slide level2">
-<h2>Programming</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>The machine learning part of the course is based on the <a href="https://www.python.org/"><code>python</code></a> programming language</p>
-<p>Free resources for learning python are posted on Canvas, such as</p>
+<div class="fragment fade-in-then-semi-out">
+<ol class="example" type="1">
+<li><em>Study the problem</em>
 <ul>
-<li><a href="https://www.kaggle.com/learn">Kaggle Learning</a></li>
-<li><a href="https://developers.google.com/edu/python">Google Edu</a></li>
-</ul>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:40%;">
-<p>Two options for running python:</p>
-<ul>
-<li>Use cloud services, such as
-<ul>
-<li><a href="https://colab.research.google.com/">Google Colab</a></li>
-<li><a href="https://www.kaggle.com/code">Kaggle</a></li>
-<li><a href="deepnote.com">DeepNote</a></li>
+<li>Exploratory data analysis</li>
+<li>Domain knowledge</li>
+<li>Data preparation</li>
 </ul></li>
-<li>Install locally</li>
-</ul>
-</div><!-- :::{.absolute top="25%" right="10%"} --><div class="absolute bg-color-grey-light" style="left: -50%; bottom: -7%; width: 200%; height: 100px; ">
-
-</div><div class="absolute" style="bottom: 10%; right: 30%; ">
-<p><img data-src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" style="width:30.0%"></p>
+</ol>
 </div>
+<div class="fragment fade-in-then-semi-out">
+<ol start="2" class="example" type="1">
+<li><em>Train ML model</em>
+<ul>
+<li>Algorithm/software development</li>
+</ul></li>
+</ol>
 </div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="python-libraries" class="slide level2">
-<h2>Python libraries</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><code>numpy</code> allows for simple vectorisation of arrays and matrices</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Square ten numbers</span></span>
-<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a></a>numbers <span class="op">=</span> np.arange(start<span class="op">=</span><span class="dv">0</span>, stop<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb1-4"><a></a>squared_numbers <span class="op">=</span> numbers <span class="op">**</span> <span class="dv">2</span>  </span>
-<span id="cb1-5"><a></a><span class="bu">print</span>(squared_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>(compare to Java:)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb2-2"><a></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-3"><a></a>    <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span><span class="dv">11</span><span class="op">];</span></span>
-<span id="cb2-4"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb2-5"><a></a>      numbers<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> i <span class="op">*</span> i<span class="op">;</span></span>
-<span id="cb2-6"><a></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span>i<span class="op">]);</span></span>
-<span id="cb2-7"><a></a>    <span class="op">}</span></span>
-<span id="cb2-8"><a></a>  <span class="op">}</span></span>
-<span id="cb2-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><!-- :::{.column width="2%"} --><!-- ::: --><div class="column" style="width:40%;">
-
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="python-libraries-1" class="slide level2">
-<h2>Python libraries</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><code>numpy</code> allows for simple vectorisation of arrays and matrices</p>
-<div class="sourceCode" id="cb3" data-code-line-numbers="4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Square ten numbers</span></span>
-<span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3"><a></a>numbers <span class="op">=</span> np.arange(start<span class="op">=</span><span class="dv">0</span>, stop<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb3-4"><a></a>squared_numbers <span class="op">=</span> numbers <span class="op">**</span> <span class="dv">2</span>  <span class="co"># no for-loop</span></span>
-<span id="cb3-5"><a></a><span class="bu">print</span>(squared_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>(compare to Java:)</p>
-<div class="sourceCode" id="cb4" data-code-line-numbers="4,5,7"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb4-2"><a></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-3"><a></a>    <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span><span class="dv">11</span><span class="op">];</span></span>
-<span id="cb4-4"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb4-5"><a></a>      numbers<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> i <span class="op">*</span> i<span class="op">;</span></span>
-<span id="cb4-6"><a></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span>i<span class="op">]);</span></span>
-<span id="cb4-7"><a></a>    <span class="op">}</span></span>
-<span id="cb4-8"><a></a>  <span class="op">}</span></span>
-<span id="cb4-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><!-- :::{.column width="2%"} --><!-- ::: --><div class="column" style="width:40%;">
-<div class="fragment">
-<p><code>scikit-learn</code> has a big selection of machine learning models and functions for data processing and evaluation <img data-src="figures/sklearn.png" style="width:100.0%"></p>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ol start="3" type="1">
+<li><em>Evaluate</em>
+<ul>
+<li>Metric selection</li>
+<li>Model selection</li>
+<li>Uncertainty quantification</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ol start="4" type="1">
+<li><em>Launch</em> <span class="emoji" data-emoji="rocket">🚀</span> / <em>Analyse errors</em> <span class="emoji" data-emoji="x">❌</span>
+<ul>
+<li>Deployment</li>
+<li>Diagnostics and visualisation</li>
+</ul></li>
+</ol>
 </div>
 </div></div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="notebooks" class="slide level2">
-<h2>Notebooks</h2>
-<p>Exercises are given in form of <a href="https://jupyter.org/">Jupyter notebooks</a></p>
+<section id="exploratory-data-analysis" class="slide level2">
+<h2>Exploratory data analysis</h2>
 <ul>
-<li>Can mix code, results, and notes (<code>markdown</code> and <code>TeX</code>) in the same file</li>
-<li>These are partially filled, and you fill the rest</li>
-<li>Can be run locally or in cloud services &nbsp;&nbsp;<a href="https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/"><img data-src="https://colab.research.google.com/assets/colab-badge.svg" alt="Google Colab"></a></li>
+<li>Get to know the data</li>
+<li>Look for correlations</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/notebook-example.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
-</figure>
-</div>
-<div class="absolute r-stack" style="border: 1rm solid #F5F5F5;top: 0%; right: 0%; width: 110px; ">
-<p><img data-src="figures/jupyter-logo.svg" style="width:100.0%"></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-2" class="slide level2" data-background-image="figures/github.png" data-menu-title="GitHub">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="goals-for-the-ml-part-of-the-course" class="slide level2" style="font-size: 1.1em">
-<h2>Goals for the ML part of the course</h2>
-<ul>
-<li><span class="hl-green"><strong>What we will learn:</strong></span>
-<ul>
-<li>Central concepts in ML and data analysis</li>
-<li>Details of a selection of ML models</li>
-<li>Workflow for setting up a complete ML-based software product</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<ul>
-<li><span class="hl-yellow"><strong>What we will <em>not</em> learn:</strong></span>
-<ul>
-<li>Neural networks and more advanced models based on these</li>
-<li>Models taking unstructured data (<em>images, audio, text</em>) as input</li>
-<li>Generative models (<em>LLMs, diffusion models, …</em>)</li>
-</ul></li>
-</ul>
-<div style="margin-left:2%">
-<p><i class="bi-arrow-return-right"></i> <a href="https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2023/DAT255/">DAT255 Deep learning engineering</a></p>
-</div>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="goals-for-module-1-this-week-and-next" class="slide level2" style="font-size: 1.1em">
-<h2>Goals for module 1 (<em>this week and next</em>)</h2>
-<div style="margin-top: 50px">
-
-</div>
-<ul>
-<li>Get comfortable with python, including the libraries <code>numpy</code> and <code>scikit-learn</code></li>
-</ul>
-<div>
-
-</div>
-<ul>
-<li><strong>Overview of ML and fundamental concepts</strong>:<br> Chap 1 of the textbook (<em>The Machine Learning landscape</em>), available <a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/ch01.html">here</a></li>
-</ul>
-<div>
-
-</div>
-<ul>
-<li><strong>What are the parts of a machine learning project</strong><br> Chap 2 (<em>End-to-End Machine Learning Project</em>)</li>
-</ul>
-<div>
-
-</div>
-<ul>
-<li><strong>Classifying data</strong><br> Chap 3 (<em>Classification</em>)</li>
-</ul>
-<div class="absolute" style="bottom: 5%; right: 2%; ">
-<p><i class="bi bi-rocket-takeoff" style="font-size: 5em; color: #455A64"></i></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="examples-of-machine-learning" class="slide level2 center" data-background-color="#E0F2F1">
-<h2><span class="emoji" data-emoji="eyeglasses">👓</span> Examples of machine learning</h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-3" class="slide level2" data-background-iframe="https://openai.com/chatgpt/" data-background-interactive="true" data-menu-title="Eksempel: ChatGPT">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-4" class="slide level2 center" data-background-image="figures/projectastra.png" data-background-color="black" data-menu-title="Eksempel: Astra">
-<h2></h2>
-<div style="display: flex;justify-content: center;">
-<iframe src="https://www.youtube.com/embed/nXVvvRhiGjI?t=10s&amp;autoplay=1&amp;mute=1" allow="autoplay" width="800px" height="450px">
-</iframe>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-5" class="slide level2" data-background-iframe="https://openai.com/index/dall-e-3/" data-background-interactive="true" data-menu-title="Eksempel: DALL-E">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-6" class="slide level2" data-background-iframe="https://docs.midjourney.com/docs/explore-prompting" data-background-interactive="true" data-menu-title="Eksempel: Midjourney">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-7" class="slide level2" data-background-iframe="https://openai.com/index/sora/" data-background-interactive="true" data-menu-title="Eksempel: Sora">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-8" class="slide level2" data-background-iframe="https://aitestkitchen.withgoogle.com/" data-background-interactive="true" data-menu-title="Eksempel: AI Test Kitchen">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-9" class="slide level2" data-background-iframe="https://segment-anything.com/" data-background-interactive="true" data-menu-title="Eksempel: Segment Anything">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-10" class="slide level2" data-background-iframe="https://mistral.ai/" data-background-interactive="true" data-menu-title="Eksempel: Mistral">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-11" class="slide level2" data-background-image="figures/llama3.png" data-menu-title="Eksempel: LLAMA">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-12" class="slide level2" data-background-iframe="https://www.uio.no/tjenester/it/ki/gpt-uio/" data-background-interactive="true" data-menu-title="Eksempel: GPT-UiO">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-<!-- ## {data-menu-title="Eksempel: Selvkjøring" background-color="black"} -->
-<!-- :::{style="display: flex;justify-content: center;"} -->
-<!-- <iframe src="https://www.youtube.com/embed/tlThdr3O5Qo?autoplay=1&mute=1" allow="autoplay" width="800px" height="450px"></iframe> -->
-<!-- ::: -->
-</section>
-<section id="section-13" class="slide level2" data-background-iframe="https://www.youtube.com/embed/tlThdr3O5Qo?autoplay=1&amp;mute=1" data-menu-title="Eksempel: Selvkjøring">
-<h2></h2>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section-14" class="slide level2 center" data-menu-title="Eksempel: X-ray">
-<h2></h2>
-
-<!----------------------------------------------------------------------------->
-<!-- ## {background-image="figures/finn.png" data-menu-title="Eksempel: finn.no"} -->
-<img data-src="figures/xray.webp" class="r-stretch quarto-figure-center"><p class="caption">Fan, W., Yang, Y., Qi, J. et al., <em>Nat Commun</em> 15, 1347 (<strong>2024</strong>)</p></section>
-<section id="section-15" class="slide level2 center" data-menu-title="Eksempel: finn.no">
-<h2></h2>
-
-<!----------------------------------------------------------------------------->
-<img data-src="figures/finn.png" class="r-stretch quarto-figure-center"><p class="caption"><em>Recommender</em> system</p></section>
-<section id="section-16" class="slide level2" data-background-iframe="https://www.cursor.com/" data-background-interactive="true" data-menu-title="Cursor">
-<h2></h2>
-<!-- - Eksempler -->
-<p><!-- - DALL-E --> <!-- - Segment Anything --> <!-- - GPT --> <!-- - Recommender systems (netflix etc) --> <!-- - code --> <!-- - Sitat Turing / definisjon --> <!-- - Historisk oversikt --> <!-- - Når bruke maskinlæring --></p>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="eliza-1966" class="slide level2" data-background-color="#181818">
-<h2>ELIZA (1966)</h2>
-<p>A chatbot based on symbolic AI</p>
-<div class="absolute" style="top: 15%; left: -5%; ">
-<p><img data-src="figures/eliza.png" style="width:100.0%"></p>
-</div>
-<div class="fragment absolute" style="top: -7%; left: 60%; width: 60%; height: 110%; ">
-<pre><code>synon: be am is are was
-key: xnone
-  decomp: *
-    reasmb: I'm not sure I understand you fully.
-    reasmb: Please go on.
-    reasmb: What does that suggest to you ?
-    reasmb: Do you feel strongly about discussing such things ?
-key: sorry
-  decomp: *
-    reasmb: Please don't apologise.
-    reasmb: Apologies are not necessary.
-    reasmb: I've told you that apologies are not required.
-key: apologise
-  decomp: *
-    reasmb: goto sorry
-key: remember 5
-  decomp: * i remember *
-    reasmb: Do you often think of (2) ?
-    reasmb: Does thinking of (2) bring anything else to mind ?
-    reasmb: What else do you recollect ?
-    reasmb: Why do you recollect (2) just now ?
-    reasmb: What in the present situation reminds you of (2) ?
-    reasmb: What is the connection between me and (2) ?
-  decomp: * do you remember *
-    reasmb: Did you think I would forget (2) ?
-    reasmb: Why do you think I should recall (2) now ?
-    reasmb: What about (2) ?
-    reasmb: goto what
-    reasmb: You mentioned (2) ?
-key: if 3
-  decomp: * if *
-    reasmb: Do you think its likely that (2) ?
-    reasmb: Do you wish that (2) ?
-    reasmb: What do you know about (2) ?
-    reasmb: Really, if (2) ?
-key: dreamed 4
-  decomp: * i dreamed *
-    reasmb: Really, (2) ?
-    reasmb: Have you ever fantasized (2) while you were awake ?
-    reasmb: Have you ever dreamed (2) before ?
-    reasmb: goto dream
-key: dream 3
-  decomp: *
-    reasmb: What does that dream suggest to you ?
-    reasmb: Do you dream often ?
-    reasmb: What persons appear in your dreams ?
-    reasmb: Do you believe that dreams have something to do with your problems ?
-key: perhaps
-  decomp: *
-    reasmb: You don't seem quite certain.
-    reasmb: Why the uncertain tone ?
-    reasmb: Can't you be more positive ?
-    reasmb: You aren't sure ?</code></pre>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="traditional-rule-based-programming" class="slide level2">
-<h2>Traditional (<em>rule-based</em>) programming</h2>
-<div class="absolute" style="top: 25%; left: 10%; width: 60%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/geron_fig_1-1.png" style="width:100.0%"></p>
-<figcaption>(Fig. 1-1 in <em>Hands-On ML</em>)</figcaption>
-</figure>
-</div>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="machine-learning" class="slide level2">
-<h2>Machine learning</h2>
-<div class="r-stack">
-<div class="absolute" style="top: 25%; left: 10%; width: 60%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/geron_fig_1-2.png" style="width:100.0%"></p>
-<figcaption>(Fig. 1-2)</figcaption>
-</figure>
-</div>
-</div>
-<div class="fragment fade-in-then-out absolute" style="top: 60px; left: 10%; width: 70%; ">
-<div style="display: flex;justify-content: center;">
-<iframe src="https://www.youtube.com/embed/tlThdr3O5Qo?autoplay=1&amp;mute=1&amp;t=20s" allow="autoplay" width="800px" height="450px">
-</iframe>
-</div>
-</div>
-<div class="fragment absolute circle color-orange" style="border: 1rem solid;top: 20%; left: 30%; width: 200px; height: 190px; ">
-
-</div>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="ml-vs-ai" class="slide level2" data-background-color="#006064">
-<h2>ML vs AI</h2>
-<div class="quarto-figure quarto-figure-center" style="margin-top: 10%">
-<figure>
-<p><img data-src="figures/AI_hierarchy.svg.png" style="width:40.0%"></p>
-<figcaption><span style="font-size: 0.6em; font-style: italic">WikiMedia Commons</span></figcaption>
-</figure>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="what-is-machine-learning" class="slide level2">
-<h2>What is machine learning?</h2>
-<div style="margin-top: 10%;">
-<p>(One) definition:</p>
-</div>
-<div style="margin-top: 5%;">
-<blockquote>
-<p>A computer program is said to learn from experience <strong>E</strong> with respect to some task <strong>T</strong> and some performance measure <strong>P</strong>, if its performance on <strong>T</strong>, as measured by <strong>P</strong>, improves with experience <strong>E</strong>.</p>
-</blockquote>
-<p><em>Tom Mitchell, 1997</em></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="when-should-we-use-machine-learning" class="slide level2">
-<h2>When should we use machine learning?</h2>
+<p><span style="font-size: 0.8em">(<code>notebooks/DAT158-1.1-Simple_examples.ipynb</code>)</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="fragment">
-<p><span class="hl-green"><strong>ML is good</strong></span> when we have access <strong>data</strong>, which is</p>
-<ul>
-<li>descriptive of the task we want to solve</li>
-<li>available in big¹ amounts</li>
-</ul>
-<div class="absolute color-grey" style="font-size: 0.6em;bottom: 2%; right: 2%; ">
-<p>[1] (We will get back to how much this is)</p>
+<div class="quarto-figure quarto-figure-center" style="margin-top:10%">
+<figure>
+<p><img data-src="figures/iris.png"></p>
+<figcaption><em>Iris</em> flowers</figcaption>
+</figure>
 </div>
-</div>
-<div class="fragment">
-<p><strong>ML is <span class="hl-yellow">less useful</span></strong> when</p>
-<ul>
-<li>the data are incomplete or inconsistent</li>
-<li>the data have simple correlations</li>
-<li>the underlying (<em>data generating</em>) process can be modelled analytically</li>
-</ul>
-</div>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<p><strong><span class="hl-red">ML is bad</span></strong> when</p>
-<ul>
-<li>we need an explainable / interpretable model</li>
-<li>under certain requirements of privacy</li>
-<li>the data change (in an unforeseen way) over time</li>
-<li>the developer don’t know what they are doing</li>
-</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/iris-correlation-plot.png" style="width:80.0%"></p>
+<figcaption>Pairwise feature scatter plots</figcaption>
+</figure>
 </div>
 </div></div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="different-types-of-machine-learning" class="slide level2">
-<h2>Different types of machine learning</h2>
-<div class="columns" style="font-size: 0.8em;">
-<div class="column" style="width:33%;">
-<p><strong>Supervised learning:</strong></p>
-<p>Each datapoint is assigned to a label, which the model tries to predict.</p>
-<p>Label is a</p>
-<ul>
-<li><em>class</em> (categorical):<br> we are doing <strong>classification</strong></li>
-<li><em>value</em> (numerical):<br> we are doing <strong>regression</strong></li>
-</ul>
-</div><div class="column" style="width:33%;">
-
-</div><div class="column" style="width:33%;">
-
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="different-types-of-machine-learning-1" class="slide level2">
-<h2>Different types of machine learning</h2>
-<div class="columns" style="font-size: 0.8em;">
-<div class="column" style="width:33%;">
-<p><strong>Supervised learning:</strong></p>
-<div class="fragment semi-fade-out" data-fragment-index="1">
-<p>Each datapoint is assigned to a label, which the model tries to predict.</p>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="fragment fade-in-then-semi-out" data-fragment-index="1">
-<p><strong>Unsupervised learning:</strong></p>
-<p>Datapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.</p>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="fragment fade-in-then-semi-out" data-fragment-index="2">
-<p><strong>Reinforcement learning:</strong></p>
-<p>The model (aka <em>agent</em>) interacts with an environment, and receives rewards or penalties depending on its actions</p>
-</div>
-</div></div>
+<section id="data-preparation" class="slide level2">
+<h2>Data preparation</h2>
+<p>Many (most?) real-world datasets need some cleaning</p>
+<p>Typical <span class="color-pink">problems</span>, and various <span class="color-teal">solutions</span>:</p>
 <div class="columns">
-<div class="column" style="width:33%;">
-<div class="fragment semi-fade-out" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/supervised-learning.png" height="350"></p>
-<figcaption>Classification</figcaption>
-</figure>
+<div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li>Missing data
+<ul>
+<li>Fill with some value (<em>zero, mean, …</em>) aka <strong>imputation</strong></li>
+<li>Skip datapoints containing missing data</li>
+<li>Skip entire feature containing missing data</li>
+</ul></li>
+</ul>
 </div>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="fragment fade-in-then-semi-out" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/unsupervised-learning.png" height="350"></p>
-<figcaption>Clustering</figcaption>
-</figure>
-</div>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="fragment fade-in-then-semi-out" data-fragment-index="2" style="margin-top: 50px">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/reinforcement-learning.gif" height="260"></p>
-<figcaption><a href="https://gymnasium.farama.org/environments/box2d/lunar_lander/">Lunar lander</a></figcaption>
-</figure>
-</div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="some-types-of-data" class="slide level2 r-stack" data-background-color="#ECEFF1">
-<h2>(Some) types of data</h2>
-<div class="absolute" style="top: 10%&quot;; left: 0%; width: 20%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/loremipsum.png" style="width:70.0%"></p>
-<figcaption>Text</figcaption>
-</figure>
-</div>
-</div>
-<div class="absolute" style="top: 12%; left: 60%; width: 50%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/foxes.webp"></p>
-<figcaption>Video</figcaption>
-</figure>
-</div>
-</div>
-<div class="absolute" style="top: 1%; left: 45%; width: 30%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/code-example.png"></p>
-<figcaption>Code</figcaption>
-</figure>
-</div>
-</div>
-<div class="absolute" style="top: 60%; left: 10%; width: 35%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/SRL-image-11.png"></p>
-<figcaption>Time series <span class="color-text-muted">(IPPC 2021)</span></figcaption>
-</figure>
-</div>
-</div>
-<div class="absolute" style="top: 50%; left: 45%; width: 30%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/audio-waveform.webp"></p>
-<figcaption>Audio</figcaption>
-</figure>
-</div>
-</div>
-<div class="absolute" style="top: 75%; left: 70%; width: 35%; ">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/uci-bank.jpg"></p>
-<figcaption>Tabular <span class="color-text-muted">(UCI Bank)</span></figcaption>
-</figure>
-</div>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="about-data" class="slide level2">
-<h2>About data</h2>
-<div style="font-size: 0.8em;">
-<p><em>Structured</em> data can be represented in a table:</p>
-</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li>Text attributes
+<ul>
+<li><p>Convert to categorical values</p>
 <table class="caption-top">
-<caption><em>Titanic</em> dataset (from <a href="https://www.kaggle.com/competitions/titanic">Kaggle</a>)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><code>Id</code></th>
-<th style="text-align: center;"><code>Survived</code></th>
-<th style="text-align: center;"><code>Pclass</code></th>
-<th style="text-align: center;"><code>Name</code></th>
-<th style="text-align: center;"><code>Sex</code></th>
-<th style="text-align: center;"><code>Age</code></th>
-<th style="text-align: center;"><code>...</code></th>
+<th><code>ocean_proximity</code></th>
+<th></th>
+<th><code>categorical</code></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">Braund, Mr.&nbsp;Owen Harris</td>
-<td style="text-align: center;">male</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;"></td>
+<td><code>"NEAR BAY"</code></td>
+<td><i class="bi-arrow-right"></i></td>
+<td>0</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">Cumings, Mrs.&nbsp;John Bradley</td>
-<td style="text-align: center;">female</td>
-<td style="text-align: center;">38</td>
-<td style="text-align: center;"></td>
+<td><code>"INLAND"</code></td>
+<td><i class="bi-arrow-right"></i></td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">Heikkinen, Miss. Laina</td>
-<td style="text-align: center;">female</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">Futrelle, Mrs.&nbsp;Jacques Heath</td>
-<td style="text-align: center;">female</td>
-<td style="text-align: center;">35</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">⋮</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td><code>"NEAR OCEAN"</code></td>
+<td><i class="bi-arrow-right"></i></td>
+<td>2</td>
 </tr>
 </tbody>
-</table>
-<div class="fragment absolute color-blue-dark" style="top: 21%; left: 2%; ">
-<p>features <i class="bi-arrow-right"></i></p>
-</div>
-<div class="fragment">
-<div class="absolute color-blue-dark" style="top: 50%; left: 24.5%; ">
-<p><i class="bi-arrow-up"></i><br>binary</p>
-</div>
-<div class="absolute color-blue-dark" style="top: 50%; left: 34.5%; ">
-<p><i class="bi-arrow-up"></i><br>categorical</p>
-</div>
-<div class="absolute color-blue-dark" style="top: 42%; left: 78%; ">
-<p><i class="bi-arrow-up-left"></i><br>missing data</p>
-</div>
-</div>
-<div class="fragment">
-<div class="absolute rectangle color-orange" style="top: 37%; left: 13%; width: 780px; height: 20px; ">
-
-</div>
-<div class="absolute color-orange" style="top: 33.5%; left: 90%; width: 20%; ">
-<p>data point (<span class="math inline">\(\mathbf{x}_2\)</span>)</p>
-</div>
-</div>
-<div class="fragment absolute" style="font-size: 0.8em;bottom: 0px; ">
-<p>Data are often expressed in mathematical notation as an <span class="math inline">\(N \times M\)</span>-matrix <span class="math inline">\(\mathbf{X}\)</span>, where</p>
-<ul>
-<li><span class="math inline">\(N\)</span> is the number of data points</li>
-<li><span class="math inline">\(M\)</span> is the number of features</li>
+</table></li>
+</ul></li>
 </ul>
-<p>A single data point is then a vector <span class="math inline">\(\mathbf{x} = (x_1, \dots, x_M)\)</span>.</p>
+</div>
+</div></div>
+<!-- See notebooks/DAT158-1.5-Regression.ipynb -->
+<!----------------------------------------------------------------------------->
+</section>
+<section id="data-preparation-cont." class="slide level2">
+<h2>Data preparation <span class="text-muted">(<em>cont.</em>)</span></h2>
+<p>Many (most?) real-world datasets need some cleaning</p>
+<p>Typical <span class="color-pink">problems</span>, and various <span class="color-teal">solutions</span>:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment semi-fade-out" data-fragment-index="1">
+<ul>
+<li>Feature values have different scales
+<ul>
+<li>Normalise values (shift to a range [0, 1])</li>
+<li>Standardize values (shift to have mean equal to 0 and variance equal to 1)</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out" data-fragment-index="1">
+<ul>
+<li>Feature values are not normally distributed
+<ul>
+<li>Transform values (compute e.g.&nbsp;the logarithm)</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/logtransform.png" style="width:100.0%"></p>
+<figcaption>WikiMedia Commons</figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="fragment" data-fragment-index="1" style="margin-top: 0px; padding-top: 0px">
+<p><span style="font-size: 0.6em">See <code>notebooks/DAT158-1.5-Regression.ipynb</code></span></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="model-training" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Model training</h2>
+<p>Details of different ML models is the topic for Module 2</p>
+<p>For now, let’s represent a generic ML model as a function <span class="math inline">\(\color{Purple}{f}\)</span>:</p>
+<div style="margin-top: 50px">
+<p><span class="math display">\[
+\large \hat{\color{DarkBlue}{y}} = \color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}, \boldsymbol{\color{teal}{\theta}})
+\]</span></p>
+</div>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is the <em>prediction</em></li>
+<li><span class="math inline">\(\color{DarkOrange}{\mathbf{x}}\)</span>&nbsp;is a data point</li>
+<li><span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span> are <em>parameters</em> of the model</li>
+</ul>
+<div>
+<p><em>Training</em> is the process of finding the best parameters <span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span>&nbsp;so that the prediction <span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is as close as possible to the known target value <span class="math inline">\(\color{DarkBlue}{y}\)</span>.</p>
 </div>
 </section>
-<section id="section-17" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
-<h2></h2>
-<div class="absolute" style="top: 60%; left: 40%; width: 20%; ">
-<p><img data-src="figures/hvl_logo_engelsk.png"></p>
+<section id="model-training-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Model training</h2>
+<p>Details of different ML models is the topic for Module 2</p>
+<p>For now, let’s represent a generic ML model as a function <span class="math inline">\(\color{Purple}{f}\)</span>:</p>
+<div style="margin-top: 50px">
+<p><span class="math display">\[
+\large \hat{\color{DarkBlue}{y}} = \color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}, \boldsymbol{\color{teal}{\theta}})
+\]</span></p>
 </div>
+<div>
+<p><em>Training</em> is the process of finding the best parameters <span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span>&nbsp;so that the prediction <span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is as close as possible to the known target value <span class="math inline">\(\color{DarkBlue}{y}\)</span>.</p>
+</div>
+<p><code>scikit-learn</code> API:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Generic model API</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_family <span class="im">import</span> ModelName </span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelName(some_setting<span class="op">=</span><span class="st">"foo"</span>)</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y) <span class="co"># X are data, y are targets </span></span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Specific example</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression(n_jobs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="evaluation" class="slide level2">
+<h2>Evaluation</h2>
+<p>How well does the model perform?</p>
+<p>To answer this we need a <em>metric</em> that quantifies performance.</p>
+<!-- ::::{.columns} -->
+<!-- :::{column width="60%"} -->
+<!-- Let's first look at the possible outcomes in binary classification: -->
+<!-- ::: -->
+<!-- :::{.column width="40%"} -->
+<!-- ![](figures/cats-vs-dogs.png) -->
+<!-- ::: -->
+<!-- :::: -->
+<div class="frame-wrap" style="width: 1600px; height: 800px">
+<iframe class="frame" src="https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/classification/thresholding_cd2cec3b3711b6befffa498911d9a6be0fa233b9b7238880d23cdb7593116511.frame" allow="clipboard-write https://developers-dot-devsite-v2-prod.appspot.com" allowfullscreen="" name="goog_1966039026">
+</iframe>
+</div>
+</section>
+<section id="feature-importance" class="slide level2">
+<h2>Feature importance</h2>
+</section>
+<section id="komplett-maskinlæringssystem" class="slide level2">
+<h2>Komplett maskinlæringssystem</h2>
+<p><i class="bi-alarm"></i></p>
+</section>
+<section id="kunstig-intelligens" class="slide level2">
+<h2>Kunstig intelligens</h2>
+<p>Reklame for DAT255</p>
+</section>
+<section id="opplegg-i-dat158" class="slide level2">
+<h2>Opplegg i DAT158</h2>
+<ul>
+<li>Moduler</li>
+<li>Oppgaver / notebooks</li>
+<li>Obligatoriske innleveringer</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
