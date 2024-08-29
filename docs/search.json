@@ -1,31 +1,45 @@
 [
   {
+    "objectID": "slides/1-intro/lecture3.html#referansegruppe",
+    "href": "slides/1-intro/lecture3.html#referansegruppe",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Referansegruppe",
+    "text": "Referansegruppe"
+  },
+  {
     "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering",
     "href": "slides/1-intro/lecture3.html#machine-learning-engineering",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
+    "text": "Machine learning engineering\n\n\n        \n\n\n\ntheoretical\n\n\napplied\n\n\n\n\nMachine learning models\n\n  \n\n\n\n\nMachine learning engineering\n\n\n\n\nData and society"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering-1",
+    "href": "slides/1-intro/lecture3.html#machine-learning-engineering-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#exploratory-data-analysis",
     "href": "slides/1-intro/lecture3.html#exploratory-data-analysis",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\nGet to know the data\nLook for correlations\n\n(notebooks/DAT158-1.1-Simple_examples.ipynb)\n\n\n\n\n\nIris flowers\n\n\n\n\n\n\nPairwise feature scatter plots"
+    "text": "Exploratory data analysis\n\nGet to know the data – structure, feature types, etc.\nLook for correlations\n\n\n\n\n\n\nIris flowers\n\n\n(notebooks/DAT158-1.1-Simple_examples.ipynb)\n\n\n\n\nPairwise feature scatter plots"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#data-preparation",
     "href": "slides/1-intro/lecture3.html#data-preparation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Data preparation",
-    "text": "Data preparation\nMany (most?) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nMissing data\n\nFill with some value (zero, mean, …) aka imputation\nSkip datapoints containing missing data\nSkip entire feature containing missing data\n\n\n\n\n\n\nText attributes\n\nConvert to categorical values\n\n\n\nocean_proximity\n\ncategorical\n\n\n\n\n\"NEAR BAY\"\n\n0\n\n\n\"INLAND\"\n\n1\n\n\n\"NEAR OCEAN\"\n\n2"
+    "text": "Data preparation\nMany (most) real-world datasets need some cleaning.\nTypical problems, and various solutions:\n\n\n\n\nMissing data\n\nFill with some value (zero, mean, …) aka imputation\nSkip datapoints containing missing data\nSkip entire feature containing missing data\n\n\n\n\n\n\nText attributes\n\nConvert to categorical values\n\n\n\nocean_proximity\n\ncategorical\n\n\n\n\n\"NEAR BAY\"\n\n0\n\n\n\"INLAND\"\n\n1\n\n\n\"NEAR OCEAN\"\n\n2"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#data-preparation-cont.",
     "href": "slides/1-intro/lecture3.html#data-preparation-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Data preparation (cont.)",
-    "text": "Data preparation (cont.)\nMany (most?) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nFeature values have different scales\n\nNormalise values (shift to a range [0, 1])\nStandardize values (shift to have mean equal to 0 and variance equal to 1)\n\n\n\n\n\n\nFeature values are not normally distributed\n\nTransform values (compute e.g. the logarithm)\n\n\n\n\n\nWikiMedia Commons\n\n\n\n\n\nSee notebooks/DAT158-1.5-Regression.ipynb"
+    "text": "Data preparation (cont.)\nMany (most) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nFeature values have different scales\n\nNormalise values (shift to a range [0, 1])\nStandardize values (shift to have mean equal to 0 and variance equal to 1)\n\n\n\n\n\n\nFeature values are not normally distributed\n\nTransform values (compute e.g. the logarithm)\n\n\n\n\n\nWikiMedia Commons\n\n\n\n\n\nSee notebooks/DAT158-1.5-Regression.ipynb"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#model-training",
@@ -39,42 +53,105 @@
     "href": "slides/1-intro/lecture3.html#model-training-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Model training",
-    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName \nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import \\\n  LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#evaluation",
     "href": "slides/1-intro/lecture3.html#evaluation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Evaluation",
-    "text": "Evaluation\nHow well does the model perform?\nTo answer this we need a metric that quantifies performance."
+    "text": "Evaluation\nHow well does the model perform?\nTo answer this we need a metric that quantifies performance.\n\n\n\nClassification:\n\n“How many did we label correctly?”\n\nUseful metrics:\n\nAccuracy\nPrecision\nRecall\nROC curve\n\n\n\n\nRegression:\n\n“How close did we get?”\n\nUseful metrics:\n\nMean squared error (MSE)\nRoot mean squared error (RMSE)\nMean absolute error (MAE)\n\n\n\n\nConsult scikit-learn docs for more metrics and description"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#feature-importance",
-    "href": "slides/1-intro/lecture3.html#feature-importance",
+    "objectID": "slides/1-intro/lecture3.html#binary-classification",
+    "href": "slides/1-intro/lecture3.html#binary-classification",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Feature importance",
-    "text": "Feature importance"
+    "section": "Binary classification",
+    "text": "Binary classification\nIn DAT158-1.3-Binary_classification.ipynb we explore a task with two outcomes:\n\nPatient has diabetes (1 / True)\nPatient does not have diabetes (0 / False)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nindex\npregnancies\nglucose\ndiastolic\ntriceps\ninsulin\nbmi\ndpf\nage\ndiabetes\n\n\n\n\n0\n6\n148\n72\n35\n0\n33.6\n0.627\n50\n1\n\n\n1\n1\n85\n66\n29\n0\n26.6\n0.351\n31\n0\n\n\n2\n8\n183\n64\n0\n0\n23.3\n0.672\n32\n1\n\n\n\n(More about the data here)\nWe want our ML algorithm \\(\\color{Purple}{f}\\) to predict no/yes for new patients with observations \\(\\color{DarkOrange}{\\mathbf{x}}\\),\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\in \\mathbb{R}^n \\longrightarrow \\{0,1\\} \\,.\n\\]"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#komplett-maskinlæringssystem",
-    "href": "slides/1-intro/lecture3.html#komplett-maskinlæringssystem",
+    "objectID": "slides/1-intro/lecture3.html#the-confusion-matrix",
+    "href": "slides/1-intro/lecture3.html#the-confusion-matrix",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Komplett maskinlæringssystem",
-    "text": "Komplett maskinlæringssystem"
+    "section": "The confusion matrix",
+    "text": "The confusion matrix\nThe outcomes of our predictions can be illustrated by the confusion matrix:\n\n\n\nBinary classification case\n\n\nThe different classification performance metrics can all be defined from these entries"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#kunstig-intelligens",
-    "href": "slides/1-intro/lecture3.html#kunstig-intelligens",
+    "objectID": "slides/1-intro/lecture3.html#accuracy",
+    "href": "slides/1-intro/lecture3.html#accuracy",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Kunstig intelligens",
-    "text": "Kunstig intelligens\nReklame for DAT255"
+    "section": "Accuracy",
+    "text": "Accuracy\nAccuracy measures how many samples are classified correctly, relative to the total number of samples:\n\\[\n\\small\n\\mathrm{accuracy} = \\frac{\\mathrm{correct\\; classifications}}{\\mathrm{all\\; classifications}}\n  = \\frac{\\mathrm{\\color{Green}{TP + TN}}}{\\mathrm{\\color{Purple}{TP + TN + FP + FN}}}\n\\]"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#opplegg-i-dat158",
-    "href": "slides/1-intro/lecture3.html#opplegg-i-dat158",
+    "objectID": "slides/1-intro/lecture3.html#precision",
+    "href": "slides/1-intro/lecture3.html#precision",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Opplegg i DAT158",
-    "text": "Opplegg i DAT158\n\nModuler\nOppgaver / notebooks\nObligatoriske innleveringer"
+    "section": "Precision",
+    "text": "Precision\nPrecision measures how many positive classifications that are actually positive:\n\\[\n\\small\n\\mathrm{precision} = \\frac{\\mathrm{correct\\; positive\\; classifications}}{\\mathrm{all\\; positive\\; classifications}}\n  = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FP}}}\n\\]"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#recall",
+    "href": "slides/1-intro/lecture3.html#recall",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Recall",
+    "text": "Recall\nRecall measures how many of the actual positives that were classified as positive:\n\\[\n\\small\n\\mathrm{recall} = \\frac{\\mathrm{correct\\; positive\\; classifications}}{\\mathrm{all\\; actual\\; positives}}\n  = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FN}}}\n\\]"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#computing-metrics",
+    "href": "slides/1-intro/lecture3.html#computing-metrics",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Computing metrics",
+    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMarixDisplay"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#setting-thresholds",
+    "href": "slides/1-intro/lecture3.html#setting-thresholds",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Setting thresholds",
+    "text": "Setting thresholds\nMost ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a threshold for where to divide between the positive and negative class.\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\longrightarrow [0, 1]\n\\]\n\n\n\n\n\n\n\n\n Most like class 0\n\n\nMost like class 1 \n\nTypically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics."
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#setting-thresholds-cont.",
+    "href": "slides/1-intro/lecture3.html#setting-thresholds-cont.",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Setting thresholds (cont.)",
+    "text": "Setting thresholds (cont.)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#unbalanced-data",
+    "href": "slides/1-intro/lecture3.html#unbalanced-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Unbalanced data",
+    "text": "Unbalanced data\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#precision-recall-curves",
+    "href": "slides/1-intro/lecture3.html#precision-recall-curves",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Precision-recall curves",
+    "text": "Precision-recall curves\nThe metrics so far are computed at a single threshold value. What if we want to evaluate a model for all possible thresholds?\n Plot precision as a function of recall:\n\n\n\nGéron Fig 3-6"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc",
+    "href": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Receiver Operator Characteristic (ROC)",
+    "text": "Receiver Operator Characteristic (ROC)\nA more common option is to plot the true positive rate (TPR) as function of false positive rate (FPR):\n\n\n\nGéron Fig 3-6\n\n\n\n\\[\n\\tiny\n\\mathrm{TPR} = \\frac{\\mathrm{TP}}{\\mathrm{TP + FN}}\n\\]\n“How many positives did I get right”\n\n\n\\[\n\\tiny\n\\mathrm{FPR} = \\frac{\\mathrm{FP}}{\\mathrm{FP + TN}}\n\\]\n“How many negatives did I get wrong”\n\n\nGood models have high area-under-curve (AUC)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc-1",
+    "href": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Receiver Operator Characteristic (ROC)",
+    "text": "Receiver Operator Characteristic (ROC)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#quiz",
+    "href": "slides/1-intro/lecture3.html#quiz",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Quiz 🧠",
+    "text": "Quiz 🧠\n\nYou have trained a model to classify cancer from X-ray images. Positive (1) class means cancer. Now you need to choose a classification threshold.\n\n\n\nShould you choose threshold A, B, or C?"
   },
   {
     "objectID": "slides/1-intro/lecture1.html#ml-engineering-advanced-algorithms",
@@ -247,9 +324,149 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "DAT158",
+    "title": "DAT158 Lecture notes",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nslides 1\nslides 2"
+    "text": "Published after each lecture week – see Canvas for additional material."
+  },
+  {
+    "objectID": "index.html#module-1-introduction-to-machine-learning",
+    "href": "index.html#module-1-introduction-to-machine-learning",
+    "title": "DAT158 Lecture notes",
+    "section": "Module 1: Introduction to Machine Learning",
+    "text": "Module 1: Introduction to Machine Learning\nWednesday week 34\nThursday week 34\nWednesday week 35\nThursday week 36"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#machine-learning-engineering",
+    "href": "slides/1-intro/lecture4.html#machine-learning-engineering",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#model-training",
+    "href": "slides/1-intro/lecture4.html#model-training",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Model training",
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\)."
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#model-training-1",
+    "href": "slides/1-intro/lecture4.html#model-training-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Model training",
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import \\\n  LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#evaluation",
+    "href": "slides/1-intro/lecture4.html#evaluation",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Evaluation",
+    "text": "Evaluation\nHow well does the model perform?\nTo answer this we need a metric that quantifies performance.\n\n\n\nClassification:\n\n“How many did we label correctly?”\n\nUseful metrics:\n\nAccuracy\nPrecision\nRecall\nROC curve\n\n\n\n\nRegression:\n\n“How close did we get?”\n\nUseful metrics:\n\nMean squared error (MSE)\nRoot mean squared error (RMSE)\nMean absolute error (MAE)\n\n\n\n\nConsult scikit-learn docs for more metrics and description"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#the-confusion-matrix",
+    "href": "slides/1-intro/lecture4.html#the-confusion-matrix",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The confusion matrix",
+    "text": "The confusion matrix\nThe outcomes of our predictions can be illustrated by the confusion matrix:\n\n\n\nBinary classification case\n\n\nThe different classification performance metrics can all be defined from these entries"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#metrics-recap",
+    "href": "slides/1-intro/lecture4.html#metrics-recap",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Metrics recap",
+    "text": "Metrics recap\n\nAccuracy:\n“How many did we get right?”\n\\(\\small\\mathrm{accuracy} = \\frac{\\mathrm{\\color{Green}{TP + TN}}}{\\mathrm{\\color{Purple}{TP + TN + FP + FN}}}\\)\n\n\n\n\n\nPrecision:\n“How many false positives did we avoid?”\n\\(\\small\\mathrm{precision} = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FP}}}\\)\n\n\n\n\n\nRecall:\n“How many true positives did we get right?”\n\\(\\small\\mathrm{recall} = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FN}}}\\)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#computing-metrics",
+    "href": "slides/1-intro/lecture4.html#computing-metrics",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Computing metrics",
+    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMarixDisplay"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#setting-thresholds",
+    "href": "slides/1-intro/lecture4.html#setting-thresholds",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Setting thresholds",
+    "text": "Setting thresholds\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#multiclass-classification",
+    "href": "slides/1-intro/lecture4.html#multiclass-classification",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Multiclass classification",
+    "text": "Multiclass classification\nThings change a bit when we consider tasks with more than two classes\n\n\nAccuracy: Still means ratio of correct predictions, but let’s redefine as\n\\[\n  \\small\n  \\mathrm{accuracy}(y, \\hat{y}) = \\frac{1}{N} \\sum_{i=1}^{N} \\unicode{x1D7D9}(y = \\hat{y}), \\qquad\n  \\unicode{x1D7D9}(i,j) = \\begin{cases} 1, & i = j \\\\ 0, & i \\neq j \\end{cases}\n  \\]\n\n\n\n\nPrecision and recall: Only make sense in binary setting, but:\n\nWe can compute these for “one class vs the rest”, and average results for each class\n\n\n\n\n\nConfusion matrix: No change"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#train-test-split",
+    "href": "slides/1-intro/lecture4.html#train-test-split",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Train-test split",
+    "text": "Train-test split\nEvaluating a model should be done on an independent data set (we want to know how well it performs on new, unseen data)\nTypically we set aside a part of the data, and use this only for final evaluation.\n\n\n\n\n\n# \"X\" are the data, \"y\" are the targets.\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.25, random_state=42\n)\nMore in DAT158-1.3-Binary_classification.ipynb"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#train-validation-test-split",
+    "href": "slides/1-intro/lecture4.html#train-validation-test-split",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Train-validation-test split",
+    "text": "Train-validation-test split\nModel selection\n\nIn case we want to compare different models, we need a third set:  The validation set\nThe test set is still only for final evaluation\n\n\n\n\n\n\n\nML models are prone to overfitting – i.e. memorising the training data.\nHow do we know if (when) this happens?\n\nCan compare performance on the training set to the validation set"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#cross-validation",
+    "href": "slides/1-intro/lecture4.html#cross-validation",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Cross-validation",
+    "text": "Cross-validation\nWe can do even better estimates by rotating the training data:\n\n\n\nSee scikit-learn docs"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#cross-validation-cont.",
+    "href": "slides/1-intro/lecture4.html#cross-validation-cont.",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Cross-validation (cont.)",
+    "text": "Cross-validation (cont.)\n\n\n“Simple” splitting is called k-fold, where k is the number of splits\nfrom sklearn.model_selection import KFold\n\nkf = KFold(n_splits=2)\nfor train, test in kf.split(X):\n    # train, test are dataset indices\n    ...\n\n\n\n\n\nWe can keep the original class distribution in each split by using stratified k-fold cross-validation\nfrom sklearn.model_selection import \\\n  StratifiedKFold\n  \nskf = StratifiedKFold(n_splits=3)\nfor train, test in skf.split(X, y):\n  ..."
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#serving-an-ml-model",
+    "href": "slides/1-intro/lecture4.html#serving-an-ml-model",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Serving an ML model",
+    "text": "Serving an ML model\n\n\n\n\n\nAwesome ML workflow\n\n\n\n\n\n\n    \n\n\n\n?\n\n\n\n\n\nUser"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#serving-an-ml-model-1",
+    "href": "slides/1-intro/lecture4.html#serving-an-ml-model-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Serving an ML model",
+    "text": "Serving an ML model\n\n\nOption 1: Local\nModel runs on user hardware\n\n\n\n\nPros:\n\nNo server hardware\nNo network connection needed\nData stays with user\n\n\n\n\nCons: Model may need to be\n\nCompressed\nSimplified\nEncrypted\n\n\n\n\n\n\nOption 2: Central\n\nModel runs on server, user interacts via webpage / API\n\n\n\nPros:\n\nNo limits on model complexity\nModel updates are seamless (to user)\n\n\n\n\nCons:\n\nNeed low-latency network\nUser loses control over data"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#some-hosting-services-gradio",
+    "href": "slides/1-intro/lecture4.html#some-hosting-services-gradio",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Some hosting services: Gradio",
+    "text": "Some hosting services: Gradio"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#some-hosting-services-streamlit",
+    "href": "slides/1-intro/lecture4.html#some-hosting-services-streamlit",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Some hosting services: Streamlit",
+    "text": "Some hosting services: Streamlit"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#mandatory-exercise-after-module-1",
+    "href": "slides/1-intro/lecture4.html#mandatory-exercise-after-module-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Mandatory exercise after Module 1",
+    "text": "Mandatory exercise after Module 1\n\n\nPart 1: Concepts and theory\nMultiple-choice quiz about topics from the textbook, lectures, and exercises (notebooks)\n\n\n\n\nPart 2: Hands-on\nKaggle competition: Compete against each other in making the best predictions 😎\nWe use the Kaggle platform to host the competition and leaderboard (competition is open only to us)\n\n\n\n\n\n\nProposed deadline: Open the competition Sept. 6,close on Sept 20 (two weeks)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#referansegruppe",
+    "href": "slides/1-intro/lecture4.html#referansegruppe",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Referansegruppe",
+    "text": "Referansegruppe"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#recording-from-yesterday",
