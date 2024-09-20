@@ -442,7 +442,7 @@ sma@hvl.no
     D --&gt;|Yes| E{"Temp &gt; 18℃ ?"}
     E --&gt;|Yes| F[Got to the beach]
     E --&gt;|No| G[Don't go]
-    D --&gt;|Yes| H{"Temp &gt; 23℃ ?"}
+    D --&gt;|No| H{"Temp &gt; 23℃ ?"}
     H --&gt;|Yes| I[Got to the beach]
     H --&gt;|No| J[Don't go]
 
@@ -1065,7 +1065,7 @@ Gain(\mathrm{Sunny}, S) = G(S) - \left(
 </section>
 <section id="random-forests" class="slide level2">
 <h2>Random forests</h2>
-<p><span class="color-teal"><strong>Ensembles</strong></span> can be great for any kind of ML models.</p>
+<p><span class="color-teal-dark"><strong>Ensembles</strong></span> can be great for any kind of ML models.</p>
 <p><em>But:</em></p>
 <p>Standard tree-building algorithms (like ID3) are deterministic</p>
 <p><code>-&gt;</code> Training several trees on the same data, would just yield an ensemble of identical models.</p>
@@ -1093,7 +1093,7 @@ Gain(\mathrm{Sunny}, S) = G(S) - \left(
 <div>
 <pre class="mermaid mermaid-js">%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing':100}}}%%
 flowchart LR
-    A["💾 Data"] --&gt;|Randomly drop&lt;br&gt;samples, features| B["🌲&lt;br&gt;Model 1"]
+    A["💾 Data"] --&gt;|Randomly&lt;br&gt;drop&lt;br&gt;samples| B["🌲&lt;br&gt;Model 1"]
     A --&gt; C["🌳&lt;br&gt;Model 2"]
     A --&gt; D["🌴&lt;br&gt;Model 3"]
     A --&gt; E["🎄&lt;br&gt;Model 4"]
@@ -1106,6 +1106,9 @@ flowchart LR
 <p></p></figure><p></p>
 </div>
 </div>
+</div>
+<div class="absolute" style="font-size: 0.65em;top: 13%; left: 59%; ">
+<p>Randomly drop<br>features<br>during training<br> <i class="bi bi-arrow-down-left"></i></p>
 </div>
 <!----------------------------------------------------------------------------->
 </section>
