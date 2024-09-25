@@ -1138,7 +1138,7 @@
     "href": "slides/2-models/lecture3.html#gradient-descent",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Gradient descent",
-    "text": "Gradient descent\n\n\n\n\n\n\n\n\nNeed to differentiate the loss wrt. each parameter:\n\\[\n\\small\n\\begin{align}\n\\frac{\\partial \\color{MediumVioletRed}{L}_{\\mathrm{MSE}}}{\\partial\\color{teal}{\\theta}_j}\n&= \\frac{\\partial}{\\partial\\color{teal}{\\theta}_j} \\left(\\frac{1}{N}\\sum_{i=1}^N (\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)})^2 \\right) \\\\[1em]\n&= \\frac{1}{N}\\sum_{i=1}^N 2(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)})\\color{DarkOrange}{x}_j^{(i)}\n\\end{align}\n\\]\n\n (looks complicated, but not too hard to compute)"
+    "text": "Gradient descent\n\n\n\n\n\n\n\n\nNeed to differentiate the loss wrt. each parameter:\n\\[\n\\small\n\\begin{align}\n\\frac{\\partial \\color{MediumVioletRed}{L}_{\\mathrm{MSE}}}{\\partial\\color{teal}{\\theta}_j}\n&= \\frac{\\partial}{\\partial\\color{teal}{\\theta}_j} \\left(\\frac{1}{N}\\sum_{i=1}^N (\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)} - \\color{DarkBlue}{y}^{(i)})^2 \\right) \\\\[1em]\n&= \\frac{1}{N}\\sum_{i=1}^N 2(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)} - \\color{DarkBlue}{\\mathbf{y}})\\color{DarkOrange}{x}_j^{(i)}\n\\end{align}\n\\]\n\n (looks complicated, but not too hard to compute)"
   },
   {
     "objectID": "slides/2-models/lecture3.html#gradient-descent-1",
