@@ -1,500 +1,430 @@
 [
   {
-    "objectID": "slides/2-models/lecture2.html#module-2",
-    "href": "slides/2-models/lecture2.html#module-2",
+    "objectID": "slides/2-models/lecture3.html#topics-module-2",
+    "href": "slides/2-models/lecture3.html#topics-module-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Topics module 2",
+    "text": "Topics module 2\n\n\nLast week\n\n\nModel complexity\n\nUnder/overfitting\n\nRegularisation\nDecision trees\nEnsemble models\n\nRandom forest\nBoosting\n\n\n\nThis week\n\nLoss functions\nGradient descent\n(More) linear regression\nLearning curves\nHyperparameter optimisation"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#linear-regression-again",
+    "href": "slides/2-models/lecture3.html#linear-regression-again",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Linear regression (again)",
+    "text": "Linear regression (again)\n\n\nLet’s set up some math for regression with a simple linear model, on data with \\(n\\) features:\n\\[\n\\small\n\\begin{align}\n\\hat{\\color{DarkBlue}{y}} &= \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}}) \\\\\n&= \\color{teal}{\\theta}_0\n+ \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}_1\n+ \\cdots\n+ \\color{teal}{\\theta}_n \\color{DarkOrange}{x}_n\n\\end{align}\n\\]\n\nCompactly written on vector form:\n\\[\n\\small\n\\hat{\\color{DarkBlue}{y}} = \\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n\\]\n\n\nFor one-dimensional data, it looks like\n\\[\n\\small\n\\begin{align}\n\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n&=\n  \\begin{bmatrix}\n    \\color{teal}{\\theta}_0 & \\color{teal}{\\theta}_1\n  \\end{bmatrix}\n  \\begin{bmatrix}\n    \\color{DarkOrange}{x}_0 \\\\ \\color{DarkOrange}{x}_1\n  \\end{bmatrix} \\\\\n&= \\color{teal}{\\theta}_0 \\color{DarkOrange}{x}_0 + \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}_1 \\qquad \\color{grey}{(\\mathrm{with}\\; x_0=1}) \\\\\n&= \\color{teal}{\\theta}_0 + \\color{teal}{\\theta} \\color{DarkOrange}{x}_1\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#finding-optimal-parameters-boldsymboltheta",
+    "href": "slides/2-models/lecture3.html#finding-optimal-parameters-boldsymboltheta",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)",
+    "text": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)\nStep 1: Define optimal through a loss function \\(\\color{MediumVioletRed}{L}\\)\n\nFor regression, mean squared error is the most common\n\n\n\\[\n\\small\n\\begin{align}\n\\color{MediumVioletRed}{L}_{\\mathrm{MSE}}\n&= \\frac{1}{N}\\sum_{i=1}^{N} \\left(\\hat{\\color{DarkBlue}{y}}^{(i)} - \\color{DarkBlue}{y}^{(i)}\\right)^2 \\\\[1em]\n&= \\frac{1}{N}\\sum_{i=1}^{N} \\left(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\color{DarkOrange}{\\mathbf{x}}^{(i)} - \\color{DarkBlue}{y}^{(i)}\\right)^2\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#finding-optimal-parameters-boldsymboltheta-1",
+    "href": "slides/2-models/lecture3.html#finding-optimal-parameters-boldsymboltheta-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)",
+    "text": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)\n\n\nStep 1: Define optimal through a loss function \\(\\color{MediumVioletRed}{L}\\)\nStep 2: Minimise \\(\\color{MediumVioletRed}{L}\\)\n\n\n\nTwo methods:\n\nSolve analytically\nSolve numerically\n\n\n\nAnalytical solution:\nSolve the normal equation\n\\[\n\\small\n\\hat{\\boldsymbol{\\color{teal}{\\theta}}}\n= (\\color{DarkOrange}{\\mathbf{X}}^{\\intercal}\\color{DarkOrange}{\\mathbf{X}})^{-1}\\color{DarkOrange}{\\mathbf{X}}^{\\intercal}\\color{DarkBlue}{\\mathbf{y}}\n\\]\nOnly possible in the linear case."
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#finding-optimal-parameters-boldsymboltheta-2",
+    "href": "slides/2-models/lecture3.html#finding-optimal-parameters-boldsymboltheta-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)",
+    "text": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)\n\n\nStep 1: Define optimal through a loss function \\(\\color{MediumVioletRed}{L}\\)\nStep 2: Minimise \\(\\color{MediumVioletRed}{L}\\)\n\n\n\nTwo methods:\n\nSolve analytically\nSolve numerically\n\n\nNumerical solution:\nGradient descent\n\\[\n\\nabla \\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}}) =\n\\begin{bmatrix}\n  \\frac{\\partial \\color{MediumVioletRed}{L}}{\\partial \\color{teal}{\\theta}_0} \\\\\n  \\vdots \\\\\n  \\frac{\\partial \\color{MediumVioletRed}{L}}{\\partial \\color{teal}{\\theta}_n} \\\\\n\\end{bmatrix}\n\\]\n\n\n Vector in parameterspace\n\n\n Gradient"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#the-gradient",
+    "href": "slides/2-models/lecture3.html#the-gradient",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The gradient",
+    "text": "The gradient"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#gradient-descent",
+    "href": "slides/2-models/lecture3.html#gradient-descent",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient descent",
+    "text": "Gradient descent\n\n\n\n\n\n\n\n\nNeed to differentiate the loss wrt. each parameter:\n\\[\n\\small\n\\begin{align}\n\\frac{\\partial \\color{MediumVioletRed}{L}_{\\mathrm{MSE}}}{\\partial\\color{teal}{\\theta}_j}\n&= \\frac{\\partial}{\\partial\\color{teal}{\\theta}_j} \\left(\\frac{1}{N}\\sum_{i=1}^N (\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)})^2 \\right) \\\\[1em]\n&= \\frac{1}{N}\\sum_{i=1}^N 2(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)})\\color{DarkOrange}{x}_j^{(i)}\n\\end{align}\n\\]\n\n (looks complicated, but not to hard to compute)"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#gradient-descent-1",
+    "href": "slides/2-models/lecture3.html#gradient-descent-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient descent",
+    "text": "Gradient descent\n\n\n\n\n\n\n\nPut it all together to get the gradient (written here in compact form)\n\\[\n\\small\n\\nabla \\color{MediumVioletRed}{L}(\\boldsymbol{\\color{teal}{\\theta}})\n= \\frac{2}{N}\\color{DarkOrange}{\\mathbf{X}}^{\\intercal}(\\color{DarkOrange}{\\mathbf{X}} \\cdot \\boldsymbol{\\color{teal}{\\theta}} - \\color{DarkBlue}{\\mathbf{y}})\n\\]\nwhere \\(\\color{DarkOrange}{\\mathbf{X}}\\) contains all the training data:\n\\[\n\\small\n\\color{DarkOrange}{\\mathbf{X}} =\n\\begin{bmatrix}\n\\color{DarkOrange}{\\mathbf{x}}^{(1)} \\\\\n\\color{DarkOrange}{\\mathbf{x}}^{(2)} \\\\\n\\vdots \\\\\\\n\\color{DarkOrange}{\\mathbf{x}}^{(N)}\n\\end{bmatrix}\n\\]\n\n\n(ok this isa little hardto compute)"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#gradient-descent-2",
+    "href": "slides/2-models/lecture3.html#gradient-descent-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient descent",
+    "text": "Gradient descent\n\n\n\n\n\n\n\nWith the gradient in place, we take steps downward (along the negative gradient), towards the optimal solution:\n\\[\n\\small\n\\boldsymbol{\\color{teal}{\\theta}}^{n+1} = \\boldsymbol{\\color{teal}{\\theta}}^n - \\eta \\nabla \\color{Purple}{L}\n\\]\nHere \\(\\eta\\) is the learning rate\n\nIn code, this looks like\ntheta = np.random.randn(2,1)\nfor epoch in range(n_epochs):\n  gradients = 2/N * X.T.dot(X.dot(theta) - y)\n  theta = theta - eta*gradients"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#gradient-descent-3",
+    "href": "slides/2-models/lecture3.html#gradient-descent-3",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient descent",
+    "text": "Gradient descent\n\n\n\n\n\nIteratively solving our linear regression problem using gradient descent:"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#learning-rate",
+    "href": "slides/2-models/lecture3.html#learning-rate",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Learning rate",
+    "text": "Learning rate\n\n\n\nLearning rate is a hyperparameter\n\n\n\n\n\n\n\n\n\nTo small (slow convergence)\n\n\n\n\n\n\n\nJust right\n\n\n\n\n\n\n\nTo high (no convergence)"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#practical-problems",
+    "href": "slides/2-models/lecture3.html#practical-problems",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Practical problems",
+    "text": "Practical problems"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#practical-problems-1",
+    "href": "slides/2-models/lecture3.html#practical-problems-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Practical problems",
+    "text": "Practical problems\n\n\nLocalminimum -&gt; bad predictions"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#practical-problems-2",
+    "href": "slides/2-models/lecture3.html#practical-problems-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Practical problems",
+    "text": "Practical problems\n\n\nLocalminimum -&gt; bad predictions\n\n\nPlateau -&gt; slow convergence"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#feature-scaling",
+    "href": "slides/2-models/lecture3.html#feature-scaling",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Feature scaling",
+    "text": "Feature scaling\n\n\n\n\nGeron Fig 4-7"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#gradient-descent-methods",
+    "href": "slides/2-models/lecture3.html#gradient-descent-methods",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient descent methods",
+    "text": "Gradient descent methods\n\n\nStandard (batch) gradient descent:\nCompute \\(\\small\\nabla \\color{MediumVioletRed}{L}\\) using all data points\n\\[\n\\small\n\\boldsymbol{\\theta}^{n+1} = \\boldsymbol{\\theta}^n - \\eta\\nabla L (\\boldsymbol{x}, \\boldsymbol{\\theta})\n\\]"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#gradient-descent-methods-1",
+    "href": "slides/2-models/lecture3.html#gradient-descent-methods-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient descent methods",
+    "text": "Gradient descent methods\n\n\nStochastic gradient descent:\nCompute \\(\\small\\nabla L\\) using a single data point at a time\n\\[\n\\small\n\\boldsymbol{\\theta}^{n+1} = \\boldsymbol{\\theta}^n - \\eta\\nabla L (x_i, \\boldsymbol{\\theta})\n\\]"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#gradient-descent-methods-2",
+    "href": "slides/2-models/lecture3.html#gradient-descent-methods-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient descent methods",
+    "text": "Gradient descent methods\n\n\nMini-batch gradient descent:\nCompute \\(\\small\\nabla L\\) using some data points at a time\n\\[\n\\small\n\\boldsymbol{\\theta}^{n+1} = \\boldsymbol{\\theta}^n - \\eta\\nabla L (\\boldsymbol{x}_s, \\boldsymbol{\\theta})\n\\]"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#advanced-gradient-descent-algorithms",
+    "href": "slides/2-models/lecture3.html#advanced-gradient-descent-algorithms",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Advanced gradient descent algorithms",
+    "text": "Advanced gradient descent algorithms\nGradient descent with momentum:"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#advanced-gradient-descent-algorithms-1",
+    "href": "slides/2-models/lecture3.html#advanced-gradient-descent-algorithms-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Advanced gradient descent algorithms",
+    "text": "Advanced gradient descent algorithms"
+  },
+  {
+    "objectID": "slides/2-models/lecture3.html#automatic-differentiation",
+    "href": "slides/2-models/lecture3.html#automatic-differentiation",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Automatic differentiation",
+    "text": "Automatic differentiation\n\n\n\n\n\n\n\n\n\nManually computing gradients is rather inconvenient 😒\nLuckily, automatic differentiation helps us out:\nimport jax\n\ndef predict(X, theta):              # For complicated models, predict()\n  return X.dot(theta)               # also tends to get very complicated\n\ndef loss(X, theta, y):              # But loss function is always simple\n  y_hat = predict(X, theta)\n  mse = ((y_hat - y)**2).mean()\n  return mse\n\nfor epoch in range(n_epochs):\n  theta = theta - eta*jax.grad(loss, argnums=1)(X, theta, y)  # autodiff!\n(appendix B in textbook)"
+  },
+  {
+    "objectID": "slides/2-models/lecture1.html#module-2",
+    "href": "slides/2-models/lecture1.html#module-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Module 2",
     "text": "Module 2\nMachine learning models – and how to use them effectively 🔧"
   },
   {
-    "objectID": "slides/2-models/lecture2.html#topics-for-module-2",
-    "href": "slides/2-models/lecture2.html#topics-for-module-2",
+    "objectID": "slides/2-models/lecture1.html#topics-for-module-2",
+    "href": "slides/2-models/lecture1.html#topics-for-module-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Topics for Module 2",
-    "text": "Topics for Module 2\n\n\nModels:\n\nLinear regression\nTree-based models\n\nDecision trees\nRandom forests\nGradient-boosted trees\n\nEnsemble models\n\n\nConsiderations:\n\nModel complexity\nUnder/-overfitting\n\nTechniques:\n\nGradient descent\nRegularisation\n\n\n\n\nBook chapters:\n\n4: Training models\n6: Decision trees\n7: Ensemble learning and random forests"
+    "text": "Topics for Module 2\n\n\nModels:\n\nLinear regression\nTree-based models\n\nRandom forests\nGradient-boosted trees Ensemble models\n\n\n\nConsiderations:\n\nModel complexity\nUnder/-overfitting\n\nTechniques:\n\nGradient descent\nRegularisation\n\n\n\n\nBook chapters:\n\n4: Training models\n6: Decision trees\n7: Ensemble learning and random forests"
   },
   {
-    "objectID": "slides/2-models/lecture2.html#section",
-    "href": "slides/2-models/lecture2.html#section",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "scikit-learn machine learning model assortment"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#the-best-model-is",
-    "href": "slides/2-models/lecture2.html#the-best-model-is",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "The best model is:",
-    "text": "The best model is:\n\nVery dependent on the task.\n\n\n\n\n\n\nNo free lunch (NFL) theorem\n\n\nThere is (provably) no single machine learning method that will work best on all problems.\n\n\n\nIn other words:\nUnder no assumptions about the data, there is no reason to choose a certain ML method (or any optimisation technique in general) over another.\n\n\nHow to choose, then?\n\nTest\nFrom experience"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#decision-trees",
-    "href": "slides/2-models/lecture2.html#decision-trees",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Decision trees 🌲",
-    "text": "Decision trees 🌲"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#decision-trees-1",
-    "href": "slides/2-models/lecture2.html#decision-trees-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Decision trees",
-    "text": "Decision trees\n\n\nSilly example:\n\n\n\n\n\nflowchart LR\n    A[Go to the beach?] --&gt; B{Workday?}\n    B --&gt;|Yes| C[Don't go]\n    B --&gt;|No| D{Sunny?}\n    D --&gt;|Yes| E{\"Temp &gt; 18℃ ?\"}\n    E --&gt;|Yes| F[Got to the beach]\n    E --&gt;|No| G[Don't go]\n    D --&gt;|No| H{\"Temp &gt; 23℃ ?\"}\n    H --&gt;|Yes| I[Got to the beach]\n    H --&gt;|No| J[Don't go]\n\n    style A fill:#E0F7FA\n    style C fill:#FFCDD2\n    style G fill:#FFCDD2\n    style C fill:#FFCDD2\n    style F fill:#C8E6C9\n    style I fill:#C8E6C9\n    style J fill:#FFCDD2\n\n\n\n\n\n\n\n\n\n\n\nDecision (= prediction) \n\n\n\nCan be re-ordered"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#decision-trees-cont.",
-    "href": "slides/2-models/lecture2.html#decision-trees-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Decision trees (cont.)",
-    "text": "Decision trees (cont.)\n\n\nSilly example:\n\n\n\n\n\nflowchart LR\n    A[Go to the beach?] --&gt; B{Workday?}\n    B --&gt;|Yes| C[Don't go]\n    B --&gt;|No| D{Sunny?}\n    D --&gt;|Yes| E{\"Temp &gt; 18℃ ?\"}\n    E --&gt;|Yes| F[Got to the beach]\n    E --&gt;|No| G[Don't go]\n    D --&gt;|Yes| H{\"Temp &gt; 23℃ ?\"}\n    H --&gt;|Yes| I[Got to the beach]\n    H --&gt;|No| J[Don't go]\n\n    style A fill:#E0F7FA\n    style C fill:#FFCDD2\n    style G fill:#FFCDD2\n    style C fill:#FFCDD2\n    style F fill:#C8E6C9\n    style I fill:#C8E6C9\n    style J fill:#FFCDD2\n\n\n\n\n\n\n\n\n\n\n96% would agree 4% would disagree\n\n\n71% would agree 29% would disagree\n\n\n29% would agree 71% would disagree\n\n\n82% would agree 18% would disagree\n\n\n18% would agree 81% would disagree"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#id3-algorithm",
-    "href": "slides/2-models/lecture2.html#id3-algorithm",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ID3 algorithm",
-    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n\n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#id3-algorithm-1",
-    "href": "slides/2-models/lecture2.html#id3-algorithm-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ID3 algorithm",
-    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n\n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree\n  \n\n\n No need to split"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#id3-algorithm-2",
-    "href": "slides/2-models/lecture2.html#id3-algorithm-2",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ID3 algorithm",
-    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n  \n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree\n  \n\n\n No need to split\n\n\n Notpossible to split"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#id3-algorithm-3",
-    "href": "slides/2-models/lecture2.html#id3-algorithm-3",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ID3 algorithm",
-    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n  \n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree\n\n\n No need to split\n\n\n Notpossible to split\n\n\n Split onthe bestfeature"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#finding-the-best-feature",
-    "href": "slides/2-models/lecture2.html#finding-the-best-feature",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Finding the best feature",
-    "text": "Finding the best feature\nWe need to rank the features by how useful it is to split based on its value\n\n\nA measure is the Gini impurity:\n\\[\n\\small\nG = 1 - \\sum_i p_i^2\n\\]\nwhere \\(p_i\\) are frequency distributions for each class \\(i\\)\n\nIn the binary case (only positive and negative samples) it becomes\n\\[\n\\small\nG = 1 - p_{\\mathrm{\\class{color-green}{pos}}}^2 - p_{\\mathrm{\\class{color-red}{neg}}}^2\n\\]\nLow \\(G\\) means good predictions\n\n\n\n\n\n\n\n\n\n\n\n\n\n50/50\n\nOnlypositivesamples\n\nOnlynegativesamples"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#finding-the-best-feature-cont.",
-    "href": "slides/2-models/lecture2.html#finding-the-best-feature-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Finding the best feature (cont.)",
-    "text": "Finding the best feature (cont.)\nConsider outputs of the following hypothetical splits:\n\n\n\n\n\n\n\nflowchart TD\n  A{Sunny?} --&gt;|Yes| B:::hidden\n  A --&gt; |No| C[\"6 positive samples&lt;br&gt;4 negative samples\"]\n\n\n\n\n\n\n\\[\n\\small\nG = 1 - \\frac{\\class{color-green}{6}}{10} - \\frac{\\class{color-red}{4}}{10}\n= \\class{color-orange}{0.48}\n\\]\n\n\n\n\n\n\nflowchart TD\n  A{Sunny?} --&gt;|Yes| B:::hidden\n  A --&gt; |No| C[\"9 positive samples&lt;br&gt;1 negative samples\"]\n\n\n\n\n\n\n\\[\n\\small\nG = 1 - \\frac{\\class{color-green}{9}}{10} - \\frac{\\class{color-red}{1}}{10}\n= \\class{color-green}{0.18}\n\\]\n\n\n\n\\[\n\\small\nG = 1 - p_{\\mathrm{\\class{color-green}{pos}}}^2 - p_{\\mathrm{\\class{color-red}{neg}}}^2\n\\]"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#finding-the-best-feature-cont.-1",
-    "href": "slides/2-models/lecture2.html#finding-the-best-feature-cont.-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Finding the best feature (cont.)",
-    "text": "Finding the best feature (cont.)\n\n\nThe best feature \\(A\\), considering a set of examples \\(S\\), is the one with the biggest reduction in Gini impurity – aka the highest information gain\n\\[\n\\small\nGain(A, S) = G(S) - \\sum_{v\\in\\mathrm{Values}(A)} \\frac{|S_v|}{|S|} G(S_v)\n\\]\n\n\n\n\n\n\nflowchart TD\n  A{Sunny?} --&gt;|Yes| B[\"&lt;em&gt;S&lt;/em&gt;&lt;sub&gt;Sunny=yes&lt;/sub&gt;\"]\n  A --&gt; |No| C[\"&lt;em&gt;S&lt;/em&gt;&lt;sub&gt;Sunny=no&lt;/sub&gt;\"]\n  style B fill:#C8E6C9\n  style C fill:#FFCDD2\n\n\n\n\n\n\n\n\nIn the binary case (\\(v \\in {\\mathrm{\\class{color-green}{yes}, \\class{color-red}{no}}}\\)):\n\\[\n\\small\nGain(\\mathrm{Sunny}, S) = G(S) - \\left(\n\\frac{|S_{\\mathrm{Sunny=\\class{color-green}{yes}}}|}{|S|} G_{\\mathrm{Sunny=\\class{color-green}{yes}}}\n+\\frac{|S_{\\mathrm{Sunny=\\class{color-red}{no}}}|}{|S|} G_{\\mathrm{Sunny=\\class{color-red}{no}}}\n\\right)\n\\]\n\n Impurity before splitting\n\n\n Weighted impurity after splitting"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#decision-trees-so-far",
-    "href": "slides/2-models/lecture2.html#decision-trees-so-far",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Decision trees so far:",
-    "text": "Decision trees so far:\nWe have an algorithm (ID3) for constructing decision tree, and a measure for ensuring output is optimal.\nLet’s extend it into the general CART (Classification and Regression Trees) algorithm, by adding\n\n\nContinuous inputs\nImplement splits as a greater than operation\n\n\n\n\nContinuous output\nOutput the average value instead of the majority value for each leaf node\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A{Temperature} --&gt;|\"≤ 23℃ \"| B:::hidden\n  A --&gt; |\"≥ 23℃ \"| C:::hidden\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A:::hidden --&gt; B[\"&lt;pre&gt;&lt;span style=\"font-size:20px;\"&gt;1 1   1  0&lt;br&gt; 0   1  1&lt;/span&gt;&lt;/pre&gt;\"]\n\n\n\n\n\n\n\n\nLabel: 1 (majority value)\n\n\n\n\n\n\n\nflowchart TD\n  A:::hidden --&gt; B[\"&lt;pre&gt;&lt;span style=\"font-size:20px;\"&gt;2.1  1.0   2.3  0.5&lt;br&gt; 0.5   1.3 1.5&lt;/span&gt;&lt;/pre&gt;\"]\n\n\n\n\n\n\n\n\nLabel: 1.1 (average value)"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#preventing-overfitting",
-    "href": "slides/2-models/lecture2.html#preventing-overfitting",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Preventing overfitting",
-    "text": "Preventing overfitting\n\n\nTree algorithms aim to have the purest possible leaf nodes\n-&gt; Leads to “maximal” overfitting.\n\nMitigation methods:\n\nLimit complexity\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"} --&gt; B{\"branch\"}\n  A --&gt; C{\"branch\"}\n  B --&gt; D[\"leaf\"]\n  B --&gt; E[\"leaf\"]\n  C --&gt; F{\"branch\"}\n  C --&gt; G[\"leaf\"]\n  F --&gt; H[\"leaf\"]\n  F --&gt; I[\"leaf\"]\n  style D fill:#B2DFDB\n  style E fill:#B2DFDB\n  style G fill:#B2DFDB\n  style H fill:#B2DFDB\n  style I fill:#B2DFDB\n\n\n\n\n\n\n\n\n Limitmaxdepth \n\n\n Require a minimum number of samples to end up in each node"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#preventing-overfitting-1",
-    "href": "slides/2-models/lecture2.html#preventing-overfitting-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Preventing overfitting",
-    "text": "Preventing overfitting\n\n\nTree algorithms aim to have the purest possible leaf nodes\n-&gt; Leads to “maximal” overfitting.\nMitigation methods:\n\nLimit complexity\nPruning\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"} --&gt; B{\"branch\"}\n  A --&gt; C{\"branch\"}\n  B --&gt; D[\"leaf\"]\n  B --&gt; E[\"leaf\"]\n  C --&gt; F[\"&lt;s&gt;branch&lt;/s&gt;&lt;br&gt;leaf\"]\n  C --&gt; G[\"leaf\"]\n  F --&gt; H[\"leaf\"]\n  F --&gt; I[\"leaf\"]\n  style D fill:#B2DFDB\n  style E fill:#B2DFDB\n  style G fill:#B2DFDB\n  style H fill:#B2DFDB\n  style I fill:#B2DFDB"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#preventing-overfitting-2",
-    "href": "slides/2-models/lecture2.html#preventing-overfitting-2",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Preventing overfitting",
-    "text": "Preventing overfitting\n\n\nTree algorithms aim to have the purest possible leaf nodes\n-&gt; Leads to “maximal” overfitting.\nMitigation methods:\n\nLimit complexity\nPruning\nCombine an ensemble of trees: Random forest\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"}:::branch --&gt; B{\"branch\"}:::branch\n  A --&gt; C{\"branch\"}:::branch\n  B --&gt; D[\"leaf\"]:::leaf\n  B --&gt; E[\"leaf\"]:::leaf\n  C --&gt; F{\"branch\"}:::branch\n  C --&gt; G[\"leaf\"]:::leaf\n  F --&gt; H[\"leaf\"]:::leaf\n  F --&gt; I[\"leaf\"]:::leaf\n  classDef leaf fill:#B2DFDB\n  classDef branch fill:#eee,opacity:1\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"}:::branch --&gt; B{\"branch\"}:::branch\n  A --&gt; C{\"branch\"}:::branch\n  B --&gt; D[\"leaf\"]:::leaf\n  B --&gt; E{\"branch\"}:::branch\n  C --&gt; F{\"branch\"}:::branch\n  C --&gt; G[\"leaf\"]:::leaf\n  F --&gt; H[\"leaf\"]:::leaf\n  F --&gt; I[\"leaf\"]:::leaf\n  E --&gt; J[\"leaf\"]:::leaf\n  E --&gt; K[\"leaf\"]:::leaf\n  classDef leaf fill:#B2DFDB\n  classDef branch fill:#eee,opacity:1\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"}:::branch --&gt; B{\"branch\"}:::branch\n  A --&gt; C{\"branch\"}:::branch\n  B --&gt; D[\"leaf\"]:::leaf\n  B --&gt; E[\"leaf\"]:::leaf\n  C --&gt; F[\"leaf\"]:::leaf\n  C --&gt; G[\"leaf\"]:::leaf\n  classDef leaf fill:#B2DFDB\n  classDef branch fill:#eee,opacity:1"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#random-forests",
-    "href": "slides/2-models/lecture2.html#random-forests",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Random forests",
-    "text": "Random forests\nEnsembles can be great for any kind of ML models.\nBut:\nStandard tree-building algorithms (like ID3) are deterministic\n-&gt; Training several trees on the same data, would just yield an ensemble of identical models.\n\nIntroduce randomness to the mix:\n\nTrain each model on a ransom subset of data\nAt each split, use a random subset of features\n\n\n“Make each tree worse to make the forest better”"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#random-forests-cont.",
-    "href": "slides/2-models/lecture2.html#random-forests-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Random forests (cont.)",
-    "text": "Random forests (cont.)\n\n\n\n\n\n\n\n\n%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing':100}}}%%\nflowchart LR\n    A[\"💾 Data\"] --&gt;|Randomly&lt;br&gt;drop&lt;br&gt;samples| B[\"🌲&lt;br&gt;Model 1\"]\n    A --&gt; C[\"🌳&lt;br&gt;Model 2\"]\n    A --&gt; D[\"🌴&lt;br&gt;Model 3\"]\n    A --&gt; E[\"🎄&lt;br&gt;Model 4\"]\n    B --&gt; F[\"Prediction\"]\n    C --&gt; F\n    D --&gt; F\n    E --&gt; F\n\n\n\n\n\n\n\nRandomly dropfeaturesduring training"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#boosting",
-    "href": "slides/2-models/lecture2.html#boosting",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Boosting",
-    "text": "Boosting\nThe most advanced tree-based ML models rely on the concept of boosting\nCreate the ensemble iteratively, starting with a single tree model \\(f_1\\):\n\\[\n\\small\n\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{r_1}\n\\]\n\n(true value = prediction + residual)\n\nFrom this, we want to add a now model \\(f_2\\) to improve on \\(f_1\\)."
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#adaboost",
-    "href": "slides/2-models/lecture2.html#adaboost",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "AdaBoost",
-    "text": "AdaBoost\nStart with a single model: \\(\\small\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{r_1}\\)\nOne way of improving the model is to add a second one (\\(f_2\\)), where we apply \\(\\class{color-green}{r_1}\\) as weights during training\n\n“Easy” data points get little importance\n“Difficult” data points get high importance\n\n\nGet an improved ensemble model:\n\\[\n\\small\n\\class{color-orange}{y} = \\mathrm{mode}\\left[f_1(\\mathbf{x}), f_2(\\mathbf{x}]\\right) +  \\class{color-green}{r_1}\n\\]\nCan repeat this as many times we like – call this the AdaBoost algorithm:\n\\[\n\\small\n\\class{color-orange}{\\hat{y}} = \\mathrm{mode}\\left[f_1(\\mathbf{x}), f_2(\\mathbf{x}), + \\dots + f_M{\\mathbf{x}}\\right]\n\\]"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#gradient-boosting",
-    "href": "slides/2-models/lecture2.html#gradient-boosting",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient boosting",
-    "text": "Gradient boosting\nAgain start with a single model: \\(\\small\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{r_1}\\)\nAnother option: Instead of making a second tree to predict \\(\\class{color-orange}{y}\\), have it predict \\(\\class{color-green}{r_1}\\)\nImproved prediction:\n\\[\n\\small\n\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{f_2}(\\mathbf{x}) +  \\class{color-purple}{r_2}\n\\]\nCan iterate further with a new model to predict \\(\\class{color-purple}{r_2}\\), and so on"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#peek-on-next-weeks-concepts-gradient-descent",
-    "href": "slides/2-models/lecture2.html#peek-on-next-weeks-concepts-gradient-descent",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Peek on next week’s concepts: Gradient descent",
-    "text": "Peek on next week’s concepts: Gradient descent\nRemember the loss function, which quantifies the error in prediction \\(\\class{color-orange}{\\hat{y}}\\)\nConsider the squared-error loss:\n\\[\n\\small\n\\begin{align}\nL &= (\\class{color-orange}{y} - \\class{color-orange}{\\hat{y}})^2  \\\\\n&= (\\class{color-orange}{y} - \\class{color-purple}{f_n}(\\mathbf{x}))^2\n\\end{align}\n\\]\nTo minimise this, differentiate and move in the direction of negative gradient:\n\\[\n\\small\n\\begin{align}\n- \\frac{\\partial L}{\\partial \\class{color-purple}{f_n}} &= 2(\\class{color-orange}{y} - \\class{color-purple}{f_n}) \\\\\n&= 2\\class{color-purple}{f_{n+1}}\n\\end{align}\n\\]\nBoosting can be interpreted as gradient descent in function space (more next week)\n\nNext iteration!"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#ensemble-models-summary",
-    "href": "slides/2-models/lecture2.html#ensemble-models-summary",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Ensemble models: Summary",
-    "text": "Ensemble models: Summary\n\n\n\n\nBagging\n\n\n\n\n\n\n\nStacking\n\n\n\n\n\n\n\nBoosting"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#decision-trees-in-practice",
-    "href": "slides/2-models/lecture2.html#decision-trees-in-practice",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Decision trees in practice",
-    "text": "Decision trees in practice\nIn the exercises this week, we will apply decision trees to a classification task\nThe behaviour of ML models can be visualised (in low dimensions!) by looking at the decision boundary"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#classification-decision-tree",
-    "href": "slides/2-models/lecture2.html#classification-decision-tree",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Classification: Decision tree",
-    "text": "Classification: Decision tree"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#classification-random-forest",
-    "href": "slides/2-models/lecture2.html#classification-random-forest",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Classification: Random forest",
-    "text": "Classification: Random forest"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#classification-boosted-decision-trees",
-    "href": "slides/2-models/lecture2.html#classification-boosted-decision-trees",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Classification: Boosted decision trees",
-    "text": "Classification: Boosted decision trees\n\n\n\n\nFirst tree already found an optimal solution -&gt; immediate convergence"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#regression-case",
-    "href": "slides/2-models/lecture2.html#regression-case",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Regression case",
-    "text": "Regression case"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#regression-decision-tree",
-    "href": "slides/2-models/lecture2.html#regression-decision-tree",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Regression: Decision tree",
-    "text": "Regression: Decision tree\nHyperparameter selection: max_depth\n\n\n\n\n\n\n\n\n\nmax_depth = 2\n\n\n\n\n\n\n\n\nmax_depth = 3\n\n\n\n\n\n\n\n\nmax_depth = 4"
-  },
-  {
-    "objectID": "slides/2-models/lecture2.html#regression-model-comparison",
-    "href": "slides/2-models/lecture2.html#regression-model-comparison",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Regression: Model comparison",
-    "text": "Regression: Model comparison\nHyperparameter selection: max_depth\n\n\n\n\n\n\n\n\nDecision tree\n\n\n\n\n\n\nRandom forest\n\n\n\n\n\n\nBoosted decision tree"
-  },
-  {
-    "objectID": "slides/1-intro/lecture4.html#machine-learning-engineering",
-    "href": "slides/1-intro/lecture4.html#machine-learning-engineering",
+    "objectID": "slides/2-models/lecture1.html#machine-learning-engineering",
+    "href": "slides/2-models/lecture1.html#machine-learning-engineering",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Machine learning engineering",
     "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#model-training",
-    "href": "slides/1-intro/lecture4.html#model-training",
+    "objectID": "slides/2-models/lecture1.html#model-training",
+    "href": "slides/2-models/lecture1.html#model-training",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Model training",
-    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\)."
+    "text": "Model training\nLast time we wrote our ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\ny_hat = model.predict(x)\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n{'data':      sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)\n0                  5.1               3.5                1.4               0.2\n1                  4.9               3.0                1.4               0.2\n2                  4.7               3.2                1.3               0.2\n3                  4.6               3.1                1.5               0.2\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#model-training-1",
-    "href": "slides/1-intro/lecture4.html#model-training-1",
+    "objectID": "slides/2-models/lecture1.html#linear-regression",
+    "href": "slides/2-models/lecture1.html#linear-regression",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Model training",
-    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import \\\n  LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
+    "section": "Linear regression",
+    "text": "Linear regression\nLet’s say we have measured some data:\n\n\n\n\nNow we want to model what values new measurements will have – i.e. do regression"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#evaluation",
-    "href": "slides/1-intro/lecture4.html#evaluation",
+    "objectID": "slides/2-models/lecture1.html#linear-regression-cont.",
+    "href": "slides/2-models/lecture1.html#linear-regression-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Evaluation",
-    "text": "Evaluation\nHow well does the model perform?\nTo answer this we need a metric that quantifies performance.\n\n\n\nClassification:\n\n“How many did we label correctly?”\n\nUseful metrics:\n\nAccuracy\nPrecision\nRecall\nROC curve\n\n\n\n\nRegression:\n\n“How close did we get?”\n\nUseful metrics:\n\nMean squared error (MSE)\nRoot mean squared error (RMSE)\nMean absolute error (MAE)\n\n\n\n\nConsult scikit-learn docs for more metrics and description"
+    "section": "Linear regression (cont.)",
+    "text": "Linear regression (cont.)\nLet’s start with the simplest ML method, where we can write out \\(\\color{Purple}{f}\\) as a simple function\n\nChoose a 3rd degree polynomial:\n\\[\n\\small\n\\hat{y} = \\color{Purple}{f}(\\color{DarkOrange}{x}, \\boldsymbol{\\color{teal}{\\theta}})\n= \\color{teal}{\\theta}_0\n+ \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}\n+ \\color{teal}{\\theta}_2 \\color{DarkOrange}{x}^2\n+ \\color{teal}{\\theta}_3 \\color{DarkOrange}{x}^3\n\\]\n\n\nNow need to find the optimal \\(\\theta\\) values"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#the-confusion-matrix",
-    "href": "slides/1-intro/lecture4.html#the-confusion-matrix",
+    "objectID": "slides/2-models/lecture1.html#finding-optimal-parameters",
+    "href": "slides/2-models/lecture1.html#finding-optimal-parameters",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "The confusion matrix",
-    "text": "The confusion matrix\nThe outcomes of our predictions can be illustrated by the confusion matrix:\n\n\n\nBinary classification case\n\n\nThe different classification performance metrics can all be defined from these entries"
+    "section": "Finding optimal parameters",
+    "text": "Finding optimal parameters\nStep 1: Define optimal\n\n\n\nNeed a metric to measure how well the function fits the data\nIn regression tasks, mean squared error is typically used:\n\\[\n\\small\n\\mathrm{MSE}(\\mathbf{y},\\hat{\\mathbf{y}}) = \\frac{1}{N} \\sum_{i=1}^{N} (y_i - \\hat{y}_i)^2\n\\]\n\n\n\n\n\n\n\nStep 2: Use an optimisation algorithm to find the best parameters\n\nFor linear regression, there is a closed-form solution\nFor most other methods we need a numerical approach (more on this later)"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#metrics-recap",
-    "href": "slides/1-intro/lecture4.html#metrics-recap",
+    "objectID": "slides/2-models/lecture1.html#loss-function",
+    "href": "slides/2-models/lecture1.html#loss-function",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Metrics recap",
-    "text": "Metrics recap\n\nAccuracy:\n“How many did we get right?”\n\\(\\small\\mathrm{accuracy} = \\frac{\\mathrm{\\color{Green}{TP + TN}}}{\\mathrm{\\color{Purple}{TP + TN + FP + FN}}}\\)\n\n\n\n\n\nPrecision:\n“How many false positives did we avoid?”\n\\(\\small\\mathrm{precision} = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FP}}}\\)\n\n\n\n\n\nRecall:\n“How many true positives did we get right?”\n\\(\\small\\mathrm{recall} = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FN}}}\\)"
+    "section": "Loss function",
+    "text": "Loss function\nThe metric we optimise for during training is usually called the loss function\n(also called cost function, error function)\n\nThere are different ones for different tasks\n\n\n\nClassification:\n\nCross-entropy\nHinge\nK-L divergence\n…\n\nUnsupervised learning\n\nConstrastive loss\n…\n\n\n\n\nRegression:\n\nMean-squared error\nCosine similarity\nHuber\n…\n\n\n\n\n(dont need to know all these, just that several exist)"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#computing-metrics",
-    "href": "slides/1-intro/lecture4.html#computing-metrics",
+    "objectID": "slides/2-models/lecture1.html#hyperparameters",
+    "href": "slides/2-models/lecture1.html#hyperparameters",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Computing metrics",
-    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMarixDisplay"
+    "section": "Hyperparameters",
+    "text": "Hyperparameters\nIn the past example we choose a 3rd degree polynomial.\n\nWhy not degree 2 or 4 or something else?\n\n\nFrom the monomial basis we can build any model\n\\[\n\\small\n\\hat{y} = \\color{Purple}{f}(\\color{DarkOrange}{x}, \\boldsymbol{\\color{teal}{\\theta}})\n= \\color{teal}{\\theta}_0\n+ \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}\n+ \\color{teal}{\\theta}_2 \\color{DarkOrange}{x}^2\n+ \\dots\n+ \\color{teal}{\\theta}_M \\color{DarkOrange}{x}^M\n\\] where \\(M \\in \\mathbb{N}\\) is a hyperparameter:\n\nChosen by us, and not the optimisation algorithm."
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#setting-thresholds",
-    "href": "slides/1-intro/lecture4.html#setting-thresholds",
+    "objectID": "slides/2-models/lecture1.html#hyperparameters-cont.",
+    "href": "slides/2-models/lecture1.html#hyperparameters-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Setting thresholds",
-    "text": "Setting thresholds\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+    "section": "Hyperparameters (cont.)",
+    "text": "Hyperparameters (cont.)\nHyperparameters are things that control\n\nthe form of the model (size, complexity, …)\nrestrictions on the parameters (regularisation, clipping, …)\nthe optimisation process (learning rate, batch size, …)\n\n(many words here, we’ll get back to it)\nOur polynomial had only one hyperparameter:\n\\[\n\\small\n\\begin{align}\nM &= 0 \\quad \\to \\quad \\class{fragment}{f = \\color{teal}{\\theta}_0} \\\\\nM &= 1 \\quad \\to \\quad \\class{fragment}{f = \\color{teal}{\\theta}_0 + \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}} \\\\\nM &= 2 \\quad \\to \\quad \\class{fragment}{f = \\color{teal}{\\theta}_0 + \\color{teal}{\\theta}_1 \\color{DarkOrange}{x} + \\color{teal}{\\theta}_2 \\color{DarkOrange}{x}^2}\n\\end{align}\n\\]"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#multiclass-classification",
-    "href": "slides/1-intro/lecture4.html#multiclass-classification",
+    "objectID": "slides/2-models/lecture1.html#hyperparameters-cont.-1",
+    "href": "slides/2-models/lecture1.html#hyperparameters-cont.-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Multiclass classification",
-    "text": "Multiclass classification\nThings change a bit when we consider tasks with more than two classes\n\n\nAccuracy: Still means ratio of correct predictions, but let’s redefine as\n\\[\n  \\small\n  \\mathrm{accuracy}(y, \\hat{y}) = \\frac{1}{N} \\sum_{i=1}^{N} \\unicode{x1D7D9}(y = \\hat{y}), \\qquad\n  \\unicode{x1D7D9}(i,j) = \\begin{cases} 1, & i = j \\\\ 0, & i \\neq j \\end{cases}\n  \\]\n\n\n\n\nPrecision and recall: Only make sense in binary setting, but:\n\nWe can compute these for “one class vs the rest”, and average results for each class\n\n\n\n\n\nConfusion matrix: No change"
+    "section": "Hyperparameters (cont.)",
+    "text": "Hyperparameters (cont.)"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#train-test-split",
-    "href": "slides/1-intro/lecture4.html#train-test-split",
+    "objectID": "slides/2-models/lecture1.html#bias-variance-tradeoff",
+    "href": "slides/2-models/lecture1.html#bias-variance-tradeoff",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Train-test split",
-    "text": "Train-test split\nEvaluating a model should be done on an independent data set (we want to know how well it performs on new, unseen data)\nTypically we set aside a part of the data, and use this only for final evaluation.\n\n\n\n\n\n# \"X\" are the data, \"y\" are the targets.\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.25, random_state=42\n)\nMore in DAT158-1.3-Binary_classification.ipynb"
+    "section": "Bias-variance tradeoff",
+    "text": "Bias-variance tradeoff\nMeasure new data 10 times, and fit a model each time:\n\n\n\n\\(\\small M = 1\\)  Underfitting(too little complexity)\n\n\n\n\\(\\small M = 4\\)  Best trade-off\n\n\n\n\\(\\small M=9\\)  Overfitting(too much complexity)"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#train-validation-test-split",
-    "href": "slides/1-intro/lecture4.html#train-validation-test-split",
+    "objectID": "slides/2-models/lecture1.html#preventing-overfitting",
+    "href": "slides/2-models/lecture1.html#preventing-overfitting",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Train-validation-test split",
-    "text": "Train-validation-test split\nModel selection\n\nIn case we want to compare different models, we need a third set:  The validation set\nThe test set is still only for final evaluation\n\n\n\n\n\n\n\nML models are prone to overfitting – i.e. memorising the training data.\nHow do we know if (when) this happens?\n\nCan compare performance on the training set to the validation set"
+    "section": "Preventing overfitting",
+    "text": "Preventing overfitting\n\n\nLimit model complexity\nSelect “small” hyperparameter values\n\n\n\n\nRegularisation\nLimit the parameters’ values\n\n\n\n\nCollect more data\nOr just do a different approach."
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#cross-validation",
-    "href": "slides/1-intro/lecture4.html#cross-validation",
+    "objectID": "slides/2-models/lecture1.html#regularisation",
+    "href": "slides/2-models/lecture1.html#regularisation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Cross-validation",
-    "text": "Cross-validation\nWe can do even better estimates by rotating the training data:\n\n\n\nSee scikit-learn docs"
+    "section": "Regularisation",
+    "text": "Regularisation\n\nOur main goal: Minimise the difference between prediction \\(\\hat{y}\\) and true value \\(y\\), i.e. the \\(\\mathrm{norm}(\\hat{y} - y)\\)\nSide goal: Minimise the parameter values, i.e. minimise \\(\\mathrm{norm}(\\mathbf{\\theta})\\)\n\nSeveral ways to compute the norm:\n\n\n\n\n\n\n\n\n\n\n\\(\\small{}L0\\) norm:\nNumber of nonzero parameters\n\\[\n\\small\nL0([2,3]) = 2\n\\]\n\n\n\n\n\n\\(\\small{}L1\\) norm:\nSum of parameter absolute values\n\\[\n\\small\n\\begin{align}\nL1([2,3]) &= 2 + 3 \\\\\n&= 5\n\\end{align}\n\\]\n\n\nL1 regularisation aka Lasso regression\n\n\n\n\n\n\\(\\small{}L2\\) norm:\nEuclidian distance\n\\[\n\\small\n\\begin{align}\nL2([2,3]) &= \\sqrt{2^2 + 3^2} \\\\\n&= \\sqrt{13}\n\\end{align}\n\\]\n\n\nL2 regularisation aka Ridge regression aka Tikhonov regularisation aka weight decay"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#cross-validation-cont.",
-    "href": "slides/1-intro/lecture4.html#cross-validation-cont.",
+    "objectID": "slides/2-models/lecture1.html#regularisation-cont.",
+    "href": "slides/2-models/lecture1.html#regularisation-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Cross-validation (cont.)",
-    "text": "Cross-validation (cont.)\n\n\n“Simple” splitting is called k-fold, where k is the number of splits\nfrom sklearn.model_selection import KFold\n\nkf = KFold(n_splits=2)\nfor train, test in kf.split(X):\n    # train, test are dataset indices\n    ...\n\n\n\n\n\nWe can keep the original class distribution in each split by using stratified k-fold cross-validation\nfrom sklearn.model_selection import \\\n  StratifiedKFold\n  \nskf = StratifiedKFold(n_splits=3)\nfor train, test in skf.split(X, y):\n  ..."
+    "section": "Regularisation (cont.)",
+    "text": "Regularisation (cont.)\nPiece together loss and regularisation term, and minimise simultaneously:\n\\[\n\\small\n\\mathrm{loss}(\\hat{y}, y) + \\color{red}{\\alpha} \\cdot \\mathrm{norm}_p (\\mathbf{\\theta})\n\\]\nwhere the regularisation parameter \\(\\color{red}{\\alpha}\\) controls the strength of regularisation\n\nRegularisation “isocurves”:"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#serving-an-ml-model",
-    "href": "slides/1-intro/lecture4.html#serving-an-ml-model",
+    "objectID": "slides/2-models/lecture1.html#regularisation-cont.-1",
+    "href": "slides/2-models/lecture1.html#regularisation-cont.-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Serving an ML model",
-    "text": "Serving an ML model\n\n\n\n\n\nAwesome ML workflow\n\n\n\n\n\n\n    \n\n\n\n?\n\n\n\n\n\nUser"
+    "section": "Regularisation (cont.)",
+    "text": "Regularisation (cont.)\n\n\n\n\n\n\n\\(L2\\) regularisation example:\n(were polynomials a good choice?)"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#serving-an-ml-model-1",
-    "href": "slides/1-intro/lecture4.html#serving-an-ml-model-1",
+    "objectID": "slides/2-models/lecture1.html#section",
+    "href": "slides/2-models/lecture1.html#section",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Serving an ML model",
-    "text": "Serving an ML model\n\n\nOption 1: Local\nModel runs on user hardware\n\n\n\n\nPros:\n\nNo server hardware\nNo network connection needed\nData stays with user\n\n\n\n\nCons: Model may need to be\n\nCompressed\nSimplified\nEncrypted\n\n\n\n\n\n\nOption 2: Central\n\nModel runs on server, user interacts via webpage / API\n\n\n\nPros:\n\nNo limits on model complexity\nModel updates are seamless (to user)\n\n\n\n\nCons:\n\nNeed low-latency network\nUser loses control over data"
+    "section": "",
+    "text": "scikit-learn machine learning model assortment"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#some-hosting-services-gradio",
-    "href": "slides/1-intro/lecture4.html#some-hosting-services-gradio",
+    "objectID": "slides/2-models/lecture1.html#the-best-model-is",
+    "href": "slides/2-models/lecture1.html#the-best-model-is",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Some hosting services: Gradio",
-    "text": "Some hosting services: Gradio"
+    "section": "The best model is:",
+    "text": "The best model is:\n\nVery dependent on the task.\n\n\n\n\n\n\nNo free lunch (NFL) theorem\n\n\nThere is (provably) no single machine learning method that will work best on all problems.\n\n\n\nIn other words:\nUnder no assumptions about the data, there is no reason to choose a certain ML method (or any optimisation technique in general) over another.\n\n\nHow to choose, then?\n\nTest\nFrom experience"
   },
   {
-    "objectID": "slides/1-intro/lecture4.html#some-hosting-services-streamlit",
-    "href": "slides/1-intro/lecture4.html#some-hosting-services-streamlit",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Some hosting services: Streamlit",
-    "text": "Some hosting services: Streamlit"
-  },
-  {
-    "objectID": "slides/1-intro/lecture4.html#mandatory-exercise-after-module-1",
-    "href": "slides/1-intro/lecture4.html#mandatory-exercise-after-module-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Mandatory exercise after Module 1",
-    "text": "Mandatory exercise after Module 1\n\n\nPart 1: Concepts and theory\nMultiple-choice quiz about topics from the textbook, lectures, and exercises (notebooks)\n\n\n\n\nPart 2: Hands-on\nKaggle competition: Compete against each other in making the best predictions 😎\nWe use the Kaggle platform to host the competition and leaderboard (competition is open only to us)\n\n\n\n\n\n\nProposed deadline: Open the competition Sept. 6,close on Sept 20 (two weeks)"
-  },
-  {
-    "objectID": "slides/1-intro/lecture4.html#referansegruppe",
-    "href": "slides/1-intro/lecture4.html#referansegruppe",
+    "objectID": "slides/1-intro/lecture3.html#referansegruppe",
+    "href": "slides/1-intro/lecture3.html#referansegruppe",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Referansegruppe",
     "text": "Referansegruppe"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#recording-from-yesterday",
-    "href": "slides/1-intro/lecture2.html#recording-from-yesterday",
+    "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering",
+    "href": "slides/1-intro/lecture3.html#machine-learning-engineering",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Recording from yesterday",
-    "text": "Recording from yesterday\nPosted on Canvas"
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n        \n\n\n\ntheoretical\n\n\napplied\n\n\n\n\nMachine learning models\n\n  \n\n\n\n\nMachine learning engineering\n\n\n\n\nData and society"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#practical-information",
-    "href": "slides/1-intro/lecture2.html#practical-information",
+    "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering-1",
+    "href": "slides/1-intro/lecture3.html#machine-learning-engineering-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Practical information",
-    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Fridays at 12:15, E403 and E443\nFørde: Thursdays at 10.15 (room varies)\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#programming",
-    "href": "slides/1-intro/lecture2.html#programming",
+    "objectID": "slides/1-intro/lecture3.html#exploratory-data-analysis",
+    "href": "slides/1-intro/lecture3.html#exploratory-data-analysis",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Programming",
-    "text": "Programming\n\n\nThe machine learning part of the course is based on the python programming language\nFree resources for learning python are posted on Canvas, such as\n\nKaggle Learning\nGoogle Edu\n\n\n\n\nTwo options for running python:\n\nUse cloud services, such as\n\nGoogle Colab\nKaggle\nDeepNote\n\nInstall locally"
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\nGet to know the data – structure, feature types, etc.\nLook for correlations\n\n\n\n\n\n\nIris flowers\n\n\n(notebooks/DAT158-1.1-Simple_examples.ipynb)\n\n\n\n\nPairwise feature scatter plots"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#notebooks",
-    "href": "slides/1-intro/lecture2.html#notebooks",
+    "objectID": "slides/1-intro/lecture3.html#data-preparation",
+    "href": "slides/1-intro/lecture3.html#data-preparation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Notebooks",
-    "text": "Notebooks\nExercises are given in form of Jupyter notebooks\n\nCan mix code, results, and notes (markdown and TeX) in the same file\nThese are partially filled, and you fill the rest\nCan be run locally or in cloud services"
+    "section": "Data preparation",
+    "text": "Data preparation\nMany (most) real-world datasets need some cleaning.\nTypical problems, and various solutions:\n\n\n\n\nMissing data\n\nFill with some value (zero, mean, …) aka imputation\nSkip datapoints containing missing data\nSkip entire feature containing missing data\n\n\n\n\n\n\nText attributes\n\nConvert to categorical values\n\n\n\nocean_proximity\n\ncategorical\n\n\n\n\n\"NEAR BAY\"\n\n0\n\n\n\"INLAND\"\n\n1\n\n\n\"NEAR OCEAN\"\n\n2"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#section-6",
-    "href": "slides/1-intro/lecture2.html#section-6",
+    "objectID": "slides/1-intro/lecture3.html#data-preparation-cont.",
+    "href": "slides/1-intro/lecture3.html#data-preparation-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "git clone git@github.com:HVL-ML/DAT158.git"
+    "section": "Data preparation (cont.)",
+    "text": "Data preparation (cont.)\nMany (most) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nFeature values have different scales\n\nNormalise values (shift to a range [0, 1])\nStandardize values (shift to have mean equal to 0 and variance equal to 1)\n\n\n\n\n\n\nFeature values are not normally distributed\n\nTransform values (compute e.g. the logarithm)\n\n\n\n\n\nWikiMedia Commons\n\n\n\n\n\nSee notebooks/DAT158-1.5-Regression.ipynb"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#python-libraries",
-    "href": "slides/1-intro/lecture2.html#python-libraries",
+    "objectID": "slides/1-intro/lecture3.html#model-training",
+    "href": "slides/1-intro/lecture3.html#model-training",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Python libraries",
-    "text": "Python libraries\n\n\n\n\n\n\n\n\nhttps://numpy.org/\n\n\nnumpy provides fast manipulation of large arrays and matrices\n\n\n\n\n\n\nhttps://scikit-learn.org/\n\n\nscikit-learn has a big selection of machine learning models and functions for data processing and evaluation"
+    "section": "Model training",
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\)."
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#numpy-arrays",
-    "href": "slides/1-intro/lecture2.html#numpy-arrays",
+    "objectID": "slides/1-intro/lecture3.html#model-training-1",
+    "href": "slides/1-intro/lecture3.html#model-training-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "numpy arrays",
-    "text": "numpy arrays\nThe core of numpy is the array, on which we can do operations without explicit loops:\nExample: Given a list of numbers, make a new list, where all the elements are multiplied by 2.\n\n\nVanilla python:\n&gt;&gt;&gt; a = [1,2,3]\n&gt;&gt;&gt; b = []\n&gt;&gt;&gt; for elem in a:\n&gt;&gt;&gt;   b.append(elem * 2)\nb\n[2, 4, 6]\n\n\nNumpy:\n&gt;&gt;&gt; import numpy as np\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; b = a * 2\n&gt;&gt;&gt; b\narray([2 4 6])\n\n\n\nArrays can have any number of dimensions – e.g. a 2D matrix is written\n&gt;&gt;&gt; a = np.array([[1,2,3],[4,5,6]])\n&gt;&gt;&gt; print(a)\n[[1 2 3]\n [4 5 6]]\n&gt;&gt;&gt; a.ndim\n2\n&gt;&gt;&gt; a.shape\n(2, 3)"
+    "section": "Model training",
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import \\\n  LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#numpy-arrays-1",
-    "href": "slides/1-intro/lecture2.html#numpy-arrays-1",
+    "objectID": "slides/1-intro/lecture3.html#evaluation",
+    "href": "slides/1-intro/lecture3.html#evaluation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "numpy arrays",
-    "text": "numpy arrays\nIn normal python, elements are sliced from a list using [start : stop]:\n&gt;&gt;&gt; a = [0, 1, 2, 3, 4]\n&gt;&gt;&gt; a[2:4]                  # (remember zero-based indexing)\n[2, 3]    \n&gt;&gt;&gt; a[:]                    # no start or stop -&gt; select everything\n[0, 1, 2, 3, 4]\n\nNumpy extends this to any number of dimensions, separated by ,\n&gt;&gt;&gt; a = np.arange(1,10).reshape(3,3)\n&gt;&gt;&gt; a\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\n\n\nSelect single element:\n&gt;&gt;&gt; a[1, 1]\n5\n\n\n\nSelect row:\n&gt;&gt;&gt; a[1, :]\narray([4, 5, 6])\n\n\n\nSelect column:\n&gt;&gt;&gt; a[:, 1]\narray([2, 5, 8])"
+    "section": "Evaluation",
+    "text": "Evaluation\nHow well does the model perform?\nTo answer this we need a metric that quantifies performance.\n\n\n\nClassification:\n\n“How many did we label correctly?”\n\nUseful metrics:\n\nAccuracy\nPrecision\nRecall\nROC curve\n\n\n\n\nRegression:\n\n“How close did we get?”\n\nUseful metrics:\n\nMean squared error (MSE)\nRoot mean squared error (RMSE)\nMean absolute error (MAE)\n\n\n\n\nConsult scikit-learn docs for more metrics and description"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#numpy-arrays-2",
-    "href": "slides/1-intro/lecture2.html#numpy-arrays-2",
+    "objectID": "slides/1-intro/lecture3.html#binary-classification",
+    "href": "slides/1-intro/lecture3.html#binary-classification",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "numpy arrays",
-    "text": "numpy arrays\nOperations on arrays are typically done element-by-element.\n\n\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; np.power(a, 2)\narray([1, 4, 9])\n\n\n&gt;&gt;&gt; b = np.array([4,5,6])\n&gt;&gt;&gt; a * b\narray([ 4, 10, 18])\n\n\n\nIn cases the shapes of two arrays don’t match, numpy will try to make them match(aka broadcasting):\n# I type this\n&gt;&gt;&gt; a * 2\narray([2, 4, 6])\n# ...and numpy does this:\n&gt;&gt;&gt; a * np.array([2, 2, 2])\narray([2, 4, 6])\n\n\n\n\n\nNumpy docs"
+    "section": "Binary classification",
+    "text": "Binary classification\nIn DAT158-1.3-Binary_classification.ipynb we explore a task with two outcomes:\n\nPatient has diabetes (1 / True)\nPatient does not have diabetes (0 / False)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nindex\npregnancies\nglucose\ndiastolic\ntriceps\ninsulin\nbmi\ndpf\nage\ndiabetes\n\n\n\n\n0\n6\n148\n72\n35\n0\n33.6\n0.627\n50\n1\n\n\n1\n1\n85\n66\n29\n0\n26.6\n0.351\n31\n0\n\n\n2\n8\n183\n64\n0\n0\n23.3\n0.672\n32\n1\n\n\n\n(More about the data here)\nWe want our ML algorithm \\(\\color{Purple}{f}\\) to predict no/yes for new patients with observations \\(\\color{DarkOrange}{\\mathbf{x}}\\),\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\in \\mathbb{R}^n \\longrightarrow \\{0,1\\} \\,.\n\\]"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#machine-learning",
-    "href": "slides/1-intro/lecture2.html#machine-learning",
+    "objectID": "slides/1-intro/lecture3.html#the-confusion-matrix",
+    "href": "slides/1-intro/lecture3.html#the-confusion-matrix",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Machine learning",
-    "text": "Machine learning\n\n\n\n\n\n(Fig. 1-2)"
+    "section": "The confusion matrix",
+    "text": "The confusion matrix\nThe outcomes of our predictions can be illustrated by the confusion matrix:\n\n\n\nBinary classification case\n\n\nThe different classification performance metrics can all be defined from these entries"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#what-is-machine-learning",
-    "href": "slides/1-intro/lecture2.html#what-is-machine-learning",
+    "objectID": "slides/1-intro/lecture3.html#accuracy",
+    "href": "slides/1-intro/lecture3.html#accuracy",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "What is machine learning?",
-    "text": "What is machine learning?\n\n(One) definition:\n\n\n\nA computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.\n\nTom Mitchell, 1997"
+    "section": "Accuracy",
+    "text": "Accuracy\nAccuracy measures how many samples are classified correctly, relative to the total number of samples:\n\\[\n\\small\n\\mathrm{accuracy} = \\frac{\\mathrm{correct\\; classifications}}{\\mathrm{all\\; classifications}}\n  = \\frac{\\mathrm{\\color{Green}{TP + TN}}}{\\mathrm{\\color{Purple}{TP + TN + FP + FN}}}\n\\]"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#different-types-of-machine-learning",
-    "href": "slides/1-intro/lecture2.html#different-types-of-machine-learning",
+    "objectID": "slides/1-intro/lecture3.html#precision",
+    "href": "slides/1-intro/lecture3.html#precision",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Different types of machine learning",
-    "text": "Different types of machine learning\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\nLabel is a\n\nclass (categorical): we are doing classification\nvalue (numerical): we are doing regression"
+    "section": "Precision",
+    "text": "Precision\nPrecision measures how many positive classifications that are actually positive:\n\\[\n\\small\n\\mathrm{precision} = \\frac{\\mathrm{correct\\; positive\\; classifications}}{\\mathrm{all\\; positive\\; classifications}}\n  = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FP}}}\n\\]"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#different-types-of-machine-learning-1",
-    "href": "slides/1-intro/lecture2.html#different-types-of-machine-learning-1",
+    "objectID": "slides/1-intro/lecture3.html#recall",
+    "href": "slides/1-intro/lecture3.html#recall",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Different types of machine learning",
-    "text": "Different types of machine learning\n\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
+    "section": "Recall",
+    "text": "Recall\nRecall measures how many of the actual positives that were classified as positive:\n\\[\n\\small\n\\mathrm{recall} = \\frac{\\mathrm{correct\\; positive\\; classifications}}{\\mathrm{all\\; actual\\; positives}}\n  = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FN}}}\n\\]"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#some-types-of-data",
-    "href": "slides/1-intro/lecture2.html#some-types-of-data",
+    "objectID": "slides/1-intro/lecture3.html#computing-metrics",
+    "href": "slides/1-intro/lecture3.html#computing-metrics",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "(Some) types of data",
-    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)"
+    "section": "Computing metrics",
+    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMarixDisplay"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#about-data",
-    "href": "slides/1-intro/lecture2.html#about-data",
+    "objectID": "slides/1-intro/lecture3.html#setting-thresholds",
+    "href": "slides/1-intro/lecture3.html#setting-thresholds",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "About data",
-    "text": "About data\n\nStructured data can be represented in a table:\n\n\nTitanic dataset (from Kaggle)\n\n\nId\nSurvived\nPclass\nName\nSex\nAge\n...\n\n\n\n\n1\n0\n3\nBraund, Mr. Owen Harris\nmale\n22\n\n\n\n2\n1\n1\nCumings, Mrs. John Bradley\nfemale\n38\n\n\n\n3\n1\n3\nHeikkinen, Miss. Laina\nfemale\n-\n\n\n\n4\n1\n1\nFutrelle, Mrs. Jacques Heath\nfemale\n35\n\n\n\n\n\n\n⋮\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfeatures \n\n\n\nbinary\n\n\ncategorical\n\n\nmissing data\n\n\n\n\n\n\n\ndata point (\\(\\mathbf{x}_2\\))\n\n\n\nData are often expressed in mathematical notation as an \\(N \\times M\\)-matrix \\(\\mathbf{X}\\), where\n\n\\(N\\) is the number of data points\n\\(M\\) is the number of features\n\nA single data point is then a vector \\(\\mathbf{x} = (x_1, \\dots, x_M)\\)."
+    "section": "Setting thresholds",
+    "text": "Setting thresholds\nMost ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a threshold for where to divide between the positive and negative class.\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\longrightarrow [0, 1]\n\\]\n\n\n\n\n\n\n\n\n Most like class 0\n\n\nMost like class 1 \n\nTypically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics."
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#sources-of-data",
-    "href": "slides/1-intro/lecture2.html#sources-of-data",
+    "objectID": "slides/1-intro/lecture3.html#setting-thresholds-cont.",
+    "href": "slides/1-intro/lecture3.html#setting-thresholds-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Sources of data",
-    "text": "Sources of data\n\n\nOpenly available datasets well suited for machine learning:\n\n\nKaggle Datasets\n\n\n\n\nUCI Machine Learning Repository\n\n\n\n\nGoogle Dataset Search\n\n\n\n\nPapersWithCode Datasets\n\n\n\n\nHugging Face datasets\n\n\n\n\nStatistisk Sentralbyrå\n\n(More listed in Chap 2 in the textbook)"
+    "section": "Setting thresholds (cont.)",
+    "text": "Setting thresholds (cont.)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#data-challenges",
-    "href": "slides/1-intro/lecture2.html#data-challenges",
+    "objectID": "slides/1-intro/lecture3.html#unbalanced-data",
+    "href": "slides/1-intro/lecture3.html#unbalanced-data",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Data challenges",
-    "text": "Data challenges\n\n\nToo little data available: Can lead to overfitting: the model gives perfect predictions on known data, but does not generalise to new data\n\n\n\n\n\nUnrepresentative data: New data does not look like known data\n\n\n\n\n\n\n\nGéron Fig. 1-20\n\n\n\n\n\n\n\nGéron Fig. 1-22\n\n\n\n\n\n\nPoor quality: Noise, typing errors, missing entries, rounding errors, …\n\n\n\n\n\n\n\n\nIrrelevant data: Little or no correlation with the observable we want to predict\n\n\n\n\nBias: Data contains correlations you didn’t want (see e.g. stories about COMPAS, Amazon)\n\n\n\n\n\n\n🕒 Very often, most of the time spent on an ML project goes to collecting, cleaning and preparing data."
+    "section": "Unbalanced data",
+    "text": "Unbalanced data\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DAT158 Lecture notes",
-    "section": "",
-    "text": "Published after each lecture week – see Canvas for additional material."
+    "objectID": "slides/1-intro/lecture3.html#precision-recall-curves",
+    "href": "slides/1-intro/lecture3.html#precision-recall-curves",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Precision-recall curves",
+    "text": "Precision-recall curves\nThe metrics so far are computed at a single threshold value. What if we want to evaluate a model for all possible thresholds?\n Plot precision as a function of recall:\n\n\n\nGéron Fig 3-6"
   },
   {
-    "objectID": "index.html#module-1-introduction-to-machine-learning",
-    "href": "index.html#module-1-introduction-to-machine-learning",
-    "title": "DAT158 Lecture notes",
-    "section": "Module 1: Introduction to Machine Learning",
-    "text": "Module 1: Introduction to Machine Learning\nWednesday week 34\nThursday week 34\nWednesday week 35\nThursday week 35"
+    "objectID": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc",
+    "href": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Receiver Operator Characteristic (ROC)",
+    "text": "Receiver Operator Characteristic (ROC)\nA more common option is to plot the true positive rate (TPR) as function of false positive rate (FPR):\n\n\n\nGéron Fig 3-6\n\n\n\n\\[\n\\tiny\n\\mathrm{TPR} = \\frac{\\mathrm{TP}}{\\mathrm{TP + FN}}\n\\]\n“How many positives did I get right”\n\n\n\\[\n\\tiny\n\\mathrm{FPR} = \\frac{\\mathrm{FP}}{\\mathrm{FP + TN}}\n\\]\n“How many negatives did I get wrong”\n\n\nGood models have high area-under-curve (AUC)"
   },
   {
-    "objectID": "index.html#module-2-machine-learning-models",
-    "href": "index.html#module-2-machine-learning-models",
-    "title": "DAT158 Lecture notes",
-    "section": "Module 2: Machine learning models",
-    "text": "Module 2: Machine learning models\nWednesday week 38\nThursday week 38"
+    "objectID": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc-1",
+    "href": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Receiver Operator Characteristic (ROC)",
+    "text": "Receiver Operator Characteristic (ROC)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+  },
+  {
+    "objectID": "slides/1-intro/lecture3.html#quiz",
+    "href": "slides/1-intro/lecture3.html#quiz",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Quiz 🧠",
+    "text": "Quiz 🧠\n\nYou have trained a model to classify cancer from X-ray images. Positive (1) class means cancer. Now you need to choose a classification threshold.\n\n\n\nShould you choose threshold A, B, or C?"
   },
   {
     "objectID": "slides/1-intro/lecture1.html#ml-engineering-advanced-algorithms",
@@ -665,283 +595,500 @@
     "text": "Machine learning engineering\n\n\n        \n\n\n\ntheoretical\n\n\napplied\n\n\n\n\nMachine learning models\n\n  \n\n\n\n\nMachine learning engineering\n \n\n\n\n\n\n\n\nData and society"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#referansegruppe",
-    "href": "slides/1-intro/lecture3.html#referansegruppe",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Referansegruppe",
-    "text": "Referansegruppe"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DAT158 Lecture notes",
+    "section": "",
+    "text": "Published after each lecture week – see Canvas for additional material."
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering",
-    "href": "slides/1-intro/lecture3.html#machine-learning-engineering",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n        \n\n\n\ntheoretical\n\n\napplied\n\n\n\n\nMachine learning models\n\n  \n\n\n\n\nMachine learning engineering\n\n\n\n\nData and society"
+    "objectID": "index.html#module-1-introduction-to-machine-learning",
+    "href": "index.html#module-1-introduction-to-machine-learning",
+    "title": "DAT158 Lecture notes",
+    "section": "Module 1: Introduction to Machine Learning",
+    "text": "Module 1: Introduction to Machine Learning\nWednesday week 34\nThursday week 34\nWednesday week 35\nThursday week 35"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering-1",
-    "href": "slides/1-intro/lecture3.html#machine-learning-engineering-1",
+    "objectID": "index.html#module-2-machine-learning-models",
+    "href": "index.html#module-2-machine-learning-models",
+    "title": "DAT158 Lecture notes",
+    "section": "Module 2: Machine learning models",
+    "text": "Module 2: Machine learning models\nWednesday week 38\nThursday week 38\nWednesday week 39"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#recording-from-yesterday",
+    "href": "slides/1-intro/lecture2.html#recording-from-yesterday",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Recording from yesterday",
+    "text": "Recording from yesterday\nPosted on Canvas"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#practical-information",
+    "href": "slides/1-intro/lecture2.html#practical-information",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Practical information",
+    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Fridays at 12:15, E403 and E443\nFørde: Thursdays at 10.15 (room varies)\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#programming",
+    "href": "slides/1-intro/lecture2.html#programming",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Programming",
+    "text": "Programming\n\n\nThe machine learning part of the course is based on the python programming language\nFree resources for learning python are posted on Canvas, such as\n\nKaggle Learning\nGoogle Edu\n\n\n\n\nTwo options for running python:\n\nUse cloud services, such as\n\nGoogle Colab\nKaggle\nDeepNote\n\nInstall locally"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#notebooks",
+    "href": "slides/1-intro/lecture2.html#notebooks",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Notebooks",
+    "text": "Notebooks\nExercises are given in form of Jupyter notebooks\n\nCan mix code, results, and notes (markdown and TeX) in the same file\nThese are partially filled, and you fill the rest\nCan be run locally or in cloud services"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#section-6",
+    "href": "slides/1-intro/lecture2.html#section-6",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "git clone git@github.com:HVL-ML/DAT158.git"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#python-libraries",
+    "href": "slides/1-intro/lecture2.html#python-libraries",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Python libraries",
+    "text": "Python libraries\n\n\n\n\n\n\n\n\nhttps://numpy.org/\n\n\nnumpy provides fast manipulation of large arrays and matrices\n\n\n\n\n\n\nhttps://scikit-learn.org/\n\n\nscikit-learn has a big selection of machine learning models and functions for data processing and evaluation"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#numpy-arrays",
+    "href": "slides/1-intro/lecture2.html#numpy-arrays",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "numpy arrays",
+    "text": "numpy arrays\nThe core of numpy is the array, on which we can do operations without explicit loops:\nExample: Given a list of numbers, make a new list, where all the elements are multiplied by 2.\n\n\nVanilla python:\n&gt;&gt;&gt; a = [1,2,3]\n&gt;&gt;&gt; b = []\n&gt;&gt;&gt; for elem in a:\n&gt;&gt;&gt;   b.append(elem * 2)\nb\n[2, 4, 6]\n\n\nNumpy:\n&gt;&gt;&gt; import numpy as np\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; b = a * 2\n&gt;&gt;&gt; b\narray([2 4 6])\n\n\n\nArrays can have any number of dimensions – e.g. a 2D matrix is written\n&gt;&gt;&gt; a = np.array([[1,2,3],[4,5,6]])\n&gt;&gt;&gt; print(a)\n[[1 2 3]\n [4 5 6]]\n&gt;&gt;&gt; a.ndim\n2\n&gt;&gt;&gt; a.shape\n(2, 3)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#numpy-arrays-1",
+    "href": "slides/1-intro/lecture2.html#numpy-arrays-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "numpy arrays",
+    "text": "numpy arrays\nIn normal python, elements are sliced from a list using [start : stop]:\n&gt;&gt;&gt; a = [0, 1, 2, 3, 4]\n&gt;&gt;&gt; a[2:4]                  # (remember zero-based indexing)\n[2, 3]    \n&gt;&gt;&gt; a[:]                    # no start or stop -&gt; select everything\n[0, 1, 2, 3, 4]\n\nNumpy extends this to any number of dimensions, separated by ,\n&gt;&gt;&gt; a = np.arange(1,10).reshape(3,3)\n&gt;&gt;&gt; a\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\n\n\nSelect single element:\n&gt;&gt;&gt; a[1, 1]\n5\n\n\n\nSelect row:\n&gt;&gt;&gt; a[1, :]\narray([4, 5, 6])\n\n\n\nSelect column:\n&gt;&gt;&gt; a[:, 1]\narray([2, 5, 8])"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#numpy-arrays-2",
+    "href": "slides/1-intro/lecture2.html#numpy-arrays-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "numpy arrays",
+    "text": "numpy arrays\nOperations on arrays are typically done element-by-element.\n\n\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; np.power(a, 2)\narray([1, 4, 9])\n\n\n&gt;&gt;&gt; b = np.array([4,5,6])\n&gt;&gt;&gt; a * b\narray([ 4, 10, 18])\n\n\n\nIn cases the shapes of two arrays don’t match, numpy will try to make them match(aka broadcasting):\n# I type this\n&gt;&gt;&gt; a * 2\narray([2, 4, 6])\n# ...and numpy does this:\n&gt;&gt;&gt; a * np.array([2, 2, 2])\narray([2, 4, 6])\n\n\n\n\n\nNumpy docs"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#machine-learning",
+    "href": "slides/1-intro/lecture2.html#machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning",
+    "text": "Machine learning\n\n\n\n\n\n(Fig. 1-2)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#what-is-machine-learning",
+    "href": "slides/1-intro/lecture2.html#what-is-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "What is machine learning?",
+    "text": "What is machine learning?\n\n(One) definition:\n\n\n\nA computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.\n\nTom Mitchell, 1997"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#different-types-of-machine-learning",
+    "href": "slides/1-intro/lecture2.html#different-types-of-machine-learning",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Different types of machine learning",
+    "text": "Different types of machine learning\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\nLabel is a\n\nclass (categorical): we are doing classification\nvalue (numerical): we are doing regression"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#different-types-of-machine-learning-1",
+    "href": "slides/1-intro/lecture2.html#different-types-of-machine-learning-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Different types of machine learning",
+    "text": "Different types of machine learning\n\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#some-types-of-data",
+    "href": "slides/1-intro/lecture2.html#some-types-of-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "(Some) types of data",
+    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#about-data",
+    "href": "slides/1-intro/lecture2.html#about-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "About data",
+    "text": "About data\n\nStructured data can be represented in a table:\n\n\nTitanic dataset (from Kaggle)\n\n\nId\nSurvived\nPclass\nName\nSex\nAge\n...\n\n\n\n\n1\n0\n3\nBraund, Mr. Owen Harris\nmale\n22\n\n\n\n2\n1\n1\nCumings, Mrs. John Bradley\nfemale\n38\n\n\n\n3\n1\n3\nHeikkinen, Miss. Laina\nfemale\n-\n\n\n\n4\n1\n1\nFutrelle, Mrs. Jacques Heath\nfemale\n35\n\n\n\n\n\n\n⋮\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfeatures \n\n\n\nbinary\n\n\ncategorical\n\n\nmissing data\n\n\n\n\n\n\n\ndata point (\\(\\mathbf{x}_2\\))\n\n\n\nData are often expressed in mathematical notation as an \\(N \\times M\\)-matrix \\(\\mathbf{X}\\), where\n\n\\(N\\) is the number of data points\n\\(M\\) is the number of features\n\nA single data point is then a vector \\(\\mathbf{x} = (x_1, \\dots, x_M)\\)."
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#sources-of-data",
+    "href": "slides/1-intro/lecture2.html#sources-of-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Sources of data",
+    "text": "Sources of data\n\n\nOpenly available datasets well suited for machine learning:\n\n\nKaggle Datasets\n\n\n\n\nUCI Machine Learning Repository\n\n\n\n\nGoogle Dataset Search\n\n\n\n\nPapersWithCode Datasets\n\n\n\n\nHugging Face datasets\n\n\n\n\nStatistisk Sentralbyrå\n\n(More listed in Chap 2 in the textbook)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#data-challenges",
+    "href": "slides/1-intro/lecture2.html#data-challenges",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Data challenges",
+    "text": "Data challenges\n\n\nToo little data available: Can lead to overfitting: the model gives perfect predictions on known data, but does not generalise to new data\n\n\n\n\n\nUnrepresentative data: New data does not look like known data\n\n\n\n\n\n\n\nGéron Fig. 1-20\n\n\n\n\n\n\n\nGéron Fig. 1-22\n\n\n\n\n\n\nPoor quality: Noise, typing errors, missing entries, rounding errors, …\n\n\n\n\n\n\n\n\nIrrelevant data: Little or no correlation with the observable we want to predict\n\n\n\n\nBias: Data contains correlations you didn’t want (see e.g. stories about COMPAS, Amazon)\n\n\n\n\n\n\n🕒 Very often, most of the time spent on an ML project goes to collecting, cleaning and preparing data."
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#machine-learning-engineering",
+    "href": "slides/1-intro/lecture4.html#machine-learning-engineering",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Machine learning engineering",
     "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#exploratory-data-analysis",
-    "href": "slides/1-intro/lecture3.html#exploratory-data-analysis",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\nGet to know the data – structure, feature types, etc.\nLook for correlations\n\n\n\n\n\n\nIris flowers\n\n\n(notebooks/DAT158-1.1-Simple_examples.ipynb)\n\n\n\n\nPairwise feature scatter plots"
-  },
-  {
-    "objectID": "slides/1-intro/lecture3.html#data-preparation",
-    "href": "slides/1-intro/lecture3.html#data-preparation",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Data preparation",
-    "text": "Data preparation\nMany (most) real-world datasets need some cleaning.\nTypical problems, and various solutions:\n\n\n\n\nMissing data\n\nFill with some value (zero, mean, …) aka imputation\nSkip datapoints containing missing data\nSkip entire feature containing missing data\n\n\n\n\n\n\nText attributes\n\nConvert to categorical values\n\n\n\nocean_proximity\n\ncategorical\n\n\n\n\n\"NEAR BAY\"\n\n0\n\n\n\"INLAND\"\n\n1\n\n\n\"NEAR OCEAN\"\n\n2"
-  },
-  {
-    "objectID": "slides/1-intro/lecture3.html#data-preparation-cont.",
-    "href": "slides/1-intro/lecture3.html#data-preparation-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Data preparation (cont.)",
-    "text": "Data preparation (cont.)\nMany (most) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nFeature values have different scales\n\nNormalise values (shift to a range [0, 1])\nStandardize values (shift to have mean equal to 0 and variance equal to 1)\n\n\n\n\n\n\nFeature values are not normally distributed\n\nTransform values (compute e.g. the logarithm)\n\n\n\n\n\nWikiMedia Commons\n\n\n\n\n\nSee notebooks/DAT158-1.5-Regression.ipynb"
-  },
-  {
-    "objectID": "slides/1-intro/lecture3.html#model-training",
-    "href": "slides/1-intro/lecture3.html#model-training",
+    "objectID": "slides/1-intro/lecture4.html#model-training",
+    "href": "slides/1-intro/lecture4.html#model-training",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Model training",
     "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\)."
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#model-training-1",
-    "href": "slides/1-intro/lecture3.html#model-training-1",
+    "objectID": "slides/1-intro/lecture4.html#model-training-1",
+    "href": "slides/1-intro/lecture4.html#model-training-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Model training",
     "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import \\\n  LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#evaluation",
-    "href": "slides/1-intro/lecture3.html#evaluation",
+    "objectID": "slides/1-intro/lecture4.html#evaluation",
+    "href": "slides/1-intro/lecture4.html#evaluation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Evaluation",
     "text": "Evaluation\nHow well does the model perform?\nTo answer this we need a metric that quantifies performance.\n\n\n\nClassification:\n\n“How many did we label correctly?”\n\nUseful metrics:\n\nAccuracy\nPrecision\nRecall\nROC curve\n\n\n\n\nRegression:\n\n“How close did we get?”\n\nUseful metrics:\n\nMean squared error (MSE)\nRoot mean squared error (RMSE)\nMean absolute error (MAE)\n\n\n\n\nConsult scikit-learn docs for more metrics and description"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#binary-classification",
-    "href": "slides/1-intro/lecture3.html#binary-classification",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Binary classification",
-    "text": "Binary classification\nIn DAT158-1.3-Binary_classification.ipynb we explore a task with two outcomes:\n\nPatient has diabetes (1 / True)\nPatient does not have diabetes (0 / False)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nindex\npregnancies\nglucose\ndiastolic\ntriceps\ninsulin\nbmi\ndpf\nage\ndiabetes\n\n\n\n\n0\n6\n148\n72\n35\n0\n33.6\n0.627\n50\n1\n\n\n1\n1\n85\n66\n29\n0\n26.6\n0.351\n31\n0\n\n\n2\n8\n183\n64\n0\n0\n23.3\n0.672\n32\n1\n\n\n\n(More about the data here)\nWe want our ML algorithm \\(\\color{Purple}{f}\\) to predict no/yes for new patients with observations \\(\\color{DarkOrange}{\\mathbf{x}}\\),\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\in \\mathbb{R}^n \\longrightarrow \\{0,1\\} \\,.\n\\]"
-  },
-  {
-    "objectID": "slides/1-intro/lecture3.html#the-confusion-matrix",
-    "href": "slides/1-intro/lecture3.html#the-confusion-matrix",
+    "objectID": "slides/1-intro/lecture4.html#the-confusion-matrix",
+    "href": "slides/1-intro/lecture4.html#the-confusion-matrix",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "The confusion matrix",
     "text": "The confusion matrix\nThe outcomes of our predictions can be illustrated by the confusion matrix:\n\n\n\nBinary classification case\n\n\nThe different classification performance metrics can all be defined from these entries"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#accuracy",
-    "href": "slides/1-intro/lecture3.html#accuracy",
+    "objectID": "slides/1-intro/lecture4.html#metrics-recap",
+    "href": "slides/1-intro/lecture4.html#metrics-recap",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Accuracy",
-    "text": "Accuracy\nAccuracy measures how many samples are classified correctly, relative to the total number of samples:\n\\[\n\\small\n\\mathrm{accuracy} = \\frac{\\mathrm{correct\\; classifications}}{\\mathrm{all\\; classifications}}\n  = \\frac{\\mathrm{\\color{Green}{TP + TN}}}{\\mathrm{\\color{Purple}{TP + TN + FP + FN}}}\n\\]"
+    "section": "Metrics recap",
+    "text": "Metrics recap\n\nAccuracy:\n“How many did we get right?”\n\\(\\small\\mathrm{accuracy} = \\frac{\\mathrm{\\color{Green}{TP + TN}}}{\\mathrm{\\color{Purple}{TP + TN + FP + FN}}}\\)\n\n\n\n\n\nPrecision:\n“How many false positives did we avoid?”\n\\(\\small\\mathrm{precision} = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FP}}}\\)\n\n\n\n\n\nRecall:\n“How many true positives did we get right?”\n\\(\\small\\mathrm{recall} = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FN}}}\\)"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#precision",
-    "href": "slides/1-intro/lecture3.html#precision",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Precision",
-    "text": "Precision\nPrecision measures how many positive classifications that are actually positive:\n\\[\n\\small\n\\mathrm{precision} = \\frac{\\mathrm{correct\\; positive\\; classifications}}{\\mathrm{all\\; positive\\; classifications}}\n  = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FP}}}\n\\]"
-  },
-  {
-    "objectID": "slides/1-intro/lecture3.html#recall",
-    "href": "slides/1-intro/lecture3.html#recall",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Recall",
-    "text": "Recall\nRecall measures how many of the actual positives that were classified as positive:\n\\[\n\\small\n\\mathrm{recall} = \\frac{\\mathrm{correct\\; positive\\; classifications}}{\\mathrm{all\\; actual\\; positives}}\n  = \\frac{\\mathrm{\\color{Green}{TP}}}{\\mathrm{\\color{Purple}{TP + FN}}}\n\\]"
-  },
-  {
-    "objectID": "slides/1-intro/lecture3.html#computing-metrics",
-    "href": "slides/1-intro/lecture3.html#computing-metrics",
+    "objectID": "slides/1-intro/lecture4.html#computing-metrics",
+    "href": "slides/1-intro/lecture4.html#computing-metrics",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Computing metrics",
     "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMarixDisplay"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#setting-thresholds",
-    "href": "slides/1-intro/lecture3.html#setting-thresholds",
+    "objectID": "slides/1-intro/lecture4.html#setting-thresholds",
+    "href": "slides/1-intro/lecture4.html#setting-thresholds",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Setting thresholds",
-    "text": "Setting thresholds\nMost ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a threshold for where to divide between the positive and negative class.\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\longrightarrow [0, 1]\n\\]\n\n\n\n\n\n\n\n\n Most like class 0\n\n\nMost like class 1 \n\nTypically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics."
+    "text": "Setting thresholds\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#setting-thresholds-cont.",
-    "href": "slides/1-intro/lecture3.html#setting-thresholds-cont.",
+    "objectID": "slides/1-intro/lecture4.html#multiclass-classification",
+    "href": "slides/1-intro/lecture4.html#multiclass-classification",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Setting thresholds (cont.)",
-    "text": "Setting thresholds (cont.)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+    "section": "Multiclass classification",
+    "text": "Multiclass classification\nThings change a bit when we consider tasks with more than two classes\n\n\nAccuracy: Still means ratio of correct predictions, but let’s redefine as\n\\[\n  \\small\n  \\mathrm{accuracy}(y, \\hat{y}) = \\frac{1}{N} \\sum_{i=1}^{N} \\unicode{x1D7D9}(y = \\hat{y}), \\qquad\n  \\unicode{x1D7D9}(i,j) = \\begin{cases} 1, & i = j \\\\ 0, & i \\neq j \\end{cases}\n  \\]\n\n\n\n\nPrecision and recall: Only make sense in binary setting, but:\n\nWe can compute these for “one class vs the rest”, and average results for each class\n\n\n\n\n\nConfusion matrix: No change"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#unbalanced-data",
-    "href": "slides/1-intro/lecture3.html#unbalanced-data",
+    "objectID": "slides/1-intro/lecture4.html#train-test-split",
+    "href": "slides/1-intro/lecture4.html#train-test-split",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Unbalanced data",
-    "text": "Unbalanced data\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+    "section": "Train-test split",
+    "text": "Train-test split\nEvaluating a model should be done on an independent data set (we want to know how well it performs on new, unseen data)\nTypically we set aside a part of the data, and use this only for final evaluation.\n\n\n\n\n\n# \"X\" are the data, \"y\" are the targets.\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.25, random_state=42\n)\nMore in DAT158-1.3-Binary_classification.ipynb"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#precision-recall-curves",
-    "href": "slides/1-intro/lecture3.html#precision-recall-curves",
+    "objectID": "slides/1-intro/lecture4.html#train-validation-test-split",
+    "href": "slides/1-intro/lecture4.html#train-validation-test-split",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Precision-recall curves",
-    "text": "Precision-recall curves\nThe metrics so far are computed at a single threshold value. What if we want to evaluate a model for all possible thresholds?\n Plot precision as a function of recall:\n\n\n\nGéron Fig 3-6"
+    "section": "Train-validation-test split",
+    "text": "Train-validation-test split\nModel selection\n\nIn case we want to compare different models, we need a third set:  The validation set\nThe test set is still only for final evaluation\n\n\n\n\n\n\n\nML models are prone to overfitting – i.e. memorising the training data.\nHow do we know if (when) this happens?\n\nCan compare performance on the training set to the validation set"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc",
-    "href": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc",
+    "objectID": "slides/1-intro/lecture4.html#cross-validation",
+    "href": "slides/1-intro/lecture4.html#cross-validation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Receiver Operator Characteristic (ROC)",
-    "text": "Receiver Operator Characteristic (ROC)\nA more common option is to plot the true positive rate (TPR) as function of false positive rate (FPR):\n\n\n\nGéron Fig 3-6\n\n\n\n\\[\n\\tiny\n\\mathrm{TPR} = \\frac{\\mathrm{TP}}{\\mathrm{TP + FN}}\n\\]\n“How many positives did I get right”\n\n\n\\[\n\\tiny\n\\mathrm{FPR} = \\frac{\\mathrm{FP}}{\\mathrm{FP + TN}}\n\\]\n“How many negatives did I get wrong”\n\n\nGood models have high area-under-curve (AUC)"
+    "section": "Cross-validation",
+    "text": "Cross-validation\nWe can do even better estimates by rotating the training data:\n\n\n\nSee scikit-learn docs"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc-1",
-    "href": "slides/1-intro/lecture3.html#receiver-operator-characteristic-roc-1",
+    "objectID": "slides/1-intro/lecture4.html#cross-validation-cont.",
+    "href": "slides/1-intro/lecture4.html#cross-validation-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Receiver Operator Characteristic (ROC)",
-    "text": "Receiver Operator Characteristic (ROC)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+    "section": "Cross-validation (cont.)",
+    "text": "Cross-validation (cont.)\n\n\n“Simple” splitting is called k-fold, where k is the number of splits\nfrom sklearn.model_selection import KFold\n\nkf = KFold(n_splits=2)\nfor train, test in kf.split(X):\n    # train, test are dataset indices\n    ...\n\n\n\n\n\nWe can keep the original class distribution in each split by using stratified k-fold cross-validation\nfrom sklearn.model_selection import \\\n  StratifiedKFold\n  \nskf = StratifiedKFold(n_splits=3)\nfor train, test in skf.split(X, y):\n  ..."
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#quiz",
-    "href": "slides/1-intro/lecture3.html#quiz",
+    "objectID": "slides/1-intro/lecture4.html#serving-an-ml-model",
+    "href": "slides/1-intro/lecture4.html#serving-an-ml-model",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Quiz 🧠",
-    "text": "Quiz 🧠\n\nYou have trained a model to classify cancer from X-ray images. Positive (1) class means cancer. Now you need to choose a classification threshold.\n\n\n\nShould you choose threshold A, B, or C?"
+    "section": "Serving an ML model",
+    "text": "Serving an ML model\n\n\n\n\n\nAwesome ML workflow\n\n\n\n\n\n\n    \n\n\n\n?\n\n\n\n\n\nUser"
   },
   {
-    "objectID": "slides/2-models/lecture1.html#module-2",
-    "href": "slides/2-models/lecture1.html#module-2",
+    "objectID": "slides/1-intro/lecture4.html#serving-an-ml-model-1",
+    "href": "slides/1-intro/lecture4.html#serving-an-ml-model-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Serving an ML model",
+    "text": "Serving an ML model\n\n\nOption 1: Local\nModel runs on user hardware\n\n\n\n\nPros:\n\nNo server hardware\nNo network connection needed\nData stays with user\n\n\n\n\nCons: Model may need to be\n\nCompressed\nSimplified\nEncrypted\n\n\n\n\n\n\nOption 2: Central\n\nModel runs on server, user interacts via webpage / API\n\n\n\nPros:\n\nNo limits on model complexity\nModel updates are seamless (to user)\n\n\n\n\nCons:\n\nNeed low-latency network\nUser loses control over data"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#some-hosting-services-gradio",
+    "href": "slides/1-intro/lecture4.html#some-hosting-services-gradio",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Some hosting services: Gradio",
+    "text": "Some hosting services: Gradio"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#some-hosting-services-streamlit",
+    "href": "slides/1-intro/lecture4.html#some-hosting-services-streamlit",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Some hosting services: Streamlit",
+    "text": "Some hosting services: Streamlit"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#mandatory-exercise-after-module-1",
+    "href": "slides/1-intro/lecture4.html#mandatory-exercise-after-module-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Mandatory exercise after Module 1",
+    "text": "Mandatory exercise after Module 1\n\n\nPart 1: Concepts and theory\nMultiple-choice quiz about topics from the textbook, lectures, and exercises (notebooks)\n\n\n\n\nPart 2: Hands-on\nKaggle competition: Compete against each other in making the best predictions 😎\nWe use the Kaggle platform to host the competition and leaderboard (competition is open only to us)\n\n\n\n\n\n\nProposed deadline: Open the competition Sept. 6,close on Sept 20 (two weeks)"
+  },
+  {
+    "objectID": "slides/1-intro/lecture4.html#referansegruppe",
+    "href": "slides/1-intro/lecture4.html#referansegruppe",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Referansegruppe",
+    "text": "Referansegruppe"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#module-2",
+    "href": "slides/2-models/lecture2.html#module-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Module 2",
     "text": "Module 2\nMachine learning models – and how to use them effectively 🔧"
   },
   {
-    "objectID": "slides/2-models/lecture1.html#topics-for-module-2",
-    "href": "slides/2-models/lecture1.html#topics-for-module-2",
+    "objectID": "slides/2-models/lecture2.html#topics-for-module-2",
+    "href": "slides/2-models/lecture2.html#topics-for-module-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Topics for Module 2",
-    "text": "Topics for Module 2\n\n\nModels:\n\nLinear regression\nTree-based models\n\nRandom forests\nGradient-boosted trees Ensemble models\n\n\n\nConsiderations:\n\nModel complexity\nUnder/-overfitting\n\nTechniques:\n\nGradient descent\nRegularisation\n\n\n\n\nBook chapters:\n\n4: Training models\n6: Decision trees\n7: Ensemble learning and random forests"
+    "text": "Topics for Module 2\n\n\nModels:\n\nLinear regression\nTree-based models\n\nDecision trees\nRandom forests\nGradient-boosted trees\n\nEnsemble models\n\n\nConsiderations:\n\nModel complexity\nUnder/-overfitting\n\nTechniques:\n\nGradient descent\nRegularisation\n\n\n\n\nBook chapters:\n\n4: Training models\n6: Decision trees\n7: Ensemble learning and random forests"
   },
   {
-    "objectID": "slides/2-models/lecture1.html#machine-learning-engineering",
-    "href": "slides/2-models/lecture1.html#machine-learning-engineering",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#model-training",
-    "href": "slides/2-models/lecture1.html#model-training",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Model training",
-    "text": "Model training\nLast time we wrote our ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\ny_hat = model.predict(x)\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n{'data':      sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)\n0                  5.1               3.5                1.4               0.2\n1                  4.9               3.0                1.4               0.2\n2                  4.7               3.2                1.3               0.2\n3                  4.6               3.1                1.5               0.2\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#linear-regression",
-    "href": "slides/2-models/lecture1.html#linear-regression",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Linear regression",
-    "text": "Linear regression\nLet’s say we have measured some data:\n\n\n\n\nNow we want to model what values new measurements will have – i.e. do regression"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#linear-regression-cont.",
-    "href": "slides/2-models/lecture1.html#linear-regression-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Linear regression (cont.)",
-    "text": "Linear regression (cont.)\nLet’s start with the simplest ML method, where we can write out \\(\\color{Purple}{f}\\) as a simple function\n\nChoose a 3rd degree polynomial:\n\\[\n\\small\n\\hat{y} = \\color{Purple}{f}(\\color{DarkOrange}{x}, \\boldsymbol{\\color{teal}{\\theta}})\n= \\color{teal}{\\theta}_0\n+ \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}\n+ \\color{teal}{\\theta}_2 \\color{DarkOrange}{x}^2\n+ \\color{teal}{\\theta}_3 \\color{DarkOrange}{x}^3\n\\]\n\n\nNow need to find the optimal \\(\\theta\\) values"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#finding-optimal-parameters",
-    "href": "slides/2-models/lecture1.html#finding-optimal-parameters",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Finding optimal parameters",
-    "text": "Finding optimal parameters\nStep 1: Define optimal\n\n\n\nNeed a metric to measure how well the function fits the data\nIn regression tasks, mean squared error is typically used:\n\\[\n\\small\n\\mathrm{MSE}(\\mathbf{y},\\hat{\\mathbf{y}}) = \\frac{1}{N} \\sum_{i=1}^{N} (y_i - \\hat{y}_i)^2\n\\]\n\n\n\n\n\n\n\nStep 2: Use an optimisation algorithm to find the best parameters\n\nFor linear regression, there is a closed-form solution\nFor most other methods we need a numerical approach (more on this later)"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#loss-function",
-    "href": "slides/2-models/lecture1.html#loss-function",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Loss function",
-    "text": "Loss function\nThe metric we optimise for during training is usually called the loss function\n(also called cost function, error function)\n\nThere are different ones for different tasks\n\n\n\nClassification:\n\nCross-entropy\nHinge\nK-L divergence\n…\n\nUnsupervised learning\n\nConstrastive loss\n…\n\n\n\n\nRegression:\n\nMean-squared error\nCosine similarity\nHuber\n…\n\n\n\n\n(dont need to know all these, just that several exist)"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#hyperparameters",
-    "href": "slides/2-models/lecture1.html#hyperparameters",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Hyperparameters",
-    "text": "Hyperparameters\nIn the past example we choose a 3rd degree polynomial.\n\nWhy not degree 2 or 4 or something else?\n\n\nFrom the monomial basis we can build any model\n\\[\n\\small\n\\hat{y} = \\color{Purple}{f}(\\color{DarkOrange}{x}, \\boldsymbol{\\color{teal}{\\theta}})\n= \\color{teal}{\\theta}_0\n+ \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}\n+ \\color{teal}{\\theta}_2 \\color{DarkOrange}{x}^2\n+ \\dots\n+ \\color{teal}{\\theta}_M \\color{DarkOrange}{x}^M\n\\] where \\(M \\in \\mathbb{N}\\) is a hyperparameter:\n\nChosen by us, and not the optimisation algorithm."
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#hyperparameters-cont.",
-    "href": "slides/2-models/lecture1.html#hyperparameters-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Hyperparameters (cont.)",
-    "text": "Hyperparameters (cont.)\nHyperparameters are things that control\n\nthe form of the model (size, complexity, …)\nrestrictions on the parameters (regularisation, clipping, …)\nthe optimisation process (learning rate, batch size, …)\n\n(many words here, we’ll get back to it)\nOur polynomial had only one hyperparameter:\n\\[\n\\small\n\\begin{align}\nM &= 0 \\quad \\to \\quad \\class{fragment}{f = \\color{teal}{\\theta}_0} \\\\\nM &= 1 \\quad \\to \\quad \\class{fragment}{f = \\color{teal}{\\theta}_0 + \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}} \\\\\nM &= 2 \\quad \\to \\quad \\class{fragment}{f = \\color{teal}{\\theta}_0 + \\color{teal}{\\theta}_1 \\color{DarkOrange}{x} + \\color{teal}{\\theta}_2 \\color{DarkOrange}{x}^2}\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#hyperparameters-cont.-1",
-    "href": "slides/2-models/lecture1.html#hyperparameters-cont.-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Hyperparameters (cont.)",
-    "text": "Hyperparameters (cont.)"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#bias-variance-tradeoff",
-    "href": "slides/2-models/lecture1.html#bias-variance-tradeoff",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Bias-variance tradeoff",
-    "text": "Bias-variance tradeoff\nMeasure new data 10 times, and fit a model each time:\n\n\n\n\\(\\small M = 1\\)  Underfitting(too little complexity)\n\n\n\n\\(\\small M = 4\\)  Best trade-off\n\n\n\n\\(\\small M=9\\)  Overfitting(too much complexity)"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#preventing-overfitting",
-    "href": "slides/2-models/lecture1.html#preventing-overfitting",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Preventing overfitting",
-    "text": "Preventing overfitting\n\n\nLimit model complexity\nSelect “small” hyperparameter values\n\n\n\n\nRegularisation\nLimit the parameters’ values\n\n\n\n\nCollect more data\nOr just do a different approach."
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#regularisation",
-    "href": "slides/2-models/lecture1.html#regularisation",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Regularisation",
-    "text": "Regularisation\n\nOur main goal: Minimise the difference between prediction \\(\\hat{y}\\) and true value \\(y\\), i.e. the \\(\\mathrm{norm}(\\hat{y} - y)\\)\nSide goal: Minimise the parameter values, i.e. minimise \\(\\mathrm{norm}(\\mathbf{\\theta})\\)\n\nSeveral ways to compute the norm:\n\n\n\n\n\n\n\n\n\n\n\\(\\small{}L0\\) norm:\nNumber of nonzero parameters\n\\[\n\\small\nL0([2,3]) = 2\n\\]\n\n\n\n\n\n\\(\\small{}L1\\) norm:\nSum of parameter absolute values\n\\[\n\\small\n\\begin{align}\nL1([2,3]) &= 2 + 3 \\\\\n&= 5\n\\end{align}\n\\]\n\n\nL1 regularisation aka Lasso regression\n\n\n\n\n\n\\(\\small{}L2\\) norm:\nEuclidian distance\n\\[\n\\small\n\\begin{align}\nL2([2,3]) &= \\sqrt{2^2 + 3^2} \\\\\n&= \\sqrt{13}\n\\end{align}\n\\]\n\n\nL2 regularisation aka Ridge regression aka Tikhonov regularisation aka weight decay"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#regularisation-cont.",
-    "href": "slides/2-models/lecture1.html#regularisation-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Regularisation (cont.)",
-    "text": "Regularisation (cont.)\nPiece together loss and regularisation term, and minimise simultaneously:\n\\[\n\\small\n\\mathrm{loss}(\\hat{y}, y) + \\color{red}{\\alpha} \\cdot \\mathrm{norm}_p (\\mathbf{\\theta})\n\\]\nwhere the regularisation parameter \\(\\color{red}{\\alpha}\\) controls the strength of regularisation\n\nRegularisation “isocurves”:"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#regularisation-cont.-1",
-    "href": "slides/2-models/lecture1.html#regularisation-cont.-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Regularisation (cont.)",
-    "text": "Regularisation (cont.)\n\n\n\n\n\n\n\\(L2\\) regularisation example:\n(were polynomials a good choice?)"
-  },
-  {
-    "objectID": "slides/2-models/lecture1.html#section",
-    "href": "slides/2-models/lecture1.html#section",
+    "objectID": "slides/2-models/lecture2.html#section",
+    "href": "slides/2-models/lecture2.html#section",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "",
     "text": "scikit-learn machine learning model assortment"
   },
   {
-    "objectID": "slides/2-models/lecture1.html#the-best-model-is",
-    "href": "slides/2-models/lecture1.html#the-best-model-is",
+    "objectID": "slides/2-models/lecture2.html#the-best-model-is",
+    "href": "slides/2-models/lecture2.html#the-best-model-is",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "The best model is:",
     "text": "The best model is:\n\nVery dependent on the task.\n\n\n\n\n\n\nNo free lunch (NFL) theorem\n\n\nThere is (provably) no single machine learning method that will work best on all problems.\n\n\n\nIn other words:\nUnder no assumptions about the data, there is no reason to choose a certain ML method (or any optimisation technique in general) over another.\n\n\nHow to choose, then?\n\nTest\nFrom experience"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#decision-trees",
+    "href": "slides/2-models/lecture2.html#decision-trees",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Decision trees 🌲",
+    "text": "Decision trees 🌲"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#decision-trees-1",
+    "href": "slides/2-models/lecture2.html#decision-trees-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Decision trees",
+    "text": "Decision trees\n\n\nSilly example:\n\n\n\n\n\nflowchart LR\n    A[Go to the beach?] --&gt; B{Workday?}\n    B --&gt;|Yes| C[Don't go]\n    B --&gt;|No| D{Sunny?}\n    D --&gt;|Yes| E{\"Temp &gt; 18℃ ?\"}\n    E --&gt;|Yes| F[Got to the beach]\n    E --&gt;|No| G[Don't go]\n    D --&gt;|No| H{\"Temp &gt; 23℃ ?\"}\n    H --&gt;|Yes| I[Got to the beach]\n    H --&gt;|No| J[Don't go]\n\n    style A fill:#E0F7FA\n    style C fill:#FFCDD2\n    style G fill:#FFCDD2\n    style C fill:#FFCDD2\n    style F fill:#C8E6C9\n    style I fill:#C8E6C9\n    style J fill:#FFCDD2\n\n\n\n\n\n\n\n\n\n\n\nDecision (= prediction) \n\n\n\nCan be re-ordered"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#decision-trees-cont.",
+    "href": "slides/2-models/lecture2.html#decision-trees-cont.",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Decision trees (cont.)",
+    "text": "Decision trees (cont.)\n\n\nSilly example:\n\n\n\n\n\nflowchart LR\n    A[Go to the beach?] --&gt; B{Workday?}\n    B --&gt;|Yes| C[Don't go]\n    B --&gt;|No| D{Sunny?}\n    D --&gt;|Yes| E{\"Temp &gt; 18℃ ?\"}\n    E --&gt;|Yes| F[Got to the beach]\n    E --&gt;|No| G[Don't go]\n    D --&gt;|Yes| H{\"Temp &gt; 23℃ ?\"}\n    H --&gt;|Yes| I[Got to the beach]\n    H --&gt;|No| J[Don't go]\n\n    style A fill:#E0F7FA\n    style C fill:#FFCDD2\n    style G fill:#FFCDD2\n    style C fill:#FFCDD2\n    style F fill:#C8E6C9\n    style I fill:#C8E6C9\n    style J fill:#FFCDD2\n\n\n\n\n\n\n\n\n\n\n96% would agree 4% would disagree\n\n\n71% would agree 29% would disagree\n\n\n29% would agree 71% would disagree\n\n\n82% would agree 18% would disagree\n\n\n18% would agree 81% would disagree"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#id3-algorithm",
+    "href": "slides/2-models/lecture2.html#id3-algorithm",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ID3 algorithm",
+    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n\n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#id3-algorithm-1",
+    "href": "slides/2-models/lecture2.html#id3-algorithm-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ID3 algorithm",
+    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n\n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree\n  \n\n\n No need to split"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#id3-algorithm-2",
+    "href": "slides/2-models/lecture2.html#id3-algorithm-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ID3 algorithm",
+    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n  \n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree\n  \n\n\n No need to split\n\n\n Notpossible to split"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#id3-algorithm-3",
+    "href": "slides/2-models/lecture2.html#id3-algorithm-3",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ID3 algorithm",
+    "text": "ID3 algorithm\n\nfunction BuildTree(examples, target_feature, features)\n  \n  # examples is the training data\n  # target_feature is the feature we want to predict\n  # features is the list of features present in the data\n  \n  tree &lt;- a single node, so far without any label\n  if all examples are of the same classification then\n    give tree a label equal to the classification\n    return tree\n  \n  else if features is empty then\n    give tree a label equal the most common value of target_feature in examples\n    return tree\n  \n  else\n    best_feature &lt;- the feature from features with highest Importance(examples)\n\n    for each value v of best_feature do\n      examples_v &lt;- the subset of examples where best_feature has the value v\n      subtree &lt;- BuildTree(examples_v, target_feature, features - {best_feature})\n      add a branch with label v to tree, and below it, add the tree subtree\n  \n  return tree\n\n\n No need to split\n\n\n Notpossible to split\n\n\n Split onthe bestfeature"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#finding-the-best-feature",
+    "href": "slides/2-models/lecture2.html#finding-the-best-feature",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Finding the best feature",
+    "text": "Finding the best feature\nWe need to rank the features by how useful it is to split based on its value\n\n\nA measure is the Gini impurity:\n\\[\n\\small\nG = 1 - \\sum_i p_i^2\n\\]\nwhere \\(p_i\\) are frequency distributions for each class \\(i\\)\n\nIn the binary case (only positive and negative samples) it becomes\n\\[\n\\small\nG = 1 - p_{\\mathrm{\\class{color-green}{pos}}}^2 - p_{\\mathrm{\\class{color-red}{neg}}}^2\n\\]\nLow \\(G\\) means good predictions\n\n\n\n\n\n\n\n\n\n\n\n\n\n50/50\n\nOnlypositivesamples\n\nOnlynegativesamples"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#finding-the-best-feature-cont.",
+    "href": "slides/2-models/lecture2.html#finding-the-best-feature-cont.",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Finding the best feature (cont.)",
+    "text": "Finding the best feature (cont.)\nConsider outputs of the following hypothetical splits:\n\n\n\n\n\n\n\nflowchart TD\n  A{Sunny?} --&gt;|Yes| B:::hidden\n  A --&gt; |No| C[\"6 positive samples&lt;br&gt;4 negative samples\"]\n\n\n\n\n\n\n\\[\n\\small\nG = 1 - \\left(\\frac{\\class{color-green}{6}}{10}\\right) - \\left(\\frac{\\class{color-red}{4}}{10}\\right)\n= \\class{color-orange}{0.48}\n\\]\n\n\n\n\n\n\nflowchart TD\n  A{Sunny?} --&gt;|Yes| B:::hidden\n  A --&gt; |No| C[\"9 positive samples&lt;br&gt;1 negative samples\"]\n\n\n\n\n\n\n\\[\n\\small\nG = 1 - \\left(\\frac{\\class{color-green}{9}}{10}\\right) - \\left(\\frac{\\class{color-red}{1}}{10}\\right)\n= \\class{color-green}{0.18}\n\\]\n\n\n\n\\[\n\\small\nG = 1 - p_{\\mathrm{\\class{color-green}{pos}}}^2 - p_{\\mathrm{\\class{color-red}{neg}}}^2\n\\]"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#finding-the-best-feature-cont.-1",
+    "href": "slides/2-models/lecture2.html#finding-the-best-feature-cont.-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Finding the best feature (cont.)",
+    "text": "Finding the best feature (cont.)\n\n\nThe best feature \\(A\\), considering a set of examples \\(S\\), is the one with the biggest reduction in Gini impurity – aka the highest information gain\n\\[\n\\small\nGain(A, S) = G(S) - \\sum_{v\\in\\mathrm{Values}(A)} \\frac{|S_v|}{|S|} G(S_v)\n\\]\n\n\n\n\n\n\nflowchart TD\n  A{Sunny?} --&gt;|Yes| B[\"&lt;em&gt;S&lt;/em&gt;&lt;sub&gt;Sunny=yes&lt;/sub&gt;\"]\n  A --&gt; |No| C[\"&lt;em&gt;S&lt;/em&gt;&lt;sub&gt;Sunny=no&lt;/sub&gt;\"]\n  style B fill:#C8E6C9\n  style C fill:#FFCDD2\n\n\n\n\n\n\n\n\nIn the binary case (\\(v \\in {\\mathrm{\\class{color-green}{yes}, \\class{color-red}{no}}}\\)):\n\\[\n\\small\nGain(\\mathrm{Sunny}, S) = G(S) - \\left(\n\\frac{|S_{\\mathrm{Sunny=\\class{color-green}{yes}}}|}{|S|} G_{\\mathrm{Sunny=\\class{color-green}{yes}}}\n+\\frac{|S_{\\mathrm{Sunny=\\class{color-red}{no}}}|}{|S|} G_{\\mathrm{Sunny=\\class{color-red}{no}}}\n\\right)\n\\]\n\n Impurity before splitting\n\n\n Weighted impurity after splitting"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#decision-trees-so-far",
+    "href": "slides/2-models/lecture2.html#decision-trees-so-far",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Decision trees so far:",
+    "text": "Decision trees so far:\nWe have an algorithm (ID3) for constructing decision tree, and a measure for ensuring output is optimal.\nLet’s extend it into the general CART (Classification and Regression Trees) algorithm, by adding\n\n\nContinuous inputs\nImplement splits as a greater than operation\n\n\n\n\nContinuous output\nOutput the average value instead of the majority value for each leaf node\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A{Temperature} --&gt;|\"≤ 23℃ \"| B:::hidden\n  A --&gt; |\"≥ 23℃ \"| C:::hidden\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A:::hidden --&gt; B[\"&lt;pre&gt;&lt;span style=\"font-size:20px;\"&gt;1 1   1  0&lt;br&gt; 0   1  1&lt;/span&gt;&lt;/pre&gt;\"]\n\n\n\n\n\n\n\n\nLabel: 1 (majority value)\n\n\n\n\n\n\n\nflowchart TD\n  A:::hidden --&gt; B[\"&lt;pre&gt;&lt;span style=\"font-size:20px;\"&gt;2.1  1.0   2.3  0.5&lt;br&gt; 0.5   1.3 1.5&lt;/span&gt;&lt;/pre&gt;\"]\n\n\n\n\n\n\n\n\nLabel: 1.1 (average value)"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#preventing-overfitting",
+    "href": "slides/2-models/lecture2.html#preventing-overfitting",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Preventing overfitting",
+    "text": "Preventing overfitting\n\n\nTree algorithms aim to have the purest possible leaf nodes\n-&gt; Leads to “maximal” overfitting.\n\nMitigation methods:\n\nLimit complexity\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"} --&gt; B{\"branch\"}\n  A --&gt; C{\"branch\"}\n  B --&gt; D[\"leaf\"]\n  B --&gt; E[\"leaf\"]\n  C --&gt; F{\"branch\"}\n  C --&gt; G[\"leaf\"]\n  F --&gt; H[\"leaf\"]\n  F --&gt; I[\"leaf\"]\n  style D fill:#B2DFDB\n  style E fill:#B2DFDB\n  style G fill:#B2DFDB\n  style H fill:#B2DFDB\n  style I fill:#B2DFDB\n\n\n\n\n\n\n\n\n Limitmaxdepth \n\n\n Require a minimum number of samples to end up in each node"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#preventing-overfitting-1",
+    "href": "slides/2-models/lecture2.html#preventing-overfitting-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Preventing overfitting",
+    "text": "Preventing overfitting\n\n\nTree algorithms aim to have the purest possible leaf nodes\n-&gt; Leads to “maximal” overfitting.\nMitigation methods:\n\nLimit complexity\nPruning\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"} --&gt; B{\"branch\"}\n  A --&gt; C{\"branch\"}\n  B --&gt; D[\"leaf\"]\n  B --&gt; E[\"leaf\"]\n  C --&gt; F[\"&lt;s&gt;branch&lt;/s&gt;&lt;br&gt;leaf\"]\n  C --&gt; G[\"leaf\"]\n  F --&gt; H[\"leaf\"]\n  F --&gt; I[\"leaf\"]\n  style D fill:#B2DFDB\n  style E fill:#B2DFDB\n  style G fill:#B2DFDB\n  style H fill:#B2DFDB\n  style I fill:#B2DFDB"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#preventing-overfitting-2",
+    "href": "slides/2-models/lecture2.html#preventing-overfitting-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Preventing overfitting",
+    "text": "Preventing overfitting\n\n\nTree algorithms aim to have the purest possible leaf nodes\n-&gt; Leads to “maximal” overfitting.\nMitigation methods:\n\nLimit complexity\nPruning\nCombine an ensemble of trees: Random forest\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"}:::branch --&gt; B{\"branch\"}:::branch\n  A --&gt; C{\"branch\"}:::branch\n  B --&gt; D[\"leaf\"]:::leaf\n  B --&gt; E[\"leaf\"]:::leaf\n  C --&gt; F{\"branch\"}:::branch\n  C --&gt; G[\"leaf\"]:::leaf\n  F --&gt; H[\"leaf\"]:::leaf\n  F --&gt; I[\"leaf\"]:::leaf\n  classDef leaf fill:#B2DFDB\n  classDef branch fill:#eee,opacity:1\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"}:::branch --&gt; B{\"branch\"}:::branch\n  A --&gt; C{\"branch\"}:::branch\n  B --&gt; D[\"leaf\"]:::leaf\n  B --&gt; E{\"branch\"}:::branch\n  C --&gt; F{\"branch\"}:::branch\n  C --&gt; G[\"leaf\"]:::leaf\n  F --&gt; H[\"leaf\"]:::leaf\n  F --&gt; I[\"leaf\"]:::leaf\n  E --&gt; J[\"leaf\"]:::leaf\n  E --&gt; K[\"leaf\"]:::leaf\n  classDef leaf fill:#B2DFDB\n  classDef branch fill:#eee,opacity:1\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart TD\n  A{\"branch\"}:::branch --&gt; B{\"branch\"}:::branch\n  A --&gt; C{\"branch\"}:::branch\n  B --&gt; D[\"leaf\"]:::leaf\n  B --&gt; E[\"leaf\"]:::leaf\n  C --&gt; F[\"leaf\"]:::leaf\n  C --&gt; G[\"leaf\"]:::leaf\n  classDef leaf fill:#B2DFDB\n  classDef branch fill:#eee,opacity:1"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#random-forests",
+    "href": "slides/2-models/lecture2.html#random-forests",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Random forests",
+    "text": "Random forests\nEnsembles can be great for any kind of ML models.\nBut:\nStandard tree-building algorithms (like ID3) are deterministic\n-&gt; Training several trees on the same data, would just yield an ensemble of identical models.\n\nIntroduce randomness to the mix:\n\nTrain each model on a ransom subset of data\nAt each split, use a random subset of features\n\n\n“Make each tree worse to make the forest better”"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#random-forests-cont.",
+    "href": "slides/2-models/lecture2.html#random-forests-cont.",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Random forests (cont.)",
+    "text": "Random forests (cont.)\n\n\n\n\n\n\n\n\n%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing':100}}}%%\nflowchart LR\n    A[\"💾 Data\"] --&gt;|Randomly&lt;br&gt;drop&lt;br&gt;samples| B[\"🌲&lt;br&gt;Model 1\"]\n    A --&gt; C[\"🌳&lt;br&gt;Model 2\"]\n    A --&gt; D[\"🌴&lt;br&gt;Model 3\"]\n    A --&gt; E[\"🎄&lt;br&gt;Model 4\"]\n    B --&gt; F[\"Prediction\"]\n    C --&gt; F\n    D --&gt; F\n    E --&gt; F\n\n\n\n\n\n\n\nRandomly dropfeaturesduring training"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#boosting",
+    "href": "slides/2-models/lecture2.html#boosting",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Boosting",
+    "text": "Boosting\nThe most advanced tree-based ML models rely on the concept of boosting\nCreate the ensemble iteratively, starting with a single tree model \\(f_1\\):\n\\[\n\\small\n\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{r_1}\n\\]\n\n(true value = prediction + residual)\n\nFrom this, we want to add a now model \\(f_2\\) to improve on \\(f_1\\)."
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#adaboost",
+    "href": "slides/2-models/lecture2.html#adaboost",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "AdaBoost",
+    "text": "AdaBoost\nStart with a single model: \\(\\small\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{r_1}\\)\nOne way of improving the model is to add a second one (\\(f_2\\)), where we apply \\(\\class{color-green}{r_1}\\) as weights during training\n\n“Easy” data points get little importance\n“Difficult” data points get high importance\n\n\nGet an improved ensemble model:\n\\[\n\\small\n\\class{color-orange}{y} = \\mathrm{mode}\\left[f_1(\\mathbf{x}), f_2(\\mathbf{x}]\\right) +  \\class{color-green}{r_1}\n\\]\nCan repeat this as many times we like – call this the AdaBoost algorithm:\n\\[\n\\small\n\\class{color-orange}{\\hat{y}} = \\mathrm{mode}\\left[f_1(\\mathbf{x}), f_2(\\mathbf{x}), + \\dots + f_M{\\mathbf{x}}\\right]\n\\]"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#gradient-boosting",
+    "href": "slides/2-models/lecture2.html#gradient-boosting",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Gradient boosting",
+    "text": "Gradient boosting\nAgain start with a single model: \\(\\small\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{r_1}\\)\nAnother option: Instead of making a second tree to predict \\(\\class{color-orange}{y}\\), have it predict \\(\\class{color-green}{r_1}\\)\nImproved prediction:\n\\[\n\\small\n\\class{color-orange}{y} = f_1(\\mathbf{x}) + \\class{color-green}{f_2}(\\mathbf{x}) +  \\class{color-purple}{r_2}\n\\]\nCan iterate further with a new model to predict \\(\\class{color-purple}{r_2}\\), and so on"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#peek-on-next-weeks-concepts-gradient-descent",
+    "href": "slides/2-models/lecture2.html#peek-on-next-weeks-concepts-gradient-descent",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Peek on next week’s concepts: Gradient descent",
+    "text": "Peek on next week’s concepts: Gradient descent\nRemember the loss function, which quantifies the error in prediction \\(\\class{color-orange}{\\hat{y}}\\)\nConsider the squared-error loss:\n\\[\n\\small\n\\begin{align}\nL &= (\\class{color-orange}{y} - \\class{color-orange}{\\hat{y}})^2  \\\\\n&= (\\class{color-orange}{y} - \\class{color-purple}{f_n}(\\mathbf{x}))^2\n\\end{align}\n\\]\nTo minimise this, differentiate and move in the direction of negative gradient:\n\\[\n\\small\n\\begin{align}\n- \\frac{\\partial L}{\\partial \\class{color-purple}{f_n}} &= 2(\\class{color-orange}{y} - \\class{color-purple}{f_n}) \\\\\n&= 2\\class{color-purple}{f_{n+1}}\n\\end{align}\n\\]\nBoosting can be interpreted as gradient descent in function space (more next week)\n\nNext iteration!"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#ensemble-models-summary",
+    "href": "slides/2-models/lecture2.html#ensemble-models-summary",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Ensemble models: Summary",
+    "text": "Ensemble models: Summary\n\n\n\n\nBagging\n\n\n\n\n\n\n\nStacking\n\n\n\n\n\n\n\nBoosting"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#decision-trees-in-practice",
+    "href": "slides/2-models/lecture2.html#decision-trees-in-practice",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Decision trees in practice",
+    "text": "Decision trees in practice\nIn the exercises this week, we will apply decision trees to a classification task\nThe behaviour of ML models can be visualised (in low dimensions!) by looking at the decision boundary"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#classification-decision-tree",
+    "href": "slides/2-models/lecture2.html#classification-decision-tree",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Classification: Decision tree",
+    "text": "Classification: Decision tree"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#classification-random-forest",
+    "href": "slides/2-models/lecture2.html#classification-random-forest",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Classification: Random forest",
+    "text": "Classification: Random forest"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#classification-boosted-decision-trees",
+    "href": "slides/2-models/lecture2.html#classification-boosted-decision-trees",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Classification: Boosted decision trees",
+    "text": "Classification: Boosted decision trees\n\n\n\n\nFirst tree already found an optimal solution -&gt; immediate convergence"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#regression-case",
+    "href": "slides/2-models/lecture2.html#regression-case",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Regression case",
+    "text": "Regression case"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#regression-decision-tree",
+    "href": "slides/2-models/lecture2.html#regression-decision-tree",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Regression: Decision tree",
+    "text": "Regression: Decision tree\nHyperparameter selection: max_depth\n\n\n\n\n\n\n\n\n\nmax_depth = 2\n\n\n\n\n\n\n\n\nmax_depth = 3\n\n\n\n\n\n\n\n\nmax_depth = 4"
+  },
+  {
+    "objectID": "slides/2-models/lecture2.html#regression-model-comparison",
+    "href": "slides/2-models/lecture2.html#regression-model-comparison",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Regression: Model comparison",
+    "text": "Regression: Model comparison\nHyperparameter selection: max_depth\n\n\n\n\n\n\n\n\nDecision tree\n\n\n\n\n\n\nRandom forest\n\n\n\n\n\n\nBoosted decision tree"
   }
 ]
