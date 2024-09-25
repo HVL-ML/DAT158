@@ -388,7 +388,6 @@
   </style>
 </head>
 <body class="quarto-light">
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>
   <div class="reveal">
     <div class="slides">
 
@@ -436,8 +435,48 @@ sma@hvl.no
 </div></div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="linear-regression-again" class="slide level2">
-<h2>Linear regression (again)</h2>
+<section id="key-concepts-from-module-2" class="slide level2">
+<h2>Key concepts from Module 2</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<h3 id="loss-function"><span class="color-indigo">Loss function</span>:</h3>
+<p>Quantifies the overall error between prediction and true value</p>
+<p>We seek to minimise this.</p>
+</div><div class="column" style="width:60%;">
+<div class="r-stack">
+<div class="fragment fade-out" data-fragment-index="1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/regression_loss_comparison.png" style="width:60.0%"></p>
+<figcaption><em>Example loss functions for regression</em></figcaption>
+</figure>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="1">
+<p><img data-src="figures/sklearn_docs_gbr.png" style="width:120.0%"></p>
+<div class="absolute rectangle color-red" style="left: 50%; bottom: 36%; width: 40%; height: 10px; ">
+
+</div>
+</div>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="key-concepts-from-module-2-1" class="slide level2">
+<h2>Key concepts from Module 2</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<h3 id="loss-function-1"><span class="color-indigo">Loss function</span>:</h3>
+<p>Quantifies the overall error between prediction and true value</p>
+<p>We seek to minimise this.</p>
+</div><div class="column" style="width:60%;">
+<h3 id="gradient-descent"><span class="color-orange-dark">Gradient descent</span>:</h3>
+<p>Algorithm for minimising the loss function</p>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="linear-regression" class="slide level2">
+<h2>Linear regression</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Let’s set up some math for regression with a simple linear model, on data with <span class="math inline">\(n\)</span> features:</p>
@@ -480,64 +519,69 @@ sma@hvl.no
 <div class="r-stack">
 <p><img data-src="figures/linreg_data_only.png"></p>
 <div class="fragment" data-fragment-index="2">
-<p><img data-src="figures/linreg_poorfit.png" class="r-stack"></p>
-</div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="finding-optimal-parameters-boldsymboltheta" class="slide level2">
-<h2>Finding optimal parameters <span class="math inline">\(\boldsymbol{\theta}\)</span></h2>
-<p><strong>Step 1:</strong> Define <em>optimal</em> through a <strong>loss function</strong> <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
-<div class="fragment">
-<p>For regression, <span class="color-teal"><em>mean squared error</em></span> is the most common</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><span class="math display">\[
-\small
-\begin{align}
-\color{MediumVioletRed}{L}_{\mathrm{MSE}}
-&amp;= \frac{1}{N}\sum_{i=1}^{N} \left(\hat{\color{DarkBlue}{y}}^{(i)} - \color{DarkBlue}{y}^{(i)}\right)^2 \\[1em]
-&amp;= \frac{1}{N}\sum_{i=1}^{N} \left(\boldsymbol{\color{teal}{\theta}}^{\intercal} \color{DarkOrange}{\mathbf{x}}^{(i)} - \color{DarkBlue}{y}^{(i)}\right)^2
-\end{align}
-\]</span></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="figures/regression_loss_comparison.png" style="width:80.0%"></p>
-</div></div>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="finding-optimal-parameters-boldsymboltheta-1" class="slide level2">
-<h2>Finding optimal parameters <span class="math inline">\(\boldsymbol{\theta}\)</span></h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Step 1:</strong> Define <em>optimal</em> through a <strong>loss function</strong> <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
-<p><strong>Step 2:</strong> Minimise <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
-<div style="padding-top: 50px;">
-
-</div>
-<p>Two methods:</p>
-<ol type="1">
-<li>Solve <span class="color-pink-dark">analytically</span></li>
-<li>Solve <span class="color-indigo">numerically</span></li>
-</ol>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><span class="color-pink-dark">Analytical</span> solution:</p>
-<p>Solve the <em>normal equation</em></p>
-<p><span class="math display">\[
-\small
-\hat{\boldsymbol{\color{teal}{\theta}}}
-= (\color{DarkOrange}{\mathbf{X}}^{\intercal}\color{DarkOrange}{\mathbf{X}})^{-1}\color{DarkOrange}{\mathbf{X}}^{\intercal}\color{DarkBlue}{\mathbf{y}}
-\]</span></p>
-<p>Only possible in the <em>linear</em> case.</p>
 <p><img data-src="figures/linreg_bestfit.png"></p>
 </div>
+</div>
 </div></div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="finding-optimal-parameters-boldsymboltheta-2" class="slide level2">
-<h2>Finding optimal parameters <span class="math inline">\(\boldsymbol{\theta}\)</span></h2>
+<section id="nonlinear-regression-bonus-slide" class="slide level2">
+<h2>Nonlinear regression bonus slide</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Humble linear regression:</p>
+<p><span class="math display">\[
+\small
+\hat{\color{DarkBlue}{y}} = \boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\mathbf{x}}
+\]</span></p>
+<p>Can make it <span class="color-red">non-linear</span> by applying a so-called <em>activation function</em> <span class="math inline">\(h\)</span>:</p>
+<p><span class="math display">\[
+\small
+z = h(\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\mathbf{x}})
+\]</span></p>
+<div class="fragment" data-fragment-index="1">
+<p>for example</p>
+<p><span class="math display">\[
+\small
+z = \tanh(\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\mathbf{x}})
+\]</span></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment" data-fragment-index="1">
+<p><img data-src="figures/tanh.png" style="display: flex; margin-left: auto; margin-right: auto; padding-top: 80px;;width:70.0%"></p>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="nonlinear-regression-bonus-slide-1" class="slide level2">
+<h2>Nonlinear regression bonus slide</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Humble linear regression:</p>
+<p><span class="math display">\[
+\small
+\hat{\color{DarkBlue}{y}} = \boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\mathbf{x}}
+\]</span></p>
+<p>Can make it <span class="color-red">non-linear</span> by applying a so-called <em>activation function</em> <span class="math inline">\(h\)</span>:</p>
+<p><span class="math display">\[
+\small
+z = h(\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\mathbf{x}})
+\]</span></p>
+<p>Repeat this both in serial and in parallel to get a <strong>neural network</strong></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figures/neural_network.png" style="display: flex; margin-left: auto; padding-top: 80px;;width:90.0%"></p>
+</div><div class="absolute" style="top: 40%; left: 53%; ">
+<p><span class="math inline">\(\mathbf{x}_0\)</span></p>
+</div><div class="absolute" style="top: 40%; right: 0%; ">
+<p><span class="math inline">\(\hat{y}\)</span></p>
+</div><div class="absolute" style="top: 12%; right: 2%; ">
+<p><span class="math inline">\(\small h(\boldsymbol{\color{teal}{\theta}}^{\intercal}_{(i)} \cdot \color{DarkOrange}{\mathbf{x}}_{(i)})\)</span> <br> <i class="bi bi-arrow-down-left"></i></p>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="linear-regression-1" class="slide level2">
+<h2>Linear regression</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Step 1:</strong> Define <em>optimal</em> through a <strong>loss function</strong> <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
@@ -572,286 +616,268 @@ sma@hvl.no
 </div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="the-gradient" class="slide level2">
-<h2>The gradient</h2>
+<section id="regularised-linear-models" class="slide level2">
+<h2>Regularised linear models</h2>
+<div class="columns">
+<div class="column" style="width:84%;">
+<p>Let’s improve our linear model by adding a <em>regularisation</em> term:</p>
+<p><span class="math display">\[
+\small
+\color{MediumVioletRed}{L}(\color{teal}{\boldsymbol{\theta}})
+= \color{MediumVioletRed}{L}_{\mathrm{MSE}} + \color{red}{\alpha} ||\color{teal}{\boldsymbol{\theta}}||_p
+\]</span></p>
+<div class="fragment" data-fragment-index="1">
+<ul>
+<li><span class="math inline">\(\small L_2\)</span> regularisation, aka <em>Ridge regression</em> (<span style="font-size: 0.8em;"><code>sklearn.linear_model.Ridge</code></span>):</li>
+</ul>
+<p><span class="math display">\[
+\small
+\color{MediumVioletRed}{L}(\color{teal}{\boldsymbol{\theta}})
+= \color{MediumVioletRed}{L}_{\mathrm{MSE}} + \color{red}{\alpha} ||\color{teal}{\boldsymbol{\theta}}||_2
+\]</span></p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p><span class="math display">\[
+\small
+\nabla \color{MediumVioletRed}{L}(\color{teal}{\boldsymbol{\theta}})
+= \nabla \color{MediumVioletRed}{L}_{\mathrm{MSE}} + \color{red}{\alpha} \color{teal}{\boldsymbol{\theta}}
+\]</span></p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<ul>
+<li><span class="math inline">\(\small L_1\)</span> regularisation, aka <em>Lasso regression</em> (<span style="font-size: 0.8em;"><code>sklearn.linear_model.Lasso</code></span>):</li>
+</ul>
+<p><span class="math display">\[
+\small
+\color{MediumVioletRed}{L}(\color{teal}{\boldsymbol{\theta}})
+= \color{MediumVioletRed}{L}_{\mathrm{MSE}} + \color{red}{\alpha} ||\color{teal}{\boldsymbol{\theta}}||_1
+\]</span></p>
+<p>(<span class="math inline">\(\small\nabla\color{MediumVioletRed}{L}\)</span> gets a little complicated – see Eq. 4.11 in the textbook)</p>
+</div>
+</div><div class="column" style="width:16%;">
+<div style="padding-top: 140px;">
+
+</div>
+<div class="fragment" data-fragment-index="2">
+<p><img data-src="figures/L2-reg.png"></p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p><img data-src="figures/L1-reg.png"></p>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="l1-lasso-regularisation" class="slide level2">
+<h2><span class="math inline">\(L1\)</span> (lasso) regularisation</h2>
+<div style="padding-top: 70px;">
+
+</div>
 <div class="r-stack">
-<p><img data-src="figures/gradient-illustration.gif"></p>
+<p><img data-src="figures/lasso_linreg_alpha_0p0.png" class="fragment"></p>
+<p><img data-src="figures/lasso_linreg_alpha_0p5.png" class="fragment"></p>
+<p><img data-src="figures/lasso_linreg_alpha_1p0.png" class="fragment"></p>
+<p><img data-src="figures/lasso_linreg_alpha_2p0.png" class="fragment"></p>
+<p><img data-src="figures/lasso_linreg_alpha_3p0.png" class="fragment"></p>
+<p><img data-src="figures/lasso_linreg_alpha_4p0.png" class="fragment"></p>
 </div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="gradient-descent" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:49%;">
-<div style="padding-top: 60px;">
+<section id="l2-ridge-regularisation" class="slide level2">
+<h2><span class="math inline">\(L2\)</span> (ridge) regularisation</h2>
+<div style="padding-top: 70px;">
 
 </div>
-<p><img data-src="figures/gradient.png"></p>
-</div><div class="column" style="width:51%;">
-<div class="fragment">
-<p>Need to differentiate the loss <em>wrt.</em> each parameter:</p>
-<p><span class="math display">\[
-\small
-\begin{align}
-\frac{\partial \color{MediumVioletRed}{L}_{\mathrm{MSE}}}{\partial\color{teal}{\theta}_j}
-&amp;= \frac{\partial}{\partial\color{teal}{\theta}_j} \left(\frac{1}{N}\sum_{i=1}^N (\boldsymbol{\color{teal}{\theta}}^{\intercal}\color{DarkOrange}{\mathbf{x}}^{(i)})^2 \right) \\[1em]
-&amp;= \frac{1}{N}\sum_{i=1}^N 2(\boldsymbol{\color{teal}{\theta}}^{\intercal}\color{DarkOrange}{\mathbf{x}}^{(i)})\color{DarkOrange}{x}_j^{(i)}
-\end{align}
-\]</span></p>
-<div class="absolute" style="font-size: 0.6em;top: 70%; right: 0%; ">
-<p><i class="bi bi-arrow-up-left"></i><br> (looks complicated, but<br> not too hard to compute)</p>
-</div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-1" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:49%;">
-<div style="padding-top: 60px;">
-
-</div>
-<p><img data-src="figures/gradient.png"></p>
-</div><div class="column" style="width:51%;">
-<p>Put it all together to get the <strong>gradient</strong><br> (written here in compact form)</p>
-<p><span class="math display">\[
-\small
-\nabla \color{MediumVioletRed}{L}(\boldsymbol{\color{teal}{\theta}})
-= \frac{2}{N}\color{DarkOrange}{\mathbf{X}}^{\intercal}(\color{DarkOrange}{\mathbf{X}} \cdot \boldsymbol{\color{teal}{\theta}} - \color{DarkBlue}{\mathbf{y}})
-\]</span></p>
-<p>where <span class="math inline">\(\color{DarkOrange}{\mathbf{X}}\)</span> contains all the training data:</p>
-<p><span class="math display">\[
-\small
-\color{DarkOrange}{\mathbf{X}} =
-\begin{bmatrix}
-\color{DarkOrange}{\mathbf{x}}^{(1)} \\
-\color{DarkOrange}{\mathbf{x}}^{(2)} \\
-\vdots \\\
-\color{DarkOrange}{\mathbf{x}}^{(N)}
-\end{bmatrix}
-\]</span></p>
-</div></div>
-<div class="absolute" style="font-size: 0.6em;top: 21%; right: -5%; ">
-<p>(ok this is<br>a little hard<br>to compute)<br> <i class="bi bi-arrow-return-left"></i></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-2" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:49%;">
-<div style="padding-top: 60px;">
-
-</div>
-<p><img data-src="figures/gradient-steps.png"></p>
-</div><div class="column" style="width:51%;">
-<p>With the gradient in place, we take steps downward (along the <span class="color-red"><em>negative</em></span> gradient), towards the optimal solution:</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\color{teal}{\theta}}^{n+1} = \boldsymbol{\color{teal}{\theta}}^n - \eta \nabla \color{Purple}{L}
-\]</span></p>
-<p>Here <span class="math inline">\(\eta\)</span>&nbsp;is the <strong>learning rate</strong></p>
-<div class="fragment">
-<p>In code, this looks like</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.random.randn(<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>  gradients <span class="op">=</span> <span class="dv">2</span><span class="op">/</span>N <span class="op">*</span> X.T.dot(X.dot(theta) <span class="op">-</span> y)</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>  theta <span class="op">=</span> theta <span class="op">-</span> eta<span class="op">*</span>gradients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-3" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div style="padding-top: 100px">
-
-</div>
-<p>Iteratively solving our linear regression problem using gradient descent:</p>
-</div><div class="column" style="width:70%;">
-<div class="frame-wrap" style="width: 1100px; height: 1100px">
-<iframe class="frame" src="figures/linreg_gradient_descent_anim.html" name="linreg_gradient_descent">
-</iframe>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="learning-rate" class="slide level2">
-<h2>Learning rate</h2>
-<div style="padding-top: 50px;">
-
-</div>
-<p>Learning rate is a hyperparameter</p>
-<div style="padding-top: 50px;">
-
-</div>
-<div class="columns">
-<div class="column" style="width:33%;">
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/learning-rate-small.png"></p>
-<figcaption>To small (slow convergence)</figcaption>
-</figure>
-</div>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/learning-rate-good.png"></p>
-<figcaption>Just right</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/learning-rate-big.png"></p>
-<figcaption>To high (no convergence)</figcaption>
-</figure>
-</div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="practical-problems" class="slide level2">
-<h2>Practical problems</h2>
-<p><img data-src="figures/gradient-wide.png"></p>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="practical-problems-1" class="slide level2">
-<h2>Practical problems</h2>
-<p><img data-src="figures/gradient-local-minimum.png"></p>
-<div class="absolute" style="font-size: 0.8em;left: 0%; bottom: 20%; ">
-<p>Local<br>minimum<br> <code>-&gt;</code> <span class="color-red"><em>bad predictions</em></span></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="practical-problems-2" class="slide level2">
-<h2>Practical problems</h2>
-<p><img data-src="figures/gradient-zero.png"></p>
-<div class="absolute" style="font-size: 0.8em;left: 0%; bottom: 20%; ">
-<p>Local<br>minimum<br> <code>-&gt;</code> <span class="color-red"><em>bad predictions</em></span></p>
-</div>
-<div class="absolute" style="font-size: 0.8em;top: 20%; right: 5%; ">
-<p>Plateau<br> <code>-&gt;</code> <span class="color-red"><em>slow convergence</em></span></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="feature-scaling" class="slide level2">
-<h2>Feature scaling</h2>
 <div class="r-stack">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/geron-fig-4_7.png" style="width:80.0%"></p>
-<figcaption>Geron Fig 4-7</figcaption>
-</figure>
-</div>
+<p><img data-src="figures/ridge_linreg_alpha_0p0.png" class="fragment"></p>
+<p><img data-src="figures/ridge_linreg_alpha_0p5.png" class="fragment"></p>
+<p><img data-src="figures/ridge_linreg_alpha_1p0.png" class="fragment"></p>
+<p><img data-src="figures/ridge_linreg_alpha_2p0.png" class="fragment"></p>
+<p><img data-src="figures/ridge_linreg_alpha_3p0.png" class="fragment"></p>
+<p><img data-src="figures/ridge_linreg_alpha_4p0.png" class="fragment"></p>
 </div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="gradient-descent-methods" class="slide level2">
-<h2>Gradient descent methods</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<p>Standard (<span class="color-green"><em>batch</em></span>) gradient descent:</p>
-<p>Compute <span class="math inline">\(\small\nabla \color{MediumVioletRed}{L}\)</span> using <strong>all</strong> data points</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\theta}^{n+1} = \boldsymbol{\theta}^n - \eta\nabla L (\boldsymbol{x}, \boldsymbol{\theta})
-\]</span></p>
-</div><div class="column" style="width:65%;">
-<div class="frame-wrap">
-<iframe class="frame" src="figures/batch_gradient_descent_anim.html" name="batch_gradient_descent">
-</iframe>
+<section id="learning-curves" class="slide level2">
+<h2>Learning curves</h2>
+<p>Plotting performance as function of “experience” can be a powerful monitoring an diagnostics tool</p>
+<p><img data-src="figures/generic_learning_curve.png" style="width:80.0%"></p>
+<div class="absolute" style="top: 30%; left: 5%; ">
+<p>Metric related<br> to performance</p>
 </div>
-</div></div>
+<div class="absolute" style="top: 80%; left: 70%; ">
+<p>Observable related<br> to experience</p>
+</div>
+<div class="absolute" style="top: 30%; left: 80%; ">
+<p><span class="color-blue">training data</span></p>
+</div>
+<div class="absolute" style="top: 40%; left: 80%; ">
+<p><span class="color-orange">validation data</span></p>
+</div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="gradient-descent-methods-1" class="slide level2">
-<h2>Gradient descent methods</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<p><span class="color-orange">Stochastic</span> gradient descent:</p>
-<p>Compute <span class="math inline">\(\small\nabla L\)</span> using a <strong>single</strong> data point at a time</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\theta}^{n+1} = \boldsymbol{\theta}^n - \eta\nabla L (x_i, \boldsymbol{\theta})
-\]</span></p>
-</div><div class="column" style="width:65%;">
-<div class="frame-wrap">
-<iframe class="frame" src="figures/stochastic_gradient_descent_anim.html" name="stochastic_gradient_descent">
-</iframe>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-methods-2" class="slide level2">
-<h2>Gradient descent methods</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<p><span class="color-pink-dark">Mini-batch</span> gradient descent:</p>
-<p>Compute <span class="math inline">\(\small\nabla L\)</span> using <strong>some</strong> data points at a time</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\theta}^{n+1} = \boldsymbol{\theta}^n - \eta\nabla L (\boldsymbol{x}_s, \boldsymbol{\theta})
-\]</span></p>
-</div><div class="column" style="width:65%;">
-<div class="frame-wrap">
-<iframe class="frame" src="figures/minibatch_gradient_descent_anim.html" name="minibatch_gradient_descent">
-</iframe>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="advanced-gradient-descent-algorithms" class="slide level2">
-<h2>Advanced gradient descent algorithms</h2>
-<p>Gradient descent with <strong>momentum</strong>:</p>
+<section id="learning-curves-cont." class="slide level2">
+<h2>Learning curves (<em>cont.</em>)</h2>
 <div class="r-stack">
-<p><img data-src="figures/gradient-momentum.png" style="width:70.0%"></p>
+<p><img data-src="figures/learning_curve_good.png"></p>
+</div>
+<div class="absolute" style="top: 45%; left: 80%; ">
+<p>Nice<br>convergence<br> <i class="bi bi-arrow-left"></i></p>
 </div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="advanced-gradient-descent-algorithms-1" class="slide level2">
-<h2>Advanced gradient descent algorithms</h2>
+<section id="learning-curves-cont.-1" class="slide level2">
+<h2>Learning curves (<em>cont.</em>)</h2>
+<div class="r-stack">
+<p><img data-src="figures/learning_curve_underfitting.png"></p>
+</div>
+<div class="absolute" style="top: 40%; left: 80%; ">
+<p>Still improving<br>(underfitting)</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="learning-curves-cont.-2" class="slide level2">
+<h2>Learning curves (<em>cont.</em>)</h2>
+<div class="r-stack">
+<p><img data-src="figures/learning_curve_overfitting.png"></p>
+</div>
+<div class="absolute" style="top: 40%; left: 80%; ">
+<p>Overfitting</p>
+</div>
+<div class="fragment absolute" style="text-align: center;top: 30%; left: 42%; ">
+<p>Consider <strong>early</strong><br> <strong>stopping</strong> and/or<br> regularisation<br> <i class="bi bi-arrow-down"></i></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="learning-curves-cont.-3" class="slide level2">
+<h2>Learning curves (<em>cont.</em>)</h2>
+<div class="r-stack">
+<p><img data-src="figures/learning_curve_plateau.png"></p>
+</div>
+<div class="fragment absolute" style="text-align: center;top: 30%; left: 40%; ">
+<p>Stuck at<br> <i class="bi bi-arrow-left"></i> plateau <i class="bi bi-arrow-right"></i></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="learning-curves-cont.-4" class="slide level2">
+<h2>Learning curves (<em>cont.</em>)</h2>
+<div class="r-stack">
+<p><img data-src="figures/learning_curve_weird.png"></p>
+</div>
+<div class="fragment absolute" style="top: 40%; left: 50%; ">
+<p><span class="emoji" data-emoji="confused">😕</span></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="learning-curves-cont.-5" class="slide level2">
+<h2>Learning curves (<em>cont.</em>)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div style="padding-top: 100px;">
+
+</div>
+<p>Alternative plot:</p>
+<p>Prediction error <em>vs</em> training set size</p>
+</div><div class="column" style="width:60%;">
+<p><img data-src="figures/learning_curve_loss_vs_datasize.png"></p>
+</div><div class="absolute" style="font-size: 0.75em;left: 25%; bottom: 10%; ">
+<p>Zero error on <span class="color-blue-dark">train</span> set,<br> high error on <span class="color-red">val</span> set</p>
+<p><code>--&gt;</code> Max overfitting</p>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="hyperparameter-optimisation" class="slide level2">
+<h2>Hyperparameter optimisation</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>All* learning algorithms have hyperparameters that has to be chosen</p>
+<p>These can not be optimised on the training dataset alone – need a statistically independent dataset (validation dataset)</p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> sklearn.ensemble.RandomForestClassifier(</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>    n_estimators<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>,</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>    criterion<span class="op">=</span><span class="st">'gini'</span>,</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>    max_depth<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>    min_samples_split<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>    min_samples_leaf<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>    min_weight_fraction_leaf<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a>    max_features<span class="op">=</span><span class="st">'sqrt'</span>,</span>
+<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a>    max_leaf_nodes<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a>    min_impurity_decrease<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a>    bootstrap<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a>    oob_score<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-15"><a aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-16"><a aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb1-17"><a aria-hidden="true" tabindex="-1"></a>    warm_start<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-18"><a aria-hidden="true" tabindex="-1"></a>    class_weight<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-19"><a aria-hidden="true" tabindex="-1"></a>    ccp_alpha<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb1-20"><a aria-hidden="true" tabindex="-1"></a>    max_samples<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-21"><a aria-hidden="true" tabindex="-1"></a>    monotonic_cst<span class="op">=</span><span class="va">None</span></span>
+<span id="cb1-22"><a aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="absolute" style="font-size: 0.6em;left: 0%; bottom: 5%; ">
+<p>*Okay maybe not OLS</p>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="hyperparameter-optimisation-1" class="slide level2">
+<h2>Hyperparameter optimisation</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>Technique for finding optimal hyperparameters:</p>
+<p><span class="color-teal">Make intelligent guesses</span><br> (<em>usually cannot be formulated as a differentiable task</em>)</p>
+<div class="fragment fade-in-then-semi-out" data-fragment-index="1">
+<ul>
+<li><strong>Grid search:</strong><br> Test a fixed set of combinations</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out" data-fragment-index="2">
+<ul>
+<li><strong>Random search:</strong><br> Test randomly selected combinations</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out" data-fragment-index="3">
+<ul>
+<li><strong>Bayesian optimisation / evolutionary algorithms / etc.:</strong><br> Cleverly select new combinations based on past results</li>
+</ul>
+</div>
+</div><div class="column" style="width:55%;">
+<div style="padding-top: 75px;">
+<div class="r-stack">
+<div class="fragment" data-fragment-index="1">
+<p><img data-src="figures/hyperopt_grid.png"></p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p><img data-src="figures/hyperopt_random.png"></p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p><img data-src="figures/hyperopt_bayesian.png"></p>
+</div>
+</div>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="ml-assignment-2" class="slide level2">
+<h2>ML assignment 2</h2>
+<p>The goal is to make a <span class="color-orange-dark" style="font-weight: 400;"><em>complete, end-to-end machine learning product</em></span>.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="figures/gradient_descent_comparison1.gif"></p>
+<p><strong>Rules</strong>:</p>
+<ul>
+<li>Work in groups of 2-3</li>
+<li>Make a useful ML software product</li>
+<li>Deploy your system</li>
+</ul>
 </div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><img data-src="figures/gradient_descent_comparison2.gif"></p>
-</div>
+<p><strong>Evaluation</strong>:</p>
+<ul>
+<li>Write a short report (template will be provided)</li>
+<li>Make the code accessible</li>
+</ul>
 </div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="automatic-differentiation" class="slide level2">
-<h2>Automatic differentiation</h2>
-<div class="absolute" style="top: 0%; right: 0%; ">
-<p><img data-src="figures/jax_logo.png" width="80"></p>
-</div>
-<div class="absolute" style="top: 0%; right: 8%; ">
-<p><img data-src="figures/tensorflow_logo.png" width="70"></p>
-</div>
-<div class="absolute" style="top: 7%; right: 3%; ">
-<p><img data-src="figures/pytorch_logo.png" width="50"></p>
-</div>
-<p>Manually computing gradients is rather inconvenient <span style="font-size: 0.8em;"><span class="emoji" data-emoji="unamused">😒</span></span></p>
-<p>Luckily, <strong>automatic differentiation</strong> helps us out:</p>
-<div class="sourceCode" id="cb2" data-code-line-numbers="1-12|3-4|6-9|11-12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> jax</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="kw">def</span> predict(X, theta):              <span class="co"># For complicated models, predict()</span></span>
-<span id="cb2-4"><a></a>  <span class="cf">return</span> X.dot(theta)               <span class="co"># also tends to get very complicated</span></span>
-<span id="cb2-5"><a></a></span>
-<span id="cb2-6"><a></a><span class="kw">def</span> loss(X, theta, y):              <span class="co"># But loss function is always simple</span></span>
-<span id="cb2-7"><a></a>  y_hat <span class="op">=</span> predict(X, theta)</span>
-<span id="cb2-8"><a></a>  mse <span class="op">=</span> ((y_hat <span class="op">-</span> y)<span class="op">**</span><span class="dv">2</span>).mean()</span>
-<span id="cb2-9"><a></a>  <span class="cf">return</span> mse</span>
-<span id="cb2-10"><a></a></span>
-<span id="cb2-11"><a></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
-<span id="cb2-12"><a></a>  theta <span class="op">=</span> theta <span class="op">-</span> eta<span class="op">*</span>jax.grad(loss, argnums<span class="op">=</span><span class="dv">1</span>)(X, theta, y)  <span class="co"># autodiff!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><span class="color-text-muted" style="font-size=0.8em;">(appendix B in textbook)</span></p>
+<p><img data-src="figures/chatbot.png"></p>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="section" class="slide level2" data-background-color="#fff" data-menu-title="Fin">

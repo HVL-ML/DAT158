@@ -7,144 +7,137 @@
     "text": "Topics module 2\n\n\nLast week\n\n\nModel complexity\n\nUnder/overfitting\n\nRegularisation\nDecision trees\nEnsemble models\n\nRandom forest\nBoosting\n\n\n\nThis week\n\nLoss functions\nGradient descent\n(More) linear regression\nLearning curves\nHyperparameter optimisation"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#linear-regression-again",
-    "href": "slides/2-models/lecture4.html#linear-regression-again",
+    "objectID": "slides/2-models/lecture4.html#key-concepts-from-module-2",
+    "href": "slides/2-models/lecture4.html#key-concepts-from-module-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Linear regression (again)",
-    "text": "Linear regression (again)\n\n\nLet’s set up some math for regression with a simple linear model, on data with \\(n\\) features:\n\\[\n\\small\n\\begin{align}\n\\hat{\\color{DarkBlue}{y}} &= \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}}) \\\\\n&= \\color{teal}{\\theta}_0\n+ \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}_1\n+ \\cdots\n+ \\color{teal}{\\theta}_n \\color{DarkOrange}{x}_n\n\\end{align}\n\\]\n\nCompactly written on vector form:\n\\[\n\\small\n\\hat{\\color{DarkBlue}{y}} = \\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n\\]\n\n\nFor one-dimensional data, it looks like\n\\[\n\\small\n\\begin{align}\n\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n&=\n  \\begin{bmatrix}\n    \\color{teal}{\\theta}_0 & \\color{teal}{\\theta}_1\n  \\end{bmatrix}\n  \\begin{bmatrix}\n    \\color{DarkOrange}{x}_0 \\\\ \\color{DarkOrange}{x}_1\n  \\end{bmatrix} \\\\\n&= \\color{teal}{\\theta}_0 \\color{DarkOrange}{x}_0 + \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}_1 \\qquad \\color{grey}{(\\mathrm{with}\\; x_0=1}) \\\\\n&= \\color{teal}{\\theta}_0 + \\color{teal}{\\theta} \\color{DarkOrange}{x}_1\n\\end{align}\n\\]"
+    "section": "Key concepts from Module 2",
+    "text": "Key concepts from Module 2\n\n\nLoss function:\nQuantifies the overall error between prediction and true value\nWe seek to minimise this.\n\n\n\n\n\n\nExample loss functions for regression"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#finding-optimal-parameters-boldsymboltheta",
-    "href": "slides/2-models/lecture4.html#finding-optimal-parameters-boldsymboltheta",
+    "objectID": "slides/2-models/lecture4.html#key-concepts-from-module-2-1",
+    "href": "slides/2-models/lecture4.html#key-concepts-from-module-2-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)",
-    "text": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)\nStep 1: Define optimal through a loss function \\(\\color{MediumVioletRed}{L}\\)\n\nFor regression, mean squared error is the most common\n\n\n\\[\n\\small\n\\begin{align}\n\\color{MediumVioletRed}{L}_{\\mathrm{MSE}}\n&= \\frac{1}{N}\\sum_{i=1}^{N} \\left(\\hat{\\color{DarkBlue}{y}}^{(i)} - \\color{DarkBlue}{y}^{(i)}\\right)^2 \\\\[1em]\n&= \\frac{1}{N}\\sum_{i=1}^{N} \\left(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\color{DarkOrange}{\\mathbf{x}}^{(i)} - \\color{DarkBlue}{y}^{(i)}\\right)^2\n\\end{align}\n\\]"
+    "section": "Key concepts from Module 2",
+    "text": "Key concepts from Module 2\n\n\nLoss function:\nQuantifies the overall error between prediction and true value\nWe seek to minimise this.\n\nGradient descent:\nAlgorithm for minimising the loss function"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#finding-optimal-parameters-boldsymboltheta-1",
-    "href": "slides/2-models/lecture4.html#finding-optimal-parameters-boldsymboltheta-1",
+    "objectID": "slides/2-models/lecture4.html#linear-regression",
+    "href": "slides/2-models/lecture4.html#linear-regression",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)",
-    "text": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)\n\n\nStep 1: Define optimal through a loss function \\(\\color{MediumVioletRed}{L}\\)\nStep 2: Minimise \\(\\color{MediumVioletRed}{L}\\)\n\n\n\nTwo methods:\n\nSolve analytically\nSolve numerically\n\n\n\nAnalytical solution:\nSolve the normal equation\n\\[\n\\small\n\\hat{\\boldsymbol{\\color{teal}{\\theta}}}\n= (\\color{DarkOrange}{\\mathbf{X}}^{\\intercal}\\color{DarkOrange}{\\mathbf{X}})^{-1}\\color{DarkOrange}{\\mathbf{X}}^{\\intercal}\\color{DarkBlue}{\\mathbf{y}}\n\\]\nOnly possible in the linear case."
+    "section": "Linear regression",
+    "text": "Linear regression\n\n\nLet’s set up some math for regression with a simple linear model, on data with \\(n\\) features:\n\\[\n\\small\n\\begin{align}\n\\hat{\\color{DarkBlue}{y}} &= \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}}) \\\\\n&= \\color{teal}{\\theta}_0\n+ \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}_1\n+ \\cdots\n+ \\color{teal}{\\theta}_n \\color{DarkOrange}{x}_n\n\\end{align}\n\\]\n\nCompactly written on vector form:\n\\[\n\\small\n\\hat{\\color{DarkBlue}{y}} = \\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n\\]\n\n\nFor one-dimensional data, it looks like\n\\[\n\\small\n\\begin{align}\n\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n&=\n  \\begin{bmatrix}\n    \\color{teal}{\\theta}_0 & \\color{teal}{\\theta}_1\n  \\end{bmatrix}\n  \\begin{bmatrix}\n    \\color{DarkOrange}{x}_0 \\\\ \\color{DarkOrange}{x}_1\n  \\end{bmatrix} \\\\\n&= \\color{teal}{\\theta}_0 \\color{DarkOrange}{x}_0 + \\color{teal}{\\theta}_1 \\color{DarkOrange}{x}_1 \\qquad \\color{grey}{(\\mathrm{with}\\; x_0=1}) \\\\\n&= \\color{teal}{\\theta}_0 + \\color{teal}{\\theta} \\color{DarkOrange}{x}_1\n\\end{align}\n\\]"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#finding-optimal-parameters-boldsymboltheta-2",
-    "href": "slides/2-models/lecture4.html#finding-optimal-parameters-boldsymboltheta-2",
+    "objectID": "slides/2-models/lecture4.html#nonlinear-regression-bonus-slide",
+    "href": "slides/2-models/lecture4.html#nonlinear-regression-bonus-slide",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)",
-    "text": "Finding optimal parameters \\(\\boldsymbol{\\theta}\\)\n\n\nStep 1: Define optimal through a loss function \\(\\color{MediumVioletRed}{L}\\)\nStep 2: Minimise \\(\\color{MediumVioletRed}{L}\\)\n\n\n\nTwo methods:\n\nSolve analytically\nSolve numerically\n\n\nNumerical solution:\nGradient descent\n\\[\n\\nabla \\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}}) =\n\\begin{bmatrix}\n  \\frac{\\partial \\color{MediumVioletRed}{L}}{\\partial \\color{teal}{\\theta}_0} \\\\\n  \\vdots \\\\\n  \\frac{\\partial \\color{MediumVioletRed}{L}}{\\partial \\color{teal}{\\theta}_n} \\\\\n\\end{bmatrix}\n\\]\n\n\n Vector in parameterspace\n\n\n Gradient"
+    "section": "Nonlinear regression bonus slide",
+    "text": "Nonlinear regression bonus slide\n\n\nHumble linear regression:\n\\[\n\\small\n\\hat{\\color{DarkBlue}{y}} = \\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n\\]\nCan make it non-linear by applying a so-called activation function \\(h\\):\n\\[\n\\small\nz = h(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}})\n\\]\n\nfor example\n\\[\n\\small\nz = \\tanh(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}})\n\\]"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#the-gradient",
-    "href": "slides/2-models/lecture4.html#the-gradient",
+    "objectID": "slides/2-models/lecture4.html#nonlinear-regression-bonus-slide-1",
+    "href": "slides/2-models/lecture4.html#nonlinear-regression-bonus-slide-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "The gradient",
-    "text": "The gradient"
+    "section": "Nonlinear regression bonus slide",
+    "text": "Nonlinear regression bonus slide\n\n\nHumble linear regression:\n\\[\n\\small\n\\hat{\\color{DarkBlue}{y}} = \\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}}\n\\]\nCan make it non-linear by applying a so-called activation function \\(h\\):\n\\[\n\\small\nz = h(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal} \\cdot \\color{DarkOrange}{\\mathbf{x}})\n\\]\nRepeat this both in serial and in parallel to get a neural network\n\n\n\n\\(\\mathbf{x}_0\\)\n\n\\(\\hat{y}\\)\n\n\\(\\small h(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}_{(i)} \\cdot \\color{DarkOrange}{\\mathbf{x}}_{(i)})\\)"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#gradient-descent",
-    "href": "slides/2-models/lecture4.html#gradient-descent",
+    "objectID": "slides/2-models/lecture4.html#linear-regression-1",
+    "href": "slides/2-models/lecture4.html#linear-regression-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient descent",
-    "text": "Gradient descent\n\n\n\n\n\n\n\n\nNeed to differentiate the loss wrt. each parameter:\n\\[\n\\small\n\\begin{align}\n\\frac{\\partial \\color{MediumVioletRed}{L}_{\\mathrm{MSE}}}{\\partial\\color{teal}{\\theta}_j}\n&= \\frac{\\partial}{\\partial\\color{teal}{\\theta}_j} \\left(\\frac{1}{N}\\sum_{i=1}^N (\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)})^2 \\right) \\\\[1em]\n&= \\frac{1}{N}\\sum_{i=1}^N 2(\\boldsymbol{\\color{teal}{\\theta}}^{\\intercal}\\color{DarkOrange}{\\mathbf{x}}^{(i)})\\color{DarkOrange}{x}_j^{(i)}\n\\end{align}\n\\]\n\n (looks complicated, but not too hard to compute)"
+    "section": "Linear regression",
+    "text": "Linear regression\n\n\nStep 1: Define optimal through a loss function \\(\\color{MediumVioletRed}{L}\\)\nStep 2: Minimise \\(\\color{MediumVioletRed}{L}\\)\n\n\n\nTwo methods:\n\nSolve analytically\nSolve numerically\n\n\nNumerical solution:\nGradient descent\n\\[\n\\nabla \\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}}) =\n\\begin{bmatrix}\n  \\frac{\\partial \\color{MediumVioletRed}{L}}{\\partial \\color{teal}{\\theta}_0} \\\\\n  \\vdots \\\\\n  \\frac{\\partial \\color{MediumVioletRed}{L}}{\\partial \\color{teal}{\\theta}_n} \\\\\n\\end{bmatrix}\n\\]\n\n\n Vector in parameterspace\n\n\n Gradient"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#gradient-descent-1",
-    "href": "slides/2-models/lecture4.html#gradient-descent-1",
+    "objectID": "slides/2-models/lecture4.html#regularised-linear-models",
+    "href": "slides/2-models/lecture4.html#regularised-linear-models",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient descent",
-    "text": "Gradient descent\n\n\n\n\n\n\n\nPut it all together to get the gradient (written here in compact form)\n\\[\n\\small\n\\nabla \\color{MediumVioletRed}{L}(\\boldsymbol{\\color{teal}{\\theta}})\n= \\frac{2}{N}\\color{DarkOrange}{\\mathbf{X}}^{\\intercal}(\\color{DarkOrange}{\\mathbf{X}} \\cdot \\boldsymbol{\\color{teal}{\\theta}} - \\color{DarkBlue}{\\mathbf{y}})\n\\]\nwhere \\(\\color{DarkOrange}{\\mathbf{X}}\\) contains all the training data:\n\\[\n\\small\n\\color{DarkOrange}{\\mathbf{X}} =\n\\begin{bmatrix}\n\\color{DarkOrange}{\\mathbf{x}}^{(1)} \\\\\n\\color{DarkOrange}{\\mathbf{x}}^{(2)} \\\\\n\\vdots \\\\\\\n\\color{DarkOrange}{\\mathbf{x}}^{(N)}\n\\end{bmatrix}\n\\]\n\n\n(ok this isa little hardto compute)"
+    "section": "Regularised linear models",
+    "text": "Regularised linear models\n\n\nLet’s improve our linear model by adding a regularisation term:\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_p\n\\]\n\n\n\\(\\small L_2\\) regularisation, aka Ridge regression (sklearn.linear_model.Ridge):\n\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_2\n\\]\n\n\n\\[\n\\small\n\\nabla \\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\nabla \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} \\color{teal}{\\boldsymbol{\\theta}}\n\\]\n\n\n\n\\(\\small L_1\\) regularisation, aka Lasso regression (sklearn.linear_model.Lasso):\n\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_1\n\\]\n(\\(\\small\\nabla\\color{MediumVioletRed}{L}\\) gets a little complicated – see Eq. 4.11 in the textbook)"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#gradient-descent-2",
-    "href": "slides/2-models/lecture4.html#gradient-descent-2",
+    "objectID": "slides/2-models/lecture4.html#l1-lasso-regularisation",
+    "href": "slides/2-models/lecture4.html#l1-lasso-regularisation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient descent",
-    "text": "Gradient descent\n\n\n\n\n\n\n\nWith the gradient in place, we take steps downward (along the negative gradient), towards the optimal solution:\n\\[\n\\small\n\\boldsymbol{\\color{teal}{\\theta}}^{n+1} = \\boldsymbol{\\color{teal}{\\theta}}^n - \\eta \\nabla \\color{Purple}{L}\n\\]\nHere \\(\\eta\\) is the learning rate\n\nIn code, this looks like\ntheta = np.random.randn(2,1)\nfor epoch in range(n_epochs):\n  gradients = 2/N * X.T.dot(X.dot(theta) - y)\n  theta = theta - eta*gradients"
+    "section": "\\(L1\\) (lasso) regularisation",
+    "text": "\\(L1\\) (lasso) regularisation"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#gradient-descent-3",
-    "href": "slides/2-models/lecture4.html#gradient-descent-3",
+    "objectID": "slides/2-models/lecture4.html#l2-ridge-regularisation",
+    "href": "slides/2-models/lecture4.html#l2-ridge-regularisation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient descent",
-    "text": "Gradient descent\n\n\n\n\n\nIteratively solving our linear regression problem using gradient descent:"
+    "section": "\\(L2\\) (ridge) regularisation",
+    "text": "\\(L2\\) (ridge) regularisation"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#learning-rate",
-    "href": "slides/2-models/lecture4.html#learning-rate",
+    "objectID": "slides/2-models/lecture4.html#learning-curves",
+    "href": "slides/2-models/lecture4.html#learning-curves",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Learning rate",
-    "text": "Learning rate\n\n\n\nLearning rate is a hyperparameter\n\n\n\n\n\n\n\n\n\nTo small (slow convergence)\n\n\n\n\n\n\n\nJust right\n\n\n\n\n\n\n\nTo high (no convergence)"
+    "section": "Learning curves",
+    "text": "Learning curves\nPlotting performance as function of “experience” can be a powerful monitoring an diagnostics tool\n\n\nMetric related to performance\n\n\nObservable related to experience\n\n\ntraining data\n\n\nvalidation data"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#practical-problems",
-    "href": "slides/2-models/lecture4.html#practical-problems",
+    "objectID": "slides/2-models/lecture4.html#learning-curves-cont.",
+    "href": "slides/2-models/lecture4.html#learning-curves-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Practical problems",
-    "text": "Practical problems"
+    "section": "Learning curves (cont.)",
+    "text": "Learning curves (cont.)\n\n\n\n\nNiceconvergence"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#practical-problems-1",
-    "href": "slides/2-models/lecture4.html#practical-problems-1",
+    "objectID": "slides/2-models/lecture4.html#learning-curves-cont.-1",
+    "href": "slides/2-models/lecture4.html#learning-curves-cont.-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Practical problems",
-    "text": "Practical problems\n\n\nLocalminimum -&gt; bad predictions"
+    "section": "Learning curves (cont.)",
+    "text": "Learning curves (cont.)\n\n\n\n\nStill improving(underfitting)"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#practical-problems-2",
-    "href": "slides/2-models/lecture4.html#practical-problems-2",
+    "objectID": "slides/2-models/lecture4.html#learning-curves-cont.-2",
+    "href": "slides/2-models/lecture4.html#learning-curves-cont.-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Practical problems",
-    "text": "Practical problems\n\n\nLocalminimum -&gt; bad predictions\n\n\nPlateau -&gt; slow convergence"
+    "section": "Learning curves (cont.)",
+    "text": "Learning curves (cont.)\n\n\n\n\nOverfitting\n\n\nConsider early stopping and/or regularisation"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#feature-scaling",
-    "href": "slides/2-models/lecture4.html#feature-scaling",
+    "objectID": "slides/2-models/lecture4.html#learning-curves-cont.-3",
+    "href": "slides/2-models/lecture4.html#learning-curves-cont.-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Feature scaling",
-    "text": "Feature scaling\n\n\n\n\nGeron Fig 4-7"
+    "section": "Learning curves (cont.)",
+    "text": "Learning curves (cont.)\n\n\n\n\nStuck at  plateau"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#gradient-descent-methods",
-    "href": "slides/2-models/lecture4.html#gradient-descent-methods",
+    "objectID": "slides/2-models/lecture4.html#learning-curves-cont.-4",
+    "href": "slides/2-models/lecture4.html#learning-curves-cont.-4",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient descent methods",
-    "text": "Gradient descent methods\n\n\nStandard (batch) gradient descent:\nCompute \\(\\small\\nabla \\color{MediumVioletRed}{L}\\) using all data points\n\\[\n\\small\n\\boldsymbol{\\theta}^{n+1} = \\boldsymbol{\\theta}^n - \\eta\\nabla L (\\boldsymbol{x}, \\boldsymbol{\\theta})\n\\]"
+    "section": "Learning curves (cont.)",
+    "text": "Learning curves (cont.)\n\n\n\n\n😕"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#gradient-descent-methods-1",
-    "href": "slides/2-models/lecture4.html#gradient-descent-methods-1",
+    "objectID": "slides/2-models/lecture4.html#learning-curves-cont.-5",
+    "href": "slides/2-models/lecture4.html#learning-curves-cont.-5",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient descent methods",
-    "text": "Gradient descent methods\n\n\nStochastic gradient descent:\nCompute \\(\\small\\nabla L\\) using a single data point at a time\n\\[\n\\small\n\\boldsymbol{\\theta}^{n+1} = \\boldsymbol{\\theta}^n - \\eta\\nabla L (x_i, \\boldsymbol{\\theta})\n\\]"
+    "section": "Learning curves (cont.)",
+    "text": "Learning curves (cont.)\n\n\n\n\n\nAlternative plot:\nPrediction error vs training set size\n\n\n\nZero error on train set, high error on val set\n--&gt; Max overfitting"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#gradient-descent-methods-2",
-    "href": "slides/2-models/lecture4.html#gradient-descent-methods-2",
+    "objectID": "slides/2-models/lecture4.html#hyperparameter-optimisation",
+    "href": "slides/2-models/lecture4.html#hyperparameter-optimisation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Gradient descent methods",
-    "text": "Gradient descent methods\n\n\nMini-batch gradient descent:\nCompute \\(\\small\\nabla L\\) using some data points at a time\n\\[\n\\small\n\\boldsymbol{\\theta}^{n+1} = \\boldsymbol{\\theta}^n - \\eta\\nabla L (\\boldsymbol{x}_s, \\boldsymbol{\\theta})\n\\]"
+    "section": "Hyperparameter optimisation",
+    "text": "Hyperparameter optimisation\n\n\nAll* learning algorithms have hyperparameters that has to be chosen\nThese can not be optimised on the training dataset alone – need a statistically independent dataset (validation dataset)\n\nclass sklearn.ensemble.RandomForestClassifier(\n    n_estimators=100,\n    *,\n    criterion='gini',\n    max_depth=None,\n    min_samples_split=2,\n    min_samples_leaf=1,\n    min_weight_fraction_leaf=0.0,\n    max_features='sqrt',\n    max_leaf_nodes=None,\n    min_impurity_decrease=0.0,\n    bootstrap=True,\n    oob_score=False,\n    n_jobs=None,\n    random_state=None,\n    verbose=0,\n    warm_start=False,\n    class_weight=None,\n    ccp_alpha=0.0,\n    max_samples=None,\n    monotonic_cst=None\n)\n\n*Okay maybe not OLS"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#advanced-gradient-descent-algorithms",
-    "href": "slides/2-models/lecture4.html#advanced-gradient-descent-algorithms",
+    "objectID": "slides/2-models/lecture4.html#hyperparameter-optimisation-1",
+    "href": "slides/2-models/lecture4.html#hyperparameter-optimisation-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Advanced gradient descent algorithms",
-    "text": "Advanced gradient descent algorithms\nGradient descent with momentum:"
+    "section": "Hyperparameter optimisation",
+    "text": "Hyperparameter optimisation\n\n\nTechnique for finding optimal hyperparameters:\nMake intelligent guesses (usually cannot be formulated as a differentiable task)\n\n\nGrid search: Test a fixed set of combinations\n\n\n\n\nRandom search: Test randomly selected combinations\n\n\n\n\nBayesian optimisation / evolutionary algorithms / etc.: Cleverly select new combinations based on past results"
   },
   {
-    "objectID": "slides/2-models/lecture4.html#advanced-gradient-descent-algorithms-1",
-    "href": "slides/2-models/lecture4.html#advanced-gradient-descent-algorithms-1",
+    "objectID": "slides/2-models/lecture4.html#ml-assignment-2",
+    "href": "slides/2-models/lecture4.html#ml-assignment-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Advanced gradient descent algorithms",
-    "text": "Advanced gradient descent algorithms"
-  },
-  {
-    "objectID": "slides/2-models/lecture4.html#automatic-differentiation",
-    "href": "slides/2-models/lecture4.html#automatic-differentiation",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Automatic differentiation",
-    "text": "Automatic differentiation\n\n\n\n\n\n\n\n\n\nManually computing gradients is rather inconvenient 😒\nLuckily, automatic differentiation helps us out:\nimport jax\n\ndef predict(X, theta):              # For complicated models, predict()\n  return X.dot(theta)               # also tends to get very complicated\n\ndef loss(X, theta, y):              # But loss function is always simple\n  y_hat = predict(X, theta)\n  mse = ((y_hat - y)**2).mean()\n  return mse\n\nfor epoch in range(n_epochs):\n  theta = theta - eta*jax.grad(loss, argnums=1)(X, theta, y)  # autodiff!\n(appendix B in textbook)"
+    "section": "ML assignment 2",
+    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template will be provided)\nMake the code accessible"
   },
   {
     "objectID": "slides/2-models/lecture2.html#module-2",
@@ -641,7 +634,7 @@
     "href": "index.html#module-2-machine-learning-models",
     "title": "DAT158 Lecture notes",
     "section": "Module 2: Machine learning models",
-    "text": "Module 2: Machine learning models\nWednesday week 38\nThursday week 38\nWednesday week 39"
+    "text": "Module 2: Machine learning models\nWednesday week 38\nThursday week 38\nWednesday week 39\nThursday week 39"
   },
   {
     "objectID": "slides/1-intro/lecture1.html#ml-engineering-advanced-algorithms",
