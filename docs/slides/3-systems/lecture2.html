@@ -386,9 +386,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -424,6 +421,11 @@ sma@hvl.no
 <li>Useful tools 🛠</li>
 <li>Mistakes to avoid 💣</li>
 </ul>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="section" class="slide level2 center" data-menu-title="AI assistant" data-background-color="#E1F5FE">
+<h2></h2>
+<p><img src="figures/asa.png" style="box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);"></p>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="ml-assignment-2" class="slide level2">
@@ -512,154 +514,6 @@ sma@hvl.no
 <p><img data-src="figures/MLlifecycle.png"></p>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="checklist-pt.-1-frame-the-problem" class="slide level2">
-<h2>☑️ Checklist pt.&nbsp;1: Frame the problem</h2>
-<p>This is about what your solution will actually solve.</p>
-<p>How do you measure success at your business objective?</p>
-<div style="padding-top: 50px;">
-
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/forbes50.png" style="width:80.0%"></p>
-<figcaption><a href="https://www.forbes.com/lists/ai50/">Forbes Top-50 AI list 2024</a></figcaption>
-</figure>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="checklist-pts.-2-3-get-the-data-explore-the-data" class="slide level2">
-<h2>☑️ Checklist pts. 2 &amp; 3: Get the data, explore the data</h2>
-<p>This can be the dealbreaker for many projects.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><em>Collect</em></p>
-<div class="fragment">
-<p>Is your data</p>
-<ul>
-<li>easily available?</li>
-<li>available in sufficient quantity?</li>
-<li>up to date?</li>
-<li>expensive?</li>
-<li>sensitive? (personal info / customer secrets / state secrets / …)</li>
-<li>under legal restrictions?</li>
-</ul>
-</div>
-</div><div class="column" style="width:50%;">
-<p><em>Explore</em></p>
-<div class="fragment">
-<p>Does your data contain</p>
-<ul>
-<li>the correlations of interest?</li>
-<li>redundant information?</li>
-<li>missing / bad information?</li>
-<li>imbalance between classes?</li>
-</ul>
-</div>
-</div></div>
-<div class="fragment">
-<p><span class="emoji" data-emoji="no_entry_sign">🚫</span> Reminder: Do <strong>not</strong> look at the test dataset yet</p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="checklist-pt.-4-prepare-the-data" class="slide level2">
-<h2>☑️ Checklist pt.&nbsp;4: Prepare the data</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>Training a model typically involves several sequential steps:</p>
-<ul>
-<li>Data preprocessing
-<ul>
-<li>Cleaning</li>
-<li>Imputation</li>
-<li>Feature engineering</li>
-<li>Scaling</li>
-</ul></li>
-<li>Training loop</li>
-<li>Performance evaluation</li>
-</ul>
-<p>which can be represented as a directed acyclic graph (DAG)</p>
-</div><div class="column" style="width:40%;">
-<div class="absolute" style="top: -20px; ">
-<div class="cell" data-reveal="true" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing':30}}}%%
-flowchart TD
-    A[(Data)]
-    A --&gt; B[Cleaned&lt;br&gt;data]
-    B --&gt; C{Split}
-    C --&gt; D[Train set]
-    C --&gt; E[Scaled&lt;br&gt;val. set]
-    C --&gt; F[Scaled&lt;br&gt;test set]
-    D --&gt; G(Scaler)
-    G --&gt; J[Scaled&lt;br&gt;train set]
-    D --&gt; J
-    G --&gt; E
-    G --&gt; F
-    J --&gt; H(Model)
-    E --&gt; H
-    H --&gt; I(Evaluate)
-    F --&gt; I
-</pre>
-</div>
-<p></p><figcaption> Example processing graph</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="data-processing-pipelines" class="slide level2">
-<h2>Data processing: <em>Pipelines</em></h2>
-<div style="padding-top: 30px;">
-
-</div>
-<p>Often call these processing steps a <span class="color-pink-dark"><em>pipeline</em></span></p>
-<div style="padding-top: 30px;">
-
-</div>
-<p>Different frameworks exists to facilitate them, <em>e.g.</em> in Scikit-Learn:</p>
-<div class="sourceCode" id="cb1" data-code-line-numbers="1-6|1,4,5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb1-2"><a></a><span class="op">&gt;&gt;&gt;</span> X, y <span class="op">=</span> make_classification(random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb1-3"><a></a><span class="op">&gt;&gt;&gt;</span> X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y)</span>
-<span id="cb1-4"><a></a>pipe <span class="op">=</span> Pipeline([(<span class="st">'scaler'</span>, StandardScaler()), (<span class="st">'svc'</span>, SVC())])</span>
-<span id="cb1-5"><a></a>pipe.fit(X_train, y_train).score(X_test, y_test)</span>
-<span id="cb1-6"><a></a><span class="fl">0.88</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div style="padding-top: 30px;">
-
-</div>
-<p>(also <a href="https://spark.apache.org/">Apache Spark</a>, <a href="https://www.dask.org/">Dask</a>, <a href="https://www.ray.io/">Ray</a>, <a href="https://airflow.apache.org/">Airflow</a>, <a href="https://docs.celeryq.dev/en/main/getting-started/introduction.html">Celery</a>, and others)</p>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="checklist-pt.-5-shortlist-promising-models" class="slide level2">
-<h2>☑️ Checklist pt.&nbsp;5: Shortlist promising models</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
-<p>Recall the <span class="color-purple"><em>No free lunch</em></span> theorem:</p>
-<blockquote>
-<p>Without any assumptions about the data, there is no reason to expect one model to be better than others.</p>
-</blockquote>
-<p><i class="bi bi-arrow-right"></i> Try out several model types.</p>
-<p>(Unless you know things about your data that motivates a certain choice)</p>
-<p>At this point, focus on wide experimentation rather than optimising a single selection.</p>
-</div><div class="column" style="width:30%;">
-<p><img data-src="figures/sklearn_model_list.png" style="width:80.0%"></p>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="keeping-track-of-models" class="slide level2">
-<h2>Keeping track of models</h2>
-<p>During development (especially hyperparameter optimisation), you’ll typically have a lot of models floating around</p>
-<div class="fragment">
-<p><strong><em>Big timesaver:</em></strong> A system for tracking configs and performance</p>
-<p><img data-src="figures/comet-example.png" style="width:90.0%"></p>
-<p>Tools: <a href="https://mlflow.org/">MLflow</a> / <a href="https://aimstack.io/">Aim</a> / <a href="https://github.com/IDSIA/sacred">Sacred</a> / <a href="https://www.comet.com/">Comet</a> / <a href="https://wandb.ai/">Weights &amp; Biases</a></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
 <section id="checklist-pt.-6-fine-tune" class="slide level2">
 <h2>☑️ Checklist pt.&nbsp;6: Fine-tune</h2>
 <div style="padding-top: 30px;">
@@ -670,53 +524,14 @@ flowchart TD
 
 </div>
 <ul>
-<li><p>Run hyperparameter search (remember cross-validation)</p></li>
+<li><p>Run hyperparameter search (remember cross-validation)</p>
+<p>Tools: <a href="https://scikit-learn.org/1.5/modules/grid_search.html">Scikit-learn</a>, <a href="https://optuna.org/">Optuna</a>, <a href="https://hyperopt.github.io/hyperopt/">HyperOpt</a>, <a href="https://www.anyscale.com/library/ray-tune">Ray Tune</a></p></li>
 <li><p>Maybe make an ensemble of the best models</p></li>
 </ul>
 <div style="padding-top: 30px;">
 
 </div>
 <p>Finally, evaluate performance on the test set</p>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="the-ml-project-lifecycle" class="slide level2">
-<h2>The ML project lifecycle</h2>
-<p><img data-src="figures/MLlifecycle.png"></p>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="static-vs-dynamic-training" class="slide level2">
-<h2>Static vs dynamic training</h2>
-<p>Two approaches to model training:</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="fragment fade-in-then-semi-out">
-<p><strong>Static (<em>offline</em>) training:</strong></p>
-<p>Train a single model once, deploy it, and keep using it for a while</p>
-<p><span class="color-green-dark" style="font-weght: 400;">Pros</span>:</p>
-<ul>
-<li>Model can be thoroughly tested</li>
-<li>Deployment needs only be done once</li>
-</ul>
-<p><span class="color-red-dark" style="font-weght: 400;">Cons</span>:</p>
-<ul>
-<li>Data must be unchanging over time</li>
-</ul>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><strong>Dynamic (<em>online</em>) training</strong>:</p>
-<p>(Re)-train models continuously when new data comes in, and serve the most recent</p>
-<p><span class="color-green-dark" style="font-weght: 400;">Pros</span>:</p>
-<ul>
-<li>Model always up-to-date with shift/fluctuations in data</li>
-</ul>
-<p><span class="color-red-dark" style="font-weght: 400;">Cons</span>:</p>
-<ul>
-<li>Potentially high cost of training and deployment cycle</li>
-<li>Each model may not be thoroughly tested</li>
-</ul>
-</div>
-</div></div>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="verifying-ml-code" class="slide level2">
@@ -734,12 +549,12 @@ flowchart TD
 <p>Verify that each step of the pipeline gives expected output. Difficult due to random nature of many ML models</p>
 <ul>
 <li><p>Improve reproduceability by always using same random numbers:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>requires that you initialise model components in a fixed order)</p>
 <ul>
 <li><p>Verify shapes rather than content</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> processed_data.shape <span class="op">==</span> original_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> processed_data.shape <span class="op">==</span> original_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 </ul>
 </div>
@@ -781,11 +596,335 @@ flowchart TD
 </div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="section" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
+<section id="verifying-data" class="slide level2">
+<h2>Verifying data</h2>
+<div style="padding-top: 20px;">
+
+</div>
+<p><span class="color-blue-dark"><em>An ML model is necessarily only as good as the data it is trained on.</em></span></p>
+<div style="padding-top: 20px;">
+
+</div>
+<p>Need to ensure data quality both for training and for inference</p>
+<div style="padding-top: 20px;">
+
+</div>
+<p>Useful to define a <span class="color-blue-dark"><strong>data schema</strong></span> restricting the domain of each feature, <em>e.g.</em></p>
+<ul>
+<li>User age is between 18 and 99 years</li>
+<li>Patient is not <code>male</code> and <code>pregnant</code></li>
+<li>Apartment does not have more bathrooms than bedrooms</li>
+</ul>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="verifying-data-bias-and-fairness" class="slide level2">
+<h2>Verifying data: Bias and fairness</h2>
+<p><span class="color-pink-dark"><strong><em>Bias</em></strong></span> is when we gather data or make predictions with a systematic tendency of presenting a skewed or inaccurate view of reality.</p>
+<p>Failing to account for biases leads to <span class="color-pink-dark"><em>unfair</em></span> predictions for subgroups in data.</p>
+<div style="padding-top: 20px;">
+
+</div>
+<div class="fragment" data-fragment-index="0">
+<p>Some types of bias: <em>(not a solid line between these)</em></p>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment fade-in-then-semi-out" data-fragment-index="1">
+<ul>
+<li><strong>Reporting bias</strong></li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out" data-fragment-index="2">
+<ul>
+<li><strong>Coverage bias</strong></li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out" data-fragment-index="3">
+<ul>
+<li><strong>Sampling bias</strong></li>
+</ul>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="1">
+<blockquote>
+<p>Last week, 8% of hospital COVID-19 tests were positive.</p>
+</blockquote>
+<p>What is the prevalence of COVID-19 in the general population?</p>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="2">
+<p>Let’s do a survey on the importance of lectures.</p>
+<p><em>*Asks students in the auditorium*</em></p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<blockquote>
+<p>Election polls are typically results from ~1000 automatic phone calls to random recipients.</p>
+</blockquote>
+<p>Do they correctly predict the winner?</p>
+<div class="fragment" data-fragment-index="4">
+<p><em>(could we skip the election and just use the poll?)</em></p>
+</div>
+</div>
+</div>
+</div></div>
+<!-- Do you enjoy responding to surveys? -->
+<!-- - [ ] Yes, I love surveys -->
+<!-- - [ ] No, I throw them in trash -->
+<!----------------------------------------------------------------------------->
+</section>
+<section id="fairness" class="slide level2">
+<h2>Fairness</h2>
+<div class="absolute" style="font-size: 0.7em;top: 0%; right: 0%; ">
+<p>Adapted from <a href="https://developers.google.com/machine-learning/crash-course/fairness/demographic-parity"><em>Google Developers: Real-world ML</em></a></p>
+</div>
+<p>We want to build an ML model that accepts students to a university.</p>
+<p>Admission should of course be <span class="color-pink"><em>fair</em></span> between applicants from different groups, even though one group is in majority.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="1">
+<p>Model output:</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<div style="padding-top: 20px;">
+
+</div>
+<p><em>Acceptance rate:</em></p>
+<p><span class="color-blue-dark">Blue group: &nbsp;&nbsp; 3/19 = <strong>16%</strong></span></p>
+<p><span class="color-orange-dark">Orange group: 1/6 = <strong>17%</strong></span></p>
+<p><i class="bi bi-arrow-right"></i> Seems fair.</p>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="fragment" data-fragment-index="1">
+<p><img data-src="figures/applicants_b.png" style="width:90.0%"></p>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="fairness-1" class="slide level2">
+<h2>Fairness</h2>
+<div class="absolute" style="font-size: 0.7em;top: 0%; right: 0%; ">
+<p>Adapted from <a href="https://developers.google.com/machine-learning/crash-course/fairness/demographic-parity"><em>Google Developers: Real-world ML</em></a></p>
+</div>
+<p>We also want to take into account if the applicants are qualified<br> (only accept those how are):</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="1">
+<p>Model output:</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p><em>Acceptance rate:</em></p>
+<p><span class="color-blue-dark">Blue group: &nbsp;&nbsp; 3/19 = <strong>16%</strong></span></p>
+<p><span class="color-orange-dark">Orange group: 1/6 = <strong>17%</strong></span></p>
+<p><em>Acceptance rate of <strong>qualified</strong> applicants:</em></p>
+<p><span class="color-blue-dark">Blue group: &nbsp;&nbsp; 3/13 = <strong>23%</strong></span></p>
+<p><span class="color-orange-dark">Orange group: 1/2 = <strong>50%</strong></span></p>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="fragment" data-fragment-index="1">
+<p><img data-src="figures/applicants_a.png" style="width:90.0%"></p>
+</div>
+</div></div>
+<div class="fragment" data-fragment-index="3">
+<p>Cannot be fair on both group and subgroup/individual level at the same time :(</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="verifying-models-feature-importance" class="slide level2">
+<h2>Verifying models: Feature importance</h2>
+<p>Quantify how much each input feature matters to the prediction</p>
+<div style="padding-top: 30px;">
+
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_california_housing</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>house <span class="op">=</span> fetch_california_housing()</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> house.data, house.target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="verifying-models-feature-importance-1" class="slide level2">
+<h2>Verifying models: Feature importance</h2>
+<p>Quantify how much each input feature matters to the prediction</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>For <strong>linear models</strong>, we can look at the parameter (<em>coefficient</em>) values</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="padding-top: 20px;">
+
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>lr.fit(X, y)</span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>coefficients <span class="op">=</span> lr.coef_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="figures/linear_regression_coefficients.png"></p>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="feature-importance" class="slide level2">
+<h2>Feature importance</h2>
+<p>Quantify how much each input feature matters to the prediction</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="color-text-muted">For <strong>linear models</strong>, we can look at the parameter (<em>coefficient</em>) values</span></li>
+<li>For <strong>tree-based models</strong>, we can attribute reduction in Gini impurity as feature importance</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="padding-top: 20px;">
+
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestRegressor()</span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>clf.fit(X, y)</span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>importance <span class="op">=</span> clf.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="figures/random_forest_feature_importance.png"></p>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="feature-importance-1" class="slide level2">
+<h2>Feature importance</h2>
+<p>Quantify how much each input feature matters to the prediction</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="color-text-muted">For <strong>linear models</strong>, we can look at the parameter (<em>coefficient</em>) values</span></li>
+<li><span class="color-text-muted">For <strong>tree-based models</strong>, we can attribute reduction in Gini impurity as feature importance</span></li>
+<li>For models trained via <strong>gradient descent</strong>, we can compute how much a small change in input affects the output</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="padding-top: 20px;">
+
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># (beyond the scope for us)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="r-stack">
+<p><img data-src="figures/gradcam_no_overlay.png"></p>
+<div class="fragment">
+<p><img data-src="figures/gradcam_with_overlay.jpg"></p>
+</div>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="feature-importance-2" class="slide level2">
+<h2>Feature importance</h2>
+<p>Quantify how much each input feature matters to the prediction</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="color-text-muted">For <strong>linear models</strong>, we can look at the parameter (<em>coefficient</em>) values</span></li>
+<li><span class="color-text-muted">For <strong>tree-based models</strong>, we can attribute reduction in Gini impurity as feature importance</span></li>
+<li><span class="color-text-muted">For models trained via <strong>gradient descent</strong>, we can compute how much a small change in input affects the output</span></li>
+<li>For <strong>any</strong> model, we can compute
+<ul>
+<li><em>Permutation feature importance</em></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="padding-top: 20px;">
+
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> permutation_importance</span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>importance <span class="op">=</span> permutation_importance(clf, X, y).importances_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="figures/random_forest_permutation_feature_importance.png"></p>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="feature-importance-3" class="slide level2">
+<h2>Feature importance</h2>
+<p>Quantify how much each input feature matters to the prediction</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="color-text-muted">For <strong>linear models</strong>, we can look at the parameter (<em>coefficient</em>) values</span></li>
+<li><span class="color-text-muted">For <strong>tree-based models</strong>, we can attribute reduction in Gini impurity as feature importance</span></li>
+<li><span class="color-text-muted">For models trained via <strong>gradient descent</strong>, we can compute how much a small change in input affects the output</span></li>
+<li>For <strong>any</strong> model, we can compute
+<ul>
+<li><em>Permutation feature importance</em></li>
+<li><em>Shapley values</em></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="padding-top: 20px;">
+
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shap</span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>explainer <span class="op">=</span> shap.TreeExplainer(rf)</span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>explanation <span class="op">=</span> explainer(X)</span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>shap.plots.beeswarm(explanation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="figures/shap_plot.png"></p>
+</div></div>
+<div class="fragment color-blue-dark">
+<p>Feature importance tells us something about the <em><strong>model</strong></em>, not necessarily about reality.</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="checklist-pt.-7-present-the-solution" class="slide level2">
+<h2>☑️ Checklist pt.&nbsp;7: Present the solution</h2>
+<div style="padding-top: 30px;">
+
+</div>
+<p><strong><em>Documentation time</em></strong> 📋</p>
+<div style="padding-top: 30px;">
+
+</div>
+<ul>
+<li>Document the system</li>
+<li>Make a nice powerpoint for stakeholders</li>
+<li>Write a report about business added value</li>
+<li>Use cool business words</li>
+<li>Business</li>
+<li>Evaluate business impact</li>
+<li>Business</li>
+</ul>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="checklist-pt.-8-launch" class="slide level2">
+<h2>☑️ Checklist pt.&nbsp;8: Launch</h2>
+<p><span class="color-purple"><strong>Deploy</strong></span></p>
+<ul>
+<li><p>Choose how or where to run the ML model</p>
+<p>(<em>user hardware / common backend / specialised backend</em>)</p></li>
+<li><p>Run the model!</p></li>
+<li><p>Scale servers as required</p></li>
+</ul>
+<p><span class="color-deep-purple"><strong>Monitor</strong></span></p>
+<ul>
+<li><p>Check model performance over time</p>
+<p>Beware of both sudden and slow degradation</p></li>
+</ul>
+<p><span class="color-indigo"><strong>Update</strong></span></p>
+<ul>
+<li>Re-train model on new data (when available)</li>
+<li>Consider other model types</li>
+</ul>
+<div class="absolute" style="font-size: 3em;top: 60%; right: 10%; ">
+<p><span class="emoji" data-emoji="rocket">🚀</span></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="section-1" class="slide level2" data-background-iframe="https://www.gradio.app" data-background-interactive="true" data-menu-title="Gradio">
+<h2></h2>
+<div class="absolute" style="font-size: 0.7em;left: 0%; bottom: 0%; ">
+<p><a href="www.gradio.app">www.gradio.app</a></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="section-2" class="slide level2" data-background-image="figures/streamlit.png" data-menu-title="Streamlit">
+<h2></h2>
+<div class="absolute" style="font-size: 0.7em;top: 0%; left: 0%; ">
+<p><a href="streamlit.io">streamlit.io</a></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="section-3" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
 <h2></h2>
 <div class="absolute" style="top: 60%; left: 40%; width: 20%; ">
 <p><img data-src="../1-intro/figures/hvl_logo_engelsk.png"></p>
 </div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

@@ -623,34 +623,6 @@
     "text": "Avoiding bad things :/\n\nTarget leakage\nType 3 errors (wolves vs huskies) (spurious correlations)\nOverreliance on a single metric\nNot setting a baseline\nImplicitly training on the test set"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DAT158 Lecture notes",
-    "section": "",
-    "text": "Published after each lecture week – see Canvas for additional material."
-  },
-  {
-    "objectID": "index.html#module-1-introduction-to-machine-learning",
-    "href": "index.html#module-1-introduction-to-machine-learning",
-    "title": "DAT158 Lecture notes",
-    "section": "Module 1: Introduction to machine learning",
-    "text": "Module 1: Introduction to machine learning\nWednesday week 34\nThursday week 34\nWednesday week 35\nThursday week 35"
-  },
-  {
-    "objectID": "index.html#module-2-machine-learning-models",
-    "href": "index.html#module-2-machine-learning-models",
-    "title": "DAT158 Lecture notes",
-    "section": "Module 2: Machine learning models",
-    "text": "Module 2: Machine learning models\nWednesday week 38\nThursday week 38\nWednesday week 39\nThursday week 39"
-  },
-  {
-    "objectID": "index.html#module-3-end-to-end-machine-learning-project",
-    "href": "index.html#module-3-end-to-end-machine-learning-project",
-    "title": "DAT158 Lecture notes",
-    "section": "Module 3: End-to-end machine learning project",
-    "text": "Module 3: End-to-end machine learning project\nWednesday week 42"
-  },
-  {
     "objectID": "slides/3-systems/lecture1.html#topics-for-module-3",
     "href": "slides/3-systems/lecture1.html#topics-for-module-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
@@ -763,88 +735,186 @@
     "text": "Verifying ML models\nTesting code is one thing, but verifying the model output is something else.\nCan’t feasibly check model output against all possible inputs\n\nTwo levels of testing:\n\n“Simple” evaluation:\n\nCompute metrics on the test dataset\n\n\n\n\n\nIn-depth evaluation:\nDiagnose model through explainability and interpretability techniques such as\n\nFeature importance\nAttribution methods\nBias evaluation"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#verifying-data",
-    "href": "slides/3-systems/lecture1.html#verifying-data",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DAT158 Lecture notes",
+    "section": "",
+    "text": "Published after each lecture week – see Canvas for additional material."
+  },
+  {
+    "objectID": "index.html#module-1-introduction-to-machine-learning",
+    "href": "index.html#module-1-introduction-to-machine-learning",
+    "title": "DAT158 Lecture notes",
+    "section": "Module 1: Introduction to machine learning",
+    "text": "Module 1: Introduction to machine learning\nWednesday week 34\nThursday week 34\nWednesday week 35\nThursday week 35"
+  },
+  {
+    "objectID": "index.html#module-2-machine-learning-models",
+    "href": "index.html#module-2-machine-learning-models",
+    "title": "DAT158 Lecture notes",
+    "section": "Module 2: Machine learning models",
+    "text": "Module 2: Machine learning models\nWednesday week 38\nThursday week 38\nWednesday week 39\nThursday week 39"
+  },
+  {
+    "objectID": "index.html#module-3-end-to-end-machine-learning-project",
+    "href": "index.html#module-3-end-to-end-machine-learning-project",
+    "title": "DAT158 Lecture notes",
+    "section": "Module 3: End-to-end machine learning project",
+    "text": "Module 3: End-to-end machine learning project\nWednesday week 42\nThursday week 42"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#topics-for-module-3",
+    "href": "slides/3-systems/lecture2.html#topics-for-module-3",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Topics for Module 3",
+    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#ml-assignment-2",
+    "href": "slides/3-systems/lecture2.html#ml-assignment-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ML assignment 2",
+    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template will be provided)\nMake the code accessible"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#ml-assignment-2-1",
+    "href": "slides/3-systems/lecture2.html#ml-assignment-2-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ML assignment 2",
+    "text": "ML assignment 2\nSome ideas:\n\n\nMake a web app to\n\nEstimate the value of a used car [1]\nPredict wine quality [2]\nClassify mushrooms as poisonous or edible [3]\n\n\nMake a chatbot to\n\nBe a student assistant in DAT158\nWrite tweets based on your current mood\nGenerate pictures of todays’ weather based on meteorological info\n\n\nUsing pre-trained models is fine, but you need to somehow adapt them to your data and use case.\nThe result should be something you can be proud of!"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#machine-learning-engineering",
+    "href": "slides/3-systems/lecture2.html#machine-learning-engineering",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#more-detailed-picture-the-ml-project-lifecycle",
+    "href": "slides/3-systems/lecture2.html#more-detailed-picture-the-ml-project-lifecycle",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "More detailed picture: the ML project lifecycle",
+    "text": "More detailed picture: the ML project lifecycle"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#checklist-pt.-6-fine-tune",
+    "href": "slides/3-systems/lecture2.html#checklist-pt.-6-fine-tune",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 6: Fine-tune",
+    "text": "☑️ Checklist pt. 6: Fine-tune\n\n\n\nHaving made a ranking of good models, now is the time to optimise.\n\n\n\n\nRun hyperparameter search (remember cross-validation)\nTools: Scikit-learn, Optuna, HyperOpt, Ray Tune\nMaybe make an ensemble of the best models\n\n\n\n\nFinally, evaluate performance on the test set"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#verifying-ml-code",
+    "href": "slides/3-systems/lecture2.html#verifying-ml-code",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Verifying ML code",
+    "text": "Verifying ML code\n\n\n\nUnit tests:\nAlways a good idea (but less relevant when relying heavily on frameworks)\n\n\n\n\nIntegration tests:\nVerify that each step of the pipeline gives expected output. Difficult due to random nature of many ML models\n\nImprove reproduceability by always using same random numbers:\nnp.random.seed(42)\n\nrequires that you initialise model components in a fixed order)\n\nVerify shapes rather than content\nassert processed_data.shape == original_data.shape\n\n\n\n\n\nDeployment tests:\n\nVerify functionality of the entire system\nTest scalability, stability, latency, etc"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#verifying-ml-models",
+    "href": "slides/3-systems/lecture2.html#verifying-ml-models",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Verifying ML models",
+    "text": "Verifying ML models\nTesting code is one thing, but verifying the model output is something else.\nCan’t feasibly check model output against all possible inputs\n\nTwo levels of testing:\n\n“Simple” evaluation:\n\nCompute metrics on the test dataset\n\n\n\n\n\nIn-depth evaluation:\nDiagnose model through explainability and interpretability techniques such as\n\nFeature importance\nAttribution methods\nBias evaluation"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#verifying-data",
+    "href": "slides/3-systems/lecture2.html#verifying-data",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Verifying data",
     "text": "Verifying data\n\n\n\nAn ML model is necessarily only as good as the data it is trained on.\n\n\n\nNeed to ensure data quality both for training and for inference\n\n\n\nUseful to define a data schema restricting the domain of each feature, e.g.\n\nUser age is between 18 and 99 years\nPatient is not male and pregnant\nApartment does not have more bathrooms than bedrooms"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#verifying-data-bias-and-fairness",
-    "href": "slides/3-systems/lecture1.html#verifying-data-bias-and-fairness",
+    "objectID": "slides/3-systems/lecture2.html#verifying-data-bias-and-fairness",
+    "href": "slides/3-systems/lecture2.html#verifying-data-bias-and-fairness",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Verifying data: Bias and fairness",
     "text": "Verifying data: Bias and fairness\nBias is when we gather data or make predictions with a systematic tendency of presenting a skewed or inaccurate view of reality.\nFailing to account for biases leads to unfair predictions for subgroups in data.\n\n\n\n\nSome types of bias: (not a solid line between these)\n\n\n\n\n\nReporting bias\n\n\n\n\nCoverage bias\n\n\n\n\nSampling bias\n\n\n\n\n\n\nLast week, 8% of hospital COVID-19 tests were positive.\n\nWhat is the prevalence of COVID-19 in the general population?\n\n\nLet’s do a survey on the importance of lectures.\n*Asks students in the auditorium*\n\n\n\nElection polls are typically results from ~1000 automatic phone calls to random recipients.\n\nDo they correctly predict the winner?\n\n(could we skip the election and just use the poll?)"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#fairness",
-    "href": "slides/3-systems/lecture1.html#fairness",
+    "objectID": "slides/3-systems/lecture2.html#fairness",
+    "href": "slides/3-systems/lecture2.html#fairness",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Fairness",
     "text": "Fairness\n\nAdapted from Google Developers: Real-world ML\n\nWe want to build an ML model that accepts students to a university.\nAdmission should of course be fair between applicants from different groups, even though one group is in majority.\n\n\n\nModel output:\n\n\n\n\n\nAcceptance rate:\nBlue group:    3/19 = 16%\nOrange group: 1/6 = 17%\n Seems fair."
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#fairness-1",
-    "href": "slides/3-systems/lecture1.html#fairness-1",
+    "objectID": "slides/3-systems/lecture2.html#fairness-1",
+    "href": "slides/3-systems/lecture2.html#fairness-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Fairness",
     "text": "Fairness\n\nAdapted from Google Developers: Real-world ML\n\nWe also want to take into account if the applicants are qualified (only accept those how are):\n\n\n\nModel output:\n\n\nAcceptance rate:\nBlue group:    3/19 = 16%\nOrange group: 1/6 = 17%\nAcceptance rate of qualified applicants:\nBlue group:    3/13 = 23%\nOrange group: 1/2 = 50%\n\n\n\n\n\n\n\nCannot be fair on both group and subgroup/individual level at the same time :("
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#verifying-models-feature-importance",
-    "href": "slides/3-systems/lecture1.html#verifying-models-feature-importance",
+    "objectID": "slides/3-systems/lecture2.html#verifying-models-feature-importance",
+    "href": "slides/3-systems/lecture2.html#verifying-models-feature-importance",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Verifying models: Feature importance",
     "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\n\nfrom sklearn.datasets import fetch_california_housing\nhouse = fetch_california_housing()\nX, y = house.data, house.target"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#verifying-models-feature-importance-1",
-    "href": "slides/3-systems/lecture1.html#verifying-models-feature-importance-1",
+    "objectID": "slides/3-systems/lecture2.html#verifying-models-feature-importance-1",
+    "href": "slides/3-systems/lecture2.html#verifying-models-feature-importance-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Verifying models: Feature importance",
     "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\n\n\n\n\n\nlr = LinearRegression()\nlr.fit(X, y)\ncoefficients = lr.coef_"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#feature-importance",
-    "href": "slides/3-systems/lecture1.html#feature-importance",
+    "objectID": "slides/3-systems/lecture2.html#feature-importance",
+    "href": "slides/3-systems/lecture2.html#feature-importance",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
     "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\n\n\n\n\n\nclf = RandomForestRegressor()\nclf.fit(X, y)\nimportance = clf.feature_importances_"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#feature-importance-1",
-    "href": "slides/3-systems/lecture1.html#feature-importance-1",
+    "objectID": "slides/3-systems/lecture2.html#feature-importance-1",
+    "href": "slides/3-systems/lecture2.html#feature-importance-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
     "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\n\n\n\n\n\n# (beyond the scope for us)"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#feature-importance-2",
-    "href": "slides/3-systems/lecture1.html#feature-importance-2",
+    "objectID": "slides/3-systems/lecture2.html#feature-importance-2",
+    "href": "slides/3-systems/lecture2.html#feature-importance-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
     "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\n\n\n\n\n\n\nfrom sklearn.inspection import permutation_importance\nimportance = permutation_importance(clf, X, y).importances_mean"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#feature-importance-3",
-    "href": "slides/3-systems/lecture1.html#feature-importance-3",
+    "objectID": "slides/3-systems/lecture2.html#feature-importance-3",
+    "href": "slides/3-systems/lecture2.html#feature-importance-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\nShapley values\n\n\n\n\n\n\nimport shap\nexplainer = shap.TreeExplainer(rf)\nexplanation = explainer(X)\nshap.plots.beeswarm(explanation)"
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\nShapley values\n\n\n\n\n\n\nimport shap\nexplainer = shap.TreeExplainer(rf)\nexplanation = explainer(X)\nshap.plots.beeswarm(explanation)\n\n\n\nFeature importance tells us something about the model, not necessarily about reality."
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#checklist-pt.-7-present-the-solution",
-    "href": "slides/3-systems/lecture1.html#checklist-pt.-7-present-the-solution",
+    "objectID": "slides/3-systems/lecture2.html#checklist-pt.-7-present-the-solution",
+    "href": "slides/3-systems/lecture2.html#checklist-pt.-7-present-the-solution",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "☑️ Checklist pt. 7: Present the solution",
     "text": "☑️ Checklist pt. 7: Present the solution\n\n\n\nDocumentation time 📋\n\n\n\n\nDocument the system\nMake a nice powerpoint for stakeholders\nWrite a report about business added value\nUse cool business words\nBusiness\nEvaluate business impact\nBusiness"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#checklist-pt.-8-launch",
-    "href": "slides/3-systems/lecture1.html#checklist-pt.-8-launch",
+    "objectID": "slides/3-systems/lecture2.html#checklist-pt.-8-launch",
+    "href": "slides/3-systems/lecture2.html#checklist-pt.-8-launch",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "☑️ Checklist pt. 8: Launch",
     "text": "☑️ Checklist pt. 8: Launch\nDeploy\n\nChoose how or where to run the ML model\n(user hardware / common backend / specialised backend)\nRun the model!\nScale servers as required\n\nMonitor\n\nCheck model performance over time\nBeware of both sudden and slow degradation\n\nUpdate\n\nRe-train model on new data (when available)\nConsider other model types\n\n\n🚀"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#section-1",
+    "href": "slides/3-systems/lecture2.html#section-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "www.gradio.app"
+  },
+  {
+    "objectID": "slides/3-systems/lecture2.html#section-2",
+    "href": "slides/3-systems/lecture2.html#section-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "streamlit.io"
   },
   {
     "objectID": "slides/2-models/lecture4.html#topics-module-2",
