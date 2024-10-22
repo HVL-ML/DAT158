@@ -595,32 +595,165 @@
     "text": "The best model is:\n\nVery dependent on the task.\n\n\n\n\n\n\nNo free lunch (NFL) theorem\n\n\nThere is (provably) no single machine learning method that will work best on all problems.\n\n\n\nIn other words:\nUnder no assumptions about the data, there is no reason to choose a certain ML method (or any optimisation technique in general) over another.\n\n\nHow to choose, then?\n\nTest\nFrom experience"
   },
   {
+    "objectID": "slides/3-systems/lecture3.html#ml-assignment-2",
+    "href": "slides/3-systems/lecture3.html#ml-assignment-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ML assignment 2",
+    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template will be provided)\nMake the code accessible\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
+  },
+  {
     "objectID": "slides/3-systems/lecture3.html#topics-for-module-3",
     "href": "slides/3-systems/lecture3.html#topics-for-module-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Topics for Module 3",
-    "text": "Topics for Module 3\nPiecing together a complete ML-based system\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\nProject framing\nA bit about deployment\nThe ML project lifecycle\nUseful tools\nMistakes to avoid"
+    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣  ## Mistakes to avoid 🧯 {.center background-color=“#FBE9E7”}\n\n\nSupplementary reading: Lones, Michael A. How to avoid machine learning pitfalls: a guide for academic researchers. arXiv:2108.02497 (2021)."
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#section",
-    "href": "slides/3-systems/lecture3.html#section",
+    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process",
+    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "https://arxiv.org/pdf/2108.02497"
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']\nX = data[:]\n\nmodel.fit(X, y)"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-1",
+    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']  # Select target values\nX = data[:]         # Select all input features\n\nmodel.fit(X, y)"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-2",
+    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']\nX = data[:]         # Should have used data.drop('Target')\n\nmodel.fit(X, y)     # Target still in X\n Target leakage\nLeads to overinflated performance numbers"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-3",
+    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-3",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us scale the features to improve model learning:\n\n\n\nfrom sklearn.preprocessing import StandardScaler\n\nscaler = StandardScaler.fit(X)    # \"Train\" the scaler\nX = scaler.transform(X)           # Apply the results \n\nX_train, X_test, y_train, y_test = train_test_split(X, y)\nmodel.fit(X_train, y_train)\n\n\n\n\nTest data was included when fitting the scaler (should have used only train data)\n Test data leakage\nLeads to overinflated performance numbers"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-4",
+    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-4",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nWe have proposed two models, but want to select the best one:\n\n\n\ndef find_best_model(model1, model2):\n  \n  model1.fit(X_train, y_train)\n  model2.fit(X_train, y_train)\n\n  score1 = model1.score(X_test, y_test)\n  score2 = model1.score(X_test, y_test)\n\n  if score1 &gt; score2:\n    return model1\n  else:\n    return model2\n\nTest data was used for model selection (should have used validation data)\n Test data leakage\nLeads to overinflated performance numbers"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#spurious-correlations",
+    "href": "slides/3-systems/lecture3.html#spurious-correlations",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Spurious correlations",
+    "text": "Spurious correlations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRibeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. “Why should i trust you?” Explaining the predictions of any classifier. Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining. 2016."
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#spurious-correlations-1",
+    "href": "slides/3-systems/lecture3.html#spurious-correlations-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Spurious correlations",
+    "text": "Spurious correlations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeGrave et al. AI for radiographic COVID-19 detection selects shortcuts over signal.  Nature Machine Intelligence 3.7 (2021): 610-619."
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#not-enough-data",
+    "href": "slides/3-systems/lecture3.html#not-enough-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Not enough data",
+    "text": "Not enough data\nThere needs to be a reasonable relationship between\n\nthe amount of data\nthe signal-to-noise ratio of the data\nand the complexity of the ML model.\n\n\nLittle data paired with a complex model leads to overfitting.\nForgetting to check for and correct for overfitting is more common than it should be ☹️"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#not-enough-data-cont.",
+    "href": "slides/3-systems/lecture3.html#not-enough-data-cont.",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Not enough data (cont.)",
+    "text": "Not enough data (cont.)\nSome workarounds:\n\n\nData augmentation:\nArtificially increase the dataset by duplicating data points, but change them by\n\nAdding noise\nApplying transformations\n\n(These modifications neccesarily need to preserve the correlation of interest)\n\n\n\n\nTransfer learning:\nTrain a model on a bigger dataset, then fine-tune it on the dataset of interest"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#deep-learning-must-surely-be-best",
+    "href": "slides/3-systems/lecture3.html#deep-learning-must-surely-be-best",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Deep learning must surely be best",
+    "text": "Deep learning must surely be best\nModern language and vision models are powered by multi-layered neural networks, a branch of ML called deep learning\n\nNeural networks offer great flexibility and power to model complicated relationships in data, but that does not make them suitable for all problems\nSee e.g. this paper on why tree-based models are still best on “typical” data.\n\nGrinsztajn et al. Why do tree-based models still outperform deep learning on typical tabular data? Advances in neural information processing systems 35 (2022): 507-520."
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#missing-baselines-for-comparison",
+    "href": "slides/3-systems/lecture3.html#missing-baselines-for-comparison",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Missing baselines for comparison",
+    "text": "Missing baselines for comparison\n\nYou have trained a mega awesome classifier model, which achieves 81% accuracy on your test dataset.\n\nIs the model any good?\n\nHard to tell without comparing to something. We need a baseline.\n\n\n\n\n\nNaïve baseline:\n\n\n\n\nReasonable default baseline:\n\n\n\n\nState-of-the-art (SOTA) baseline:\n\n\n\n\n\nUse these to show that your model is not just doing something trivial.\n\nBaseline of a random model:\nA random guessing binary classifier gets 50% accuracy\nBaseline of constant value predictor:\nAlways predicting the same class yields high accuracy on imbalanced data\n\n\n\nPerformance of a un-tuned model which is known to work on this type of task.\nE.g. try sklearn’s RandomForestClassifier, with default settings, on a classification task with tabular data.\n\n\nPerformance of the best existing model"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#over-reliance-on-a-single-evaluation-metric",
+    "href": "slides/3-systems/lecture3.html#over-reliance-on-a-single-evaluation-metric",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Over-reliance on a single evaluation metric",
+    "text": "Over-reliance on a single evaluation metric\nWe have already discussed why for instance accuracy should be used with caution.\n\n\n\n\n\n\n\nGood: Add in precision and recall\n\n\n\n\n\n\n\nBetter: Study the confusion matrix\n\n\n\n\n\n\n\nBest: Study all mispredicted data points (but who has the time)"
   },
   {
     "objectID": "slides/3-systems/lecture3.html#base-rate-fallacy",
     "href": "slides/3-systems/lecture3.html#base-rate-fallacy",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Base rate fallacy",
-    "text": "Base rate fallacy"
+    "text": "Base rate fallacy\nTask:\n\nFrom chest X-ray images, predict if the patient has cancer.Prevalence of lung cancer is 6%.\n\n\nSimplest possible classifier:\n\\[\n\\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}) = \\mathrm{no \\; cancer}\n\\]\n 94% accuracy"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#avoiding-bad-things",
-    "href": "slides/3-systems/lecture3.html#avoiding-bad-things",
+    "objectID": "slides/3-systems/lecture3.html#base-rate-fallacy-1",
+    "href": "slides/3-systems/lecture3.html#base-rate-fallacy-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Avoiding bad things :/",
-    "text": "Avoiding bad things :/\n\nTarget leakage\nType 3 errors (wolves vs huskies) (spurious correlations)\nOverreliance on a single metric\nNot setting a baseline\nImplicitly training on the test set"
+    "section": "Base rate fallacy",
+    "text": "Base rate fallacy\n\n\n\nLet us make a real model and test it on balanced data (50% positive and 50% negative cases)\nThe model achieves 90% accuracy on this test set.\n\n\nA doctor wants to use the model to diagnose a new patient. The model predicts cancer.\nWhat is the probability that the patient has cancer?\n\n\nSolution requires Bayes’ theorem (out of scope for us), but comes out to 38%."
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#going-beyond-dat158",
+    "href": "slides/3-systems/lecture3.html#going-beyond-dat158",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Going beyond DAT158 🔭",
+    "text": "Going beyond DAT158 🔭"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#section",
+    "href": "slides/3-systems/lecture3.html#section",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "Coursedescription"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#useful-libraries-besides-scikit-learn",
+    "href": "slides/3-systems/lecture3.html#useful-libraries-besides-scikit-learn",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Useful libraries besides scikit-learn",
+    "text": "Useful libraries besides scikit-learn\nScikit-learn is great for testing loads of models, but sometimes we want a more specialised tool.\nSome examples of specialised Python libraries:\n\nGradient boosted trees:\nXGBoost, LightGBM, CatBoost\nNeural networks:\nKeras, PyTorch\nLinear regression++:\nStatsModels\nScikit-learn clone optimised for GPUs:\nRAPIDS / cuML"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2024",
+    "href": "slides/3-systems/lecture3.html#state-of-ml-2024",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2024",
+    "text": "State of ML 2024\nMost noteworthy recent developments are within generative AI:\n\n\nLarge language models \n\nImage and video generation \n\nThese are all machine learning models – trained on known data, and used to make predictions on new data points."
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2024-1",
+    "href": "slides/3-systems/lecture3.html#state-of-ml-2024-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2024",
+    "text": "State of ML 2024\nMost noteworthy recent developments are within generative AI\nStill, the majority of ML tasks are deterministic – a data point should get the same predicted result every time:\n\n\n\n\nObject detection\nFace recognition\nFraud detection\nCredit scoring\nAlgorithmic trading\nCustomer segmentation\nSentiment analysis\nPredictive maintenance\nRoute optimisation\nTimeseries prediction\n\n\n\nRecommender systems\nSpeech recognition\nProperty valuation\nClimate modelling\nPersonalised medicine\nTargeted advertising\nSelf-driving vehicles\nNetwork optimisation\nSpam filtering\n…"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2024-2",
+    "href": "slides/3-systems/lecture3.html#state-of-ml-2024-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2024",
+    "text": "State of ML 2024\nNevertheless, this is the time to ride the AI wave 🏄"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#future-of-ml-keeping-up-with-progress",
+    "href": "slides/3-systems/lecture3.html#future-of-ml-keeping-up-with-progress",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Future of ML: keeping up with progress",
+    "text": "Future of ML: keeping up with progress\nMachine learning research is moving fast\n… and there is also much hype.\n\n\n\n\nCutting edge research typically presented at conferences such as ICML, NeurIPS\nGood sources of information: Documentation of major ML frameworks, reputable books\nBad sources of information: medium.com articles and similar SEO spam\nRemember that main concepts from this course always applies."
   },
   {
     "objectID": "slides/3-systems/lecture1.html#topics-for-module-3",

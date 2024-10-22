@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #383a42;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #383a42; } /* Normal */
+    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+    code span.an { color: #50a14f; } /* Annotation */
+    code span.at { color: #a626a4; } /* Attribute */
+    code span.bn { color: #986801; } /* BaseN */
+    code span.bu { color: #a626a4; } /* BuiltIn */
+    code span.cf { color: #a626a4; } /* ControlFlow */
+    code span.ch { color: #50a14f; } /* Char */
+    code span.cn { color: #986801; } /* Constant */
+    code span.co { color: #a0a1a7; font-style: italic; } /* Comment */
+    code span.cv { color: #e45649; font-style: italic; } /* CommentVar */
+    code span.do { color: #e45649; } /* Documentation */
+    code span.dt { color: #a626a4; } /* DataType */
+    code span.dv { color: #986801; } /* DecVal */
+    code span.er { color: #f44747; text-decoration: underline; } /* Error */
+    code span.ex { color: #4078f2; font-weight: bold; } /* Extension */
+    code span.fl { color: #986801; } /* Float */
+    code span.fu { color: #4078f2; } /* Function */
+    code span.im { color: #50a14f; } /* Import */
+    code span.in { color: #c45b00; } /* Information */
+    code span.kw { color: #a626a4; } /* Keyword */
+    code span.op { color: #a626a4; } /* Operator */
+    code span.ot { color: #27ae60; } /* Other */
+    code span.pp { color: #a626a4; } /* Preprocessor */
+    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+    code span.sc { color: #0184bc; } /* SpecialChar */
+    code span.ss { color: #da4453; } /* SpecialString */
+    code span.st { color: #50a14f; } /* String */
+    code span.va { color: #e45649; } /* Variable */
+    code span.vs { color: #da4453; } /* VerbatimString */
+    code span.wa { color: #da4453; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -339,36 +404,491 @@ sma@hvl.no
 </div>
 
 </section>
+<section id="ml-assignment-2" class="slide level2">
+<h2>ML assignment 2</h2>
+<p>The goal is to make a <span class="color-orange-dark" style="font-weight: 400;"><em>complete, end-to-end machine learning product</em></span>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Rules</strong>:</p>
+<ul>
+<li>Work in groups of 2-3</li>
+<li>Make a useful ML software product</li>
+<li>Deploy your system</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Evaluation</strong>:</p>
+<ul>
+<li>Write a short report (template will be provided)</li>
+<li>Make the code accessible</li>
+</ul>
+</div></div>
+<div class="colorbox" style="background-color: #FFF3E0; height: 200px;">
+<p><strong>Two important things to keep in mind</strong> when planning your project:</p>
+<ul>
+<li><p>Is there data available?</p></li>
+<li><p>Is it realistic to complete it before the deadline?</p></li>
+</ul>
+</div>
+<!-- ![](../2-models/figures/chatbot.png) -->
+</section>
 <section id="topics-for-module-3" class="slide level2">
 <h2>Topics for Module 3</h2>
-<p>Piecing together a complete ML-based system</p>
-<p>We’ll go through Appendix A: <em>Machine learning project checklist</em>, and add some details on</p>
+<p><span style="font-weight: 400">Piecing together a complete ML-based system</span></p>
+<div style="padding-top: 30px;">
+
+</div>
+<p>We’ll go through <span class="color-indigo">Appendix A: <em>Machine learning project checklist</em></span>, and add some details on</p>
+<div style="padding-top: 30px;">
+
+</div>
 <ul>
-<li>Project framing</li>
-<li>A bit about deployment</li>
-<li>The <em>ML project lifecycle</em></li>
-<li>Useful tools</li>
-<li>Mistakes to avoid</li>
+<li>Project framing 🖼</li>
+<li>A bit about deployment 📦</li>
+<li>The <em>ML project lifecycle</em> ♻️</li>
+<li>Useful tools 🛠</li>
+<li>Mistakes to avoid 💣 <!-----------------------------------------------------------------------------> ## Mistakes to avoid 🧯 {.center background-color=“#FBE9E7”}</li>
 </ul>
+<div class="absolute" style="font-size: 0.8em;top: 300px; left: 0px; ">
+<p><span class="color-red-dark">Supplementary reading:</span><br> Lones, Michael A. <em>How to avoid machine learning pitfalls: a guide for academic researchers.</em> <a href="https://arxiv.org/pdf/2108.02497">arXiv:2108.02497</a> (2021).</p>
+</div>
+<!----------------------------------------------------------------------------->
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p>https://arxiv.org/pdf/2108.02497</p>
+<section id="leaking-secrets-into-the-training-process" class="slide level2">
+<h2>Leaking secrets into the training process</h2>
+<p>Let us read data from a CSV file and train a classifier<br> (like for assignment 1):</p>
+<div style="padding-top: 50px;">
+
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>data <span class="op">=</span> pandas.read_csv(<span class="st">'my-data-file.csv'</span>)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>y <span class="op">=</span> data[<span class="st">'Target'</span>]</span>
+<span id="cb1-4"><a></a>X <span class="op">=</span> data[:]</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a>model.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="leaking-secrets-into-the-training-process-1" class="slide level2">
+<h2>Leaking secrets into the training process</h2>
+<p>Let us read data from a CSV file and train a classifier<br> (like for assignment 1):</p>
+<div style="padding-top: 50px;">
+
+</div>
+<div class="sourceCode" id="cb2" data-code-line-numbers="3,4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>data <span class="op">=</span> pandas.read_csv(<span class="st">'my-data-file.csv'</span>)</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>y <span class="op">=</span> data[<span class="st">'Target'</span>]  <span class="co"># Select target values</span></span>
+<span id="cb2-4"><a></a>X <span class="op">=</span> data[:]         <span class="co"># Select all input features</span></span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a>model.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="leaking-secrets-into-the-training-process-2" class="slide level2">
+<h2>Leaking secrets into the training process</h2>
+<p>Let us read data from a CSV file and train a classifier<br> (like for assignment 1):</p>
+<div style="padding-top: 50px;">
+
+</div>
+<div class="sourceCode" id="cb3" data-code-line-numbers="4,6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>data <span class="op">=</span> pandas.read_csv(<span class="st">'my-data-file.csv'</span>)</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>y <span class="op">=</span> data[<span class="st">'Target'</span>]</span>
+<span id="cb3-4"><a></a>X <span class="op">=</span> data[:]         <span class="co"># Should have used data.drop('Target')</span></span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>model.fit(X, y)     <span class="co"># Target still in X</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><i class="bi bi-arrow-right"></i> <span class="color-blue-dark"><em>Target leakage</em></span></p>
+<p>Leads to overinflated performance numbers</p>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="leaking-secrets-into-the-training-process-3" class="slide level2">
+<h2>Leaking secrets into the training process</h2>
+<p>Let us scale the features to improve model learning:</p>
+<div style="padding-top: 25px;">
+
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>scaler <span class="op">=</span> StandardScaler.fit(X)    <span class="co"># "Train" the scaler</span></span>
+<span id="cb4-4"><a></a>X <span class="op">=</span> scaler.transform(X)           <span class="co"># Apply the results </span></span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y)</span>
+<span id="cb4-7"><a></a>model.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="padding-top: 25px;">
+
+</div>
+<div class="fragment">
+<p>Test data was included when fitting the scaler (should have used only train data)</p>
+<p><i class="bi bi-arrow-right"></i> <span class="color-blue-dark"><em>Test data leakage</em></span></p>
+<p>Leads to overinflated performance numbers</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="leaking-secrets-into-the-training-process-4" class="slide level2">
+<h2>Leaking secrets into the training process</h2>
+<p>We have proposed two models, but want to select the best one:</p>
+<div style="padding-top: 25px;">
+
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> find_best_model(model1, model2):</span>
+<span id="cb5-2"><a></a>  </span>
+<span id="cb5-3"><a></a>  model1.fit(X_train, y_train)</span>
+<span id="cb5-4"><a></a>  model2.fit(X_train, y_train)</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>  score1 <span class="op">=</span> model1.score(X_test, y_test)</span>
+<span id="cb5-7"><a></a>  score2 <span class="op">=</span> model1.score(X_test, y_test)</span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a>  <span class="cf">if</span> score1 <span class="op">&gt;</span> score2:</span>
+<span id="cb5-10"><a></a>    <span class="cf">return</span> model1</span>
+<span id="cb5-11"><a></a>  <span class="cf">else</span>:</span>
+<span id="cb5-12"><a></a>    <span class="cf">return</span> model2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Test data was used for model selection (should have used validation data)</p>
+<p><i class="bi bi-arrow-right"></i> <span class="color-blue-dark"><em>Test data leakage</em></span></p>
+<p>Leads to overinflated performance numbers</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="spurious-correlations" class="slide level2">
+<h2>Spurious correlations</h2>
+<div style="padding-top: 150px;">
+
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/husky.png" class="quarto-figure quarto-figure-center" width="250"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/exp_husky.png" class="fragment quarto-figure quarto-figure-center" width="250"></p>
+</figure>
+</div>
+</div></div>
+<div class="absolute" style="font-size: 0.5em;top: 0%; right: 0%; ">
+<p>Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin.<br> <em>“Why should i trust you?” Explaining the predictions of any<br> classifier.</em> Proceedings of the 22nd ACM SIGKDD international<br> conference on knowledge discovery and data mining. 2016.</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="spurious-correlations-1" class="slide level2">
+<h2>Spurious correlations</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/xray1_img.webp" class="quarto-figure quarto-figure-center" width="250"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/xray2_img.webp" class="quarto-figure quarto-figure-center" width="250"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="figures/xray1_important.webp" class="fragment quarto-figure quarto-figure-left" width="250"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="figures/xray2_important.webp" class="fragment quarto-figure quarto-figure-left" width="250"></p>
+</figure>
+</div>
+</div></div>
+<div class="absolute" style="font-size: 0.5em;top: 0%; right: 0%; ">
+<p>DeGrave et al.&nbsp;<em>AI for radiographic COVID-19<br> detection selects shortcuts over signal.</em> <br> Nature Machine Intelligence 3.7 (2021): 610-619.</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="not-enough-data" class="slide level2">
+<h2>Not enough data</h2>
+<p>There needs to be a reasonable relationship between</p>
+<ul>
+<li>the amount of data</li>
+<li>the signal-to-noise ratio of the data</li>
+<li>and the complexity of the ML model.</li>
+</ul>
+<div class="fragment">
+<p>Little data paired with a complex model leads to <span class="color-red-dark">overfitting</span>.</p>
+<p>Forgetting to check for and correct for overfitting is more common than it should be ☹️</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="not-enough-data-cont." class="slide level2">
+<h2>Not enough data (<em>cont.</em>)</h2>
+<p><em>Some workarounds:</em></p>
+<div class="fragment">
+<ul>
+<li><p><span class="color-purple"><em><strong>Data augmentation</strong></em></span>:</p>
+<p>Artificially increase the dataset by duplicating data points, but change them by</p>
+<ul>
+<li>Adding noise</li>
+<li>Applying transformations</li>
+</ul>
+<p>(These modifications neccesarily need to preserve the correlation of interest)</p></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p><span class="color-purple"><em><strong>Transfer learning</strong></em></span>:</p>
+<p>Train a model on a bigger dataset, then <em>fine-tune</em> it on the dataset of interest</p></li>
+</ul>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="deep-learning-must-surely-be-best" class="slide level2">
+<h2><em>Deep learning</em> must surely be best</h2>
+<p>Modern language and vision models are powered by multi-layered neural networks, a branch of ML called deep learning</p>
+<div class="fragment">
+<p>Neural networks offer great <span class="color-teal">flexibility and power</span> to model complicated relationships in data, but that does <span class="color-pink-dark">not</span> make them suitable for all problems</p>
+<p>See <em>e.g.</em> this <a href="https://openreview.net/pdf?id=Fp7__phQszn">paper</a> on why tree-based models are still best on “typical” data.</p>
+<div class="absolute" style="font-size: 0.5em;left: 0%; bottom: 0%; ">
+<p>Grinsztajn et al.&nbsp;<em>Why do tree-based models still outperform deep learning on typical tabular data?</em><br> Advances in neural information processing systems 35 (2022): 507-520.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/nn.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="missing-baselines-for-comparison" class="slide level2">
+<h2>Missing baselines for comparison</h2>
+<blockquote>
+<p>You have trained a mega awesome classifier model, which achieves 81% accuracy on your test dataset.</p>
+</blockquote>
+<p>Is the model any good?</p>
+<div class="fragment" data-fragment-index="0">
+<p>Hard to tell without comparing to something. We need a <strong><em>baseline</em></strong>.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment fade-in-then-semi-out" data-fragment-index="1">
+<ul>
+<li><span class="color-purple"><em>Naïve</em> baseline:</span></li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out" data-fragment-index="2">
+<ul>
+<li><span class="color-indigo">Reasonable default baseline:</span></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="3">
+<ul>
+<li><span class="color-teal"><em>State-of-the-art</em> (SOTA) baseline:</span></li>
+</ul>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="1">
+<p>Use these to show that your model is not just doing something trivial.</p>
+<ul>
+<li><p><span class="color-purple">Baseline of a random model:</span></p>
+<p>A random guessing binary classifier gets 50% accuracy</p></li>
+<li><p><span class="color-purple">Baseline of constant value predictor:</span></p>
+<p>Always predicting the same class yields high accuracy on imbalanced data</p></li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="2">
+<p>Performance of a un-tuned model which is known to work on this type of task.</p>
+<p><em>E.g.</em> try sklearn’s <code>RandomForestClassifier</code>, with default settings, on a classification task with tabular data.</p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p>Performance of the best existing model</p>
+</div>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="over-reliance-on-a-single-evaluation-metric" class="slide level2">
+<h2>Over-reliance on a single evaluation metric</h2>
+<p>We have already discussed why for instance <span class="color-orange-dark">accuracy</span> should be used with caution.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="padding-top: 50px;">
+
+</div>
+<div class="fragment" data-fragment-index="1">
+<ul>
+<li><span class="color-light-green"><strong>Good:</strong></span> Add in precision and recall</li>
+</ul>
+</div>
+<div style="padding-top: 50px;">
+
+</div>
+<div class="fragment" data-fragment-index="2">
+<ul>
+<li><span class="color-green"><strong>Better:</strong></span> Study the confusion matrix</li>
+</ul>
+</div>
+<div style="padding-top: 50px;">
+
+</div>
+<div class="fragment" data-fragment-index="3">
+<ul>
+<li><span class="color-teal"><strong>Best:</strong></span> Study all mispredicted data points <span class="color-text-muted">(<em>but who has the time</em>)</span></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="padding-top: 50px;">
+
+</div>
+<div class="fragment" data-fragment-index="2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../1-intro/figures/confusion-matrix.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div></div>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="base-rate-fallacy" class="slide level2">
 <h2>Base rate fallacy</h2>
+<p><strong>Task:</strong></p>
+<blockquote>
+<p>From chest X-ray images, predict if the patient has cancer.<br>Prevalence of lung cancer is 6%.</p>
+</blockquote>
+<div class="fragment">
+<p>Simplest possible classifier:</p>
+<p><span class="math display">\[
+\color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}) = \mathrm{no \; cancer}
+\]</span></p>
+<p><i class="bi bi-arrow-right"></i> <span class="color-green-dark">94%</span> accuracy</p>
+</div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="avoiding-bad-things" class="slide level2">
-<h2>Avoiding bad things :/</h2>
+<section id="base-rate-fallacy-1" class="slide level2">
+<h2>Base rate fallacy</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="colorbox" height="110%" style="background-color: #F5F5F5">
+<p>Let us make a <em>real</em> model and test it on balanced data<br> (50% <span class="color-deep-purple">positive</span> and 50% <span class="color-red-dark">negative</span> cases)</p>
+<p>The model achieves <span class="color-green-dark">90% accuracy</span> on this test set.</p>
+</div>
+<div class="fragment">
+<p>A doctor wants to use the model to diagnose a new patient.<br> The model predicts <span class="color-deep-purple"><strong>cancer</strong></span>.</p>
+<p>What is the probability that the patient has cancer?</p>
+</div>
+<div class="fragment">
+<p>Solution requires Bayes’ theorem (<em>out of scope for us</em>), but comes out to <span class="color-deep-purple" style="text-decoration: underline;">38%</span>.</p>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="figures/robodoc.jpeg" class="quarto-figure quarto-figure-right"></p>
+</figure>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="going-beyond-dat158" class="slide level2 center" data-background-color="#FFF3E0">
+<h2>Going beyond DAT158 🔭</h2>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="section" class="slide level2" data-background-image="figures/DAT255.png" data-background-position="top" data-menu-title="DAT255">
+<h2></h2>
+<div class="absolute" style="font-size: 0.7em;top: 20%; right: 5%; ">
+<p><a href="https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/dat255/"><i class="bi bi-link-45deg"></i> Course<br>description</a></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="useful-libraries-besides-scikit-learn" class="slide level2">
+<h2>Useful libraries besides <code>scikit-learn</code></h2>
+<p>Scikit-learn is great for testing loads of models, but sometimes we want a more specialised tool.</p>
+<p>Some examples of specialised Python libraries:</p>
 <ul>
-<li><p>Target leakage</p></li>
-<li><p>Type 3 errors (wolves vs huskies) (spurious correlations)</p></li>
-<li><p>Overreliance on a single metric</p></li>
-<li><p>Not setting a baseline</p></li>
-<li><p>Implicitly training on the test set</p></li>
+<li><p>Gradient boosted trees:</p>
+<p><a href="https://xgboost.readthedocs.io/en/stable/">XGBoost</a>, <a href="https://lightgbm.readthedocs.io/en/latest/">LightGBM</a>, <a href="https://catboost.ai/">CatBoost</a></p></li>
+<li><p>Neural networks:</p>
+<p><a href="https://keras.io/">Keras</a>, <a href="https://pytorch.org/">PyTorch</a></p></li>
+<li><p>Linear regression++:</p>
+<p><a href="https://www.statsmodels.org/stable/index.html">StatsModels</a></p></li>
+<li><p>Scikit-learn clone optimised for GPUs:</p>
+<p><a href="https://rapids.ai/">RAPIDS</a> / <a href="https://docs.rapids.ai/api/cuml/stable/">cuML</a></p></li>
 </ul>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="state-of-ml-2024" class="slide level2">
+<h2>State of ML 2024</h2>
+<p>Most noteworthy recent developments are within <span class="color-pink-dark"><em>generative AI</em></span>:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Large language models <img data-src="figures/chatgpt.png" class="quarto-figure quarto-figure-center" style="border: 1px solid;;width:80.0%"></p>
+</div><div class="column" style="width:50%;">
+<p>Image and video generation <img data-src="figures/midjourney.png" class="quarto-figure quarto-figure-center" style="border: 1px solid;;width:80.0%"></p>
+</div></div>
+<p>These are all machine learning models – trained on known data, and used to make predictions on new data points.</p>
+<!-- ![](figures/deeplearningtimeline.png) -->
+<!----------------------------------------------------------------------------->
+</section>
+<section id="state-of-ml-2024-1" class="slide level2">
+<h2>State of ML 2024</h2>
+<p>Most noteworthy recent developments are within <span class="color-pink-dark"><em>generative AI</em></span></p>
+<p>Still, the majority of ML tasks are <span class="color-green-dark">deterministic</span> – a data point should get the same predicted result every time:</p>
+<div style="font-size: 0.75em;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Object detection</li>
+<li>Face recognition</li>
+<li>Fraud detection</li>
+<li>Credit scoring</li>
+<li>Algorithmic trading</li>
+<li>Customer segmentation</li>
+<li>Sentiment analysis</li>
+<li>Predictive maintenance</li>
+<li>Route optimisation</li>
+<li>Timeseries prediction</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Recommender systems</li>
+<li>Speech recognition</li>
+<li>Property valuation</li>
+<li>Climate modelling</li>
+<li>Personalised medicine</li>
+<li>Targeted advertising</li>
+<li>Self-driving vehicles</li>
+<li>Network optimisation</li>
+<li>Spam filtering</li>
+<li>…</li>
+</ul>
+</div></div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="state-of-ml-2024-2" class="slide level2">
+<h2>State of ML 2024</h2>
+<p>Nevertheless, this is the time to ride the AI wave 🏄</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/ai-funding.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="future-of-ml-keeping-up-with-progress" class="slide level2">
+<h2>Future of ML: keeping up with progress</h2>
+<p>Machine learning research is moving <span class="color-blue-dark"><em>fast</em></span></p>
+<p>… and there is also much hype.</p>
+<div style="padding-top: 50px;">
+
+</div>
+<div class="fragment">
+<p>Cutting edge research typically presented at conferences such as <a href="https://icml.cc/">ICML</a>, <a href="https://neurips.cc/">NeurIPS</a></p>
+<p><span class="color-green-dark" style="font-weight: 400;"><em>Good sources of information</em></span>:<br> Documentation of major ML frameworks, reputable books</p>
+<p><span class="color-red" style="font-weight: 400;"><em>Bad sources of information</em></span>:<br> medium.com articles and similar SEO spam</p>
+<p><span class="color-indigo">Remember that main concepts from this course <em>always</em> applies.</span></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="section-1" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
+<h2></h2>
+<div class="absolute" style="top: 60%; left: 40%; width: 20%; ">
+<p><img data-src="../1-intro/figures/hvl_logo_engelsk.png"></p>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
