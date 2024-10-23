@@ -606,7 +606,14 @@
     "href": "slides/3-systems/lecture3.html#topics-for-module-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Topics for Module 3",
-    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣  ## Mistakes to avoid 🧯 {.center background-color=“#FBE9E7”}\n\n\nSupplementary reading: Lones, Michael A. How to avoid machine learning pitfalls: a guide for academic researchers. arXiv:2108.02497 (2021)."
+    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#mistakes-to-avoid",
+    "href": "slides/3-systems/lecture3.html#mistakes-to-avoid",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Mistakes to avoid 🧯",
+    "text": "Mistakes to avoid 🧯\n\nSupplementary reading: Lones, Michael A. How to avoid machine learning pitfalls: a guide for academic researchers. arXiv:2108.02497 (2021)."
   },
   {
     "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process",
