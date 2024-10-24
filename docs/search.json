@@ -648,7 +648,7 @@
     "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-4",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Leaking secrets into the training process",
-    "text": "Leaking secrets into the training process\nWe have proposed two models, but want to select the best one:\n\n\n\ndef find_best_model(model1, model2):\n  \n  model1.fit(X_train, y_train)\n  model2.fit(X_train, y_train)\n\n  score1 = model1.score(X_test, y_test)\n  score2 = model1.score(X_test, y_test)\n\n  if score1 &gt; score2:\n    return model1\n  else:\n    return model2\n\nTest data was used for model selection (should have used validation data)\n Test data leakage\nLeads to overinflated performance numbers"
+    "text": "Leaking secrets into the training process\nWe have proposed two models, but want to select the best one:\n\n\n\ndef find_best_model(model1, model2):\n  \n  model1.fit(X_train, y_train)\n  model2.fit(X_train, y_train)\n\n  score1 = model1.score(X_test, y_test)\n  score2 = model2.score(X_test, y_test)\n\n  if score1 &gt; score2:\n    return model1\n  else:\n    return model2\n\nTest data was used for model selection (should have used validation data)\n Test data leakage\nLeads to overinflated performance numbers"
   },
   {
     "objectID": "slides/3-systems/lecture3.html#spurious-correlations",
