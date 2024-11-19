@@ -235,7 +235,7 @@
     "href": "slides/4-repetition/lecture1.html#learning-objectives-knowledge",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Learning objectives: Knowledge",
-    "text": "Learning objectives: Knowledge\n:::{.colorbox style=“background-color: #E0F2F1; border: solid 0.5px; margin-top: 30px;”“}\n\nAble to explain fundamental machine learning concepts and algorithms, and their implementation \n\n:::\n Theory questions from all of the lectures and all of chapters 1, 2, 3, 4, 6, and 7\n\n\n\nTypical questions:\n\nExplain how &lt;concept&gt; works\nGive the definition of &lt;concept&gt;\nEvaluate if &lt;statement&gt; is true or false"
+    "text": "Learning objectives: Knowledge\n\n\nAble to explain fundamental machine learning concepts and algorithms, and their implementation \n\n\n Theory questions from all of the lectures and all of chapters 1, 2, 3, 4, 6, and 7\n\n\n\nTypical questions:\n\nExplain how &lt;concept&gt; works\nGive the definition of &lt;concept&gt;\nEvaluate if &lt;statement&gt; is true or false"
   },
   {
     "objectID": "slides/4-repetition/lecture1.html#learning-objectives-knowledge-1",
@@ -284,7 +284,7 @@
     "href": "slides/4-repetition/lecture1.html#learning-objectives-knowledge-7",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Learning objectives: Knowledge",
-    "text": "Learning objectives: Knowledge\n:::{.colorbox style=“background-color: #E0F2F1; border: solid 0.5px; margin-top: 30px;”“} - Able to explain how machine learning can be used to solve practical problems from a wide variety of domains :::\n Questions about applications and data\n\n\n\nTypical questions:\n\nGive examples of which ML methods can be used for &lt;application&gt;"
+    "text": "Learning objectives: Knowledge\n\n\nAble to explain how machine learning can be used to solve practical problems from a wide variety of domains\n\n\n Questions about applications and data\n\n\n\nTypical questions:\n\nGive examples of which ML methods can be used for &lt;application&gt;"
   },
   {
     "objectID": "slides/4-repetition/lecture1.html#learning-objectives-knowledge-8",
