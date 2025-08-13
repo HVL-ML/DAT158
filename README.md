@@ -2,7 +2,7 @@
 
 # DAT158ML: Machine Learning Engineering
 
-This is the code repository for the 2024 version of DAT158 at HVL. Students following the course can access the Canvas pages [here](https://hvl.instructure.com/courses/28927).
+This is the code repository for the 2024 version of DAT158 at HVL. Students following the course can access the Canvas pages [here](https://hvl.instructure.com/courses/32015).
 
 ## Getting started
 
