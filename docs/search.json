@@ -144,7 +144,7 @@
     "href": "slides/1-intro/lecture2.html#practical-information",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Practical information",
-    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Fridays at 12:15, E403 and E443\nFørde: Thursdays at 10.15 (room varies)\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Wednesdays 12:15, E403 & E443\nFørde / Haugesund: Mondays 12.15 / 13.15\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#programming",
@@ -154,6 +154,41 @@
     "text": "Programming\n\n\nThe machine learning part of the course is based on the python programming language\nFree resources for learning python are posted on Canvas, such as\n\nKaggle Learning\nGoogle Edu\n\n\n\n\nTwo options for running python:\n\nUse cloud services, such as\n\nGoogle Colab\nKaggle\nDeepNote\n\nInstall locally"
   },
   {
+    "objectID": "slides/1-intro/lecture2.html#the-5-min-python-tutorial",
+    "href": "slides/1-intro/lecture2.html#the-5-min-python-tutorial",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The 5 min Python tutorial",
+    "text": "The 5 min Python tutorial\n\n\n\n\nDeclare a variable:\nx = 5\nprint(x)  # prints \"5\"\n\nUseful data structures:\n\nlists:\n\nmylist = [1, 'a', 2.7]  # can mix types\n\nlen(mylist)  # returns 3\n\nfor element in mylist:  # loop over contents\n  print(element)\n\n\n\ndictionaries:\n\nmydict = {'a': 1, 'b': 2}\n\nfor key in mydict:\n  print('key:', key, 'value:', mydict[key])"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-1",
+    "href": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The 5 min Python tutorial",
+    "text": "The 5 min Python tutorial\n\n\n\n\nDefine a function:\ndef greeting(name):\n  result = 'Hello ' + name + '!'\n  return result \n\nprint(greeting('World'))\n# prints \"Hello World!\"\n\nFunctions with multiple arguments and multiple outputs:\ndef greeting(name, title):\n  result = 'Hello ' + title + ' ' + name + '!'\n  length = len(result)\n  return [result, length]\n\n# Input arguments by order\ntext, length = greeting('Frankenstein', 'Dr')\n\n# Input arguments by name\ntext, length = greeting(title='Mr', name='Bond')"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-2",
+    "href": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The 5 min Python tutorial",
+    "text": "The 5 min Python tutorial\n\n\n\n\nConditionals:\ndef is_number_five(number):\n\n  if not isinstance(number, int):              # Type checking\n    raise TypeError('This is not an integer')  # Errors can be caught and handled \n\n  if number &gt; 5:\n    print('Too high')\n    \n  elif number &lt; 5:\n    print('Too low')\n    \n  elif number == 5:\n    print('Number is 5')\n\n  else:\n    pass  # Unlikely to end up here"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-3",
+    "href": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-3",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The 5 min Python tutorial",
+    "text": "The 5 min Python tutorial\nReserved keywords you cannot redefine:\n\n\nFalse\nNone\nTrue\nand\nas\nassert\nasync\n\nawait\nbreak\nclass\ncontinue\ndef\ndel\nelif\n\nelse\nexcept\nfinally\nfor\nfrom\nglobal\nif\n\nimport\nin\nis\nlambda\nnonlocal\nnot\nor\n\npass\nraise\nreturn\ntry\nwhile\nwith\nyield\n\nUseful built-in functions you should not redefine:\n\n\nabs()\naiter()\nall()\nanext()\nany()\nascii()\nbin()\nbool()\nbreakpoint()\nbytearray()\nbytes()\ncallable()\nchr()\nclassmethod()\n\ncompile()\ncomplex()\ndelattr()\ndict()\ndir()\ndivmod()\nenumerate()\neval()\nexec()\nfilter()\nfloat()\nformat()\nfrozenset()\ngetattr()\n\nglobals()\nhasattr()\nhash()\nhelp()\nhex()\nid()\ninput()\nint()\nisinstance()\nissubclass()\niter()\nlen()\nlist()\nlocals()\n\nmap()\nmax()\nmemoryview()\nmin()\nnext()\nobject()\noct()\nopen()\nord()\npow()\nprint()\nproperty()\nrange()\nrepr()\n\nreversed()\nround()\nset()\nsetattr()\nslice()\nsorted()\nstaticmethod()\nstr()\nsum()\nsuper()\ntuple()\ntype()\nvars()\nzip()"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-4",
+    "href": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-4",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The 5 min Python tutorial",
+    "text": "The 5 min Python tutorial\n\n\nImporting code from libraries:\n# Import everything\nimport math\nmath.pi\n# returns 3.141592653589793\n\n# Import just what you need\nfrom math import pi\npi\n# returns 3.141592653589793\n\n# Import it under a different name\nfrom math import pi as coolnumber\ncoolnumber\n# returns 3.141592653589793\n\n\n\n\nExternal libraries needed for our exercises are already installed on Colab, and listed in requirements.txt if you want to install them locally\n\nscikit-learn    # ML models and utilities\nnumpy           # Advanced arrays \nscipy           # Scientific functions\nnotebook        # Jupyter notebooks\nmatplotlib      # Plots and visualisation\nseaborn         # Even cooler plots \ngradio          # Turn ML models into an app"
+  },
+  {
     "objectID": "slides/1-intro/lecture2.html#notebooks",
     "href": "slides/1-intro/lecture2.html#notebooks",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
@@ -161,8 +196,8 @@
     "text": "Notebooks\nExercises are given in form of Jupyter notebooks\n\nCan mix code, results, and notes (markdown and TeX) in the same file\nThese are partially filled, and you fill the rest\nCan be run locally or in cloud services"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#section-6",
-    "href": "slides/1-intro/lecture2.html#section-6",
+    "objectID": "slides/1-intro/lecture2.html#section-2",
+    "href": "slides/1-intro/lecture2.html#section-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "",
     "text": "git clone git@github.com:HVL-ML/DAT158.git"
@@ -277,7 +312,7 @@
     "href": "slides/1-intro/lecture1.html#practical-information",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Practical information",
-    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Fridays at 12:15, E403 and E443\nFørde: Thursdays at 10.15 (room varies)\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Wednesdays 12:15, E403 & E443\nFørde / Haugesund: Mondays 12.15 / 13.15\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
   },
   {
     "objectID": "slides/1-intro/lecture1.html#programming",
@@ -329,15 +364,15 @@
     "text": "👓 Examples of machine learning"
   },
   {
-    "objectID": "slides/1-intro/lecture1.html#section-14",
-    "href": "slides/1-intro/lecture1.html#section-14",
+    "objectID": "slides/1-intro/lecture1.html#section-12",
+    "href": "slides/1-intro/lecture1.html#section-12",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "",
     "text": "Fan, W., Yang, Y., Qi, J. et al., Nat Commun 15, 1347 (2024)"
   },
   {
-    "objectID": "slides/1-intro/lecture1.html#section-15",
-    "href": "slides/1-intro/lecture1.html#section-15",
+    "objectID": "slides/1-intro/lecture1.html#section-13",
+    "href": "slides/1-intro/lecture1.html#section-13",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "",
     "text": "Recommender system"
@@ -403,7 +438,7 @@
     "href": "slides/1-intro/lecture1.html#some-types-of-data",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "(Some) types of data",
-    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)"
+    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)\n\n\n\n\n\n\n\nImages"
   },
   {
     "objectID": "slides/1-intro/lecture1.html#about-data",
