@@ -133,18 +133,25 @@
     "text": "Referansegruppe"
   },
   {
-    "objectID": "slides/1-intro/lecture2.html#recording-from-yesterday",
-    "href": "slides/1-intro/lecture2.html#recording-from-yesterday",
+    "objectID": "slides/1-intro/lecture2.html#recording-from-wednesday",
+    "href": "slides/1-intro/lecture2.html#recording-from-wednesday",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Recording from yesterday",
-    "text": "Recording from yesterday\nPosted on Canvas"
+    "section": "Recording from Wednesday",
+    "text": "Recording from Wednesday\nPosted on Canvas"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#practical-information",
     "href": "slides/1-intro/lecture2.html#practical-information",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Practical information",
-    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Wednesdays 12:15, E403 & E443\nFørde / Haugesund: Mondays 12.15 / 13.15\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Wednesdays 12.15, E403 & E443\nFørde / Haugesund: Mondays 12.15 / 13.15\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#proposed-oblig-dates",
+    "href": "slides/1-intro/lecture2.html#proposed-oblig-dates",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Proposed oblig dates",
+    "text": "Proposed oblig dates\n\n\n\n\n14. September: Quiz 🎓 \n\n\n4. October: Competition 🏅 (not mandatory) \n\n\n2. November: Project hand-in 📜"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#programming",
@@ -158,7 +165,7 @@
     "href": "slides/1-intro/lecture2.html#the-5-min-python-tutorial",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "The 5 min Python tutorial",
-    "text": "The 5 min Python tutorial\n\n\n\n\nDeclare a variable:\nx = 5\nprint(x)  # prints \"5\"\n\nUseful data structures:\n\nlists:\n\nmylist = [1, 'a', 2.7]  # can mix types\n\nlen(mylist)  # returns 3\n\nfor element in mylist:  # loop over contents\n  print(element)\n\n\n\ndictionaries:\n\nmydict = {'a': 1, 'b': 2}\n\nfor key in mydict:\n  print('key:', key, 'value:', mydict[key])"
+    "text": "The 5 min Python tutorial\n\n\n\n\n\nDeclare a variable:\nx = 5\nprint(x)  # prints \"5\"\n\n\n\n\nUseful data structures:\n\nlists:\n\nmylist = [1, 'a', 2.7]  # can mix types\n\nlen(mylist)  # returns 3\n\nfor element in mylist:  # loop over contents\n  print(element)\n\n\n\ndictionaries:\n\nmydict = {'a': 1, 'b': 2}\n\nfor key in mydict:\n  print('key:', key, 'value:', mydict[key])"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-1",
@@ -172,7 +179,7 @@
     "href": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "The 5 min Python tutorial",
-    "text": "The 5 min Python tutorial\n\n\n\n\nConditionals:\ndef is_number_five(number):\n\n  if not isinstance(number, int):              # Type checking\n    raise TypeError('This is not an integer')  # Errors can be caught and handled \n\n  if number &gt; 5:\n    print('Too high')\n    \n  elif number &lt; 5:\n    print('Too low')\n    \n  elif number == 5:\n    print('Number is 5')\n\n  else:\n    pass  # Unlikely to end up here"
+    "text": "The 5 min Python tutorial\nConditionals:\ndef is_number_five(number):\n\n  if not isinstance(number, int):              # Type checking\n    raise TypeError('This is not an integer')  # Errors can be caught and handled \n\n  if number &gt; 5:\n    print('Too high')\n    \n  elif number &lt; 5:\n    print('Too low')\n    \n  elif number == 5:\n    print('Number is 5')\n\n  else:\n    pass  # Unlikely to end up here"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#the-5-min-python-tutorial-3",
@@ -214,7 +221,7 @@
     "href": "slides/1-intro/lecture2.html#numpy-arrays",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "numpy arrays",
-    "text": "numpy arrays\nThe core of numpy is the array, on which we can do operations without explicit loops:\nExample: Given a list of numbers, make a new list, where all the elements are multiplied by 2.\n\n\nVanilla python:\n&gt;&gt;&gt; a = [1,2,3]\n&gt;&gt;&gt; b = []\n&gt;&gt;&gt; for elem in a:\n&gt;&gt;&gt;   b.append(elem * 2)\nb\n[2, 4, 6]\n\n\nNumpy:\n&gt;&gt;&gt; import numpy as np\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; b = a * 2\n&gt;&gt;&gt; b\narray([2 4 6])\n\n\n\nArrays can have any number of dimensions – e.g. a 2D matrix is written\n&gt;&gt;&gt; a = np.array([[1,2,3],[4,5,6]])\n&gt;&gt;&gt; print(a)\n[[1 2 3]\n [4 5 6]]\n&gt;&gt;&gt; a.ndim\n2\n&gt;&gt;&gt; a.shape\n(2, 3)"
+    "text": "numpy arrays\nThe core of numpy is the array, on which we can do operations without explicit loops:\nExample: Given a list of numbers, make a new list, where all the elements are multiplied by 2.\n\n\nVanilla python:\n&gt;&gt;&gt; a = [1,2,3]; b = []\n&gt;&gt;&gt; for elem in a:\n&gt;&gt;&gt;   b.append(elem * 2)\nb\n[2, 4, 6]\n\n\nNumpy:\n&gt;&gt;&gt; import numpy as np\n&gt;&gt;&gt; a = np.array([1,2,3])\n&gt;&gt;&gt; b = a * 2\n&gt;&gt;&gt; b\narray([2 4 6])\n\n\n\nArrays can have any number of dimensions – e.g. a 2D matrix is written\n&gt;&gt;&gt; a = np.array([[1,2,3],[4,5,6]])\n&gt;&gt;&gt; print(a)\n[[1 2 3]\n [4 5 6]]\n&gt;&gt;&gt; a.ndim\n2\n&gt;&gt;&gt; a.shape\n(2, 3)"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#numpy-arrays-1",
@@ -256,14 +263,14 @@
     "href": "slides/1-intro/lecture2.html#different-types-of-machine-learning-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Different types of machine learning",
-    "text": "Different types of machine learning\n\n\n\nSupervised learning:\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
+    "text": "Different types of machine learning\n\n\nSupervised learning:\n\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#some-types-of-data",
     "href": "slides/1-intro/lecture2.html#some-types-of-data",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "(Some) types of data",
-    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)"
+    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)\n\n\n\n\n\n\n\nImages"
   },
   {
     "objectID": "slides/1-intro/lecture2.html#about-data",
@@ -285,6 +292,13 @@
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Data challenges",
     "text": "Data challenges\n\n\nToo little data available: Can lead to overfitting: the model gives perfect predictions on known data, but does not generalise to new data\n\n\n\n\n\nUnrepresentative data: New data does not look like known data\n\n\n\n\n\n\n\nGéron Fig. 1-20\n\n\n\n\n\n\n\nGéron Fig. 1-22\n\n\n\n\n\n\nPoor quality: Noise, typing errors, missing entries, rounding errors, …\n\n\n\n\n\n\n\n\nIrrelevant data: Little or no correlation with the observable we want to predict\n\n\n\n\nBias: Data contains correlations you didn’t want (see e.g. stories about COMPAS, Amazon)\n\n\n\n\n\n\n🕒 Very often, most of the time spent on an ML project goes to collecting, cleaning and preparing data."
+  },
+  {
+    "objectID": "slides/1-intro/lecture2.html#machine-learning-engineering",
+    "href": "slides/1-intro/lecture2.html#machine-learning-engineering",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n        \n\n\n\ntheoretical\n\n\napplied\n\n\n\n\nMachine learning models\n\n  \n\n\n\n\nMachine learning engineering\n \n\n\n\n\n\n\n\nData and society"
   },
   {
     "objectID": "index.html",
@@ -432,41 +446,6 @@
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Different types of machine learning",
     "text": "Different types of machine learning\n\n\nSupervised learning:\n\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
-  },
-  {
-    "objectID": "slides/1-intro/lecture1.html#some-types-of-data",
-    "href": "slides/1-intro/lecture1.html#some-types-of-data",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "(Some) types of data",
-    "text": "(Some) types of data\n\n\n\n\nText\n\n\n\n\n\n\n\nVideo\n\n\n\n\n\n\n\nCode\n\n\n\n\n\n\n\nTime series (IPPC 2021)\n\n\n\n\n\n\n\nAudio\n\n\n\n\n\n\n\nTabular (UCI Bank)\n\n\n\n\n\n\n\nImages"
-  },
-  {
-    "objectID": "slides/1-intro/lecture1.html#about-data",
-    "href": "slides/1-intro/lecture1.html#about-data",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "About data",
-    "text": "About data\n\nStructured data can be represented in a table:\n\n\nTitanic dataset (from Kaggle)\n\n\nId\nSurvived\nPclass\nName\nSex\nAge\n...\n\n\n\n\n1\n0\n3\nBraund, Mr. Owen Harris\nmale\n22\n\n\n\n2\n1\n1\nCumings, Mrs. John Bradley\nfemale\n38\n\n\n\n3\n1\n3\nHeikkinen, Miss. Laina\nfemale\n-\n\n\n\n4\n1\n1\nFutrelle, Mrs. Jacques Heath\nfemale\n35\n\n\n\n\n\n\n⋮\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfeatures \n\n\n\nbinary\n\n\ncategorical\n\n\nmissing data\n\n\n\n\n\n\n\ndata point (\\(\\mathbf{x}_2\\))\n\n\n\nData are often expressed in mathematical notation as an \\(N \\times M\\)-matrix \\(\\mathbf{X}\\), where\n\n\\(N\\) is the number of data points\n\\(M\\) is the number of features\n\nA single data point is then a vector \\(\\mathbf{x} = (x_1, \\dots, x_M)\\)."
-  },
-  {
-    "objectID": "slides/1-intro/lecture1.html#sources-of-data",
-    "href": "slides/1-intro/lecture1.html#sources-of-data",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Sources of data",
-    "text": "Sources of data\n\n\nOpenly available datasets well suited for machine learning:\n\n\nKaggle Datasets\n\n\n\n\nUCI Machine Learning Repository\n\n\n\n\nGoogle Dataset Search\n\n\n\n\nPapersWithCode Datasets\n\n\n\n\nHugging Face datasets\n\n\n\n\nStatistisk Sentralbyrå\n\n(More listed in Chap 2 in the textbook)"
-  },
-  {
-    "objectID": "slides/1-intro/lecture1.html#data-challenges",
-    "href": "slides/1-intro/lecture1.html#data-challenges",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Data challenges",
-    "text": "Data challenges\n\n\nToo little data available: Can lead to overfitting: the model gives perfect predictions on known data, but does not generalise to new data\n\n\n\n\n\nUnrepresentative data: New data does not look like known data\n\n\n\n\n\n\n\nGéron Fig. 1-20\n\n\n\n\n\n\n\nGéron Fig. 1-22\n\n\n\n\n\n\nPoor quality: Noise, typing errors, missing entries, rounding errors, …\n\n\n\n\n\n\n\n\nIrrelevant data: Little or no correlation with the observable we want to predict\n\n\n\n\nBias: Data contains correlations you didn’t want (see e.g. stories about COMPAS, Amazon)\n\n\n\n\n\n\n🕒 Very often, most of the time spent on an ML project goes to collecting, cleaning and preparing data."
-  },
-  {
-    "objectID": "slides/1-intro/lecture1.html#machine-learning-engineering",
-    "href": "slides/1-intro/lecture1.html#machine-learning-engineering",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n        \n\n\n\ntheoretical\n\n\napplied\n\n\n\n\nMachine learning models\n\n  \n\n\n\n\nMachine learning engineering\n \n\n\n\n\n\n\n\nData and society"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#referansegruppe",
