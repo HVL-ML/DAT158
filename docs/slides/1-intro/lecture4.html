@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-958fc32383290b5ef6234cdb9c3ce2d8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-fe91322616dd2b9cea8bc6bfc6aa44e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="sma@hvl.no">
   <title>DAT158 – DAT158: Machine Learning Engineering and Advanced Algorithms</title>
@@ -304,14 +304,14 @@ sma@hvl.no
 </div>
 <p><code>scikit-learn</code> API:</p>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:55%;">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Generic model API</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_family <span class="im">import</span> ModelName</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelName(some_setting<span class="op">=</span><span class="st">"foo"</span>)</span>
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y) <span class="co"># X are data, y are targets </span></span>
 <span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:45%;">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Specific example</span></span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> <span class="op">\</span></span>
 <span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>  LinearRegression</span>
@@ -417,13 +417,13 @@ sma@hvl.no
 <span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>array([[<span class="dv">2</span>, <span class="dv">2</span>],</span>
 <span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a>       [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
 <span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Confusion matrix can be plotted easily using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay"><code>ConfusionMarixDisplay</code></a></p>
+<p>Confusion matrix can be plotted easily using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay"><code>ConfusionMatrixDisplay</code></a></p>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="setting-thresholds" class="slide level2">
 <h2>Setting thresholds</h2>
 <div class="frame-wrap" style="width: 1600px; height: 800px">
-<iframe class="frame" src="https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/classification/roc-and-auc_3689cac9917eb19cc4a8c29c3140b8e30ffacdd8fcfc99df2ec5a1879dbef187.frame" allow="clipboard-write https://developers-dot-devsite-v2-prod.appspot.com" allowfullscreen="" name="goog_1966039026">
+<iframe class="frame" src="classification_threshold.html" allowfullscreen="" name="classification_threshold">
 </iframe>
 </div>
 <div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
@@ -463,7 +463,7 @@ sma@hvl.no
 </section>
 <section id="train-test-split" class="slide level2">
 <h2>Train-test split</h2>
-<p>Evaluating a model should be done on an <em>independent</em> data set<br> (we want to know how well it performs on new, unseen data)</p>
+<p>Evaluating a model should be done on an <span class="color-indigo"><em>independent</em></span> data set<br> (we want to know how well it performs on new, unseen data)</p>
 <p>Typically we set aside a part of the data, and use this only for final evaluation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -537,6 +537,14 @@ sma@hvl.no
 <p><img data-src="figures/stratified_kfold.png" style="width:100.0%"></p>
 </div>
 </div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="piecing-it-together" class="slide level2" data-background-color="#212830">
+<h2>Piecing it together</h2>
+<div style="padding-top: 50px;">
+
+</div>
+<p><a href="https://github.com/HVL-ML/DAT158/tree/main/notebooks"><img data-src="figures/notebooks-part1.png" width="750"></a></p>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="serving-an-ml-model" class="slide level2">
@@ -641,25 +649,44 @@ sma@hvl.no
 </section>
 <section id="mandatory-exercise-after-module-1" class="slide level2">
 <h2>Mandatory exercise after Module 1</h2>
-<div class="columns">
-<div class="column" style="width:47%;">
-<p><span class="color-deep-purple" style="font-weight: 400;">Part 1: <em>Concepts and theory</em></span></p>
+<p><span class="color-deep-purple" style="font-weight: 400;">Test: <em>Concepts and theory</em></span></p>
 <p>Multiple-choice <strong>quiz</strong> about topics from the textbook, lectures, and exercises (notebooks)</p>
-</div><div class="column" style="width:5%;">
+<p><strong>Deadline:</strong> 14. September</p>
+<!--
+::::{.columns}
+:::{.column width="47%"}
+[Part 1: _Concepts and theory_]{.color-deep-purple style="font-weight: 400;"}
 
-</div><div class="column" style="width:48%;">
-<div class="fragment">
-<p><span class="color-light-blue" style="font-weight: 400;">Part 2: <em>Hands-on</em></span></p>
-<p><strong>Kaggle competition:</strong><br> Compete against each other in making the best predictions <span class="emoji" data-emoji="sunglasses">😎</span></p>
-<p>We use the <a href="https://www.kaggle.com/competitions">Kaggle</a> platform to host the competition and leaderboard<br> <span class="color-text-muted">(<em>competition is open only to us</em>)</span></p>
-<div class="absolute" style="left: 65%; width: 15%; ">
-<p><img data-src="figures/kaggle-logo.png"></p>
-</div>
-</div>
-</div></div>
-<div class="fragment">
-<p><span style="font-weight: 400;"><em>Proposed deadline:</em></span><br> Open the competition <span class="color-green-dark">Sept.&nbsp;6</span>,<br>close on <span class="color-red-dark">Sept 20</span> (two weeks)</p>
-</div>
+Multiple-choice **quiz** about topics from the textbook, lectures, and exercises (notebooks)
+:::
+
+:::{.column width="5%"}
+:::
+
+:::{.column width="48%"}
+:::{.fragment}
+[Part 2: _Hands-on_]{.color-light-blue style="font-weight: 400;"}
+
+**Kaggle competition:**<br>
+Compete against each other in making the best predictions :sunglasses:
+
+We use the [Kaggle](https://www.kaggle.com/competitions) platform to host the competition
+and leaderboard<br>
+[(_competition is open only to us_)]{.color-text-muted}
+
+:::{.absolute left="65%" width="15%"}
+![](figures/kaggle-logo.png)
+:::
+:::
+
+:::
+::::
+
+:::{.fragment}
+[_Proposed deadline:_]{style="font-weight: 400;"}<br>
+Open the competition [Sept. 6]{.color-green-dark},<br>close on [Sept 20]{.color-red-dark} (two weeks)
+:::
+-->
 <!----------------------------------------------------------------------------->
 </section>
 <section id="referansegruppe" class="slide level2">

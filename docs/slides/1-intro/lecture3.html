@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-958fc32383290b5ef6234cdb9c3ce2d8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-fe91322616dd2b9cea8bc6bfc6aa44e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="sma@hvl.no">
   <title>DAT158 – DAT158: Machine Learning Engineering and Advanced Algorithms</title>
@@ -206,16 +206,6 @@ sma@hvl.no
 </div>
 
 </section>
-<section id="referansegruppe" class="slide level2">
-<h2>Referansegruppe</h2>
-<div class="absolute" style="top: 10%; left: -7%; width: 120%; ">
-<p><img data-src="figures/referansegruppe.png"></p>
-</div>
-<div class="absolute" style="top: 70%; left: 80%; ">
-<p><img data-src="figures/uncle-sam.jpg"></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
 <section id="section" class="slide level2" data-background-color="#E8EAF6" data-menu-title="Pensum">
 <h2></h2>
 <div class="r-stack">
@@ -357,7 +347,7 @@ sma@hvl.no
 <ul>
 <li><strong>Missing data</strong>
 <ul>
-<li>Fill with some value (<span class="color-grey-dark"><em>zero, mean, …</em></span>) aka <span class="color-blue-dark"><strong>imputation</strong></span></li>
+<li>Fill with some value (<span class="color-grey-dark"><em>zero, mean, …</em></span>) aka <span class="color-blue-dark">imputation</span></li>
 <li>Skip datapoints containing missing data</li>
 <li>Skip entire feature containing missing data</li>
 </ul></li>
@@ -471,14 +461,14 @@ sma@hvl.no
 </div>
 <p><code>scikit-learn</code> API:</p>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:55%;">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Generic model API</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_family <span class="im">import</span> ModelName</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelName(some_setting<span class="op">=</span><span class="st">"foo"</span>)</span>
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y) <span class="co"># X are data, y are targets </span></span>
 <span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:45%;">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Specific example</span></span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> <span class="op">\</span></span>
 <span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>  LinearRegression</span>
@@ -600,7 +590,7 @@ sma@hvl.no
 </tbody>
 </table>
 <p><span style="font-size: 0.8em;">(More about the data <a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database">here</a>)</span></p>
-<p>We want our ML algorithm <span class="math inline">\(\color{Purple}{f}\)</span> to predict no/yes for new patients with observations <span class="math inline">\(\color{DarkOrange}{\mathbf{x}}\)</span>,</p>
+<p>We want our ML algorithm <span class="math inline">\(\color{Purple}{f}\)</span> to predict <span class="color-red-dark">no</span>/<span class="color-green-dark">yes</span> for new patients with observations <span class="math inline">\(\color{DarkOrange}{\mathbf{x}}\)</span>,</p>
 <p><span class="math display">\[
 \color{Purple}{f}: \color{DarkOrange}{\mathbf{x}} \in \mathbb{R}^n \longrightarrow \{0,1\} \,.
 \]</span></p>
@@ -672,21 +662,20 @@ sma@hvl.no
 <div style="margin-top: 50px">
 
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix</span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> y_pred <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> y_true <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> accuracy_score(y_true, y_pred)</span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span></span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> confusion_matrix(y_true, y_pred)</span>
-<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>array([[<span class="dv">2</span>, <span class="dv">2</span>],</span>
-<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a>       [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
-<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Confusion matrix can be plotted easily using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay"><code>ConfusionMarixDisplay</code></a></p>
+<div class="sourceCode" id="cb3" data-code-line-numbers="1|2-5|2-3,6-8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix</span>
+<span id="cb3-2"><a></a><span class="op">&gt;&gt;&gt;</span> y_pred <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb3-3"><a></a><span class="op">&gt;&gt;&gt;</span> y_true <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb3-4"><a></a><span class="op">&gt;&gt;&gt;</span> accuracy_score(y_true, y_pred)</span>
+<span id="cb3-5"><a></a><span class="fl">0.5</span></span>
+<span id="cb3-6"><a></a><span class="op">&gt;&gt;&gt;</span> confusion_matrix(y_true, y_pred)</span>
+<span id="cb3-7"><a></a>array([[<span class="dv">2</span>, <span class="dv">2</span>],</span>
+<span id="cb3-8"><a></a>       [<span class="dv">1</span>, <span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Confusion matrix can be plotted easily using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay"><code>ConfusionMatrixDisplay</code></a></p>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="setting-thresholds" class="slide level2">
 <h2>Setting thresholds</h2>
-<p>Most ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a <em>threshold</em> for where to divide between the positive and negative class.</p>
+<p>Most ML classifiers actually predict a decimal number between <span class="color-red-dark">0</span> and <span class="color-green-dark">1</span>, leaving us to select a <strong><em>threshold</em></strong> for where to divide between the <span class="color-red-dark">negative</span> and <span class="color-green-dark">positive</span> class.</p>
 <p><span class="math display">\[
 \color{Purple}{f}: \color{DarkOrange}{\mathbf{x}} \longrightarrow [0, 1]
 \]</span></p>
@@ -709,7 +698,7 @@ sma@hvl.no
 <section id="setting-thresholds-cont." class="slide level2">
 <h2>Setting thresholds (<em>cont.</em>)</h2>
 <div class="frame-wrap" style="width: 1600px; height: 800px">
-<iframe class="frame" src="https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/classification/accuracy-precision-recall_48d642036b6a12f05752bd92fcdf132b3f73d1d61a0897727e060c27ed347370.frame" allow="clipboard-write https://developers-dot-devsite-v2-prod.appspot.com" allowfullscreen="" name="goog_1966039026">
+<iframe class="frame" src="classification_threshold.html" allowfullscreen="" name="classification_threshold">
 </iframe>
 </div>
 <div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
@@ -717,10 +706,10 @@ sma@hvl.no
 </div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="unbalanced-data" class="slide level2">
-<h2>Unbalanced data</h2>
+<section id="imbalanced-data" class="slide level2">
+<h2>Imbalanced data</h2>
 <div class="frame-wrap" style="width: 1600px; height: 800px">
-<iframe class="frame" src="https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/classification/accuracy-precision-recall_48d642036b6a12f05752bd92fcdf132b3f73d1d61a0897727e060c27ed347370.frame" allow="clipboard-write https://developers-dot-devsite-v2-prod.appspot.com" allowfullscreen="" name="goog_1966039026">
+<iframe class="frame" src="classification_threshold.html" allowfullscreen="" name="classification_threshold">
 </iframe>
 </div>
 <div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
@@ -734,7 +723,7 @@ sma@hvl.no
 <section id="precision-recall-curves" class="slide level2">
 <h2>Precision-recall curves</h2>
 <p>The metrics so far are computed at a <em>single</em> threshold value.<br> What if we want to evaluate a model for all possible thresholds?</p>
-<p><i class="bi bi-arrow-right color-green-dark"></i> Plot precision as a function of recall:</p>
+<p><i class="bi bi-arrow-right color-green-dark"></i> Plot <strong>precision</strong> as a function of <strong>recall</strong>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="figures/precision-recall-curve.png" style="width:50.0%"></p>
@@ -774,7 +763,7 @@ sma@hvl.no
 <section id="receiver-operator-characteristic-roc-1" class="slide level2">
 <h2>Receiver Operator Characteristic (ROC)</h2>
 <div class="frame-wrap" style="width: 1600px; height: 800px">
-<iframe class="frame" src="https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/classification/roc-and-auc_3689cac9917eb19cc4a8c29c3140b8e30ffacdd8fcfc99df2ec5a1879dbef187.frame" allow="clipboard-write https://developers-dot-devsite-v2-prod.appspot.com" allowfullscreen="" name="goog_1966039026">
+<iframe class="frame" src="roc_curve.html" allowfullscreen="" name="roc_curve">
 </iframe>
 </div>
 <div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">

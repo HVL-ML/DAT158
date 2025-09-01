@@ -46,7 +46,7 @@
     "href": "slides/1-intro/lecture4.html#computing-metrics",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Computing metrics",
-    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMarixDisplay"
+    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMatrixDisplay"
   },
   {
     "objectID": "slides/1-intro/lecture4.html#setting-thresholds",
@@ -91,6 +91,13 @@
     "text": "Cross-validation (cont.)\n\n\n“Simple” splitting is called k-fold, where k is the number of splits\nfrom sklearn.model_selection import KFold\n\nkf = KFold(n_splits=2)\nfor train, test in kf.split(X):\n    # train, test are dataset indices\n    ...\n\n\n\n\n\nWe can keep the original class distribution in each split by using stratified k-fold cross-validation\nfrom sklearn.model_selection import \\\n  StratifiedKFold\n  \nskf = StratifiedKFold(n_splits=3)\nfor train, test in skf.split(X, y):\n  ..."
   },
   {
+    "objectID": "slides/1-intro/lecture4.html#piecing-it-together",
+    "href": "slides/1-intro/lecture4.html#piecing-it-together",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Piecing it together",
+    "text": "Piecing it together"
+  },
+  {
     "objectID": "slides/1-intro/lecture4.html#serving-an-ml-model",
     "href": "slides/1-intro/lecture4.html#serving-an-ml-model",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
@@ -123,7 +130,7 @@
     "href": "slides/1-intro/lecture4.html#mandatory-exercise-after-module-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Mandatory exercise after Module 1",
-    "text": "Mandatory exercise after Module 1\n\n\nPart 1: Concepts and theory\nMultiple-choice quiz about topics from the textbook, lectures, and exercises (notebooks)\n\n\n\n\nPart 2: Hands-on\nKaggle competition: Compete against each other in making the best predictions 😎\nWe use the Kaggle platform to host the competition and leaderboard (competition is open only to us)\n\n\n\n\n\n\nProposed deadline: Open the competition Sept. 6,close on Sept 20 (two weeks)"
+    "text": "Mandatory exercise after Module 1\nTest: Concepts and theory\nMultiple-choice quiz about topics from the textbook, lectures, and exercises (notebooks)\nDeadline: 14. September"
   },
   {
     "objectID": "slides/1-intro/lecture4.html#referansegruppe",
@@ -448,13 +455,6 @@
     "text": "Different types of machine learning\n\n\nSupervised learning:\n\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#referansegruppe",
-    "href": "slides/1-intro/lecture3.html#referansegruppe",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Referansegruppe",
-    "text": "Referansegruppe"
-  },
-  {
     "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering",
     "href": "slides/1-intro/lecture3.html#machine-learning-engineering",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
@@ -550,14 +550,14 @@
     "href": "slides/1-intro/lecture3.html#computing-metrics",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Computing metrics",
-    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\n&gt;&gt;&gt; \nConfusion matrix can be plotted easily using ConfusionMarixDisplay"
+    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\nConfusion matrix can be plotted easily using ConfusionMatrixDisplay"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#setting-thresholds",
     "href": "slides/1-intro/lecture3.html#setting-thresholds",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Setting thresholds",
-    "text": "Setting thresholds\nMost ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a threshold for where to divide between the positive and negative class.\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\longrightarrow [0, 1]\n\\]\n\n\n\n\n\n\n\n\n Most like class 0\n\n\nMost like class 1 \n\nTypically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics."
+    "text": "Setting thresholds\nMost ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a threshold for where to divide between the negative and positive class.\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\longrightarrow [0, 1]\n\\]\n\n\n\n\n\n\n\n\n Most like class 0\n\n\nMost like class 1 \n\nTypically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics."
   },
   {
     "objectID": "slides/1-intro/lecture3.html#setting-thresholds-cont.",
@@ -567,11 +567,11 @@
     "text": "Setting thresholds (cont.)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
   },
   {
-    "objectID": "slides/1-intro/lecture3.html#unbalanced-data",
-    "href": "slides/1-intro/lecture3.html#unbalanced-data",
+    "objectID": "slides/1-intro/lecture3.html#imbalanced-data",
+    "href": "slides/1-intro/lecture3.html#imbalanced-data",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Unbalanced data",
-    "text": "Unbalanced data\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+    "section": "Imbalanced data",
+    "text": "Imbalanced data\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
   },
   {
     "objectID": "slides/1-intro/lecture3.html#precision-recall-curves",
