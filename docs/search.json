@@ -455,6 +455,13 @@
     "text": "Different types of machine learning\n\n\nSupervised learning:\n\nEach datapoint is assigned to a label, which the model tries to predict.\n\n\n\nUnsupervised learning:\nDatapoints are unlabelled, but the model tries to group similar ones, or otherwise learn a pattern.\n\n\n\nReinforcement learning:\nThe model (aka agent) interacts with an environment, and receives rewards or penalties depending on its actions\n\n\n\n\n\n\n\n\nClassification\n\n\n\n\n\n\n\n\nClustering\n\n\n\n\n\n\n\n\nLunar lander"
   },
   {
+    "objectID": "slides/1-intro/lecture3.html#assignment-1-out",
+    "href": "slides/1-intro/lecture3.html#assignment-1-out",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Assignment 1 out",
+    "text": "Assignment 1 out\n\n\nDeadline: 14. September"
+  },
+  {
     "objectID": "slides/1-intro/lecture3.html#machine-learning-engineering",
     "href": "slides/1-intro/lecture3.html#machine-learning-engineering",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
