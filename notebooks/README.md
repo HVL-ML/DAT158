@@ -26,6 +26,23 @@ Here you will find all the Jupyter notebooks used in the course. Make sure to al
 
 ---
 
+### Part 2: Machine learning models
+
+| Notebook    |      1-Click Notebook      |    Video*   |
+|:----------|------|-------|
+|[DAT158-2.1-PolyReg_learning_curves_bias-variance.ipynb](DAT158-2.1-PolyReg_learning_curves_bias-variance.ipynb)<br>walk-through of many essential tools and concepts in machine learning, including _polynomial regression_, _learning curves_, and the _bias/variance tradeoff_.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-2.1-PolyReg_learning_curves_bias-variance.ipynb)|
+|[DAT158-2.2-Regularization.ipynb](DAT158-2.2-Regularization.ipynb) <br>introduces the concept of _regularization_: improving models by constraining them|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-2.2-Regularization.ipynb)|
+|[DAT158-2.3-Decision_trees.ipynb](DAT158-2.3-Decision_trees.ipynb)<br>What is a decision tree?|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-2.3-Decision_trees.ipynb)|
+|[DAT158-2.4-Random_forests_and_ensembling.ipynb](DAT158-2.4-Random_forests_and_ensembling.ipynb)<br>What is a random forest? What are _ensemble models_?|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/DAT158/blob/main/notebooks/DAT158-2.4-Random_forests_and_ensembling.ipynb)|
+|[DAT158-2.5-LinReg_GradientDescent.ipynb](DAT158-2.5-LinReg_GradientDescent.ipynb)<br>introduces _linear regression_ and _gradient descent_|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooks/DAT158-2.5-LinReg_GradientDescent.ipynb)|
+|[DAT158-2.6-Hyperparameter_optimization.ipynb](DAT158-2.6-Hyperparameter_optimization.ipynb)<br>Optimizing hyperparameters.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooksDAT158-2.6-Hyperparameter_optimization.ipynb)|
+|[DAT158-2.7-Extra-Imputing_missing_values.ipynb](DAT158-2.7-Extra-Imputing_missing_values.ipynb)<br>An extra notebook discussing strategies for imputing missing values.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooks/DAT158-2.7-Extra-Imputing_missing_values.ipynb)|
+|[DAT158-2.8-Extra-Feature_scaling.ipynb](DAT158-2.8-Extra-Feature_scaling.ipynb)<br>An extra notebook discussing feature scaling.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooks/DAT158-2.8-Extra-Feature_scaling.ipynb)|
+|[DAT158-2.9-Extra-Feature_engineering.ipynb](DAT158-2.9-Extra-Feature_engineering.ipynb)<br>An extra notebook discussing feature engineering.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooks/DAT158-2.9-Extra-Feature_engineering.ipynb)|
+|[DAT158-2.10-Extra-Pipelines.ipynb](DAT158-2.10-Extra-Pipelines.ipynb)<br>An extra notebook discussing pipelines.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooks/DAT158-2.10-Extra-Pipelines.ipynb)|
+
+---
+
 ## Jupyter Notebook tutorials
 
 :question: As Jupyter Notebook is a new tool to many of you, you may want to look through some tutorials. Here are a few: 
