@@ -161,6 +161,13 @@
     "text": "Topics for Module 2\n\n\nModels:\n\nLinear regression\nTree-based models\n\nDecision trees\nRandom forests\nGradient-boosted trees\n\nEnsemble models\n\n\nConsiderations:\n\nModel complexity\nUnder/-overfitting\n\nTechniques:\n\nGradient descent\nRegularisation\n\n\n\n\nBook chapters:\n\n4: Training models\n6: Decision trees\n7: Ensemble learning and random forests"
   },
   {
+    "objectID": "slides/2-models/lecture2.html#kaggle-competition",
+    "href": "slides/2-models/lecture2.html#kaggle-competition",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Kaggle competition",
+    "text": "Kaggle competition\n\nJoin at kaggle.com (competition only open to us) – Submission deadline: Oct 3, at 23.55"
+  },
+  {
     "objectID": "slides/2-models/lecture2.html#section",
     "href": "slides/2-models/lecture2.html#section",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
