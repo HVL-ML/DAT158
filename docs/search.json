@@ -144,7 +144,7 @@
     "href": "slides/2-models/lecture4.html#ml-assignment-2-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "ML assignment 2",
-    "text": "ML assignment 2\nSome ideas:\n\n\nMake a web app to\n\nEstimate the value of a used car [1]\nPredict wine quality [2]\nClassify mushrooms as poisonous or edible [3]\n\n\nMake a chatbot to\n\nBe a student assistant in DAT158\nWrite tweets based on your current mood\nGenerate pictures of todays’ weather based on meteorological info\n\n\nUsing pre-trained models is fine, but you need to somehow adapt them to your data and use case.\nThe result should be something you can be proud of!"
+    "text": "ML assignment 2\nSome ideas:\n\nEstimate the value of a used car [1]\nPredict wine quality [2]\nClassify mushrooms as poisonous or edible [3]"
   },
   {
     "objectID": "slides/2-models/lecture2.html#module-2",
