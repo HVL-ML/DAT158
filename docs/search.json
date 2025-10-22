@@ -1561,27 +1561,6 @@
     "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#ml-assignment-2",
-    "href": "slides/3-systems/lecture2.html#ml-assignment-2",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ML assignment 2",
-    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template will be provided)\nMake the code accessible\n\n\n\n\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
-  },
-  {
-    "objectID": "slides/3-systems/lecture2.html#ml-assignment-2-1",
-    "href": "slides/3-systems/lecture2.html#ml-assignment-2-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ML assignment 2",
-    "text": "ML assignment 2\nSome ideas:\n\n\nMake a web app to\n\nEstimate the value of a used car [1]\nPredict wine quality [2]\nClassify mushrooms as poisonous or edible [3]\n\n\nThe result should be something you can be proud of!"
-  },
-  {
-    "objectID": "slides/3-systems/lecture2.html#machine-learning-engineering",
-    "href": "slides/3-systems/lecture2.html#machine-learning-engineering",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
-  },
-  {
     "objectID": "slides/3-systems/lecture2.html#more-detailed-picture-the-ml-project-lifecycle",
     "href": "slides/3-systems/lecture2.html#more-detailed-picture-the-ml-project-lifecycle",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
