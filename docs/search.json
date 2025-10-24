@@ -1,17 +1,45 @@
 [
   {
+    "objectID": "slides/3-systems/lecture3.html#the-ml-project-lifecycle",
+    "href": "slides/3-systems/lecture3.html#the-ml-project-lifecycle",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "The ML project lifecycle",
+    "text": "The ML project lifecycle"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#checklist-pt.-7-present-the-solution",
+    "href": "slides/3-systems/lecture3.html#checklist-pt.-7-present-the-solution",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 7: Present the solution",
+    "text": "☑️ Checklist pt. 7: Present the solution\n\n\n\nDocumentation time 📋\n\n\n\n\nDocument the system\nMake a nice powerpoint for stakeholders\nWrite a report about business added value\nUse cool business words\nBusiness\nEvaluate business impact\nBusiness"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#checklist-pt.-8-launch",
+    "href": "slides/3-systems/lecture3.html#checklist-pt.-8-launch",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 8: Launch",
+    "text": "☑️ Checklist pt. 8: Launch\nDeploy\n\nChoose how or where to run the ML model\n(user hardware / common backend / specialised backend)\nRun the model!\nScale servers as required\n\nMonitor\n\nCheck model performance over time\nBeware of both sudden and slow degradation\n\nUpdate\n\nRe-train model on new data (when available)\nConsider other model types\n\n\n🚀"
+  },
+  {
     "objectID": "slides/3-systems/lecture3.html#ml-assignment-2",
     "href": "slides/3-systems/lecture3.html#ml-assignment-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "ML assignment 2",
-    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template will be provided)\nMake the code accessible\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
+    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template on Canvas)\nMake the code accessible\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#topics-for-module-3",
-    "href": "slides/3-systems/lecture3.html#topics-for-module-3",
+    "objectID": "slides/3-systems/lecture3.html#section",
+    "href": "slides/3-systems/lecture3.html#section",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Topics for Module 3",
-    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣"
+    "section": "",
+    "text": "www.gradio.app"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#section-1",
+    "href": "slides/3-systems/lecture3.html#section-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "streamlit.io"
   },
   {
     "objectID": "slides/3-systems/lecture3.html#mistakes-to-avoid",
@@ -126,8 +154,8 @@
     "text": "Going beyond DAT158 🔭"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#section",
-    "href": "slides/3-systems/lecture3.html#section",
+    "objectID": "slides/3-systems/lecture3.html#section-2",
+    "href": "slides/3-systems/lecture3.html#section-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "",
     "text": "Coursedescription"
@@ -140,22 +168,22 @@
     "text": "Useful libraries besides scikit-learn\nScikit-learn is great for testing loads of models, but sometimes we want a more specialised tool.\nSome examples of specialised Python libraries:\n\nGradient boosted trees:\nXGBoost, LightGBM, CatBoost\nNeural networks:\nKeras, PyTorch\nLinear regression++:\nStatsModels\nScikit-learn clone optimised for GPUs:\nRAPIDS / cuML"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2024",
-    "href": "slides/3-systems/lecture3.html#state-of-ml-2024",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2024",
-    "text": "State of ML 2024\nMost noteworthy recent developments are within generative AI:\n\n\nLarge language models \n\nImage and video generation \n\nThese are all machine learning models – trained on known data, and used to make predictions on new data points."
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2024-1",
-    "href": "slides/3-systems/lecture3.html#state-of-ml-2024-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2024",
-    "text": "State of ML 2024\nMost noteworthy recent developments are within generative AI\nStill, the majority of ML tasks are deterministic – a data point should get the same predicted result every time:\n\n\n\n\nObject detection\nFace recognition\nFraud detection\nCredit scoring\nAlgorithmic trading\nCustomer segmentation\nSentiment analysis\nPredictive maintenance\nRoute optimisation\nTimeseries prediction\n\n\n\nRecommender systems\nSpeech recognition\nProperty valuation\nClimate modelling\nPersonalised medicine\nTargeted advertising\nSelf-driving vehicles\nNetwork optimisation\nSpam filtering\n…"
-  },
-  {
     "objectID": "slides/3-systems/lecture3.html#state-of-ml-2025",
     "href": "slides/3-systems/lecture3.html#state-of-ml-2025",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2025",
+    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI:\n\n\nLarge language models \n\nImage and video generation \n\nThese are all machine learning models – trained on known data, and used to make predictions on new data points."
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2025-1",
+    "href": "slides/3-systems/lecture3.html#state-of-ml-2025-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2025",
+    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI\nStill, the majority of ML tasks are deterministic – a data point should get the same predicted result every time:\n\n\n\n\nObject detection\nFace recognition\nFraud detection\nCredit scoring\nAlgorithmic trading\nCustomer segmentation\nSentiment analysis\nPredictive maintenance\nRoute optimisation\nTimeseries prediction\n\n\n\nRecommender systems\nSpeech recognition\nProperty valuation\nClimate modelling\nPersonalised medicine\nTargeted advertising\nSelf-driving vehicles\nNetwork optimisation\nSpam filtering\n…"
+  },
+  {
+    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2025-2",
+    "href": "slides/3-systems/lecture3.html#state-of-ml-2025-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "State of ML 2025",
     "text": "State of ML 2025\nNevertheless, this is the time to ride the AI wave 🏄"
@@ -1657,34 +1685,6 @@
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
     "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\nShapley values\n\n\n\n\n\n\nimport shap\nexplainer = shap.TreeExplainer(rf)\nexplanation = explainer(X)\nshap.plots.beeswarm(explanation)\n\n\n\nFeature importance tells us something about the model, not necessarily about reality."
-  },
-  {
-    "objectID": "slides/3-systems/lecture2.html#checklist-pt.-7-present-the-solution",
-    "href": "slides/3-systems/lecture2.html#checklist-pt.-7-present-the-solution",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 7: Present the solution",
-    "text": "☑️ Checklist pt. 7: Present the solution\n\n\n\nDocumentation time 📋\n\n\n\n\nDocument the system\nMake a nice powerpoint for stakeholders\nWrite a report about business added value\nUse cool business words\nBusiness\nEvaluate business impact\nBusiness"
-  },
-  {
-    "objectID": "slides/3-systems/lecture2.html#checklist-pt.-8-launch",
-    "href": "slides/3-systems/lecture2.html#checklist-pt.-8-launch",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 8: Launch",
-    "text": "☑️ Checklist pt. 8: Launch\nDeploy\n\nChoose how or where to run the ML model\n(user hardware / common backend / specialised backend)\nRun the model!\nScale servers as required\n\nMonitor\n\nCheck model performance over time\nBeware of both sudden and slow degradation\n\nUpdate\n\nRe-train model on new data (when available)\nConsider other model types\n\n\n🚀"
-  },
-  {
-    "objectID": "slides/3-systems/lecture2.html#section",
-    "href": "slides/3-systems/lecture2.html#section",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "www.gradio.app"
-  },
-  {
-    "objectID": "slides/3-systems/lecture2.html#section-1",
-    "href": "slides/3-systems/lecture2.html#section-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "streamlit.io"
   },
   {
     "objectID": "slides/3-systems/lecture2.html#now-presentation-from-naic",
