@@ -26,6 +26,7 @@ Here you will find all the Jupyter notebooks used in the course. Make sure to al
 
 ---
 
+<!--
 ### Part 2: Machine learning models
 
 | Notebook    |      1-Click Notebook      |    Video*   |
@@ -42,6 +43,7 @@ Here you will find all the Jupyter notebooks used in the course. Make sure to al
 |[DAT158-2.10-Extra-Pipelines.ipynb](DAT158-2.10-Extra-Pipelines.ipynb)<br>An extra notebook discussing pipelines.|[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HVL-ML/blob/main/notebooks/DAT158-2.10-Extra-Pipelines.ipynb)|
 
 ---
+-->
 
 ## Jupyter Notebook tutorials
 
