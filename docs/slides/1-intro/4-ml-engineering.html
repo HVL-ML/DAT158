@@ -196,13 +196,12 @@
   </style>
 </head>
 <body class="quarto-light">
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" data-background-image="figures/hvl_logo_engelsk.png" data-background-position="98% 2%" data-background-size="15%" class="quarto-title-block center">
   <h1 class="title">DAT158: Machine Learning Engineering and Advanced Algorithms</h1>
-  <p class="subtitle">Module 2 - Machine Learning Models <br> <em>Lecture 7</em></p>
+  <p class="subtitle">Module 1 - Introduction to Machine Learning <br> <em>Lecture 4</em></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -213,459 +212,495 @@ sma@hvl.no
 </div>
 
 </section>
-<section id="topics-module-2" class="slide level2">
-<h2>Topics module 2</h2>
-<div class="columns">
-<div class="column colorbox" style="background-color: #EEEEEE;">
-<h3 id="last-week">Last week</h3>
-<!-- :::{.colorbox} -->
+<section id="section" class="slide level2" data-background-color="#E8EAF6" data-menu-title="Pensum">
+<h2></h2>
+<div class="r-stack">
+<div class="absolute" style="top: -8%; left: 25%; width: 50%; ">
+<p><img data-src="figures/geron-toc-1.png"></p>
+</div>
+<div class="absolute" style="top: 10%; left: 60%; width: 50%; ">
+<p><img data-src="figures/geron-toc-2.png"></p>
+</div>
+<div class="absolute" style="top: 0%; left: 0%; width: 30%; ">
+<p><img data-src="figures/book-cover.webp" style="border: 2px solid"></p>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="machine-learning-engineering" class="slide level2">
+<h2>Machine learning engineering</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/geron_fig_1-2.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="columns" style="font-size: 0.9em;">
+<div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ol type="1">
+<li><em>Study the problem</em> <span class="emoji" data-emoji="mag">🔍</span>
 <ul>
-<li>Model complexity
-<ul>
-<li>Under/overfitting</li>
+<li>Exploratory data analysis</li>
+<li>Domain knowledge</li>
+<li>Data preparation</li>
 </ul></li>
-<li>Regularisation</li>
-<li>Decision trees</li>
-<li>Ensemble models
+</ol>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ol start="2" type="1">
+<li><em>Train ML model</em> <span class="emoji" data-emoji="computer">💻</span>
 <ul>
-<li>Random forest</li>
-<li>Boosting</li>
+<li>Algorithm/software development</li>
+</ul></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ol start="3" type="1">
+<li><em>Evaluate</em> <span class="emoji" data-emoji="chart_with_upwards_trend">📈</span>
+<ul>
+<li>Metric selection</li>
+<li>Model selection</li>
+<li>Uncertainty quantification</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ol start="4" type="1">
+<li><em>Launch</em> <span class="emoji" data-emoji="rocket">🚀</span> / <em>Analyse errors</em> <span class="emoji" data-emoji="x">❌</span>
+<ul>
+<li>Deployment</li>
+<li>Diagnostics and visualisation</li>
+</ul></li>
+</ol>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="model-training" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Model training</h2>
+<p>Details of different ML models is the topic for Module 2</p>
+<p>For now, let’s represent a generic ML model as a function <span class="math inline">\(\color{Purple}{f}\)</span>:</p>
+<div style="margin-top: 50px">
+<p><span class="math display">\[
+\large \hat{\color{DarkBlue}{y}} = \color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}, \boldsymbol{\color{teal}{\theta}})
+\]</span></p>
+</div>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is the <em>prediction</em></li>
+<li><span class="math inline">\(\color{DarkOrange}{\mathbf{x}}\)</span>&nbsp;is a data point</li>
+<li><span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span> are <em>parameters</em> of the model</li>
+</ul>
+<div>
+<p><em>Training</em> is the process of finding the best parameters <span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span>&nbsp;so that the prediction <span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is as close as possible to the known target value <span class="math inline">\(\color{DarkBlue}{y}\)</span>.</p>
+</div>
+</section>
+<section id="model-training-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Model training</h2>
+<p>Details of different ML models is the topic for Module 2</p>
+<p>For now, let’s represent a generic ML model as a function <span class="math inline">\(\color{Purple}{f}\)</span>:</p>
+<div style="margin-top: 50px">
+<p><span class="math display">\[
+\large \hat{\color{DarkBlue}{y}} = \color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}, \boldsymbol{\color{teal}{\theta}})
+\]</span></p>
+</div>
+<div>
+<p><em>Training</em> is the process of finding the best parameters <span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span>&nbsp;so that the prediction <span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is as close as possible to the known target value <span class="math inline">\(\color{DarkBlue}{y}\)</span>.</p>
+</div>
+<p><code>scikit-learn</code> API:</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Generic model API</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_family <span class="im">import</span> ModelName</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelName(some_setting<span class="op">=</span><span class="st">"foo"</span>)</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y) <span class="co"># X are data, y are targets </span></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:45%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Specific example</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>  LinearRegression</span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression(n_jobs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="evaluation" class="slide level2">
+<h2>Evaluation</h2>
+<p><span class="color-cyan-dark">How well does the model perform?</span></p>
+<p>To answer this we need a <em><strong>metric</strong></em> that quantifies performance.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Classification:</strong></p>
+<blockquote>
+<p>“How many did we label correctly?”</p>
+</blockquote>
+<p>Useful metrics:</p>
+<ul>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>ROC curve</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Regression:</strong></p>
+<blockquote>
+<p>“How close did we get?”</p>
+</blockquote>
+<p>Useful metrics:</p>
+<ul>
+<li>Mean squared error (MSE)</li>
+<li>Root mean squared error (RMSE)</li>
+<li>Mean absolute error (MAE)</li>
+</ul>
+</div>
+</div></div>
+<div class="fragment">
+<p>Consult <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">scikit-learn docs</a> for more metrics and description</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="the-confusion-matrix" class="slide level2">
+<h2>The confusion matrix</h2>
+<p>The outcomes of our predictions can be illustrated by the <em>confusion matrix</em>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/confusion-matrix.png" style="width:50.0%"></p>
+<figcaption><em>Binary classification case</em></figcaption>
+</figure>
+</div>
+<p>The different classification performance metrics can all be defined from these entries</p>
+<!-- :::{.fragment .r-stack .absolute bottom="13%" left="29%"} -->
+<!-- ![](figures/false-positive-false-negative.png){width="80%"} -->
+<!-- ::: -->
+<!----------------------------------------------------------------------------->
+</section>
+<section id="metrics-recap" class="slide level2">
+<h2>Metrics recap</h2>
+<ul>
+<li><p><strong>Accuracy</strong>:</p>
+<p><em>“How many did we get right?”</em></p>
+<p><span class="math inline">\(\small\mathrm{accuracy} = \frac{\mathrm{\color{Green}{TP + TN}}}{\mathrm{\color{Purple}{TP + TN + FP + FN}}}\)</span></p></li>
+</ul>
+<div>
+
+</div>
+<ul>
+<li><p><strong>Precision</strong>:</p>
+<p><em>“How many false positives did we avoid?”</em></p>
+<p><span class="math inline">\(\small\mathrm{precision} = \frac{\mathrm{\color{Green}{TP}}}{\mathrm{\color{Purple}{TP + FP}}}\)</span></p></li>
+</ul>
+<div>
+
+</div>
+<ul>
+<li><p><strong>Recall</strong>:</p>
+<p><em>“How many true positives did we get right?”</em></p>
+<p><span class="math inline">\(\small\mathrm{recall} = \frac{\mathrm{\color{Green}{TP}}}{\mathrm{\color{Purple}{TP + FN}}}\)</span></p></li>
+</ul>
+<div class="absolute r-stack" style="top: 30%; left: 63%; width: 45%; ">
+<p><img data-src="figures/confusion-matrix.png"></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="computing-metrics" class="slide level2">
+<h2>Computing metrics</h2>
+<p><code>scikit-learn</code> has implemented a long list of <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics">metrics</a></p>
+<div style="margin-top: 50px">
+
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> y_pred <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> y_true <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> accuracy_score(y_true, y_pred)</span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fl">0.5</span></span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> confusion_matrix(y_true, y_pred)</span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>array([[<span class="dv">2</span>, <span class="dv">2</span>],</span>
+<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a>       [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Confusion matrix can be plotted easily using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay"><code>ConfusionMatrixDisplay</code></a></p>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="setting-thresholds" class="slide level2">
+<h2>Setting thresholds</h2>
+<div class="frame-wrap" style="width: 1600px; height: 800px">
+<iframe class="frame" src="classification_threshold.html" allowfullscreen="" name="classification_threshold">
+</iframe>
+</div>
+<div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
+<p>Google for Developers: <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall"><em>Accuracy, precision, recall</em></a></p>
+</div>
+</section>
+<section id="multiclass-classification" class="slide level2">
+<h2>Multiclass classification</h2>
+<p>Things change a bit when we consider tasks with more than two classes</p>
+<div class="fragment">
+<ul>
+<li><p><strong>Accuracy</strong>: Still means ratio of correct predictions, but let’s redefine as</p>
+<p><span class="math display">\[
+  \small
+  \mathrm{accuracy}(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^{N} \unicode{x1D7D9}(y = \hat{y}), \qquad
+  \unicode{x1D7D9}(i,j) = \begin{cases} 1, &amp; i = j \\ 0, &amp; i \neq j \end{cases}
+  \]</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Precision</strong> and <strong>recall</strong>: Only make sense in binary setting, but:
+<ul>
+<li>We can compute these for “one class vs the rest”, and average results for each class</li>
 </ul></li>
 </ul>
-</div><div class="column colorbox" style="background-color: #E0F2F1;">
-<h3 id="this-week">This week</h3>
+</div>
+<div class="fragment">
 <ul>
-<li>Loss functions</li>
-<li>Gradient descent</li>
-<li>(More) linear regression</li>
-<li>Learning curves</li>
-<li>Hyperparameter optimisation</li>
+<li><strong>Confusion matrix</strong>: No change</li>
+</ul>
+<div class="absolute r-stack" style="top: 65%; left: 50%; width: 35%; ">
+<p><img data-src="figures/confusion-matrix-multiclass.png"></p>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="train-test-split" class="slide level2">
+<h2>Train-test split</h2>
+<p>Evaluating a model should be done on an <span class="color-indigo"><em>independent</em></span> data set<br> (we want to know how well it performs on new, unseen data)</p>
+<p>Typically we set aside a part of the data, and use this only for final evaluation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/train-test.png" class="quarto-figure quarto-figure-center" style="margin-top: 40px;;width:40.0%"></p>
+</figure>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># "X" are the data, "y" are the targets.</span></span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span style="font-size: 0.75em;">More in <a href="https://github.com/HVL-ML/DAT158/blob/main/notebooks/DAT158-1.3-Binary_classification.ipynb">DAT158-1.3-Binary_classification.ipynb</a></span></p>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="train-validation-test-split" class="slide level2">
+<h2>Train-validation-test split</h2>
+<p>Model selection</p>
+<ul>
+<li>In case we want to compare different models, we need a third set: <br> The <em>validation set</em></li>
+<li>The test set is still only for final evaluation</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/train-val-test.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="fragment">
+<p>ML models are prone to <strong>overfitting</strong> – i.e.&nbsp;memorising the training data.</p>
+<p>How do we know if (<em>when</em>) this happens?</p>
+<ul>
+<li>Can compare performance on the training set to the validation set</li>
+</ul>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="cross-validation" class="slide level2">
+<h2>Cross-validation</h2>
+<p>We can do even better estimates by rotating the training data:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/cross_validation.png" style="width:65.0%"></p>
+<figcaption>See scikit-learn <a href="https://scikit-learn.org/stable/modules/cross_validation.html">docs</a></figcaption>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="cross-validation-cont." class="slide level2">
+<h2>Cross-validation (<em>cont.</em>)</h2>
+<div class="columns">
+<div class="column" style="width:47%;">
+<p>“Simple” splitting is called <strong><em>k</em>-fold</strong>, where <em>k</em> is the number of splits</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="margin-top: 50px;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>kf <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> train, test <span class="kw">in</span> kf.split(X):</span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="co"># train, test are dataset indices</span></span>
+<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img data-src="figures/kfold.png" style="width:100.0%"></p>
+</div><div class="column" style="width:6%;">
+
+</div><div class="column" style="width:47%;">
+<div class="fragment">
+<p>We can keep the original class distribution in each split by using <strong>stratified</strong> <em>k</em>-fold cross-validation</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>  StratifiedKFold</span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>skf <span class="op">=</span> StratifiedKFold(n_splits<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> train, test <span class="kw">in</span> skf.split(X, y):</span>
+<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a>  ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img data-src="figures/stratified_kfold.png" style="width:100.0%"></p>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="piecing-it-together" class="slide level2" data-background-color="#212830">
+<h2>Piecing it together</h2>
+<div style="padding-top: 50px;">
+
+</div>
+<p><a href="https://github.com/HVL-ML/DAT158/tree/main/notebooks"><img data-src="figures/notebooks-part1.png" width="750"></a></p>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="serving-an-ml-model" class="slide level2">
+<h2>Serving an ML model</h2>
+<div class="r-stack">
+<div class="absolute" style="text-align: center;top: 25%; left: 0%; width: 45%; ">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/complicated-workflow.png"></p>
+<figcaption>Awesome ML workflow</figcaption>
+</figure>
+</div>
+</div>
+<div class="fragment">
+<div class="absolute" style="top: 40%; left: 50%; width: 20%; ">
+<svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke="#37474F" stroke-width="0.96" stroke-linecap="round" stroke-linejoin="round"></path> </g>
+</svg>
+</div>
+<div class="absolute" style="color:#37474F;top: 45%; left: 58%; width: 20%; ">
+<p><em><strong>?</strong></em></p>
+</div>
+<div class="absolute" style="text-align: center;top: 35%; left: 70%; width: 20%; ">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/phone-user.png"></p>
+<figcaption>User</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="serving-an-ml-model-1" class="slide level2">
+<h2>Serving an ML model</h2>
+<div class="fragment">
+<div style="display: block;">
+<p><strong>Option 1: Local</strong></p>
+<p>Model runs on user hardware</p>
+</div>
+<div class="columns">
+<div class="column color-green-dark" style="width:55%;">
+<ul>
+<li>Pros:
+<ul>
+<li>No server hardware</li>
+<li>No network connection needed</li>
+<li>Data stays with user</li>
+</ul></li>
+</ul>
+</div><div class="column color-red-dark" style="width:45%;">
+<ul>
+<li><p>Cons:<br> Model may need to be</p>
+<ul>
+<li>Compressed</li>
+<li>Simplified</li>
+<li>Encrypted</li>
+</ul></li>
 </ul>
 </div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="linear-regression-again" class="slide level2">
-<h2>Linear regression (again)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Let’s set up some math for regression with a simple linear model, on data with <span class="math inline">\(n\)</span> features:</p>
-<p><span class="math display">\[
-\small
-\begin{align}
-\hat{\color{DarkBlue}{y}} &amp;= \color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}, \boldsymbol{\color{teal}{\theta}}) \\
-&amp;= \color{teal}{\theta}_0
-+ \color{teal}{\theta}_1 \color{DarkOrange}{x}_1
-+ \cdots
-+ \color{teal}{\theta}_n \color{DarkOrange}{x}_n
-\end{align}
-\]</span></p>
-<div class="fragment" data-fragment-index="1">
-<p>Compactly written on <strong>vector form</strong>:</p>
-<p><span class="math display">\[
-\small
-\hat{\color{DarkBlue}{y}} = \boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\mathbf{x}}
-\]</span></p>
 </div>
-<div class="fragment" data-fragment-index="2">
-<p>For one-dimensional data, it looks like</p>
-<p><span class="math display">\[
-\small
-\begin{align}
-\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\mathbf{x}}
-&amp;=
-  \begin{bmatrix}
-    \color{teal}{\theta}_0 &amp; \color{teal}{\theta}_1
-  \end{bmatrix}
-  \begin{bmatrix}
-    \color{DarkOrange}{x}_0 \\ \color{DarkOrange}{x}_1
-  \end{bmatrix} \\
-&amp;= \color{teal}{\theta}_0 \color{DarkOrange}{x}_0 + \color{teal}{\theta}_1 \color{DarkOrange}{x}_1 \qquad \color{grey}{(\mathrm{with}\; x_0=1}) \\
-&amp;= \color{teal}{\theta}_0 + \color{teal}{\theta}_1 \color{DarkOrange}{x}_1
-\end{align}
-\]</span></p>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="r-stack">
-<p><img data-src="figures/linreg_data_only.png"></p>
-<div class="fragment" data-fragment-index="2">
-<p><img data-src="figures/linreg_poorfit.png" class="r-stack"></p>
-</div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="finding-optimal-parameters-boldsymboltheta" class="slide level2">
-<h2>Finding optimal parameters <span class="math inline">\(\boldsymbol{\theta}\)</span></h2>
-<p><strong>Step 1:</strong> Define <em>optimal</em> through a <strong>loss function</strong> <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
 <div class="fragment">
-<p>For regression, <span class="color-teal"><em>mean squared error</em></span> is the most common</p>
+<div style="margin-top: -20px;">
+<p><strong>Option 2: Central</strong></p>
+</div>
+<p>Model runs on server, user interacts via webpage / API</p>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><span class="math display">\[
-\small
-\begin{align}
-\color{MediumVioletRed}{L}_{\mathrm{MSE}}
-&amp;= \frac{1}{N}\sum_{i=1}^{N} \left(\hat{\color{DarkBlue}{y}}^{(i)} - \color{DarkBlue}{y}^{(i)}\right)^2 \\[1em]
-&amp;= \frac{1}{N}\sum_{i=1}^{N} \left(\boldsymbol{\color{teal}{\theta}}^{\intercal} \color{DarkOrange}{\mathbf{x}}^{(i)} - \color{DarkBlue}{y}^{(i)}\right)^2
-\end{align}
-\]</span></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="figures/regression_loss_comparison.png" style="width:80.0%"></p>
+<div class="column color-green-dark" style="width:55%;">
+<ul>
+<li>Pros:
+<ul>
+<li>No limits on model complexity</li>
+<li>Model updates are seamless (to user)</li>
+</ul></li>
+</ul>
+</div><div class="column color-red-dark" style="width:45%;">
+<ul>
+<li>Cons:
+<ul>
+<li>Need low-latency network</li>
+<li>User loses control over data</li>
+</ul></li>
+</ul>
 </div></div>
 </div>
+<div class="absolute r-stack" style="top: 0%; left: 90%; width: 15%; ">
+<p><img data-src="figures/phone-user.png"></p>
+</div>
+<!-- :::{style="margin-top: 180px"} -->
+<!-- ::: -->
+<!-- ![](figures/geron_fig_2-20.png){fig-align="center" width="60%"} -->
 <!----------------------------------------------------------------------------->
 </section>
-<section id="finding-optimal-parameters-boldsymboltheta-1" class="slide level2">
-<h2>Finding optimal parameters <span class="math inline">\(\boldsymbol{\theta}\)</span></h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Step 1:</strong> Define <em>optimal</em> through a <strong>loss function</strong> <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
-<p><strong>Step 2:</strong> Minimise <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
-<div style="padding-top: 50px;">
+<section id="some-hosting-services-gradio" class="slide level2" data-background-iframe="https://www.gradio.app" data-background-interactive="true">
+<h2>Some hosting services: <em>Gradio</em></h2>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="some-hosting-services-streamlit" class="slide level2" data-background-image="figures/streamlit.png">
+<h2>Some hosting services: <em>Streamlit</em></h2>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="assignment-1" class="slide level2">
+<h2>Assignment 1</h2>
+<p><a href="https://hvl.instructure.com/courses/32015/quizzes/20559/take"><img data-src="figures/quiz.png"></a></p>
+<div class="absolute rectangle" style="color: #C2185B;bottom: 1%; right: 1%; width: 300px; height: 80px; ">
+<p>Deadline: 14. September</p>
+</div>
+<!--
+::::{.columns}
+:::{.column width="47%"}
+[Part 1: _Concepts and theory_]{.color-deep-purple style="font-weight: 400;"}
 
-</div>
-<p>Two methods:</p>
-<ol type="1">
-<li>Solve <span class="color-pink-dark">analytically</span></li>
-<li>Solve <span class="color-indigo">numerically</span></li>
-</ol>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><span class="color-pink-dark">Analytical</span> solution:</p>
-<p>Solve the <em>normal equation</em></p>
-<p><span class="math display">\[
-\small
-\hat{\boldsymbol{\color{teal}{\theta}}}
-= (\color{DarkOrange}{\mathbf{X}}^{\intercal}\color{DarkOrange}{\mathbf{X}})^{-1}\color{DarkOrange}{\mathbf{X}}^{\intercal}\color{DarkBlue}{\mathbf{y}}
-\]</span></p>
-<p>Only possible in the <em>linear</em> case.</p>
-<p><img data-src="figures/linreg_bestfit.png"></p>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="finding-optimal-parameters-boldsymboltheta-2" class="slide level2">
-<h2>Finding optimal parameters <span class="math inline">\(\boldsymbol{\theta}\)</span></h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Step 1:</strong> Define <em>optimal</em> through a <strong>loss function</strong> <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
-<p><strong>Step 2:</strong> Minimise <span class="math inline">\(\color{MediumVioletRed}{L}\)</span></p>
-<div style="padding-top: 50px;">
+Multiple-choice **quiz** about topics from the textbook, lectures, and exercises (notebooks)
+:::
 
-</div>
-<p>Two methods:</p>
-<ol type="1">
-<li>Solve <span class="color-pink-dark">analytically</span></li>
-<li>Solve <span class="color-indigo">numerically</span></li>
-</ol>
-</div><div class="column" style="width:50%;">
-<p><span class="color-indigo">Numerical</span> solution:</p>
-<p><strong>Gradient descent</strong></p>
-<p><span class="math display">\[
-\nabla \color{MediumVioletRed}{L}(\color{teal}{\boldsymbol{\theta}}) =
-\begin{bmatrix}
-  \frac{\partial \color{MediumVioletRed}{L}}{\partial \color{teal}{\theta}_0} \\
-  \vdots \\
-  \frac{\partial \color{MediumVioletRed}{L}}{\partial \color{teal}{\theta}_n} \\
-\end{bmatrix}
-\]</span></p>
-</div><div class="fragment">
-<div class="absolute" style="text-align: center; font-size: 0.8em;top: 60%; right: 2%; ">
-<p><i class="bi bi-arrow-up-left"></i> Vector in<br> parameter<br>space</p>
-</div>
-<div class="absolute" style="text-align: center; font-size: 0.8em;top: 60%; right: 30%; ">
-<p><i class="bi bi-arrow-up-right"></i> <br>Gradient</p>
-</div>
-</div>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="the-gradient" class="slide level2">
-<h2>The gradient</h2>
-<div class="r-stack">
-<p><img data-src="figures/gradient-illustration.gif"></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:49%;">
-<div style="padding-top: 60px;">
+:::{.column width="5%"}
+:::
 
-</div>
-<p><img data-src="figures/gradient.png"></p>
-</div><div class="column" style="width:51%;">
-<div class="fragment">
-<p>Need to differentiate the loss <em>wrt.</em> each parameter:</p>
-<p><span class="math display">\[
-\small
-\begin{align}
-\frac{\partial \color{MediumVioletRed}{L}_{\mathrm{MSE}}}{\partial\color{teal}{\theta}_j}
-&amp;= \frac{\partial}{\partial\color{teal}{\theta}_j} \left(\frac{1}{N}\sum_{i=1}^N (\boldsymbol{\color{teal}{\theta}}^{\intercal}\color{DarkOrange}{\mathbf{x}}^{(i)} - \color{DarkBlue}{y}^{(i)})^2 \right) \\[1em]
-&amp;= \frac{1}{N}\sum_{i=1}^N 2(\boldsymbol{\color{teal}{\theta}}^{\intercal}\color{DarkOrange}{\mathbf{x}}^{(i)} - \color{DarkBlue}{\mathbf{y}})\color{DarkOrange}{x}_j^{(i)}
-\end{align}
-\]</span></p>
-<div class="absolute" style="font-size: 0.6em;top: 70%; right: 0%; ">
-<p><i class="bi bi-arrow-up-left"></i><br> (looks complicated, but<br> not too hard to compute)</p>
-</div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-1" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:49%;">
-<div style="padding-top: 60px;">
+:::{.column width="48%"}
+:::{.fragment}
+[Part 2: _Hands-on_]{.color-light-blue style="font-weight: 400;"}
 
-</div>
-<p><img data-src="figures/gradient.png"></p>
-</div><div class="column" style="width:51%;">
-<p>Put it all together to get the <strong>gradient</strong><br> (written here in compact form)</p>
-<p><span class="math display">\[
-\small
-\nabla \color{MediumVioletRed}{L}(\boldsymbol{\color{teal}{\theta}})
-= \frac{2}{N}\color{DarkOrange}{\mathbf{X}}^{\intercal}(\color{DarkOrange}{\mathbf{X}} \cdot \boldsymbol{\color{teal}{\theta}} - \color{DarkBlue}{\mathbf{y}})
-\]</span></p>
-<p>where <span class="math inline">\(\color{DarkOrange}{\mathbf{X}}\)</span> contains all the training data:</p>
-<p><span class="math display">\[
-\small
-\color{DarkOrange}{\mathbf{X}} =
-\begin{bmatrix}
-\color{DarkOrange}{\mathbf{x}}^{(1)} \\
-\color{DarkOrange}{\mathbf{x}}^{(2)} \\
-\vdots \\\
-\color{DarkOrange}{\mathbf{x}}^{(N)}
-\end{bmatrix}
-\]</span></p>
-</div></div>
-<div class="absolute" style="font-size: 0.6em;top: 21%; right: -5%; ">
-<p>(ok this is<br>a little hard<br>to compute)<br> <i class="bi bi-arrow-return-left"></i></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-2" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:49%;">
-<div style="padding-top: 60px;">
+**Kaggle competition:**<br>
+Compete against each other in making the best predictions :sunglasses:
 
-</div>
-<p><img data-src="figures/gradient-steps.png"></p>
-</div><div class="column" style="width:51%;">
-<p>With the gradient in place, we take steps downward (along the <span class="color-red"><em>negative</em></span> gradient), towards the optimal solution:</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\color{teal}{\theta}}^{n+1} = \boldsymbol{\color{teal}{\theta}}^n - \eta \nabla \color{Purple}{L}
-\]</span></p>
-<p>Here <span class="math inline">\(\eta\)</span>&nbsp;is the <strong>learning rate</strong></p>
-<div class="fragment">
-<p>In code, this looks like</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.random.randn(<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>  gradients <span class="op">=</span> <span class="dv">2</span><span class="op">/</span>N <span class="op">*</span> X.T.dot(X.dot(theta) <span class="op">-</span> y)</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>  theta <span class="op">=</span> theta <span class="op">-</span> eta<span class="op">*</span>gradients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-3" class="slide level2">
-<h2>Gradient descent</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div style="padding-top: 100px">
+We use the [Kaggle](https://www.kaggle.com/competitions) platform to host the competition
+and leaderboard<br>
+[(_competition is open only to us_)]{.color-text-muted}
 
-</div>
-<p>Iteratively solving our linear regression problem using gradient descent:</p>
-</div><div class="column" style="width:70%;">
-<div class="frame-wrap" style="width: 1100px; height: 1100px">
-<iframe class="frame" src="figures/linreg_gradient_descent_anim.html" name="linreg_gradient_descent">
-</iframe>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="learning-rate" class="slide level2">
-<h2>Learning rate</h2>
-<div style="padding-top: 50px;">
+:::{.absolute left="65%" width="15%"}
+![](figures/kaggle-logo.png)
+:::
+:::
 
-</div>
-<p>Learning rate is a hyperparameter</p>
-<div style="padding-top: 50px;">
+:::
+::::
 
-</div>
-<div class="columns">
-<div class="column" style="width:33%;">
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/learning-rate-small.png"></p>
-<figcaption>To small (slow convergence)</figcaption>
-</figure>
-</div>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/learning-rate-good.png"></p>
-<figcaption>Just right</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/learning-rate-big.png"></p>
-<figcaption>To high (no convergence)</figcaption>
-</figure>
-</div>
-</div>
-</div></div>
+:::{.fragment}
+[_Proposed deadline:_]{style="font-weight: 400;"}<br>
+Open the competition [Sept. 6]{.color-green-dark},<br>close on [Sept 20]{.color-red-dark} (two weeks)
+:::
+-->
+<!----------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------->
 </section>
-<section id="practical-problems" class="slide level2">
-<h2>Practical problems</h2>
-<p><img data-src="figures/gradient-wide.png"></p>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="practical-problems-1" class="slide level2">
-<h2>Practical problems</h2>
-<p><img data-src="figures/gradient-local-minimum.png"></p>
-<div class="absolute" style="font-size: 0.8em;left: 0%; bottom: 20%; ">
-<p>Local<br>minimum<br> <code>-&gt;</code> <span class="color-red"><em>bad predictions</em></span></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="practical-problems-2" class="slide level2">
-<h2>Practical problems</h2>
-<p><img data-src="figures/gradient-zero.png"></p>
-<div class="absolute" style="font-size: 0.8em;left: 0%; bottom: 20%; ">
-<p>Local<br>minimum<br> <code>-&gt;</code> <span class="color-red"><em>bad predictions</em></span></p>
-</div>
-<div class="absolute" style="font-size: 0.8em;top: 20%; right: 5%; ">
-<p>Plateau<br> <code>-&gt;</code> <span class="color-red"><em>slow convergence</em></span></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="feature-scaling" class="slide level2">
-<h2>Feature scaling</h2>
-<div class="r-stack">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/geron-fig-4_7.png" style="width:80.0%"></p>
-<figcaption>Geron Fig 4-7</figcaption>
-</figure>
-</div>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-methods" class="slide level2">
-<h2>Gradient descent methods</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<p>Standard (<span class="color-green"><em>batch</em></span>) gradient descent:</p>
-<p>Compute <span class="math inline">\(\small\nabla \color{MediumVioletRed}{L}\)</span> using <strong>all</strong> data points</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\theta}^{n+1} = \boldsymbol{\theta}^n - \eta\nabla L (\boldsymbol{x}, \boldsymbol{\theta})
-\]</span></p>
-</div><div class="column" style="width:65%;">
-<div class="frame-wrap">
-<iframe class="frame" src="figures/batch_gradient_descent_anim.html" name="batch_gradient_descent">
-</iframe>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-methods-1" class="slide level2">
-<h2>Gradient descent methods</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<p><span class="color-orange">Stochastic</span> gradient descent:</p>
-<p>Compute <span class="math inline">\(\small\nabla L\)</span> using a <strong>single</strong> data point at a time</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\theta}^{n+1} = \boldsymbol{\theta}^n - \eta\nabla L (x_i, \boldsymbol{\theta})
-\]</span></p>
-</div><div class="column" style="width:65%;">
-<div class="frame-wrap">
-<iframe class="frame" src="figures/stochastic_gradient_descent_anim.html" name="stochastic_gradient_descent">
-</iframe>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="gradient-descent-methods-2" class="slide level2">
-<h2>Gradient descent methods</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<p><span class="color-pink-dark">Mini-batch</span> gradient descent:</p>
-<p>Compute <span class="math inline">\(\small\nabla L\)</span> using <strong>some</strong> data points at a time</p>
-<p><span class="math display">\[
-\small
-\boldsymbol{\theta}^{n+1} = \boldsymbol{\theta}^n - \eta\nabla L (\boldsymbol{x}_s, \boldsymbol{\theta})
-\]</span></p>
-</div><div class="column" style="width:65%;">
-<div class="frame-wrap">
-<iframe class="frame" src="figures/minibatch_gradient_descent_anim.html" name="minibatch_gradient_descent">
-</iframe>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="advanced-gradient-descent-algorithms" class="slide level2">
-<h2>Advanced gradient descent algorithms</h2>
-<p>Gradient descent with <strong>momentum</strong>:</p>
-<div class="r-stack">
-<p><img data-src="figures/gradient-momentum.png" style="width:70.0%"></p>
-</div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="advanced-gradient-descent-algorithms-1" class="slide level2">
-<h2>Advanced gradient descent algorithms</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="figures/gradient_descent_comparison1.gif"></p>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><img data-src="figures/gradient_descent_comparison2.gif"></p>
-</div>
-</div></div>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="automatic-differentiation" class="slide level2">
-<h2>Automatic differentiation</h2>
-<div class="absolute" style="top: 0%; right: 0%; ">
-<p><img data-src="figures/jax_logo.png" width="80"></p>
-</div>
-<div class="absolute" style="top: 0%; right: 8%; ">
-<p><img data-src="figures/tensorflow_logo.png" width="70"></p>
-</div>
-<div class="absolute" style="top: 7%; right: 3%; ">
-<p><img data-src="figures/pytorch_logo.png" width="50"></p>
-</div>
-<p>Manually computing gradients is rather inconvenient <span style="font-size: 0.8em;"><span class="emoji" data-emoji="unamused">😒</span></span></p>
-<p>Luckily, <strong>automatic differentiation</strong> helps us out:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-code-line-numbers="1-12|3-4|6-9|11-12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> jax</span>
-<span id="cb2-2"><a aria-label="2"></a></span>
-<span id="cb2-3"><a aria-label="3"></a><span class="kw">def</span> predict(X, theta):              <span class="co"># For complicated models, predict()</span></span>
-<span id="cb2-4"><a aria-label="4"></a>  <span class="cf">return</span> X.dot(theta)               <span class="co"># also tends to get very complicated</span></span>
-<span id="cb2-5"><a aria-label="5"></a></span>
-<span id="cb2-6"><a aria-label="6"></a><span class="kw">def</span> loss(X, theta, y):              <span class="co"># But loss function is always simple</span></span>
-<span id="cb2-7"><a aria-label="7"></a>  y_hat <span class="op">=</span> predict(X, theta)</span>
-<span id="cb2-8"><a aria-label="8"></a>  mse <span class="op">=</span> ((y_hat <span class="op">-</span> y)<span class="op">**</span><span class="dv">2</span>).mean()</span>
-<span id="cb2-9"><a aria-label="9"></a>  <span class="cf">return</span> mse</span>
-<span id="cb2-10"><a aria-label="10"></a></span>
-<span id="cb2-11"><a aria-label="11"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(n_epochs):</span>
-<span id="cb2-12"><a aria-label="12"></a>  theta <span class="op">=</span> theta <span class="op">-</span> eta<span class="op">*</span>jax.grad(loss, argnums<span class="op">=</span><span class="dv">1</span>)(X, theta, y)  <span class="co"># autodiff!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><span class="color-text-muted" style="font-size=0.8em;">(appendix B in textbook)</span></p>
-<!----------------------------------------------------------------------------->
-</section>
-<section id="section" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
+<section id="section-1" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
 <h2></h2>
 <div class="absolute" style="top: 60%; left: 40%; width: 20%; ">
-<p><img data-src="../1-intro/figures/hvl_logo_engelsk.png"></p>
+<p><img data-src="figures/hvl_logo_engelsk.png"></p>
 </div>
 
 

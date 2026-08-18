@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-fe91322616dd2b9cea8bc6bfc6aa44e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-eec68b17241c1efd3eae2de50d816e3e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="sma@hvl.no">
   <title>DAT158 – DAT158: Machine Learning Engineering and Advanced Algorithms</title>
@@ -17,10 +17,16 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -95,7 +101,7 @@
     code span.vs { color: #da4453; } /* VerbatimString */
     code span.wa { color: #da4453; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-dd716e8c4020db099f8a37e2e747e31a.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-84ca7c9bd303c8f71f50ae34cb1ba474.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -200,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-sma@hvl.no 
+sma@hvl.no
 </div>
 </div>
 </div>
@@ -595,7 +601,7 @@ z = h(\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\ma
 <p>All* learning algorithms have hyperparameters that has to be chosen</p>
 <p>These can not be optimised on the training dataset alone – need a statistically independent dataset (validation dataset)</p>
 </div><div class="column" style="width:60%;">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> sklearn.ensemble.RandomForestClassifier(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> sklearn.ensemble.RandomForestClassifier(</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>    n_estimators<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>,</span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>    criterion<span class="op">=</span><span class="st">'gini'</span>,</span>
@@ -616,7 +622,7 @@ z = h(\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\ma
 <span id="cb1-19"><a aria-hidden="true" tabindex="-1"></a>    ccp_alpha<span class="op">=</span><span class="fl">0.0</span>,</span>
 <span id="cb1-20"><a aria-hidden="true" tabindex="-1"></a>    max_samples<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb1-21"><a aria-hidden="true" tabindex="-1"></a>    monotonic_cst<span class="op">=</span><span class="va">None</span></span>
-<span id="cb1-22"><a aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="absolute" style="font-size: 0.6em;left: 0%; bottom: 5%; ">
 <p>*Okay maybe not OLS</p>
 </div>
@@ -892,7 +898,7 @@ z = h(\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\ma
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -966,13 +972,14 @@ z = h(\boldsymbol{\color{teal}{\theta}}^{\intercal} \cdot \color{DarkOrange}{\ma
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

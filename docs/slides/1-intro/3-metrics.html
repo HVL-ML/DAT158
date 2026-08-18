@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-eec68b17241c1efd3eae2de50d816e3e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="sma@hvl.no">
+  <title>DAT158 – DAT158: Machine Learning Engineering and Advanced Algorithms</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #383a42;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #383a42; } /* Normal */
+    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+    code span.an { color: #50a14f; } /* Annotation */
+    code span.at { color: #a626a4; } /* Attribute */
+    code span.bn { color: #986801; } /* BaseN */
+    code span.bu { color: #a626a4; } /* BuiltIn */
+    code span.cf { color: #a626a4; } /* ControlFlow */
+    code span.ch { color: #50a14f; } /* Char */
+    code span.cn { color: #986801; } /* Constant */
+    code span.co { color: #a0a1a7; font-style: italic; } /* Comment */
+    code span.cv { color: #e45649; font-style: italic; } /* CommentVar */
+    code span.do { color: #e45649; } /* Documentation */
+    code span.dt { color: #a626a4; } /* DataType */
+    code span.dv { color: #986801; } /* DecVal */
+    code span.er { color: #f44747; text-decoration: underline; } /* Error */
+    code span.ex { color: #4078f2; font-weight: bold; } /* Extension */
+    code span.fl { color: #986801; } /* Float */
+    code span.fu { color: #4078f2; } /* Function */
+    code span.im { color: #50a14f; } /* Import */
+    code span.in { color: #c45b00; } /* Information */
+    code span.kw { color: #a626a4; } /* Keyword */
+    code span.op { color: #a626a4; } /* Operator */
+    code span.ot { color: #27ae60; } /* Other */
+    code span.pp { color: #a626a4; } /* Preprocessor */
+    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+    code span.sc { color: #0184bc; } /* SpecialChar */
+    code span.ss { color: #da4453; } /* SpecialString */
+    code span.st { color: #50a14f; } /* String */
+    code span.va { color: #e45649; } /* Variable */
+    code span.vs { color: #da4453; } /* VerbatimString */
+    code span.wa { color: #da4453; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-84ca7c9bd303c8f71f50ae34cb1ba474.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="figures/hvl_logo_engelsk.png" data-background-position="98% 2%" data-background-size="15%" class="quarto-title-block center">
+  <h1 class="title">DAT158: Machine Learning Engineering and Advanced Algorithms</h1>
+  <p class="subtitle">Module 1 - Introduction to Machine Learning <br> <em>Lecture 3</em></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+sma@hvl.no
+</div>
+</div>
+</div>
+
+</section>
+<section id="section" class="slide level2" data-background-color="#E8EAF6" data-menu-title="Pensum">
+<h2></h2>
+<div class="r-stack">
+<div class="absolute" style="top: -8%; left: 25%; width: 50%; ">
+<p><img data-src="figures/geron-toc-1.png"></p>
+</div>
+<div class="absolute" style="top: 10%; left: 60%; width: 50%; ">
+<p><img data-src="figures/geron-toc-2.png"></p>
+</div>
+<div class="absolute" style="top: 0%; left: 0%; width: 30%; ">
+<p><img data-src="figures/book-cover.webp" style="border: 2px solid"></p>
+</div>
+</div>
+</section>
+<section id="assignment-1-out" class="slide level2">
+<h2>Assignment 1 out</h2>
+<p><a href="https://hvl.instructure.com/courses/32015/quizzes/20559/take"><img data-src="figures/quiz.png"></a></p>
+<div class="absolute rectangle" style="color: #C2185B;bottom: 1%; right: 1%; width: 300px; height: 80px; ">
+<p>Deadline: 14. September</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="machine-learning-engineering" class="slide level2" data-background-color="#ECEFF1">
+<h2>Machine learning <em>engineering</em></h2>
+<div style="margin-top: 7%; width=100%">
+<svg viewbox="0 0 4195 246" xmlns="http://www.w3.org/2000/svg">
+<defs> <lineargradient id="grad1" x1="0%" x2="100%" y1="0%" y2="0%"> <stop offset="0%" stop-color="#2196F3"></stop> <stop offset="50%" stop-color="#009688"></stop> <stop offset="100%" stop-color="#FF5722"></stop> </lineargradient> </defs> <g transform="translate(-198 -1076)"> <path d="M323.375 1167.42 452.569 1169.58 604.071 1172.51 755.028 1175.79 905.306 1179.37 1054.77 1183.21 1203.29 1187.25 1350.72 1191.46 1496.93 1195.77 1641.79 1200.15 1713.67 1202.34 1785.17 1204.54 1856.25 1206.72 1926.91 1208.89 1997.14 1211.04 2066.91 1213.17 2136.2 1215.26 2205 1217.32 2273.3 1219.33 2341.07 1221.29 2408.31 1223.19 2474.98 1225.03 2541.08 1226.8 2606.59 1228.5 2671.49 1230.12 2735.77 1231.65 2799.41 1233.09 2862.38 1234.44 2924.68 1235.67 2986.29 1236.8 3047.18 1237.81 3107.36 1238.7 3166.78 1239.47 3225.45 1240.09 3283.34 1240.58 3340.44 1240.92 3396.72 1241.11 3452.18 1241.14 3506.79 1241.01 3506.75 1241.01 3560.54 1240.71 3560.5 1240.71 3613.41 1240.23 3613.36 1240.23 3665.38 1239.57 3665.33 1239.57 3716.44 1238.72 3716.39 1238.73 3766.57 1237.68 3766.52 1237.68 3815.75 1236.44 3815.7 1236.44 3863.97 1235 3863.91 1235 3911.21 1233.34 3911.15 1233.34 3957.45 1231.46 3957.38 1231.46 4002.67 1229.36 4002.6 1229.37 4046.86 1227.03 4046.79 1227.04 4090 1224.47 4089.92 1224.48 4132.07 1221.67 4131.99 1221.67 4173.06 1218.61 4172.97 1218.62 4212.95 1215.31 4212.84 1215.32 4251.71 1211.75 4251.6 1211.76 4266.77 1210.22 4269.09 1233.02 4253.86 1234.56 4214.89 1238.15 4174.81 1241.46 4133.64 1244.53 4091.4 1247.34 4048.11 1249.92 4003.77 1252.25 3958.41 1254.36 3912.04 1256.24 3864.69 1257.9 3816.36 1259.35 3767.07 1260.59 3716.84 1261.64 3665.69 1262.49 3613.63 1263.15 3560.68 1263.63 3506.86 1263.93 3452.16 1264.06 3396.64 1264.03 3340.3 1263.84 3283.15 1263.5 3225.2 1263.01 3166.49 1262.38 3107.02 1261.62 3046.8 1260.73 2985.87 1259.72 2924.22 1258.59 2861.89 1257.35 2798.89 1256.01 2735.22 1254.56 2670.92 1253.03 2606 1251.41 2540.47 1249.71 2474.35 1247.94 2407.66 1246.1 2340.41 1244.19 2272.63 1242.23 2204.32 1240.22 2135.51 1238.17 2066.21 1236.08 1996.44 1233.95 1926.21 1231.8 1855.55 1229.63 1784.46 1227.44 1712.97 1225.25 1641.1 1223.05 1496.26 1218.68 1350.07 1214.36 1202.66 1210.16 1054.18 1206.12 904.76 1202.28 754.53 1198.7 603.627 1195.42 452.187 1192.49 322.993 1190.33ZM385.318 1229.92 300.447 1178.5 386.986 1129.93C392.504 1126.84 399.489 1128.8 402.586 1134.32 405.683 1139.84 403.72 1146.82 398.201 1149.92L328.792 1188.87 329.122 1169.08 397.194 1210.32C402.606 1213.6 404.335 1220.65 401.056 1226.06 397.777 1231.47 390.731 1233.2 385.318 1229.92ZM4200.22 1178.24 4290.55 1219.32 4210.33 1277.73C4205.22 1281.46 4198.05 1280.33 4194.33 1275.21 4190.6 1270.1 4191.73 1262.93 4196.84 1259.21L4261.18 1212.35 4263.19 1232.05 4190.73 1199.1C4184.97 1196.48 4182.42 1189.69 4185.04 1183.93 4187.66 1178.17 4194.46 1175.62 4200.22 1178.24Z" fill="url(#grad1)"></path></g>
+</svg>
+</div>
+<div class="absolute" style="top: 8%; left: 0%; ">
+<p><span style="font-size: 0.8em"><em>theoretical</em></span></p>
+</div>
+<div class="absolute" style="top: 8%; right: 0%; ">
+<p><span style="font-size: 0.8em"><em>applied</em></span></p>
+</div>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="fragment color-blue" data-fragment-index="1" style="text-align: center;">
+<p>Machine learning models</p>
+<div class="r-stack">
+<p><img data-src="figures/prml-cover.jpg" class="absolute" style="top: 50%; left: 5%; width: 150px; "> <img data-src="figures/mathematics-for-ml-cover.jpg" class="absolute" style="top: 60%; left: 13%; width: 150px; "> <img data-src="figures/ml-murphy-cover.webp" class="absolute" style="top: 70%; left: 0%; width: 150px; "></p>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment color-teal" data-fragment-index="3" style="text-align: center;">
+<p><strong>Machine learning engineering</strong></p>
+<p><img data-src="figures/geron_fig_1-2.png" style="margin-top: 40px"></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment color-deep-orange" data-fragment-index="2" style="text-align: center;">
+<p>Data and society</p>
+<p><img data-src="figures/robotmanager.jpg" style="margin-top: 80px"></p>
+</div>
+</div></div>
+<div class="fragment" data-fragment-index="3">
+<div class="absolute" style="top: 40%; left: 18%; width: 64%; ">
+<svg viewbox="0 0 4195 246" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" space="preserve" overflow="hidden">
+<g transform="translate(-198 -1076)"> <path d="M323.375 1167.42 452.569 1169.58 604.071 1172.51 755.028 1175.79 905.306 1179.37 1054.77 1183.21 1203.29 1187.25 1350.72 1191.46 1496.93 1195.77 1641.79 1200.15 1713.67 1202.34 1785.17 1204.54 1856.25 1206.72 1926.91 1208.89 1997.14 1211.04 2066.91 1213.17 2136.2 1215.26 2205 1217.32 2273.3 1219.33 2341.07 1221.29 2408.31 1223.19 2474.98 1225.03 2541.08 1226.8 2606.59 1228.5 2671.49 1230.12 2735.77 1231.65 2799.41 1233.09 2862.38 1234.44 2924.68 1235.67 2986.29 1236.8 3047.18 1237.81 3107.36 1238.7 3166.78 1239.47 3225.45 1240.09 3283.34 1240.58 3340.44 1240.92 3396.72 1241.11 3452.18 1241.14 3506.79 1241.01 3506.75 1241.01 3560.54 1240.71 3560.5 1240.71 3613.41 1240.23 3613.36 1240.23 3665.38 1239.57 3665.33 1239.57 3716.44 1238.72 3716.39 1238.73 3766.57 1237.68 3766.52 1237.68 3815.75 1236.44 3815.7 1236.44 3863.97 1235 3863.91 1235 3911.21 1233.34 3911.15 1233.34 3957.45 1231.46 3957.38 1231.46 4002.67 1229.36 4002.6 1229.37 4046.86 1227.03 4046.79 1227.04 4090 1224.47 4089.92 1224.48 4132.07 1221.67 4131.99 1221.67 4173.06 1218.61 4172.97 1218.62 4212.95 1215.31 4212.84 1215.32 4251.71 1211.75 4251.6 1211.76 4266.77 1210.22 4269.09 1233.02 4253.86 1234.56 4214.89 1238.15 4174.81 1241.46 4133.64 1244.53 4091.4 1247.34 4048.11 1249.92 4003.77 1252.25 3958.41 1254.36 3912.04 1256.24 3864.69 1257.9 3816.36 1259.35 3767.07 1260.59 3716.84 1261.64 3665.69 1262.49 3613.63 1263.15 3560.68 1263.63 3506.86 1263.93 3452.16 1264.06 3396.64 1264.03 3340.3 1263.84 3283.15 1263.5 3225.2 1263.01 3166.49 1262.38 3107.02 1261.62 3046.8 1260.73 2985.87 1259.72 2924.22 1258.59 2861.89 1257.35 2798.89 1256.01 2735.22 1254.56 2670.92 1253.03 2606 1251.41 2540.47 1249.71 2474.35 1247.94 2407.66 1246.1 2340.41 1244.19 2272.63 1242.23 2204.32 1240.22 2135.51 1238.17 2066.21 1236.08 1996.44 1233.95 1926.21 1231.8 1855.55 1229.63 1784.46 1227.44 1712.97 1225.25 1641.1 1223.05 1496.26 1218.68 1350.07 1214.36 1202.66 1210.16 1054.18 1206.12 904.76 1202.28 754.53 1198.7 603.627 1195.42 452.187 1192.49 322.993 1190.33ZM385.318 1229.92 300.447 1178.5 386.986 1129.93C392.504 1126.84 399.489 1128.8 402.586 1134.32 405.683 1139.84 403.72 1146.82 398.201 1149.92L328.792 1188.87 329.122 1169.08 397.194 1210.32C402.606 1213.6 404.335 1220.65 401.056 1226.06 397.777 1231.47 390.731 1233.2 385.318 1229.92ZM4200.22 1178.24 4290.55 1219.32 4210.33 1277.73C4205.22 1281.46 4198.05 1280.33 4194.33 1275.21 4190.6 1270.1 4191.73 1262.93 4196.84 1259.21L4261.18 1212.35 4263.19 1232.05 4190.73 1199.1C4184.97 1196.48 4182.42 1189.69 4185.04 1183.93 4187.66 1178.17 4194.46 1175.62 4200.22 1178.24Z" fill="#009688"></path></g>
+</svg>
+</div>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="machine-learning-engineering-1" class="slide level2">
+<h2>Machine learning engineering</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/geron_fig_1-2.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="columns" style="font-size: 0.9em;">
+<div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ol type="1">
+<li><em>Study the problem</em> <span class="emoji" data-emoji="mag">🔍</span>
+<ul>
+<li>Exploratory data analysis</li>
+<li>Domain knowledge</li>
+<li>Data preparation</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ol start="2" type="1">
+<li><em>Train ML model</em> <span class="emoji" data-emoji="computer">💻</span>
+<ul>
+<li>Algorithm/software development</li>
+</ul></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ol start="3" type="1">
+<li><em>Evaluate</em> <span class="emoji" data-emoji="chart_with_upwards_trend">📈</span>
+<ul>
+<li>Metric selection</li>
+<li>Model selection</li>
+<li>Uncertainty quantification</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ol start="4" type="1">
+<li><em>Launch</em> <span class="emoji" data-emoji="rocket">🚀</span> / <em>Analyse errors</em> <span class="emoji" data-emoji="x">❌</span>
+<ul>
+<li>Deployment</li>
+<li>Diagnostics and visualisation</li>
+</ul></li>
+</ol>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="exploratory-data-analysis" class="slide level2">
+<h2>Exploratory data analysis</h2>
+<ul>
+<li>Get to know the data – structure, feature types, etc.</li>
+<li>Look for correlations</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center" style="margin-top:10%">
+<figure>
+<p><img data-src="figures/iris.png"></p>
+<figcaption><em>Iris</em> flowers</figcaption>
+</figure>
+</div>
+<p><span style="font-size: 0.7em"><a href="https://github.com/HVL-ML/DAT158/blob/main/notebooks/DAT158-1.1-Simple_examples.ipynb">(notebooks/DAT158-1.1-Simple_examples.ipynb)</a></span></p>
+</div><div class="column" style="width:55%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/iris-correlation-plot.png" style="width:85.0%"></p>
+<figcaption>Pairwise feature scatter plots</figcaption>
+</figure>
+</div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="data-preparation" class="slide level2">
+<h2>Data preparation</h2>
+<p>Many (<em>most</em>) real-world datasets need some cleaning.</p>
+<p>Typical <span class="color-red" style="font-weight: 400;">problems</span>, and various <span class="color-teal" style="font-weight: 400;">solutions</span>:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li><strong>Missing data</strong>
+<ul>
+<li>Fill with some value (<span class="color-grey-dark"><em>zero, mean, …</em></span>) aka <span class="color-blue-dark">imputation</span></li>
+<li>Skip datapoints containing missing data</li>
+<li>Skip entire feature containing missing data</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li><strong>Text attributes</strong>
+<ul>
+<li><p>Convert to categorical values</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><code>ocean_proximity</code></th>
+<th></th>
+<th><code>categorical</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>"NEAR BAY"</code></td>
+<td><i class="bi-arrow-right"></i></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><code>"INLAND"</code></td>
+<td><i class="bi-arrow-right"></i></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><code>"NEAR OCEAN"</code></td>
+<td><i class="bi-arrow-right"></i></td>
+<td>2</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+<!-- See notebooks/DAT158-1.5-Regression.ipynb -->
+<!----------------------------------------------------------------------------->
+</section>
+<section id="data-preparation-cont." class="slide level2">
+<h2>Data preparation (<em>cont.</em>)</h2>
+<p>Many (<em>most</em>) real-world datasets need some cleaning</p>
+<p>Typical <span class="color-red" style="font-weight: 400;">problems</span>, and various <span class="color-teal" style="font-weight: 400;">solutions</span>:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment semi-fade-out" data-fragment-index="1">
+<ul>
+<li>Feature values have <strong>different scales</strong>
+<ul>
+<li>Normalise values (shift to a range [0, 1])</li>
+<li>Standardize values (shift to have mean equal to 0 and variance equal to 1)</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-in-then-semi-out" data-fragment-index="1">
+<ul>
+<li>Feature values are <strong>not normally distributed</strong>
+<ul>
+<li>Transform values (compute e.g.&nbsp;the logarithm)</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/logtransform.png" style="width:100.0%"></p>
+<figcaption><span style="font-size: 0.6em;"><em>WikiMedia Commons</em></span></figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="fragment" data-fragment-index="1" style="margin-top: 0px; padding-top: 0px">
+<p><span style="font-size: 0.75em">See <code>notebooks/DAT158-1.5-Regression.ipynb</code></span></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="model-training" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Model training</h2>
+<p>Details of different ML models is the topic for Module 2</p>
+<p>For now, let’s represent a generic ML model as a function <span class="math inline">\(\color{Purple}{f}\)</span>:</p>
+<div style="margin-top: 50px">
+<p><span class="math display">\[
+\large \hat{\color{DarkBlue}{y}} = \color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}, \boldsymbol{\color{teal}{\theta}})
+\]</span></p>
+</div>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is the <em>prediction</em></li>
+<li><span class="math inline">\(\color{DarkOrange}{\mathbf{x}}\)</span>&nbsp;is a data point</li>
+<li><span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span> are <em>parameters</em> of the model</li>
+</ul>
+<div>
+<p><em>Training</em> is the process of finding the best parameters <span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span>&nbsp;so that the prediction <span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is as close as possible to the known target value <span class="math inline">\(\color{DarkBlue}{y}\)</span>.</p>
+</div>
+</section>
+<section id="model-training-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Model training</h2>
+<p>Details of different ML models is the topic for Module 2</p>
+<p>For now, let’s represent a generic ML model as a function <span class="math inline">\(\color{Purple}{f}\)</span>:</p>
+<div style="margin-top: 50px">
+<p><span class="math display">\[
+\large \hat{\color{DarkBlue}{y}} = \color{Purple}{f}(\color{DarkOrange}{\mathbf{x}}, \boldsymbol{\color{teal}{\theta}})
+\]</span></p>
+</div>
+<div>
+<p><em>Training</em> is the process of finding the best parameters <span class="math inline">\(\boldsymbol{\color{teal}{\theta}}\)</span>&nbsp;so that the prediction <span class="math inline">\(\hat{\color{DarkBlue}{y}}\)</span> is as close as possible to the known target value <span class="math inline">\(\color{DarkBlue}{y}\)</span>.</p>
+</div>
+<p><code>scikit-learn</code> API:</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Generic model API</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_family <span class="im">import</span> ModelName</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelName(some_setting<span class="op">=</span><span class="st">"foo"</span>)</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y) <span class="co"># X are data, y are targets </span></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:45%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Specific example</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>  LinearRegression</span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression(n_jobs<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="evaluation" class="slide level2">
+<h2>Evaluation</h2>
+<p><span class="color-cyan-dark">How well does the model perform?</span></p>
+<p>To answer this we need a <em><strong>metric</strong></em> that quantifies performance.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Classification:</strong></p>
+<blockquote>
+<p>“How many did we label correctly?”</p>
+</blockquote>
+<p>Useful metrics:</p>
+<ul>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>ROC curve</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Regression:</strong></p>
+<blockquote>
+<p>“How close did we get?”</p>
+</blockquote>
+<p>Useful metrics:</p>
+<ul>
+<li>Mean squared error (MSE)</li>
+<li>Root mean squared error (RMSE)</li>
+<li>Mean absolute error (MAE)</li>
+</ul>
+</div>
+</div></div>
+<div class="fragment">
+<p>Consult <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">scikit-learn docs</a> for more metrics and description</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="binary-classification" class="slide level2">
+<h2>Binary classification</h2>
+<p>In <a href="https://github.com/HVL-ML/DAT158/blob/main/notebooks/DAT158-1.3-Binary_classification.ipynb">DAT158-1.3-Binary_classification.ipynb</a> we explore a task with two outcomes:</p>
+<ul>
+<li>Patient has diabetes (<code>1</code> / <code>True</code>)</li>
+<li>Patient does not have diabetes (<code>0</code> / <code>False</code>)</li>
+</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">index</th>
+<th style="text-align: center;">pregnancies</th>
+<th style="text-align: center;">glucose</th>
+<th style="text-align: center;">diastolic</th>
+<th style="text-align: center;">triceps</th>
+<th style="text-align: center;">insulin</th>
+<th style="text-align: center;">bmi</th>
+<th style="text-align: center;">dpf</th>
+<th style="text-align: center;">age</th>
+<th style="text-align: center;">diabetes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">148</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">33.6</td>
+<td style="text-align: center;">0.627</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">26.6</td>
+<td style="text-align: center;">0.351</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">183</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">23.3</td>
+<td style="text-align: center;">0.672</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size: 0.8em;">(More about the data <a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database">here</a>)</span></p>
+<p>We want our ML algorithm <span class="math inline">\(\color{Purple}{f}\)</span> to predict <span class="color-red-dark">no</span>/<span class="color-green-dark">yes</span> for new patients with observations <span class="math inline">\(\color{DarkOrange}{\mathbf{x}}\)</span>,</p>
+<p><span class="math display">\[
+\color{Purple}{f}: \color{DarkOrange}{\mathbf{x}} \in \mathbb{R}^n \longrightarrow \{0,1\} \,.
+\]</span></p>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="the-confusion-matrix" class="slide level2">
+<h2>The confusion matrix</h2>
+<p>The outcomes of our predictions can be illustrated by the <em>confusion matrix</em>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/confusion-matrix.png" style="width:50.0%"></p>
+<figcaption><em>Binary classification case</em></figcaption>
+</figure>
+</div>
+<p>The different classification performance metrics can all be defined from these entries</p>
+<div class="fragment r-stack absolute" style="left: 29%; bottom: 13%; ">
+<p><img data-src="figures/false-positive-false-negative.png" style="width:80.0%"></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="accuracy" class="slide level2">
+<h2>Accuracy</h2>
+<p><em>Accuracy</em> measures how many samples are classified correctly, relative to the total number of samples:</p>
+<p><span class="math display">\[
+\small
+\mathrm{accuracy} = \frac{\mathrm{correct\; classifications}}{\mathrm{all\; classifications}}
+  = \frac{\mathrm{\color{Green}{TP + TN}}}{\mathrm{\color{Purple}{TP + TN + FP + FN}}}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/accuracy.png" class="quarto-figure quarto-figure-center" style="width:45.0%"></p>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="precision" class="slide level2">
+<h2>Precision</h2>
+<p><em>Precision</em> measures how many positive classifications that are actually positive:</p>
+<p><span class="math display">\[
+\small
+\mathrm{precision} = \frac{\mathrm{correct\; positive\; classifications}}{\mathrm{all\; positive\; classifications}}
+  = \frac{\mathrm{\color{Green}{TP}}}{\mathrm{\color{Purple}{TP + FP}}}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/precision.png" class="quarto-figure quarto-figure-center" style="width:45.0%"></p>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="recall" class="slide level2">
+<h2>Recall</h2>
+<p><em>Recall</em> measures how many of the actual positives that were classified as positive:</p>
+<p><span class="math display">\[
+\small
+\mathrm{recall} = \frac{\mathrm{correct\; positive\; classifications}}{\mathrm{all\; actual\; positives}}
+  = \frac{\mathrm{\color{Green}{TP}}}{\mathrm{\color{Purple}{TP + FN}}}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/recall.png" class="quarto-figure quarto-figure-center" style="width:45.0%"></p>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="computing-metrics" class="slide level2">
+<h2>Computing metrics</h2>
+<p><code>scikit-learn</code> has implemented a long list of <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics">metrics</a></p>
+<div style="margin-top: 50px">
+
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-code-line-numbers="1|2-5|2-3,6-8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix</span>
+<span id="cb3-2"><a aria-label="2"></a><span class="op">&gt;&gt;&gt;</span> y_pred <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb3-3"><a aria-label="3"></a><span class="op">&gt;&gt;&gt;</span> y_true <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb3-4"><a aria-label="4"></a><span class="op">&gt;&gt;&gt;</span> accuracy_score(y_true, y_pred)</span>
+<span id="cb3-5"><a aria-label="5"></a><span class="fl">0.5</span></span>
+<span id="cb3-6"><a aria-label="6"></a><span class="op">&gt;&gt;&gt;</span> confusion_matrix(y_true, y_pred)</span>
+<span id="cb3-7"><a aria-label="7"></a>array([[<span class="dv">2</span>, <span class="dv">2</span>],</span>
+<span id="cb3-8"><a aria-label="8"></a>       [<span class="dv">1</span>, <span class="dv">1</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Confusion matrix can be plotted easily using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay"><code>ConfusionMatrixDisplay</code></a></p>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="setting-thresholds" class="slide level2">
+<h2>Setting thresholds</h2>
+<p>Most ML classifiers actually predict a decimal number between <span class="color-red-dark">0</span> and <span class="color-green-dark">1</span>, leaving us to select a <strong><em>threshold</em></strong> for where to divide between the <span class="color-red-dark">negative</span> and <span class="color-green-dark">positive</span> class.</p>
+<p><span class="math display">\[
+\color{Purple}{f}: \color{DarkOrange}{\mathbf{x}} \longrightarrow [0, 1]
+\]</span></p>
+<div style="margin-top: 110px">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/interval_0_1.png" class="quarto-figure quarto-figure-center" style="width:45.0%"></p>
+</figure>
+</div>
+</div>
+<div class="absolute" style="top: 40%; left: 20%; ">
+<p><span style="font-size: 0.8em;"><i class="bi bi-arrow-left"></i> Most like class 0<br></span></p>
+</div>
+<div class="absolute" style="top: 40%; left: 60%; ">
+<p><span style="font-size: 0.8em;">Most like class 1 <i class="bi bi-arrow-right"></i></span></p>
+</div>
+<p>Typically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics.</p>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="setting-thresholds-cont." class="slide level2">
+<h2>Setting thresholds (<em>cont.</em>)</h2>
+<div class="frame-wrap" style="width: 1600px; height: 800px">
+<iframe class="frame" src="classification_threshold.html" allowfullscreen="" name="classification_threshold">
+</iframe>
+</div>
+<div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
+<p>Google for Developers: <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall"><em>Accuracy, precision, recall</em></a></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="imbalanced-data" class="slide level2">
+<h2>Imbalanced data</h2>
+<div class="frame-wrap" style="width: 1600px; height: 800px">
+<iframe class="frame" src="classification_threshold.html" allowfullscreen="" name="classification_threshold">
+</iframe>
+</div>
+<div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
+<p>Google for Developers: <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall"><em>Accuracy, precision, recall</em></a></p>
+</div>
+<div class="fragment absolute r-stack" style="bottom: 0%; right: -20%; ">
+<p><img data-src="figures/chest-xray.jpg" style="border: 2px solid;width:45.0%"></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="precision-recall-curves" class="slide level2">
+<h2>Precision-recall curves</h2>
+<p>The metrics so far are computed at a <em>single</em> threshold value.<br> What if we want to evaluate a model for all possible thresholds?</p>
+<p><i class="bi bi-arrow-right color-green-dark"></i> Plot <strong>precision</strong> as a function of <strong>recall</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/precision-recall-curve.png" style="width:50.0%"></p>
+<figcaption>Géron Fig 3-6</figcaption>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="receiver-operator-characteristic-roc" class="slide level2">
+<h2>Receiver Operator Characteristic (ROC)</h2>
+<p>A more common option is to plot the true positive rate (TPR) as function of false positive rate (FPR):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/roc-curve.png" style="width:50.0%"></p>
+<figcaption>Géron Fig 3-6</figcaption>
+</figure>
+</div>
+<div class="absolute color-teal" style="top: 40%; left: 3%; width: 18%; ">
+<p><span class="math display">\[
+\tiny
+\mathrm{TPR} = \frac{\mathrm{TP}}{\mathrm{TP + FN}}
+\]</span></p>
+<p><span style="font-size: 0.65em; display: inline-block;">“How many positives did I get right”</span></p>
+</div>
+<div class="absolute color-purple" style="top: 80%; left: 43%; width: 18%; ">
+<p><span class="math display">\[
+\tiny
+\mathrm{FPR} = \frac{\mathrm{FP}}{\mathrm{FP + TN}}
+\]</span></p>
+<p><span style="font-size:0.65em; display: inline-block;">“How many negatives did I get wrong”</span></p>
+</div>
+<div class="fragment absolute" style="top: 40%; left: 80%; width: 20%; ">
+<p>Good models have high <em>area-under-curve</em> (AUC)</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="receiver-operator-characteristic-roc-1" class="slide level2">
+<h2>Receiver Operator Characteristic (ROC)</h2>
+<div class="frame-wrap" style="width: 1600px; height: 800px">
+<iframe class="frame" src="roc_curve.html" allowfullscreen="" name="roc_curve">
+</iframe>
+</div>
+<div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
+<p>Google for Developers: <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall"><em>Accuracy, precision, recall</em></a></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="quiz" class="slide level2">
+<h2>Quiz 🧠</h2>
+<blockquote>
+<p>You have trained a model to classify cancer from X-ray images. Positive (1) class means cancer. Now you need to choose a classification threshold.</p>
+</blockquote>
+<div class="fragment">
+<div class="absolute" style="top: 50%; left: 0%; width: 30%; ">
+<p>Should you choose threshold A, B, or C?</p>
+</div>
+<div class="absolute r-stack" style="top: 35%; left: 35%; width: 45%; ">
+<p><img data-src="figures/roc-curve-choice.png"></p>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
+<h2></h2>
+<div class="absolute" style="top: 60%; left: 40%; width: 20%; ">
+<p><img data-src="figures/hvl_logo_engelsk.png"></p>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'pointer': {"key":"q","color":"red","pointerSize":16,"alwaysVisible":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: true,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealPointer, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
