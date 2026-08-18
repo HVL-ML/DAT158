@@ -4,6 +4,6 @@ scipy
 notebook
 matplotlib
 seaborn
+pandas
 gradio
 ipywidgets
-ydata-profiling
