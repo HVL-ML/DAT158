@@ -13,9 +13,15 @@ If you are a MacOS user:
    - Press `CMD+SPACE` and search for Terminal.
    - In the terminal, run `xcode-select --install`.
 
-## Step 1: Set up Python with Anaconda
+## Step 1: Set up Python
 
-The recommended way to install Python for this course is via the [Anaconda Distribution](https://www.anaconda.com/products/distribution#Downloads). It comes with the Conda Package Management System.
+There are a bunch of ways to set up a Python environment, and you can use any AI tool to explain you how to do it on your specific system. From the point of view of the course, we don't care too much on how you do it, as long as you are able to run the notebooks. Below, we suggest to use Anaconda since it works the same way on all platforms/OSes, but if you already know a bit about what you are doing, you can also choose to
+
+- Use the Python installation already present on your computer
+- Install Python and the required packages using [`uv`](https://docs.astral.sh/uv/)
+- Run Python in a Docker container, to avoid having to install anything. Have a look at the `Dockerfile` in this repo.
+
+If instead of the options above you just want something that works out of the box, the recommended way to install Python for this course is via the [Anaconda Distribution](https://www.anaconda.com/products/distribution#Downloads). It comes with the Conda Package Management System.
 
 > From the [documentation](https://conda.io/docs): _"Conda is an open source package management system and environment management system that runs on Windows, macOS and Linux. Conda quickly installs, runs and updates packages and their dependencies. Conda easily creates, saves, loads and switches between environments on your local computer."_
 
@@ -25,14 +31,14 @@ After you've installed Anaconda:
 2. Run `python --version`.
 3. Ensure the output mentions "Anaconda". If so, proceed to the next step.
 
-> Now you're ready to get the course environment up and running
+Now you're ready to get the course environment up and running.
 
 After you have Anaconda set up, follow these steps (Windows users, stick with the "Anaconda Prompt"):
 
 ## Step 2: Install Git
 
 1. Open a terminal (or "Anaconda Prompt" for Windows users).
-2. Run `conda install git`
+2. Test if you have `git` installed. If not, run `conda install git`.
 
     
 ## Step 3: Clone the course repository
@@ -45,7 +51,7 @@ After you have Anaconda set up, follow these steps (Windows users, stick with th
 ## Step 4: Set up the Python environment
 
 1. Make sure that you're in the course directory. If not, run `cd DAT158`.
-2. Run `conda env update`.
+2. Run `conda env update --file environment.yml`. The `environment.yml` lists the libraries we need, and you can add libraries to it if you like. 
 
 
 ## Step 5: Activate your environment

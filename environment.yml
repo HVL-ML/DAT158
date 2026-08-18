@@ -11,8 +11,6 @@ dependencies:
   - seaborn
   - pip:
     - pip >= 22
-    - kaggle
     - gradio
     - scikit-learn>1.0
     - openpyxl
-    - ydata-profiling
