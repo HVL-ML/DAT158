@@ -854,25 +854,18 @@
     "text": "Assignment 1\n\n\nDeadline: 14. September"
   },
   {
-    "objectID": "slides/1-intro/2-python.html#recording-from-wednesday",
-    "href": "slides/1-intro/2-python.html#recording-from-wednesday",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Recording from Wednesday",
-    "text": "Recording from Wednesday\nPosted on Canvas"
-  },
-  {
     "objectID": "slides/1-intro/2-python.html#practical-information",
     "href": "slides/1-intro/2-python.html#practical-information",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Practical information",
-    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises\n\nBergen: Wednesdays 12.15, E403 & E443\nFørde / Haugesund: Mondays 12.15 / 13.15\n\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas\nDiscord"
+    "text": "Practical information\n\n\n\n\nThe ML part consists of 3 modules:\n\nIntroduction to ML\nMachine learning models\nEnd-to-end ML project\n\n\n\n\n\nTextbook: A. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\nLab: Work (and get help) with exercises, Wednesdays 12:15\n\n\n\n\nMandatory assignments:\n\nMultiple choice test after module 1\nProject work after module 3 (but feel free to start early!)\n\n\n\n\n\n\n\n\nA. Géron: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd edition\n\n\n\n\n\nGeneral info:\n\nAnnouncements on Canvas \nDiscord"
   },
   {
     "objectID": "slides/1-intro/2-python.html#proposed-oblig-dates",
     "href": "slides/1-intro/2-python.html#proposed-oblig-dates",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Proposed oblig dates",
-    "text": "Proposed oblig dates\n\n\n\n\n14. September: Quiz 🎓 \n\n\n4. October: Competition 🏅 (not mandatory) \n\n\n2. November: Project hand-in 📜"
+    "text": "Proposed oblig dates\n\n\n\n\n11. September: Quiz 🎓 \n\n\n2. October: Competition 🏅 (not mandatory) \n\n\n29. October: Project hand-in 📜"
   },
   {
     "objectID": "slides/1-intro/2-python.html#programming",
@@ -970,7 +963,7 @@
     "href": "slides/1-intro/2-python.html#what-is-machine-learning",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "What is machine learning?",
-    "text": "What is machine learning?\n\n(One) definition:\n\n\n\nA computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.\n\nTom Mitchell, 1997"
+    "text": "What is machine learning?\n\n(One) definition:\n\n\n\nA computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.\n\nTom Mitchell, 1997"
   },
   {
     "objectID": "slides/1-intro/2-python.html#different-types-of-machine-learning",
@@ -1005,7 +998,7 @@
     "href": "slides/1-intro/2-python.html#sources-of-data",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Sources of data",
-    "text": "Sources of data\n\n\nOpenly available datasets well suited for machine learning:\n\n\nKaggle Datasets\n\n\n\n\nUCI Machine Learning Repository\n\n\n\n\nGoogle Dataset Search\n\n\n\n\nPapersWithCode Datasets\n\n\n\n\nHugging Face datasets\n\n\n\n\nStatistisk Sentralbyrå\n\n(More listed in Chap 2 in the textbook)"
+    "text": "Sources of data\n\n\nOpenly available datasets well suited for machine learning:\n\n\nKaggle Datasets\n\n\n\n\nUCI Machine Learning Repository\n\n\n\n\nGoogle Dataset Search\n\n\n\n\nHugging Face Datasets\n\n\n\n\nOpenML datasets\n\n\n\n\nStatistisk Sentralbyrå\n\n(More listed in Chap 2 in the textbook)"
   },
   {
     "objectID": "slides/1-intro/2-python.html#data-challenges",
