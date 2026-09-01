@@ -236,9 +236,9 @@ sma@hvl.no
 </div>
 <div class="columns" style="font-size: 0.9em;">
 <div class="column" style="width:50%;">
-<div class="fragment fade-in-then-semi-out">
+<div>
 <ol type="1">
-<li><em>Study the problem</em> <span class="emoji" data-emoji="mag">🔍</span>
+<li><em>Study the problem</em>
 <ul>
 <li>Exploratory data analysis</li>
 <li>Domain knowledge</li>
@@ -246,18 +246,18 @@ sma@hvl.no
 </ul></li>
 </ol>
 </div>
-<div class="fragment fade-in-then-semi-out">
+<div>
 <ol start="2" type="1">
-<li><em>Train ML model</em> <span class="emoji" data-emoji="computer">💻</span>
+<li><em>Train ML model</em>
 <ul>
 <li>Algorithm/software development</li>
 </ul></li>
 </ol>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="fragment fade-in-then-semi-out">
+<div>
 <ol start="3" type="1">
-<li><em>Evaluate</em> <span class="emoji" data-emoji="chart_with_upwards_trend">📈</span>
+<li><em>Evaluate</em>
 <ul>
 <li>Metric selection</li>
 <li>Model selection</li>
@@ -265,9 +265,9 @@ sma@hvl.no
 </ul></li>
 </ol>
 </div>
-<div class="fragment fade-in-then-semi-out">
+<div>
 <ol start="4" type="1">
-<li><em>Launch</em> <span class="emoji" data-emoji="rocket">🚀</span> / <em>Analyse errors</em> <span class="emoji" data-emoji="x">❌</span>
+<li><em>Launch</em> / <em>Analyse errors</em>
 <ul>
 <li>Deployment</li>
 <li>Diagnostics and visualisation</li>
@@ -310,20 +310,24 @@ sma@hvl.no
 </div>
 <p><code>scikit-learn</code> API:</p>
 <div class="columns">
-<div class="column" style="width:55%;">
+<div class="column" style="width:47%;">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Generic model API</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_family <span class="im">import</span> ModelName</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelName(some_setting<span class="op">=</span><span class="st">"foo"</span>)</span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y) <span class="co"># X are data, y are targets </span></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:45%;">
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y) <span class="co"># X are data, y are targets</span></span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:53%;">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Specific example</span></span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> <span class="op">\</span></span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>  LinearRegression</span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression(n_jobs<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
-<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
+<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <!----------------------------------------------------------------------------->
 </section>
@@ -403,7 +407,7 @@ sma@hvl.no
 <p><em>“How many true positives did we get right?”</em></p>
 <p><span class="math inline">\(\small\mathrm{recall} = \frac{\mathrm{\color{Green}{TP}}}{\mathrm{\color{Purple}{TP + FN}}}\)</span></p></li>
 </ul>
-<div class="absolute r-stack" style="top: 30%; left: 63%; width: 45%; ">
+<div class="absolute r-stack" style="top: 25%; right: 0%; width: 45%; ">
 <p><img data-src="figures/confusion-matrix.png"></p>
 </div>
 <!----------------------------------------------------------------------------->
@@ -441,7 +445,7 @@ sma@hvl.no
 <p>Things change a bit when we consider tasks with more than two classes</p>
 <div class="fragment">
 <ul>
-<li><p><strong>Accuracy</strong>: Still means ratio of correct predictions, but let’s redefine as</p>
+<li><p><span class="color-purple"><strong>Accuracy</strong></span>: Still means ratio of correct predictions, but let’s redefine as</p>
 <p><span class="math display">\[
   \small
   \mathrm{accuracy}(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^{N} \unicode{x1D7D9}(y = \hat{y}), \qquad
@@ -451,7 +455,7 @@ sma@hvl.no
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Precision</strong> and <strong>recall</strong>: Only make sense in binary setting, but:
+<li><span class="color-deep-purple"><strong>Precision</strong></span> and <span class="color-deep-purple"><strong>recall</strong></span>: Only make sense in binary setting, but:
 <ul>
 <li>We can compute these for “one class vs the rest”, and average results for each class</li>
 </ul></li>
@@ -459,9 +463,9 @@ sma@hvl.no
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Confusion matrix</strong>: No change</li>
+<li><span class="color-indigo"><strong>Confusion matrix</strong></span>: No change</li>
 </ul>
-<div class="absolute r-stack" style="top: 65%; left: 50%; width: 35%; ">
+<div class="absolute r-stack" style="left: 40%; bottom: -3%; width: 40%; ">
 <p><img data-src="figures/confusion-matrix-multiclass.png"></p>
 </div>
 </div>
@@ -469,7 +473,7 @@ sma@hvl.no
 </section>
 <section id="train-test-split" class="slide level2">
 <h2>Train-test split</h2>
-<p>Evaluating a model should be done on an <span class="color-indigo"><em>independent</em></span> data set<br> (we want to know how well it performs on new, unseen data)</p>
+<p>Evaluating a model should be done on an <span class="color-cyan-dark"><em>independent</em></span> data set<br> (we want to know how well it performs on new, unseen data)</p>
 <p>Typically we set aside a part of the data, and use this only for final evaluation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -489,8 +493,8 @@ sma@hvl.no
 <h2>Train-validation-test split</h2>
 <p>Model selection</p>
 <ul>
-<li>In case we want to compare different models, we need a third set: <br> The <em>validation set</em></li>
-<li>The test set is still only for final evaluation</li>
+<li>In case we want to compare different models, we need a third set: <br> The <span class="color-teal-dark"><em>validation</em></span> <em>set</em></li>
+<li>The <span class="color-cyan-dark">test</span> set is still only for final evaluation</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -655,9 +659,9 @@ sma@hvl.no
 </section>
 <section id="assignment-1" class="slide level2">
 <h2>Assignment 1</h2>
-<p><a href="https://hvl.instructure.com/courses/32015/quizzes/20559/take"><img data-src="figures/quiz.png"></a></p>
-<div class="absolute rectangle" style="color: #C2185B;bottom: 1%; right: 1%; width: 300px; height: 80px; ">
-<p>Deadline: 14. September</p>
+<p><a href="https://hvl.instructure.com/courses/35853/assignments/105890/"><img data-src="figures/quiz.png"></a></p>
+<div class="absolute rectangle" style="color: #C2185B; text-align: center;bottom: 1%; right: 1%; width: 300px; height: 80px; ">
+<p>Deadline: 11. September</p>
 </div>
 <!--
 ::::{.columns}

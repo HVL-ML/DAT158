@@ -725,7 +725,7 @@
     "href": "slides/1-intro/4-ml-engineering.html#machine-learning-engineering",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch / Analyse errors\n\nDeployment\nDiagnostics and visualisation"
   },
   {
     "objectID": "slides/1-intro/4-ml-engineering.html#model-training",
@@ -739,7 +739,7 @@
     "href": "slides/1-intro/4-ml-engineering.html#model-training-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Model training",
-    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import \\\n  LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\n\nmodel.fit(X, y) # X are data, y are targets\n\ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import LinearRegression\n\nmodel = LinearRegression(n_jobs=10)\n\nmodel.fit(X, y)\n\ny_hat = model.predict(X)"
   },
   {
     "objectID": "slides/1-intro/4-ml-engineering.html#evaluation",
@@ -851,7 +851,7 @@
     "href": "slides/1-intro/4-ml-engineering.html#assignment-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Assignment 1",
-    "text": "Assignment 1\n\n\nDeadline: 14. September"
+    "text": "Assignment 1\n\n\nDeadline: 11. September"
   },
   {
     "objectID": "slides/1-intro/2-python.html#practical-information",
@@ -1026,7 +1026,7 @@
     "href": "index.html#module-1-introduction-to-machine-learning",
     "title": "DAT158 Lecture notes",
     "section": "Module 1: Introduction to machine learning",
-    "text": "Module 1: Introduction to machine learning\nWednesday week 34\nFriday week 34"
+    "text": "Module 1: Introduction to machine learning\n1: Wednesday week 34\n2: Friday week 34\n3: Wednesday week 36\n4: Friday week 36"
   },
   {
     "objectID": "index.html#module-2-machine-learning-models",
@@ -1208,7 +1208,7 @@
     "href": "slides/1-intro/3-metrics.html#assignment-1-out",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Assignment 1 out",
-    "text": "Assignment 1 out\n\n\nDeadline: 14. September"
+    "text": "Assignment 1 out\n\n\nDeadline: 11. September"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#machine-learning-engineering",
@@ -1222,42 +1222,49 @@
     "href": "slides/1-intro/3-metrics.html#machine-learning-engineering-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch / Analyse errors\n\nDeployment\nDiagnostics and visualisation"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#exploratory-data-analysis",
     "href": "slides/1-intro/3-metrics.html#exploratory-data-analysis",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\nGet to know the data – structure, feature types, etc.\nLook for correlations\n\n\n\n\n\n\nIris flowers\n\n\n(notebooks/DAT158-1.1-Simple_examples.ipynb)\n\n\n\n\nPairwise feature scatter plots"
+    "text": "Exploratory data analysis\n\n\nGet to know the data – structure, feature types, etc.\nLook for correlations\n\n\n\n\n\n\n\nIris flowers\n\n\n(notebooks/DAT158-1.1-Simple_examples.ipynb)\n\n\n\n\nPairwise feature scatter plots"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#data-preparation",
     "href": "slides/1-intro/3-metrics.html#data-preparation",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Data preparation",
-    "text": "Data preparation\nMany (most) real-world datasets need some cleaning.\nTypical problems, and various solutions:\n\n\n\n\nMissing data\n\nFill with some value (zero, mean, …) aka imputation\nSkip datapoints containing missing data\nSkip entire feature containing missing data\n\n\n\n\n\n\nText attributes\n\nConvert to categorical values\n\n\n\nocean_proximity\n\ncategorical\n\n\n\n\n\"NEAR BAY\"\n\n0\n\n\n\"INLAND\"\n\n1\n\n\n\"NEAR OCEAN\"\n\n2"
+    "text": "Data preparation\nMany (most) real-world datasets need some cleaning.\nTypical problems, and various solutions:\n\n\n\n\nMissing data\nNearly all ML algorithms need a number in all data entries\n\nFill with some value (zero, mean, …) aka imputation\nSkip datapoints containing missing data\nSkip entire feature containing missing data\n\n\n\n\n\n\nText attributes\nAgain we need a number\n\nConvert to categorical values\n\n\n\nocean_proximity\n\ncategorical\n\n\n\n\n\"NEAR BAY\"\n\n0\n\n\n\"INLAND\"\n\n1\n\n\n\"NEAR OCEAN\"\n\n2"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#data-preparation-cont.",
     "href": "slides/1-intro/3-metrics.html#data-preparation-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Data preparation (cont.)",
-    "text": "Data preparation (cont.)\nMany (most) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nFeature values have different scales\n\nNormalise values (shift to a range [0, 1])\nStandardize values (shift to have mean equal to 0 and variance equal to 1)\n\n\n\n\n\n\nFeature values are not normally distributed\n\nTransform values (compute e.g. the logarithm)\n\n\n\n\n\nWikiMedia Commons\n\n\n\n\n\nSee notebooks/DAT158-1.5-Regression.ipynb"
+    "text": "Data preparation (cont.)\nMany (most) real-world datasets need some cleaning\nTypical problems, and various solutions:\n\n\n\n\nFeature values have different scales\nAffects the training procedure\n\nNormalise values (shift to a range [0, 1])\nStandardize values (shift to have mean equal to 0 and variance equal to 1)\n\n\n\n\n\n\nFeature values are not normally distributed\nAffects the training procedure\n\nTransform values (compute e.g. the logarithm)\n\n\n\n\n\nWikiMedia Commons\n\n\n\n\n\nSee notebooks/DAT158-1.5-Regression.ipynb"
+  },
+  {
+    "objectID": "slides/1-intro/3-metrics.html#machine-learning-engineering-2",
+    "href": "slides/1-intro/3-metrics.html#machine-learning-engineering-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\n\nStudy the problem\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\n\n\n\n\nTrain ML model\n\nAlgorithm/software development\n\n\n\n\n\n\nEvaluate\n\nMetric selection\nModel selection\nUncertainty quantification\n\n\n\n\n\nLaunch / Analyse errors\n\nDeployment\nDiagnostics and visualisation"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#model-training",
     "href": "slides/1-intro/3-metrics.html#model-training",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Model training",
-    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\)."
+    "text": "Model training\nDetails of different ML models is the topic for Module 2.\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\nwhere\n\n\\(\\hat{\\color{DarkBlue}{y}}\\) is the prediction\n\\(\\color{DarkOrange}{\\mathbf{x}}\\) is a data point\n\\(\\boldsymbol{\\color{teal}{\\theta}}\\) are parameters of the model\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\)."
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#model-training-1",
     "href": "slides/1-intro/3-metrics.html#model-training-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Model training",
-    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\nmodel.fit(X, y) # X are data, y are targets \ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import \\\n  LinearRegression\nmodel = LinearRegression(n_jobs=10)\nmodel.fit(X, y)\ny_hat = model.predict(X)"
+    "text": "Model training\nDetails of different ML models is the topic for Module 2\nFor now, let’s represent a generic ML model as a function \\(\\color{Purple}{f}\\):\n\n\\[\n\\large \\hat{\\color{DarkBlue}{y}} = \\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}, \\boldsymbol{\\color{teal}{\\theta}})\n\\]\n\n\nTraining is the process of finding the best parameters \\(\\boldsymbol{\\color{teal}{\\theta}}\\) so that the prediction \\(\\hat{\\color{DarkBlue}{y}}\\) is as close as possible to the known target value \\(\\color{DarkBlue}{y}\\).\n\nscikit-learn API:\n\n\n# Generic model API\nfrom sklearn.model_family import ModelName\n\nmodel = ModelName(some_setting=\"foo\")\n\nmodel.fit(X, y) # X are data, y are targets\n\ny_hat = model.predict(X)\n\n# Specific example\nfrom sklearn.linear_model import LinearRegression\n\nmodel = LinearRegression(n_jobs=10)\n\nmodel.fit(X, y)\n\ny_hat = model.predict(X)"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#evaluation",
@@ -1271,7 +1278,7 @@
     "href": "slides/1-intro/3-metrics.html#binary-classification",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Binary classification",
-    "text": "Binary classification\nIn DAT158-1.3-Binary_classification.ipynb we explore a task with two outcomes:\n\nPatient has diabetes (1 / True)\nPatient does not have diabetes (0 / False)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nindex\npregnancies\nglucose\ndiastolic\ntriceps\ninsulin\nbmi\ndpf\nage\ndiabetes\n\n\n\n\n0\n6\n148\n72\n35\n0\n33.6\n0.627\n50\n1\n\n\n1\n1\n85\n66\n29\n0\n26.6\n0.351\n31\n0\n\n\n2\n8\n183\n64\n0\n0\n23.3\n0.672\n32\n1\n\n\n\n(More about the data here)\nWe want our ML algorithm \\(\\color{Purple}{f}\\) to predict no/yes for new patients with observations \\(\\color{DarkOrange}{\\mathbf{x}}\\),\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\in \\mathbb{R}^n \\longrightarrow \\{0,1\\} \\,.\n\\]"
+    "text": "Binary classification\nIn DAT158-1.3-Binary_classification.ipynb we explore a task with two outcomes:\n\nPatient has diabetes (1 / True)\nPatient does not have diabetes (0 / False)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nindex\npregnancies\nglucose\ndiastolic\ntriceps\ninsulin\nbmi\ndpf\nage\ndiabetes\n\n\n\n\n0\n6\n148\n72\n35\n0\n33.6\n0.627\n50\n1\n\n\n1\n1\n85\n66\n29\n0\n26.6\n0.351\n31\n0\n\n\n2\n8\n183\n64\n0\n0\n23.3\n0.672\n32\n1\n\n\n\n(More about the data here)\n\n\n\nWe want our ML algorithm \\(\\color{Purple}{f}\\) to predict no/yes for new patients with observations \\(\\color{DarkOrange}{\\mathbf{x}}\\),\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\in \\mathbb{R}^n \\longrightarrow \\{0,1\\} \\,.\n\\]"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#the-confusion-matrix",
@@ -1306,14 +1313,14 @@
     "href": "slides/1-intro/3-metrics.html#computing-metrics",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Computing metrics",
-    "text": "Computing metrics\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\nConfusion matrix can be plotted easily using ConfusionMatrixDisplay"
+    "text": "Computing metrics\n\n\n\nscikit-learn has implemented a long list of metrics\n\n\n\n&gt;&gt;&gt; from sklearn.metrics import accuracy_score, confusion_matrix\n&gt;&gt;&gt; y_pred = [0, 0, 1, 0, 1, 1]\n&gt;&gt;&gt; y_true = [0, 0, 0, 1, 0, 1]\n&gt;&gt;&gt; accuracy_score(y_true, y_pred)\n0.5\n&gt;&gt;&gt; confusion_matrix(y_true, y_pred)\narray([[2, 2],\n       [1, 1]])\nConfusion matrix can be plotted easily using ConfusionMatrixDisplay"
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#setting-thresholds",
     "href": "slides/1-intro/3-metrics.html#setting-thresholds",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Setting thresholds",
-    "text": "Setting thresholds\nMost ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a threshold for where to divide between the negative and positive class.\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\longrightarrow [0, 1]\n\\]\n\n\n\n\n\n\n\n\n Most like class 0\n\n\nMost like class 1 \n\nTypically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics."
+    "text": "Setting thresholds\nMost ML classifiers actually predict a decimal number between 0 and 1, leaving us to select a threshold for where to divide between the negative and positive class.\n\n\n\n\\[\n\\color{Purple}{f}: \\color{DarkOrange}{\\mathbf{x}} \\longrightarrow [0, 1]\n\\]\n\n\n\n\n\n\n\n\n Most like class 0\n\n\nMost like class 1 \n\n\n\n\nTypically one chooses 0.5 as default, but let’s look at how changing the threshold changes the metrics."
   },
   {
     "objectID": "slides/1-intro/3-metrics.html#setting-thresholds-cont.",
