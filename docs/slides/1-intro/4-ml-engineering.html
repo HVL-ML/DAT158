@@ -439,6 +439,75 @@ sma@hvl.no
 <div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
 <p>Google for Developers: <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall"><em>Accuracy, precision, recall</em></a></p>
 </div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="precision-recall-curves" class="slide level2">
+<h2>Precision-recall curves</h2>
+<p>The metrics so far are computed at a <em>single</em> threshold value.<br> What if we want to evaluate a model for all possible thresholds?</p>
+<p><i class="bi bi-arrow-right color-green-dark"></i> Plot <strong>precision</strong> as a function of <strong>recall</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/precision-recall-curve.png" style="width:50.0%"></p>
+<figcaption>Géron Fig 3-6</figcaption>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="receiver-operator-characteristic-roc" class="slide level2">
+<h2>Receiver Operator Characteristic (ROC)</h2>
+<p>A more common option is to plot the true positive rate (TPR) as function of false positive rate (FPR):</p>
+<div style="padding-top: 30px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/roc-curve.png" style="width:50.0%"></p>
+<figcaption>Géron Fig 3-6</figcaption>
+</figure>
+</div>
+<div class="absolute color-teal-dark" style="top: 40%; left: 3%; width: 18%; ">
+<p><span class="math display">\[
+\tiny
+\mathrm{TPR} = \frac{\mathrm{TP}}{\mathrm{TP + FN}}
+\]</span></p>
+<p><span style="font-size: 0.75em; display: inline-block;">“How many positives did I get right”</span></p>
+</div>
+<div class="absolute color-purple" style="top: 80%; left: 43%; width: 18%; ">
+<p><span class="math display">\[
+\tiny
+\mathrm{FPR} = \frac{\mathrm{FP}}{\mathrm{FP + TN}}
+\]</span></p>
+<p><span style="font-size:0.75em; display: inline-block;">“How many negatives did I get wrong”</span></p>
+</div>
+<div class="fragment absolute" style="top: 40%; left: 80%; width: 20%; ">
+<p>Good models have high <em>area-under-curve</em> (AUC)</p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="receiver-operator-characteristic-roc-1" class="slide level2">
+<h2>Receiver Operator Characteristic (ROC)</h2>
+<div class="frame-wrap" style="width: 1600px; height: 800px">
+<iframe class="frame" src="roc_curve.html" allowfullscreen="" name="roc_curve">
+</iframe>
+</div>
+<div class="absolute" style="font-size: 0.6em;left: 55%; bottom: 1%; ">
+<p>Google for Developers: <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall"><em>Accuracy, precision, recall</em></a></p>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="quiz" class="slide level2">
+<h2>Quiz 🧠</h2>
+<blockquote>
+<p>You have trained a model to classify cancer from X-ray images. Positive (1) class means cancer. Now you need to choose a classification threshold.</p>
+</blockquote>
+<div class="fragment">
+<div class="absolute" style="top: 50%; left: 0%; width: 30%; ">
+<p>Should you choose threshold A, B, or C?</p>
+</div>
+<div class="absolute r-stack" style="top: 35%; left: 35%; width: 45%; ">
+<p><img data-src="figures/roc-curve-choice.png"></p>
+</div>
+</div>
 </section>
 <section id="multiclass-classification" class="slide level2">
 <h2>Multiclass classification</h2>

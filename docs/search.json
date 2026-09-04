@@ -777,6 +777,34 @@
     "text": "Setting thresholds\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
   },
   {
+    "objectID": "slides/1-intro/4-ml-engineering.html#precision-recall-curves",
+    "href": "slides/1-intro/4-ml-engineering.html#precision-recall-curves",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Precision-recall curves",
+    "text": "Precision-recall curves\nThe metrics so far are computed at a single threshold value. What if we want to evaluate a model for all possible thresholds?\n Plot precision as a function of recall:\n\n\n\nGéron Fig 3-6"
+  },
+  {
+    "objectID": "slides/1-intro/4-ml-engineering.html#receiver-operator-characteristic-roc",
+    "href": "slides/1-intro/4-ml-engineering.html#receiver-operator-characteristic-roc",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Receiver Operator Characteristic (ROC)",
+    "text": "Receiver Operator Characteristic (ROC)\nA more common option is to plot the true positive rate (TPR) as function of false positive rate (FPR):\n\n\n\n\n\n\nGéron Fig 3-6\n\n\n\n\\[\n\\tiny\n\\mathrm{TPR} = \\frac{\\mathrm{TP}}{\\mathrm{TP + FN}}\n\\]\n“How many positives did I get right”\n\n\n\\[\n\\tiny\n\\mathrm{FPR} = \\frac{\\mathrm{FP}}{\\mathrm{FP + TN}}\n\\]\n“How many negatives did I get wrong”\n\n\nGood models have high area-under-curve (AUC)"
+  },
+  {
+    "objectID": "slides/1-intro/4-ml-engineering.html#receiver-operator-characteristic-roc-1",
+    "href": "slides/1-intro/4-ml-engineering.html#receiver-operator-characteristic-roc-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Receiver Operator Characteristic (ROC)",
+    "text": "Receiver Operator Characteristic (ROC)\n\n\n\n\n\nGoogle for Developers: Accuracy, precision, recall"
+  },
+  {
+    "objectID": "slides/1-intro/4-ml-engineering.html#quiz",
+    "href": "slides/1-intro/4-ml-engineering.html#quiz",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Quiz 🧠",
+    "text": "Quiz 🧠\n\nYou have trained a model to classify cancer from X-ray images. Positive (1) class means cancer. Now you need to choose a classification threshold.\n\n\n\nShould you choose threshold A, B, or C?"
+  },
+  {
     "objectID": "slides/1-intro/4-ml-engineering.html#multiclass-classification",
     "href": "slides/1-intro/4-ml-engineering.html#multiclass-classification",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
