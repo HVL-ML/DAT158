@@ -480,7 +480,7 @@
     "href": "slides/2-models/8-linreg.html#hyperparameter-optimisation-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Hyperparameter optimisation",
-    "text": "Hyperparameter optimisation\n\n\nTechnique for finding optimal hyperparameters:\nMake intelligent guesses (usually cannot be formulated as a differentiable task)\n\n\nGrid search: Test a fixed set of combinations\n\n\n\n\nRandom search: Test randomly selected combinations\n\n\n\n\nBayesian optimisation / evolutionary algorithms / etc.: Cleverly select new combinations based on past results"
+    "text": "Hyperparameter optimisation\n\n\nTechnique for finding optimal hyperparameters:\nMake intelligent guesses (usually cannot be formulated as a differentiable task)\n\n\nGrid search: Test a fixed set of combinations\n\n\n\n\nRandom search: Test randomly selected combinations\n\n\n\n\nAdaptive search (Bayesian optimisation / evolutionary algorithms / etc.): Cleverly select new combinations based on past results"
   },
   {
     "objectID": "slides/2-models/8-linreg.html#ml-assignment-2",
