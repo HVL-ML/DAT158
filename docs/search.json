@@ -343,6 +343,13 @@
     "text": "Now: Presentation from NAIC"
   },
   {
+    "objectID": "slides/2-models/8-linreg.html#section",
+    "href": "slides/2-models/8-linreg.html#section",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "🥇\n\n\n🥈\n\n\n🥉"
+  },
+  {
     "objectID": "slides/2-models/8-linreg.html#topics-module-2",
     "href": "slides/2-models/8-linreg.html#topics-module-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
@@ -396,7 +403,7 @@
     "href": "slides/2-models/8-linreg.html#regularised-linear-models",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Regularised linear models",
-    "text": "Regularised linear models\n\n\nLet’s improve our linear model by adding a regularisation term:\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_p\n\\]\n\n\n\\(\\small L_2\\) regularisation, aka Ridge regression(sklearn.linear_model.Ridge):\n\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_2\n\\]\n\n\n\\[\n\\small\n\\nabla \\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\nabla \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} \\color{teal}{\\boldsymbol{\\theta}}\n\\]\n\n\n\n\\(\\small L_1\\) regularisation, aka Lasso regression (sklearn.linear_model.Lasso):\n\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_1\n\\]\n(\\(\\small\\nabla\\color{MediumVioletRed}{L}\\) gets a little complicated – see Eq. 4.11 in the textbook)"
+    "text": "Regularised linear models\n\n\nLet’s improve our linear model by adding a regularisation term:\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_p\n\\]\n\n\n\\(\\small L_2\\) regularisation, aka Ridge regression (sklearn.linear_model.Ridge):\n\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_2\n\\]\n\n\n\\[\n\\small\n\\nabla \\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\nabla \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} \\color{teal}{\\boldsymbol{\\theta}}\n\\]\n\n\n\n\\(\\small L_1\\) regularisation, aka Lasso regression (sklearn.linear_model.Lasso):\n\n\\[\n\\small\n\\color{MediumVioletRed}{L}(\\color{teal}{\\boldsymbol{\\theta}})\n= \\color{MediumVioletRed}{L}_{\\mathrm{MSE}} + \\color{red}{\\alpha} ||\\color{teal}{\\boldsymbol{\\theta}}||_1\n\\]\n(\\(\\small\\nabla\\color{MediumVioletRed}{L}\\) gets a little complicated – see Eq. 4.11 in the textbook)"
   },
   {
     "objectID": "slides/2-models/8-linreg.html#l1-lasso-regularisation",
@@ -1418,7 +1425,7 @@
     "href": "slides/2-models/5-overfitting.html#kaggle-competition",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Kaggle competition",
-    "text": "Kaggle competition\n\nJoin at kaggle.com  (competition only open to us)\nSubmission deadline: Oct 1, at 23.59"
+    "text": "Kaggle competition\n\nJoin at kaggle.com (competition only open to us) – Submission deadline: Oct 3, at 23.55"
   },
   {
     "objectID": "slides/2-models/5-overfitting.html#model-training",
