@@ -231,116 +231,200 @@
     "text": "Repetition / overview 📖"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#topics-for-module-3",
-    "href": "slides/3-systems/lecture2.html#topics-for-module-3",
+    "objectID": "slides/3-systems/11-problems.html#the-ml-project-lifecycle",
+    "href": "slides/3-systems/11-problems.html#the-ml-project-lifecycle",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Topics for Module 3",
-    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣"
+    "section": "The ML project lifecycle",
+    "text": "The ML project lifecycle"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#more-detailed-picture-the-ml-project-lifecycle",
-    "href": "slides/3-systems/lecture2.html#more-detailed-picture-the-ml-project-lifecycle",
+    "objectID": "slides/3-systems/11-problems.html#checklist-pt.-7-present-the-solution",
+    "href": "slides/3-systems/11-problems.html#checklist-pt.-7-present-the-solution",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "More detailed picture: the ML project lifecycle",
-    "text": "More detailed picture: the ML project lifecycle"
+    "section": "☑️ Checklist pt. 7: Present the solution",
+    "text": "☑️ Checklist pt. 7: Present the solution\n\n\n\nDocumentation time 📋\n\n\n\n\nDocument the system\nMake a nice powerpoint for stakeholders\nWrite a report about business added value\nUse cool business words\nBusiness\nEvaluate business impact\nBusiness"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#checklist-pt.-6-fine-tune",
-    "href": "slides/3-systems/lecture2.html#checklist-pt.-6-fine-tune",
+    "objectID": "slides/3-systems/11-problems.html#checklist-pt.-8-launch",
+    "href": "slides/3-systems/11-problems.html#checklist-pt.-8-launch",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 6: Fine-tune",
-    "text": "☑️ Checklist pt. 6: Fine-tune\n\n\n\nHaving made a ranking of good models, now is the time to optimise.\n\n\n\n\nRun hyperparameter search (remember cross-validation)\nTools: Scikit-learn, Optuna, HyperOpt, Ray Tune\nMaybe make an ensemble of the best models\n\n\n\n\nFinally, evaluate performance on the test set"
+    "section": "☑️ Checklist pt. 8: Launch",
+    "text": "☑️ Checklist pt. 8: Launch\nDeploy\n\nChoose how or where to run the ML model\n(user hardware / common backend / specialised backend)\nRun the model!\nScale servers as required\n\nMonitor\n\nCheck model performance over time\nBeware of both sudden and slow degradation\n\nUpdate\n\nRe-train model on new data (when available)\nConsider other model types\n\n\n🚀"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#verifying-ml-code",
-    "href": "slides/3-systems/lecture2.html#verifying-ml-code",
+    "objectID": "slides/3-systems/11-problems.html#ml-assignment-2",
+    "href": "slides/3-systems/11-problems.html#ml-assignment-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Verifying ML code",
-    "text": "Verifying ML code\n\n\n\nUnit tests:\nAlways a good idea (but less relevant when relying heavily on frameworks)\n\n\n\n\nIntegration tests:\nVerify that each step of the pipeline gives expected output. Difficult due to random nature of many ML models\n\nImprove reproduceability by always using same random numbers:\nnp.random.seed(42)\n\nrequires that you initialise model components in a fixed order)\n\nVerify shapes rather than content\nassert processed_data.shape == original_data.shape\n\n\n\n\n\nDeployment tests:\n\nVerify functionality of the entire system\nTest scalability, stability, latency, etc"
+    "section": "ML assignment 2",
+    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template on Canvas)\nMake the code accessible\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#verifying-ml-models",
-    "href": "slides/3-systems/lecture2.html#verifying-ml-models",
+    "objectID": "slides/3-systems/11-problems.html#section",
+    "href": "slides/3-systems/11-problems.html#section",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Verifying ML models",
-    "text": "Verifying ML models\nTesting code is one thing, but verifying the model output is something else.\nCan’t feasibly check model output against all possible inputs\n\nTwo levels of testing:\n\n“Simple” evaluation:\n\nCompute metrics on the test dataset\n\n\n\n\n\nIn-depth evaluation:\nDiagnose model through explainability and interpretability techniques such as\n\nFeature importance\nAttribution methods\nBias evaluation"
+    "section": "",
+    "text": "www.gradio.app"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#verifying-data",
-    "href": "slides/3-systems/lecture2.html#verifying-data",
+    "objectID": "slides/3-systems/11-problems.html#section-1",
+    "href": "slides/3-systems/11-problems.html#section-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Verifying data",
-    "text": "Verifying data\n\n\n\nAn ML model is necessarily only as good as the data it is trained on.\n\n\n\nNeed to ensure data quality both for training and for inference\n\n\n\nUseful to define a data schema restricting the domain of each feature, e.g.\n\nUser age is between 18 and 99 years\nPatient is not male and pregnant\nApartment does not have more bathrooms than bedrooms"
+    "section": "",
+    "text": "streamlit.io"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#verifying-data-bias-and-fairness",
-    "href": "slides/3-systems/lecture2.html#verifying-data-bias-and-fairness",
+    "objectID": "slides/3-systems/11-problems.html#mistakes-to-avoid",
+    "href": "slides/3-systems/11-problems.html#mistakes-to-avoid",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Verifying data: Bias and fairness",
-    "text": "Verifying data: Bias and fairness\nBias is when we gather data or make predictions with a systematic tendency of presenting a skewed or inaccurate view of reality.\nFailing to account for biases leads to unfair predictions for subgroups in data.\n\n\n\n\nSome types of bias: (not a solid line between these)\n\n\n\n\n\nReporting bias\n\n\n\n\nCoverage bias\n\n\n\n\nSampling bias\n\n\n\n\n\n\nLast week, 8% of hospital COVID-19 tests were positive.\n\nWhat is the prevalence of COVID-19 in the general population?\n\n\nLet’s do a survey on the importance of lectures.\n*Asks students in the auditorium*\n\n\n\nElection polls are typically results from ~1000 automatic phone calls to random recipients.\n\nDo they correctly predict the winner?\n\n(could we skip the election and just use the poll?)"
+    "section": "Mistakes to avoid 🧯",
+    "text": "Mistakes to avoid 🧯\n\nSupplementary reading: Lones, Michael A. How to avoid machine learning pitfalls: a guide for academic researchers. arXiv:2108.02497 (2021)."
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#fairness",
-    "href": "slides/3-systems/lecture2.html#fairness",
+    "objectID": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process",
+    "href": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Fairness",
-    "text": "Fairness\n\nAdapted from Google Developers: Real-world ML\n\nWe want to build an ML model that accepts students to a university.\nAdmission should of course be fair between applicants from different groups, even though one group is in majority.\n\n\n\nModel output:\n\n\n\n\n\nAcceptance rate:\nBlue group:    3/19 = 16%\nOrange group: 1/6 = 17%\n Seems fair."
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']\nX = data[:]\n\nmodel.fit(X, y)"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#fairness-1",
-    "href": "slides/3-systems/lecture2.html#fairness-1",
+    "objectID": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-1",
+    "href": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Fairness",
-    "text": "Fairness\n\nAdapted from Google Developers: Real-world ML\n\nWe also want to take into account if the applicants are qualified (only accept those how are):\n\n\n\nModel output:\n\n\nAcceptance rate:\nBlue group:    3/19 = 16%\nOrange group: 1/6 = 17%\nAcceptance rate of qualified applicants:\nBlue group:    3/13 = 23%\nOrange group: 1/2 = 50%\n\n\n\n\n\n\n\nCannot be fair on both group and subgroup/individual level at the same time :("
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']  # Select target values\nX = data[:]         # Select all input features\n\nmodel.fit(X, y)"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#verifying-models-feature-importance",
-    "href": "slides/3-systems/lecture2.html#verifying-models-feature-importance",
+    "objectID": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-2",
+    "href": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Verifying models: Feature importance",
-    "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\n\nfrom sklearn.datasets import fetch_california_housing\nhouse = fetch_california_housing()\nX, y = house.data, house.target"
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']\nX = data[:]         # Should have used data.drop('Target')\n\nmodel.fit(X, y)     # Target still in X\n Target leakage\nLeads to overinflated performance numbers"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#verifying-models-feature-importance-1",
-    "href": "slides/3-systems/lecture2.html#verifying-models-feature-importance-1",
+    "objectID": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-3",
+    "href": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Verifying models: Feature importance",
-    "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\n\n\n\n\n\nlr = LinearRegression()\nlr.fit(X, y)\ncoefficients = lr.coef_"
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nLet us scale the features to improve model learning:\n\n\n\nfrom sklearn.preprocessing import StandardScaler\n\nscaler = StandardScaler.fit(X)    # \"Train\" the scaler\nX = scaler.transform(X)           # Apply the results \n\nX_train, X_test, y_train, y_test = train_test_split(X, y)\nmodel.fit(X_train, y_train)\n\n\n\n\nTest data was included when fitting the scaler (should have used only train data)\n Test data leakage\nLeads to overinflated performance numbers"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#feature-importance",
-    "href": "slides/3-systems/lecture2.html#feature-importance",
+    "objectID": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-4",
+    "href": "slides/3-systems/11-problems.html#leaking-secrets-into-the-training-process-4",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\n\n\n\n\n\nclf = RandomForestRegressor()\nclf.fit(X, y)\nimportance = clf.feature_importances_"
+    "section": "Leaking secrets into the training process",
+    "text": "Leaking secrets into the training process\nWe have proposed two models, but want to select the best one:\n\n\n\ndef find_best_model(model1, model2):\n  \n  model1.fit(X_train, y_train)\n  model2.fit(X_train, y_train)\n\n  score1 = model1.score(X_test, y_test)\n  score2 = model2.score(X_test, y_test)\n\n  if score1 &gt; score2:\n    return model1\n  else:\n    return model2\n\nTest data was used for model selection (should have used validation data)\n Test data leakage\nLeads to overinflated performance numbers"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#feature-importance-1",
-    "href": "slides/3-systems/lecture2.html#feature-importance-1",
+    "objectID": "slides/3-systems/11-problems.html#spurious-correlations",
+    "href": "slides/3-systems/11-problems.html#spurious-correlations",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\n\n\n\n\n\n# (beyond the scope for us)"
+    "section": "Spurious correlations",
+    "text": "Spurious correlations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRibeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. “Why should i trust you?” Explaining the predictions of any classifier. Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining. 2016."
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#feature-importance-2",
-    "href": "slides/3-systems/lecture2.html#feature-importance-2",
+    "objectID": "slides/3-systems/11-problems.html#spurious-correlations-1",
+    "href": "slides/3-systems/11-problems.html#spurious-correlations-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\n\n\n\n\n\n\nfrom sklearn.inspection import permutation_importance\nimportance = permutation_importance(clf, X, y).importances_mean"
+    "section": "Spurious correlations",
+    "text": "Spurious correlations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeGrave et al. AI for radiographic COVID-19 detection selects shortcuts over signal.  Nature Machine Intelligence 3.7 (2021): 610-619."
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#feature-importance-3",
-    "href": "slides/3-systems/lecture2.html#feature-importance-3",
+    "objectID": "slides/3-systems/11-problems.html#not-enough-data",
+    "href": "slides/3-systems/11-problems.html#not-enough-data",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\nShapley values\n\n\n\n\n\n\nimport shap\nexplainer = shap.TreeExplainer(rf)\nexplanation = explainer(X)\nshap.plots.beeswarm(explanation)\n\n\n\nFeature importance tells us something about the model, not necessarily about reality."
+    "section": "Not enough data",
+    "text": "Not enough data\nThere needs to be a reasonable relationship between\n\nthe amount of data\nthe signal-to-noise ratio of the data\nand the complexity of the ML model.\n\n\nLittle data paired with a complex model leads to overfitting.\nForgetting to check for and correct for overfitting is more common than it should be ☹️"
   },
   {
-    "objectID": "slides/3-systems/lecture2.html#now-presentation-from-naic",
-    "href": "slides/3-systems/lecture2.html#now-presentation-from-naic",
+    "objectID": "slides/3-systems/11-problems.html#not-enough-data-cont.",
+    "href": "slides/3-systems/11-problems.html#not-enough-data-cont.",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Now: Presentation from NAIC",
-    "text": "Now: Presentation from NAIC"
+    "section": "Not enough data (cont.)",
+    "text": "Not enough data (cont.)\nSome workarounds:\n\n\nData augmentation:\nArtificially increase the dataset by duplicating data points, but change them by\n\nAdding noise\nApplying transformations\n\n(These modifications neccesarily need to preserve the correlation of interest)\n\n\n\n\nTransfer learning:\nTrain a model on a bigger dataset, then fine-tune it on the dataset of interest"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#deep-learning-must-surely-be-best",
+    "href": "slides/3-systems/11-problems.html#deep-learning-must-surely-be-best",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Deep learning must surely be best",
+    "text": "Deep learning must surely be best\nModern language and vision models are powered by multi-layered neural networks, a branch of ML called deep learning\n\nNeural networks offer great flexibility and power to model complicated relationships in data, but that does not make them suitable for all problems\nSee e.g. this paper on why tree-based models are still best on “typical” data.\n\nGrinsztajn et al. Why do tree-based models still outperform deep learning on typical tabular data? Advances in neural information processing systems 35 (2022): 507-520."
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#missing-baselines-for-comparison",
+    "href": "slides/3-systems/11-problems.html#missing-baselines-for-comparison",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Missing baselines for comparison",
+    "text": "Missing baselines for comparison\n\nYou have trained a mega awesome classifier model, which achieves 81% accuracy on your test dataset.\n\nIs the model any good?\n\nHard to tell without comparing to something. We need a baseline.\n\n\n\n\n\nNaïve baseline:\n\n\n\n\nReasonable default baseline:\n\n\n\n\nState-of-the-art (SOTA) baseline:\n\n\n\n\n\nUse these to show that your model is not just doing something trivial.\n\nBaseline of a random model:\nA random guessing binary classifier gets 50% accuracy\nBaseline of constant value predictor:\nAlways predicting the same class yields high accuracy on imbalanced data\n\n\n\nPerformance of a un-tuned model which is known to work on this type of task.\nE.g. try sklearn’s RandomForestClassifier, with default settings, on a classification task with tabular data.\n\n\nPerformance of the best existing model"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#over-reliance-on-a-single-evaluation-metric",
+    "href": "slides/3-systems/11-problems.html#over-reliance-on-a-single-evaluation-metric",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Over-reliance on a single evaluation metric",
+    "text": "Over-reliance on a single evaluation metric\nWe have already discussed why for instance accuracy should be used with caution.\n\n\n\n\n\n\n\nGood: Add in precision and recall\n\n\n\n\n\n\n\nBetter: Study the confusion matrix\n\n\n\n\n\n\n\nBest: Study all mispredicted data points (but who has the time)"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#base-rate-fallacy",
+    "href": "slides/3-systems/11-problems.html#base-rate-fallacy",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Base rate fallacy",
+    "text": "Base rate fallacy\nTask:\n\nFrom chest X-ray images, predict if the patient has cancer.Prevalence of lung cancer is 6%.\n\n\nSimplest possible classifier:\n\\[\n\\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}) = \\mathrm{no \\; cancer}\n\\]\n 94% accuracy"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#base-rate-fallacy-1",
+    "href": "slides/3-systems/11-problems.html#base-rate-fallacy-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Base rate fallacy",
+    "text": "Base rate fallacy\n\n\n\nLet us make a real model and test it on balanced data (50% positive and 50% negative cases)\nThe model achieves 90% accuracy on this test set.\n\n\nA doctor wants to use the model to diagnose a new patient. The model predicts cancer.\nWhat is the probability that the patient has cancer?\n\n\nSolution requires Bayes’ theorem (out of scope for us), but comes out to 38%."
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#going-beyond-dat158",
+    "href": "slides/3-systems/11-problems.html#going-beyond-dat158",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Going beyond DAT158 🔭",
+    "text": "Going beyond DAT158 🔭"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#section-2",
+    "href": "slides/3-systems/11-problems.html#section-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "Coursedescription"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#useful-libraries-besides-scikit-learn",
+    "href": "slides/3-systems/11-problems.html#useful-libraries-besides-scikit-learn",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Useful libraries besides scikit-learn",
+    "text": "Useful libraries besides scikit-learn\nScikit-learn is great for testing loads of models, but sometimes we want a more specialised tool.\nSome examples of specialised Python libraries:\n\nGradient boosted trees:\nXGBoost, LightGBM, CatBoost\nNeural networks:\nKeras, PyTorch\nLinear regression++:\nStatsModels\nScikit-learn clone optimised for GPUs:\nRAPIDS / cuML"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2025",
+    "href": "slides/3-systems/11-problems.html#state-of-ml-2025",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2025",
+    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI:\n\n\nLarge language models \n\nImage and video generation \n\nThese are all machine learning models – trained on known data, and used to make predictions on new data points."
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2025-1",
+    "href": "slides/3-systems/11-problems.html#state-of-ml-2025-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2025",
+    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI\nStill, the majority of ML tasks are deterministic – a data point should get the same predicted result every time:\n\n\n\n\nObject detection\nFace recognition\nFraud detection\nCredit scoring\nAlgorithmic trading\nCustomer segmentation\nSentiment analysis\nPredictive maintenance\nRoute optimisation\nTimeseries prediction\n\n\n\nRecommender systems\nSpeech recognition\nProperty valuation\nClimate modelling\nPersonalised medicine\nTargeted advertising\nSelf-driving vehicles\nNetwork optimisation\nSpam filtering\n…"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2025-2",
+    "href": "slides/3-systems/11-problems.html#state-of-ml-2025-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "State of ML 2025",
+    "text": "State of ML 2025\nNevertheless, this is the time to ride the AI wave 🏄"
+  },
+  {
+    "objectID": "slides/3-systems/11-problems.html#future-of-ml-keeping-up-with-progress",
+    "href": "slides/3-systems/11-problems.html#future-of-ml-keeping-up-with-progress",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Future of ML: keeping up with progress",
+    "text": "Future of ML: keeping up with progress\nMachine learning research is moving fast\n… and there is also much hype.\n\n\n\n\nCutting edge research typically presented at conferences such as ICML, NeurIPS\nGood sources of information: Documentation of major ML frameworks, reputable books\nBad sources of information: medium.com articles and similar SEO spam\nRemember that main concepts from this course always applies."
   },
   {
     "objectID": "slides/2-models/8-linreg.html#section",
@@ -1075,7 +1159,7 @@
     "href": "index.html#module-3-end-to-end-machine-learning-project",
     "title": "DAT158 Lecture notes",
     "section": "Module 3: End-to-end machine learning project",
-    "text": "Module 3: End-to-end machine learning project\nPublished later"
+    "text": "Module 3: End-to-end machine learning project\n\n9: Wednesday week 41\n10: Friday week 43\n11: Wednesday week 44"
   },
   {
     "objectID": "slides/1-intro/1-intro.html#ml-engineering-advanced-algorithms",
@@ -1425,7 +1509,7 @@
     "href": "slides/2-models/5-overfitting.html#kaggle-competition",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Kaggle competition",
-    "text": "Kaggle competition\n\nJoin at kaggle.com (competition only open to us) – Submission deadline: Oct 3, at 23.55"
+    "text": "Kaggle competition\n\nJoin at kaggle.com  (competition only open to us)\nSubmission deadline: Oct 1, at 23.59"
   },
   {
     "objectID": "slides/2-models/5-overfitting.html#model-training",
@@ -1687,311 +1771,227 @@
     "text": "Automatic differentiation\n\n\n\n\n\n\n\n\n\nManually computing gradients is rather inconvenient 😒\nLuckily, automatic differentiation helps us out:\nimport jax\n\ndef predict(X, theta):              # For complicated models, predict()\n  return X.dot(theta)               # also tends to get very complicated\n\ndef loss(X, theta, y):              # But loss function is always simple\n  y_hat = predict(X, theta)\n  mse = ((y_hat - y)**2).mean()\n  return mse\n\nfor epoch in range(n_epochs):\n  theta = theta - eta*jax.grad(loss, argnums=1)(X, theta, y)  # autodiff!\n(appendix B in textbook)"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#topics-for-module-3",
-    "href": "slides/3-systems/lecture1.html#topics-for-module-3",
+    "objectID": "slides/3-systems/10-verification.html#topics-for-module-3",
+    "href": "slides/3-systems/10-verification.html#topics-for-module-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Topics for Module 3",
     "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#ml-assignment-2",
-    "href": "slides/3-systems/lecture1.html#ml-assignment-2",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ML assignment 2",
-    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template will be provided)\nMake the code accessible\n\n\n\n\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#ml-assignment-2-1",
-    "href": "slides/3-systems/lecture1.html#ml-assignment-2-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ML assignment 2",
-    "text": "ML assignment 2\nSome ideas:\n\n\nMake a web app to\n\nEstimate the value of a used car [1]\nPredict wine quality [2]\nClassify mushrooms as poisonous or edible [3]\n\n\nThe result should be something you can be proud of!"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#machine-learning-engineering",
-    "href": "slides/3-systems/lecture1.html#machine-learning-engineering",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Machine learning engineering",
-    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\nStudy the problem 🔍\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\nTrain ML model 💻\n\nAlgorithm/software development\n\n\n\n\nEvaluate 📈\n\nMetric selection\nModel selection\nUncertainty quantification\n\nLaunch 🚀 / Analyse errors ❌\n\nDeployment\nDiagnostics and visualisation"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#more-detailed-picture-the-ml-project-lifecycle",
-    "href": "slides/3-systems/lecture1.html#more-detailed-picture-the-ml-project-lifecycle",
+    "objectID": "slides/3-systems/10-verification.html#more-detailed-picture-the-ml-project-lifecycle",
+    "href": "slides/3-systems/10-verification.html#more-detailed-picture-the-ml-project-lifecycle",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "More detailed picture: the ML project lifecycle",
     "text": "More detailed picture: the ML project lifecycle"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#checklist-pt.-1-frame-the-problem",
-    "href": "slides/3-systems/lecture1.html#checklist-pt.-1-frame-the-problem",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 1: Frame the problem",
-    "text": "☑️ Checklist pt. 1: Frame the problem\nThis is about what your solution will actually solve.\nHow do you measure success at your business objective?\n\n\n\n\n\n\nForbes Top-50 AI list"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#checklist-pts.-23-get-the-data-explore-the-data",
-    "href": "slides/3-systems/lecture1.html#checklist-pts.-23-get-the-data-explore-the-data",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pts. 2,3: Get the data, explore the data",
-    "text": "☑️ Checklist pts. 2,3: Get the data, explore the data\nThis can be the dealbreaker for many projects.\n\n\nCollect\n\nIs your data\n\neasily available?\navailable in sufficient quantity?\nup to date?\nexpensive?\nsensitive? (personal info / customer secrets / state secrets / …)\nunder legal restrictions?\n\n\n\nExplore\n\nDoes your data contain\n\nthe correlations of interest?\nredundant information?\nmissing / bad information?\nimbalance between classes?\n\n\n\n\n🚫 Reminder: Do not look at the test dataset yet"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#checklist-pt.-4-prepare-the-data",
-    "href": "slides/3-systems/lecture1.html#checklist-pt.-4-prepare-the-data",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 4: Prepare the data",
-    "text": "☑️ Checklist pt. 4: Prepare the data\n\n\nTraining a model typically involves several sequential steps:\n\nData preprocessing\n\nCleaning\nImputation\nFeature engineering\nScaling\n\nTraining loop\nPerformance evaluation\n\nwhich can be represented as a directed acyclic graph (DAG)\n\n\n\n\n\n\n\n%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing':30}, 'theme': 'base', 'themeVariables': {'fontSize': '16px'}}}%%\nflowchart TD\n    A[(Data)]\n    A --&gt; B[Cleaned&lt;br&gt;data]\n    B --&gt; C{Split}\n    C --&gt; D[Train set]\n    C --&gt; E[Scaled&lt;br&gt;val. set]\n    C --&gt; F[Scaled&lt;br&gt;test set]\n    D --&gt; G(Scaler)\n    G --&gt; J[Scaled&lt;br&gt;train set]\n    D --&gt; J\n    G --&gt; E\n    G --&gt; F\n    J --&gt; H(Model)\n    E --&gt; H\n    H --&gt; I(Evaluate)\n    F --&gt; I\n\n\n Example processing graph"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#data-processing-pipelines",
-    "href": "slides/3-systems/lecture1.html#data-processing-pipelines",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Data processing: Pipelines",
-    "text": "Data processing: Pipelines\n\n\n\nOften call these processing steps a pipeline\n\n\n\nDifferent frameworks exists to facilitate them, e.g. in Scikit-Learn:\n&gt;&gt;&gt; from sklearn.pipeline import Pipeline\n&gt;&gt;&gt; X, y = make_classification(random_state=0)\n&gt;&gt;&gt; X_train, X_test, y_train, y_test = train_test_split(X, y)\npipe = Pipeline([('scaler', StandardScaler()), ('svc', SVC())])\npipe.fit(X_train, y_train).score(X_test, y_test)\n0.88\n\n\n\n(also Apache Spark, Dask, Ray, Airflow, Celery, and others)"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#checklist-pt.-5-shortlist-promising-models",
-    "href": "slides/3-systems/lecture1.html#checklist-pt.-5-shortlist-promising-models",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 5: Shortlist promising models",
-    "text": "☑️ Checklist pt. 5: Shortlist promising models\n\n\nRecall the No free lunch theorem:\n\nWithout any assumptions about the data, there is no reason to expect one model to be better than others.\n\n Try out several model types.\n(Unless you know things about your data that motivates a certain choice)\nAt this point, focus on wide experimentation rather than optimising a single selection."
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#keeping-track-of-models",
-    "href": "slides/3-systems/lecture1.html#keeping-track-of-models",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Keeping track of models",
-    "text": "Keeping track of models\nDuring development (especially hyperparameter optimisation), you’ll typically have a lot of models floating around\n\nBig timesaver: A system for tracking configs and performance\n\nTools: MLflow / Aim / Sacred / Comet / Weights & Biases"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#checklist-pt.-6-fine-tune",
-    "href": "slides/3-systems/lecture1.html#checklist-pt.-6-fine-tune",
+    "objectID": "slides/3-systems/10-verification.html#checklist-pt.-6-fine-tune",
+    "href": "slides/3-systems/10-verification.html#checklist-pt.-6-fine-tune",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "☑️ Checklist pt. 6: Fine-tune",
-    "text": "☑️ Checklist pt. 6: Fine-tune\n\n\n\nHaving made a ranking of good models, now is the time to optimise.\n\n\n\n\nRun hyperparameter search (remember cross-validation)\nMaybe make an ensemble of the best models\n\n\n\n\nFinally, evaluate performance on the test set"
+    "text": "☑️ Checklist pt. 6: Fine-tune\n\n\n\nHaving made a ranking of good models, now is the time to optimise.\n\n\n\n\nRun hyperparameter search (remember cross-validation)\nTools: Scikit-learn, Optuna, HyperOpt, Ray Tune\nMaybe make an ensemble of the best models\n\n\n\n\nFinally, evaluate performance on the test set"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#the-ml-project-lifecycle",
-    "href": "slides/3-systems/lecture1.html#the-ml-project-lifecycle",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "The ML project lifecycle",
-    "text": "The ML project lifecycle"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#static-vs-dynamic-training",
-    "href": "slides/3-systems/lecture1.html#static-vs-dynamic-training",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Static vs dynamic training",
-    "text": "Static vs dynamic training\nTwo approaches to model training:\n\n\n\nStatic (offline) training:\nTrain a single model once, deploy it, and keep using it for a while\nPros:\n\nModel can be thoroughly tested\nDeployment needs only be done once\n\nCons:\n\nData must be unchanging over time\n\n\n\n\nDynamic (online) training:\n(Re)-train models continuously when new data comes in, and serve the most recent\nPros:\n\nModel always up-to-date with shift/fluctuations in data\n\nCons:\n\nPotentially high cost of training and deployment cycle\nEach model may not be thoroughly tested"
-  },
-  {
-    "objectID": "slides/3-systems/lecture1.html#verifying-ml-code",
-    "href": "slides/3-systems/lecture1.html#verifying-ml-code",
+    "objectID": "slides/3-systems/10-verification.html#verifying-ml-code",
+    "href": "slides/3-systems/10-verification.html#verifying-ml-code",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Verifying ML code",
     "text": "Verifying ML code\n\n\n\nUnit tests:\nAlways a good idea (but less relevant when relying heavily on frameworks)\n\n\n\n\nIntegration tests:\nVerify that each step of the pipeline gives expected output. Difficult due to random nature of many ML models\n\nImprove reproduceability by always using same random numbers:\nnp.random.seed(42)\n\nrequires that you initialise model components in a fixed order)\n\nVerify shapes rather than content\nassert processed_data.shape == original_data.shape\n\n\n\n\n\nDeployment tests:\n\nVerify functionality of the entire system\nTest scalability, stability, latency, etc"
   },
   {
-    "objectID": "slides/3-systems/lecture1.html#verifying-ml-models",
-    "href": "slides/3-systems/lecture1.html#verifying-ml-models",
+    "objectID": "slides/3-systems/10-verification.html#verifying-ml-models",
+    "href": "slides/3-systems/10-verification.html#verifying-ml-models",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Verifying ML models",
     "text": "Verifying ML models\nTesting code is one thing, but verifying the model output is something else.\nCan’t feasibly check model output against all possible inputs\n\nTwo levels of testing:\n\n“Simple” evaluation:\n\nCompute metrics on the test dataset\n\n\n\n\n\nIn-depth evaluation:\nDiagnose model through explainability and interpretability techniques such as\n\nFeature importance\nAttribution methods\nBias evaluation"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#the-ml-project-lifecycle",
-    "href": "slides/3-systems/lecture3.html#the-ml-project-lifecycle",
+    "objectID": "slides/3-systems/10-verification.html#verifying-data",
+    "href": "slides/3-systems/10-verification.html#verifying-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Verifying data",
+    "text": "Verifying data\n\n\n\nAn ML model is necessarily only as good as the data it is trained on.\n\n\n\nNeed to ensure data quality both for training and for inference\n\n\n\nUseful to define a data schema restricting the domain of each feature, e.g.\n\nUser age is between 18 and 99 years\nPatient is not male and pregnant\nApartment does not have more bathrooms than bedrooms"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#verifying-data-bias-and-fairness",
+    "href": "slides/3-systems/10-verification.html#verifying-data-bias-and-fairness",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Verifying data: Bias and fairness",
+    "text": "Verifying data: Bias and fairness\nBias is when we gather data or make predictions with a systematic tendency of presenting a skewed or inaccurate view of reality.\nFailing to account for biases leads to unfair predictions for subgroups in data.\n\n\n\n\nSome types of bias: (not a solid line between these)\n\n\n\n\n\nReporting bias\n\n\n\n\nCoverage bias\n\n\n\n\nSampling bias\n\n\n\n\n\n\nLast week, 8% of hospital COVID-19 tests were positive.\n\nWhat is the prevalence of COVID-19 in the general population?\n\n\nLet’s do a survey on the importance of lectures.\n*Asks students in the auditorium*\n\n\n\nElection polls are typically results from ~1000 automatic phone calls to random recipients.\n\nDo they correctly predict the winner?\n\n(could we skip the election and just use the poll?)"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#fairness",
+    "href": "slides/3-systems/10-verification.html#fairness",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Fairness",
+    "text": "Fairness\n\nAdapted from Google Developers: Real-world ML\n\nWe want to build an ML model that accepts students to a university.\nAdmission should of course be fair between applicants from different groups, even though one group is in majority.\n\n\n\nModel output:\n\n\n\n\n\nAcceptance rate:\nBlue group:    3/19 = 16%\nOrange group: 1/6 = 17%\n Seems fair."
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#fairness-1",
+    "href": "slides/3-systems/10-verification.html#fairness-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Fairness",
+    "text": "Fairness\n\nAdapted from Google Developers: Real-world ML\n\nWe also want to take into account if the applicants are qualified (only accept those how are):\n\n\n\nModel output:\n\n\nAcceptance rate:\nBlue group:    3/19 = 16%\nOrange group: 1/6 = 17%\nAcceptance rate of qualified applicants:\nBlue group:    3/13 = 23%\nOrange group: 1/2 = 50%\n\n\n\n\n\n\n\nCannot be fair on both group and subgroup/individual level at the same time :("
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#verifying-models-feature-importance",
+    "href": "slides/3-systems/10-verification.html#verifying-models-feature-importance",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Verifying models: Feature importance",
+    "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\n\nfrom sklearn.datasets import fetch_california_housing\nhouse = fetch_california_housing()\nX, y = house.data, house.target"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#verifying-models-feature-importance-1",
+    "href": "slides/3-systems/10-verification.html#verifying-models-feature-importance-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Verifying models: Feature importance",
+    "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\n\n\n\n\n\nlr = LinearRegression()\nlr.fit(X, y)\ncoefficients = lr.coef_"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#feature-importance",
+    "href": "slides/3-systems/10-verification.html#feature-importance",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Feature importance",
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\n\n\n\n\n\nclf = RandomForestRegressor()\nclf.fit(X, y)\nimportance = clf.feature_importances_"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#feature-importance-1",
+    "href": "slides/3-systems/10-verification.html#feature-importance-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Feature importance",
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\n\n\n\n\n\n# (beyond the scope for us)"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#feature-importance-2",
+    "href": "slides/3-systems/10-verification.html#feature-importance-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Feature importance",
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\n\n\n\n\n\n\nfrom sklearn.inspection import permutation_importance\nimportance = permutation_importance(clf, X, y).importances_mean"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#feature-importance-3",
+    "href": "slides/3-systems/10-verification.html#feature-importance-3",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Feature importance",
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\nShapley values\n\n\n\n\n\n\nimport shap\nexplainer = shap.TreeExplainer(rf)\nexplanation = explainer(X)\nshap.plots.beeswarm(explanation)\n\n\n\nFeature importance tells us something about the model, not necessarily about reality."
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#now-presentation-from-naic",
+    "href": "slides/3-systems/10-verification.html#now-presentation-from-naic",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Now: Presentation from NAIC",
+    "text": "Now: Presentation from NAIC"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#topics-for-module-3",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#topics-for-module-3",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Topics for Module 3",
+    "text": "Topics for Module 3\n\n\n\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing\nA bit about deployment\nThe ML project lifecycle\nUseful tools\nMistakes to avoid"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#ml-assignment-2",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#ml-assignment-2",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ML assignment 2",
+    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template will be provided)\nMake the code accessible\n\n\n\n\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#ml-assignment-2-1",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#ml-assignment-2-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "ML assignment 2",
+    "text": "ML assignment 2\nSome ideas:\n\n\nMake a web app to\n\nEstimate the value of a used car [1]\nPredict wine quality [2]\nClassify mushrooms as poisonous or edible [3]\n\n\nThe result should be something you can be proud of!"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#machine-learning-engineering",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#machine-learning-engineering",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Machine learning engineering",
+    "text": "Machine learning engineering\n\n\n\n\n\n\n\n\nStudy the problem\n\nExploratory data analysis\nDomain knowledge\nData preparation\n\nTrain ML model\n\nAlgorithm/software development\n\n\n\n\nEvaluate\n\nMetric selection\nModel selection\nUncertainty quantification\n\nLaunch / Analyse errors\n\nDeployment\nDiagnostics and visualisation"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#more-detailed-picture-the-ml-project-lifecycle",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#more-detailed-picture-the-ml-project-lifecycle",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "More detailed picture: the ML project lifecycle",
+    "text": "More detailed picture: the ML project lifecycle"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-1-frame-the-problem",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-1-frame-the-problem",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 1: Frame the problem",
+    "text": "☑️ Checklist pt. 1: Frame the problem\nThis is about what your solution will actually solve.\nHow do you measure success at your business objective?\n\n\n\n\n\n\nForbes Top-50 AI list"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pts.-23-get-the-data-explore-the-data",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pts.-23-get-the-data-explore-the-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pts. 2,3: Get the data, explore the data",
+    "text": "☑️ Checklist pts. 2,3: Get the data, explore the data\nThis can be the dealbreaker for many projects.\n\n\nCollect\n\nIs your data\n\neasily available?\navailable in sufficient quantity?\nup to date?\nexpensive?\nsensitive? (personal info / customer secrets / state secrets / …)\nunder legal restrictions?\n\n\n\nExplore\n\nDoes your data contain\n\nthe correlations of interest?\nredundant information?\nmissing / bad information?\nimbalance between classes?\n\n\n\n\n🚫 Reminder: Do not look at the test dataset yet"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-4-prepare-the-data",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-4-prepare-the-data",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 4: Prepare the data",
+    "text": "☑️ Checklist pt. 4: Prepare the data\n\n\nTraining a model typically involves several sequential steps:\n\nData preprocessing\n\nCleaning\nImputation\nFeature engineering\nScaling\n\nTraining loop\nPerformance evaluation\n\nwhich can be represented as a directed acyclic graph (DAG)\n\n\n\n\n\n\n\n%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing':30}, 'theme': 'base', 'themeVariables': {'fontSize': '16px'}}}%%\nflowchart TD\n    A[(Data)]\n    A --&gt; B[Cleaned&lt;br&gt;data]\n    B --&gt; C{Split}\n    C --&gt; D[Train set]\n    C --&gt; E[Scaled&lt;br&gt;val. set]\n    C --&gt; F[Scaled&lt;br&gt;test set]\n    D --&gt; G(Scaler)\n    G --&gt; J[Scaled&lt;br&gt;train set]\n    D --&gt; J\n    G --&gt; E\n    G --&gt; F\n    J --&gt; H(Model)\n    E --&gt; H\n    H --&gt; I(Evaluate)\n    F --&gt; I\n\n\n Example processing graph"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#data-processing-pipelines",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#data-processing-pipelines",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Data processing: Pipelines",
+    "text": "Data processing: Pipelines\n\n\n\nOften call these processing steps a pipeline\n\n\n\nDifferent frameworks exists to facilitate them, e.g. in Scikit-Learn:\n&gt;&gt;&gt; from sklearn.pipeline import Pipeline\n&gt;&gt;&gt; X, y = make_classification(random_state=0)\n&gt;&gt;&gt; X_train, X_test, y_train, y_test = train_test_split(X, y)\npipe = Pipeline([('scaler', StandardScaler()), ('svc', SVC())])\npipe.fit(X_train, y_train).score(X_test, y_test)\n0.88\n\n\n\n(also Apache Spark, Dask, Ray, Airflow, Celery, and others)"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-5-shortlist-promising-models",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-5-shortlist-promising-models",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 5: Shortlist promising models",
+    "text": "☑️ Checklist pt. 5: Shortlist promising models\n\n\n\n\n\nRecall the No free lunch theorem:\n\nWithout any assumptions about the data, there is no reason to expect one model to be better than others.\n\n\n\n\n Try out several model types.\n(Unless you know things about your data that motivates a certain choice)\nAt this point, focus on wide experimentation rather than optimising a single selection."
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#keeping-track-of-models",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#keeping-track-of-models",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "Keeping track of models",
+    "text": "Keeping track of models\nDuring development (especially hyperparameter optimisation), you’ll typically have a lot of models floating around\n\nBig timesaver: A system for tracking configs and performance\n\nTools: MLflow / Aim / Sacred / Comet / Weights & Biases"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-6-fine-tune",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#checklist-pt.-6-fine-tune",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 6: Fine-tune",
+    "text": "☑️ Checklist pt. 6: Fine-tune\n\n\n\nHaving made a ranking of good models, now is the time to optimise.\n\n\n\n\nRun hyperparameter search (remember cross-validation)\nMaybe make an ensemble of the best models\n\n\n\n\nFinally, evaluate performance on the test set"
+  },
+  {
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#the-ml-project-lifecycle",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#the-ml-project-lifecycle",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "The ML project lifecycle",
     "text": "The ML project lifecycle"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#checklist-pt.-7-present-the-solution",
-    "href": "slides/3-systems/lecture3.html#checklist-pt.-7-present-the-solution",
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#static-vs-dynamic-training",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#static-vs-dynamic-training",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 7: Present the solution",
-    "text": "☑️ Checklist pt. 7: Present the solution\n\n\n\nDocumentation time 📋\n\n\n\n\nDocument the system\nMake a nice powerpoint for stakeholders\nWrite a report about business added value\nUse cool business words\nBusiness\nEvaluate business impact\nBusiness"
+    "section": "Static vs dynamic training",
+    "text": "Static vs dynamic training\nTwo approaches to model training:\n\n\n\nStatic (offline) training:\nTrain a single model once, deploy it, and keep using it for a while\nPros:\n\nModel can be thoroughly tested\nDeployment needs only be done once\n\nCons:\n\nData must be unchanging over time\n\n\n\n\nDynamic (online) training:\n(Re)-train models continuously when new data comes in, and serve the most recent\nPros:\n\nModel always up-to-date with shift/fluctuations in data\n\nCons:\n\nPotentially high cost of training and deployment cycle\nEach model may not be thoroughly tested"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#checklist-pt.-8-launch",
-    "href": "slides/3-systems/lecture3.html#checklist-pt.-8-launch",
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#verifying-ml-code",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#verifying-ml-code",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "☑️ Checklist pt. 8: Launch",
-    "text": "☑️ Checklist pt. 8: Launch\nDeploy\n\nChoose how or where to run the ML model\n(user hardware / common backend / specialised backend)\nRun the model!\nScale servers as required\n\nMonitor\n\nCheck model performance over time\nBeware of both sudden and slow degradation\n\nUpdate\n\nRe-train model on new data (when available)\nConsider other model types\n\n\n🚀"
+    "section": "Verifying ML code",
+    "text": "Verifying ML code\n\n\n\nUnit tests:\nAlways a good idea (but less relevant when relying heavily on frameworks)\n\n\n\n\nIntegration tests:\nVerify that each step of the pipeline gives expected output. Difficult due to random nature of many ML models\n\nImprove reproduceability by always using same random numbers:\nnp.random.seed(42)\n\nrequires that you initialise model components in a fixed order)\n\nVerify shapes rather than content\nassert processed_data.shape == original_data.shape\n\n\n\n\n\nDeployment tests:\n\nVerify functionality of the entire system\nTest scalability, stability, latency, etc"
   },
   {
-    "objectID": "slides/3-systems/lecture3.html#ml-assignment-2",
-    "href": "slides/3-systems/lecture3.html#ml-assignment-2",
+    "objectID": "slides/3-systems/9-ml-project-lifecycle.html#verifying-ml-models",
+    "href": "slides/3-systems/9-ml-project-lifecycle.html#verifying-ml-models",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "ML assignment 2",
-    "text": "ML assignment 2\nThe goal is to make a complete, end-to-end machine learning product.\n\n\nRules:\n\nWork in groups of 2-3\nMake a useful ML software product\nDeploy your system\n\n\nEvaluation:\n\nWrite a short report (template on Canvas)\nMake the code accessible\n\n\n\nTwo important things to keep in mind when planning your project:\n\nIs there data available?\nIs it realistic to complete it before the deadline?"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#section",
-    "href": "slides/3-systems/lecture3.html#section",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "www.gradio.app"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#section-1",
-    "href": "slides/3-systems/lecture3.html#section-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "streamlit.io"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#mistakes-to-avoid",
-    "href": "slides/3-systems/lecture3.html#mistakes-to-avoid",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Mistakes to avoid 🧯",
-    "text": "Mistakes to avoid 🧯\n\nSupplementary reading: Lones, Michael A. How to avoid machine learning pitfalls: a guide for academic researchers. arXiv:2108.02497 (2021)."
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process",
-    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Leaking secrets into the training process",
-    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']\nX = data[:]\n\nmodel.fit(X, y)"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-1",
-    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Leaking secrets into the training process",
-    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']  # Select target values\nX = data[:]         # Select all input features\n\nmodel.fit(X, y)"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-2",
-    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-2",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Leaking secrets into the training process",
-    "text": "Leaking secrets into the training process\nLet us read data from a CSV file and train a classifier (like for assignment 1):\n\n\n\ndata = pandas.read_csv('my-data-file.csv')\n\ny = data['Target']\nX = data[:]         # Should have used data.drop('Target')\n\nmodel.fit(X, y)     # Target still in X\n Target leakage\nLeads to overinflated performance numbers"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-3",
-    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-3",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Leaking secrets into the training process",
-    "text": "Leaking secrets into the training process\nLet us scale the features to improve model learning:\n\n\n\nfrom sklearn.preprocessing import StandardScaler\n\nscaler = StandardScaler.fit(X)    # \"Train\" the scaler\nX = scaler.transform(X)           # Apply the results \n\nX_train, X_test, y_train, y_test = train_test_split(X, y)\nmodel.fit(X_train, y_train)\n\n\n\n\nTest data was included when fitting the scaler (should have used only train data)\n Test data leakage\nLeads to overinflated performance numbers"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-4",
-    "href": "slides/3-systems/lecture3.html#leaking-secrets-into-the-training-process-4",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Leaking secrets into the training process",
-    "text": "Leaking secrets into the training process\nWe have proposed two models, but want to select the best one:\n\n\n\ndef find_best_model(model1, model2):\n  \n  model1.fit(X_train, y_train)\n  model2.fit(X_train, y_train)\n\n  score1 = model1.score(X_test, y_test)\n  score2 = model2.score(X_test, y_test)\n\n  if score1 &gt; score2:\n    return model1\n  else:\n    return model2\n\nTest data was used for model selection (should have used validation data)\n Test data leakage\nLeads to overinflated performance numbers"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#spurious-correlations",
-    "href": "slides/3-systems/lecture3.html#spurious-correlations",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Spurious correlations",
-    "text": "Spurious correlations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRibeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. “Why should i trust you?” Explaining the predictions of any classifier. Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining. 2016."
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#spurious-correlations-1",
-    "href": "slides/3-systems/lecture3.html#spurious-correlations-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Spurious correlations",
-    "text": "Spurious correlations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeGrave et al. AI for radiographic COVID-19 detection selects shortcuts over signal.  Nature Machine Intelligence 3.7 (2021): 610-619."
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#not-enough-data",
-    "href": "slides/3-systems/lecture3.html#not-enough-data",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Not enough data",
-    "text": "Not enough data\nThere needs to be a reasonable relationship between\n\nthe amount of data\nthe signal-to-noise ratio of the data\nand the complexity of the ML model.\n\n\nLittle data paired with a complex model leads to overfitting.\nForgetting to check for and correct for overfitting is more common than it should be ☹️"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#not-enough-data-cont.",
-    "href": "slides/3-systems/lecture3.html#not-enough-data-cont.",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Not enough data (cont.)",
-    "text": "Not enough data (cont.)\nSome workarounds:\n\n\nData augmentation:\nArtificially increase the dataset by duplicating data points, but change them by\n\nAdding noise\nApplying transformations\n\n(These modifications neccesarily need to preserve the correlation of interest)\n\n\n\n\nTransfer learning:\nTrain a model on a bigger dataset, then fine-tune it on the dataset of interest"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#deep-learning-must-surely-be-best",
-    "href": "slides/3-systems/lecture3.html#deep-learning-must-surely-be-best",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Deep learning must surely be best",
-    "text": "Deep learning must surely be best\nModern language and vision models are powered by multi-layered neural networks, a branch of ML called deep learning\n\nNeural networks offer great flexibility and power to model complicated relationships in data, but that does not make them suitable for all problems\nSee e.g. this paper on why tree-based models are still best on “typical” data.\n\nGrinsztajn et al. Why do tree-based models still outperform deep learning on typical tabular data? Advances in neural information processing systems 35 (2022): 507-520."
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#missing-baselines-for-comparison",
-    "href": "slides/3-systems/lecture3.html#missing-baselines-for-comparison",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Missing baselines for comparison",
-    "text": "Missing baselines for comparison\n\nYou have trained a mega awesome classifier model, which achieves 81% accuracy on your test dataset.\n\nIs the model any good?\n\nHard to tell without comparing to something. We need a baseline.\n\n\n\n\n\nNaïve baseline:\n\n\n\n\nReasonable default baseline:\n\n\n\n\nState-of-the-art (SOTA) baseline:\n\n\n\n\n\nUse these to show that your model is not just doing something trivial.\n\nBaseline of a random model:\nA random guessing binary classifier gets 50% accuracy\nBaseline of constant value predictor:\nAlways predicting the same class yields high accuracy on imbalanced data\n\n\n\nPerformance of a un-tuned model which is known to work on this type of task.\nE.g. try sklearn’s RandomForestClassifier, with default settings, on a classification task with tabular data.\n\n\nPerformance of the best existing model"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#over-reliance-on-a-single-evaluation-metric",
-    "href": "slides/3-systems/lecture3.html#over-reliance-on-a-single-evaluation-metric",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Over-reliance on a single evaluation metric",
-    "text": "Over-reliance on a single evaluation metric\nWe have already discussed why for instance accuracy should be used with caution.\n\n\n\n\n\n\n\nGood: Add in precision and recall\n\n\n\n\n\n\n\nBetter: Study the confusion matrix\n\n\n\n\n\n\n\nBest: Study all mispredicted data points (but who has the time)"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#base-rate-fallacy",
-    "href": "slides/3-systems/lecture3.html#base-rate-fallacy",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Base rate fallacy",
-    "text": "Base rate fallacy\nTask:\n\nFrom chest X-ray images, predict if the patient has cancer.Prevalence of lung cancer is 6%.\n\n\nSimplest possible classifier:\n\\[\n\\color{Purple}{f}(\\color{DarkOrange}{\\mathbf{x}}) = \\mathrm{no \\; cancer}\n\\]\n 94% accuracy"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#base-rate-fallacy-1",
-    "href": "slides/3-systems/lecture3.html#base-rate-fallacy-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Base rate fallacy",
-    "text": "Base rate fallacy\n\n\n\nLet us make a real model and test it on balanced data (50% positive and 50% negative cases)\nThe model achieves 90% accuracy on this test set.\n\n\nA doctor wants to use the model to diagnose a new patient. The model predicts cancer.\nWhat is the probability that the patient has cancer?\n\n\nSolution requires Bayes’ theorem (out of scope for us), but comes out to 38%."
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#going-beyond-dat158",
-    "href": "slides/3-systems/lecture3.html#going-beyond-dat158",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Going beyond DAT158 🔭",
-    "text": "Going beyond DAT158 🔭"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#section-2",
-    "href": "slides/3-systems/lecture3.html#section-2",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "",
-    "text": "Coursedescription"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#useful-libraries-besides-scikit-learn",
-    "href": "slides/3-systems/lecture3.html#useful-libraries-besides-scikit-learn",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Useful libraries besides scikit-learn",
-    "text": "Useful libraries besides scikit-learn\nScikit-learn is great for testing loads of models, but sometimes we want a more specialised tool.\nSome examples of specialised Python libraries:\n\nGradient boosted trees:\nXGBoost, LightGBM, CatBoost\nNeural networks:\nKeras, PyTorch\nLinear regression++:\nStatsModels\nScikit-learn clone optimised for GPUs:\nRAPIDS / cuML"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2025",
-    "href": "slides/3-systems/lecture3.html#state-of-ml-2025",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2025",
-    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI:\n\n\nLarge language models \n\nImage and video generation \n\nThese are all machine learning models – trained on known data, and used to make predictions on new data points."
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2025-1",
-    "href": "slides/3-systems/lecture3.html#state-of-ml-2025-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2025",
-    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI\nStill, the majority of ML tasks are deterministic – a data point should get the same predicted result every time:\n\n\n\n\nObject detection\nFace recognition\nFraud detection\nCredit scoring\nAlgorithmic trading\nCustomer segmentation\nSentiment analysis\nPredictive maintenance\nRoute optimisation\nTimeseries prediction\n\n\n\nRecommender systems\nSpeech recognition\nProperty valuation\nClimate modelling\nPersonalised medicine\nTargeted advertising\nSelf-driving vehicles\nNetwork optimisation\nSpam filtering\n…"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#state-of-ml-2025-2",
-    "href": "slides/3-systems/lecture3.html#state-of-ml-2025-2",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2025",
-    "text": "State of ML 2025\nNevertheless, this is the time to ride the AI wave 🏄"
-  },
-  {
-    "objectID": "slides/3-systems/lecture3.html#future-of-ml-keeping-up-with-progress",
-    "href": "slides/3-systems/lecture3.html#future-of-ml-keeping-up-with-progress",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Future of ML: keeping up with progress",
-    "text": "Future of ML: keeping up with progress\nMachine learning research is moving fast\n… and there is also much hype.\n\n\n\n\nCutting edge research typically presented at conferences such as ICML, NeurIPS\nGood sources of information: Documentation of major ML frameworks, reputable books\nBad sources of information: medium.com articles and similar SEO spam\nRemember that main concepts from this course always applies."
+    "section": "Verifying ML models",
+    "text": "Verifying ML models\nTesting code is one thing, but verifying the model output is something else.\nCan’t feasibly check model output against all possible inputs\n\nTwo levels of testing:\n\n“Simple” evaluation:\n\nCompute metrics on the test dataset\n\n\n\n\n\nIn-depth evaluation:\nDiagnose model through explainability and interpretability techniques such as\n\nFeature importance\nAttribution methods\nBias evaluation"
   }
 ]
