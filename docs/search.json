@@ -1775,7 +1775,7 @@
     "href": "slides/3-systems/10-verification.html#topics-for-module-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Topics for Module 3",
-    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing 🖼\nA bit about deployment 📦\nThe ML project lifecycle ♻️\nUseful tools 🛠\nMistakes to avoid 💣"
+    "text": "Topics for Module 3\nPiecing together a complete ML-based system\n\n\n\nWe’ll go through Appendix A: Machine learning project checklist, and add some details on\n\n\n\n\nProject framing\nA bit about deployment\nThe ML project lifecycle\nUseful tools\nMistakes to avoid"
   },
   {
     "objectID": "slides/3-systems/10-verification.html#more-detailed-picture-the-ml-project-lifecycle",
@@ -1785,11 +1785,18 @@
     "text": "More detailed picture: the ML project lifecycle"
   },
   {
+    "objectID": "slides/3-systems/10-verification.html#from-last-time",
+    "href": "slides/3-systems/10-verification.html#from-last-time",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "From last time",
+    "text": "From last time\n\n\n\n\n\nChecklist:\n\n1: Frame the problem\n2, 3: Get the data, explore the data\n4: Prepare the data\n5: Shortlist promising models"
+  },
+  {
     "objectID": "slides/3-systems/10-verification.html#checklist-pt.-6-fine-tune",
     "href": "slides/3-systems/10-verification.html#checklist-pt.-6-fine-tune",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "☑️ Checklist pt. 6: Fine-tune",
-    "text": "☑️ Checklist pt. 6: Fine-tune\n\n\n\nHaving made a ranking of good models, now is the time to optimise.\n\n\n\n\nRun hyperparameter search (remember cross-validation)\nTools: Scikit-learn, Optuna, HyperOpt, Ray Tune\nMaybe make an ensemble of the best models\n\n\n\n\nFinally, evaluate performance on the test set"
+    "text": "☑️ Checklist pt. 6: Fine-tune\n\n\n\n\n\nHaving made a ranking of good models, now is the time to optimise.\n\n\n\n\nRun hyperparameter search (remember cross-validation)\nTools: Scikit-learn, Optuna, HyperOpt, Ray Tune\nMaybe make an ensemble of the best models\n\n\n\n\nFinally, evaluate performance on the test set\n\n\n\n\n\n\n\n\n\nOptuna"
   },
   {
     "objectID": "slides/3-systems/10-verification.html#verifying-ml-code",
@@ -1841,46 +1848,67 @@
     "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\n\nfrom sklearn.datasets import fetch_california_housing\nhouse = fetch_california_housing()\nX, y = house.data, house.target"
   },
   {
-    "objectID": "slides/3-systems/10-verification.html#verifying-models-feature-importance-1",
-    "href": "slides/3-systems/10-verification.html#verifying-models-feature-importance-1",
-    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Verifying models: Feature importance",
-    "text": "Verifying models: Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\n\n\n\n\n\nlr = LinearRegression()\nlr.fit(X, y)\ncoefficients = lr.coef_"
-  },
-  {
     "objectID": "slides/3-systems/10-verification.html#feature-importance",
     "href": "slides/3-systems/10-verification.html#feature-importance",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\n\n\n\n\n\nclf = RandomForestRegressor()\nclf.fit(X, y)\nimportance = clf.feature_importances_"
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\n\n\n\n\n\n\n\nlr = LinearRegression()\nlr.fit(X, y)\ncoefficients = lr.coef_"
   },
   {
     "objectID": "slides/3-systems/10-verification.html#feature-importance-1",
     "href": "slides/3-systems/10-verification.html#feature-importance-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\n\n\n\n\n\n# (beyond the scope for us)"
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\n\n\n\n\n\n\n\nclf = RandomForestRegressor()\nclf.fit(X, y)\nimportance = clf.feature_importances_"
   },
   {
     "objectID": "slides/3-systems/10-verification.html#feature-importance-2",
     "href": "slides/3-systems/10-verification.html#feature-importance-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\n\n\n\n\n\n\nfrom sklearn.inspection import permutation_importance\nimportance = permutation_importance(clf, X, y).importances_mean"
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\n\n\n\n\n\n\n\n# (beyond the scope for us)"
   },
   {
     "objectID": "slides/3-systems/10-verification.html#feature-importance-3",
     "href": "slides/3-systems/10-verification.html#feature-importance-3",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
     "section": "Feature importance",
-    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\nShapley values\n\n\n\n\n\n\nimport shap\nexplainer = shap.TreeExplainer(rf)\nexplanation = explainer(X)\nshap.plots.beeswarm(explanation)\n\n\n\nFeature importance tells us something about the model, not necessarily about reality."
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\n\n\n\n\n\n\n\n\nfrom sklearn.inspection import permutation_importance\nimportance = permutation_importance(clf, X, y).importances_mean"
   },
   {
-    "objectID": "slides/3-systems/10-verification.html#now-presentation-from-naic",
-    "href": "slides/3-systems/10-verification.html#now-presentation-from-naic",
+    "objectID": "slides/3-systems/10-verification.html#feature-importance-4",
+    "href": "slides/3-systems/10-verification.html#feature-importance-4",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "Now: Presentation from NAIC",
-    "text": "Now: Presentation from NAIC"
+    "section": "Feature importance",
+    "text": "Feature importance\nQuantify how much each input feature matters to the prediction\n\n\n\nFor linear models, we can look at the parameter (coefficient) values\nFor tree-based models, we can attribute reduction in Gini impurity as feature importance\nFor models trained via gradient descent, we can compute how much a small change in input affects the output\nFor any model, we can compute\n\nPermutation feature importance\nShapley values\n\n\n\n\n\n\n\n\nimport shap\nexplainer = shap.TreeExplainer(rf)\nexplanation = explainer(X)\nshap.plots.beeswarm(explanation)\n\n\n\nFeature importance tells us something about the model, not necessarily about reality."
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#checklist-pt.-7-present-the-solution",
+    "href": "slides/3-systems/10-verification.html#checklist-pt.-7-present-the-solution",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 7: Present the solution",
+    "text": "☑️ Checklist pt. 7: Present the solution\n\n\n\nDocumentation time 📋\n\n\n\n\nDocument the system\nMake a nice powerpoint for stakeholders\nWrite a report about business added value\nUse cool business words\nBusiness\nEvaluate business impact\nBusiness"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#checklist-pt.-8-launch",
+    "href": "slides/3-systems/10-verification.html#checklist-pt.-8-launch",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "☑️ Checklist pt. 8: Launch",
+    "text": "☑️ Checklist pt. 8: Launch\nDeploy\n\nChoose how or where to run the ML model\n(user hardware / common backend / specialised backend)\nRun the model!\nScale servers as required\n\nMonitor\n\nCheck model performance over time\nBeware of both sudden and slow degradation\n\nUpdate\n\nRe-train model on new data (when available)\nConsider other model types\n\n\n🚀"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#section",
+    "href": "slides/3-systems/10-verification.html#section",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "www.gradio.app"
+  },
+  {
+    "objectID": "slides/3-systems/10-verification.html#section-1",
+    "href": "slides/3-systems/10-verification.html#section-1",
+    "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
+    "section": "",
+    "text": "streamlit.io"
   },
   {
     "objectID": "slides/3-systems/9-ml-project-lifecycle.html#topics-for-module-3",
