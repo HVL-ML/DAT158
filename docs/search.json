@@ -399,25 +399,25 @@
     "text": "Useful libraries besides scikit-learn\nScikit-learn is great for testing loads of models, but sometimes we want a more specialised tool.\nSome examples of specialised Python libraries:\n\nGradient boosted trees:\nXGBoost, LightGBM, CatBoost\nNeural networks:\nKeras, PyTorch\nLinear regression++:\nStatsModels\nScikit-learn clone optimised for GPUs:\nRAPIDS / cuML"
   },
   {
-    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2025",
-    "href": "slides/3-systems/11-problems.html#state-of-ml-2025",
+    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2026",
+    "href": "slides/3-systems/11-problems.html#state-of-ml-2026",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2025",
-    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI:\n\n\nLarge language models \n\nImage and video generation \n\nThese are all machine learning models – trained on known data, and used to make predictions on new data points."
+    "section": "State of ML 2026",
+    "text": "State of ML 2026\n\n\n\nStanford AI index"
   },
   {
-    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2025-1",
-    "href": "slides/3-systems/11-problems.html#state-of-ml-2025-1",
+    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2026-1",
+    "href": "slides/3-systems/11-problems.html#state-of-ml-2026-1",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2025",
-    "text": "State of ML 2025\nMost noteworthy recent developments are within generative AI\nStill, the majority of ML tasks are deterministic – a data point should get the same predicted result every time:\n\n\n\n\nObject detection\nFace recognition\nFraud detection\nCredit scoring\nAlgorithmic trading\nCustomer segmentation\nSentiment analysis\nPredictive maintenance\nRoute optimisation\nTimeseries prediction\n\n\n\nRecommender systems\nSpeech recognition\nProperty valuation\nClimate modelling\nPersonalised medicine\nTargeted advertising\nSelf-driving vehicles\nNetwork optimisation\nSpam filtering\n…"
+    "section": "State of ML 2026",
+    "text": "State of ML 2026\nMost noteworthy recent developments are within generative AI, especially reasoning models and AI agents"
   },
   {
-    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2025-2",
-    "href": "slides/3-systems/11-problems.html#state-of-ml-2025-2",
+    "objectID": "slides/3-systems/11-problems.html#state-of-ml-2026-2",
+    "href": "slides/3-systems/11-problems.html#state-of-ml-2026-2",
     "title": "DAT158: Machine Learning Engineering and Advanced Algorithms",
-    "section": "State of ML 2025",
-    "text": "State of ML 2025\nNevertheless, this is the time to ride the AI wave 🏄"
+    "section": "State of ML 2026",
+    "text": "State of ML 2026\nMost noteworthy recent developments are within generative AI\nStill, the majority of ML tasks are deterministic – a data point should get the same predicted result every time:\n\n\n\n\nObject detection\nFace recognition\nFraud detection\nCredit scoring\nAlgorithmic trading\nCustomer segmentation\nSentiment analysis\nPredictive maintenance\nRoute optimisation\nTimeseries prediction\n\n\n\nRecommender systems\nSpeech recognition\nProperty valuation\nClimate modelling\nPersonalised medicine\nTargeted advertising\nSelf-driving vehicles\nNetwork optimisation\nSpam filtering\n…"
   },
   {
     "objectID": "slides/3-systems/11-problems.html#future-of-ml-keeping-up-with-progress",

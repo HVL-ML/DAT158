@@ -315,12 +315,12 @@ sma@hvl.no
 <div style="padding-top: 50px;">
 
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">'my-data-file.csv'</span>)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'Target'</span>]</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[:]</span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-code-line-numbers="True"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">'my-data-file.csv'</span>)</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a>y <span class="op">=</span> data[<span class="st">'Target'</span>]</span>
+<span id="cb1-4"><a aria-label="4"></a>X <span class="op">=</span> data[:]</span>
+<span id="cb1-5"><a aria-label="5"></a></span>
+<span id="cb1-6"><a aria-label="6"></a>model.fit(X, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!----------------------------------------------------------------------------->
 </section>
 <section id="leaking-secrets-into-the-training-process-1" class="slide level2">
@@ -666,24 +666,62 @@ sma@hvl.no
 </ul>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="state-of-ml-2025" class="slide level2">
-<h2>State of ML 2025</h2>
-<p>Most noteworthy recent developments are within <span class="color-pink-dark"><em>generative AI</em></span>:</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Large language models <img data-src="figures/chatgpt.png" class="quarto-figure quarto-figure-center" style="border: 1px solid;;width:80.0%"></p>
-</div><div class="column" style="width:50%;">
-<p>Image and video generation <img data-src="figures/midjourney.png" class="quarto-figure quarto-figure-center" style="border: 1px solid;;width:80.0%"></p>
-</div></div>
-<p>These are all machine learning models – trained on known data, and used to make predictions on new data points.</p>
+<section id="state-of-ml-2026" class="slide level2">
+<h2>State of ML 2026</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/fig_2.1.1.png" width="800"></p>
+<figcaption><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">Stanford AI index</a></figcaption>
+</figure>
+</div>
+<!----------------------------------------------------------------------------->
+</section>
+<section id="state-of-ml-2026-1" class="slide level2">
+<h2>State of ML 2026</h2>
+<p>Most noteworthy recent developments are within <span class="color-pink-dark"><em>generative AI</em></span>, especially reasoning models and AI agents</p>
+<div class="absolute" style="top: 20%; left: 0%; width: 500px; ">
+<p><img data-src="figures/reasoning.png" class="img-shadow"></p>
+</div>
+<div class="absolute" style="top: 20%; right: 0%; width: 500px; ">
+<p><img data-src="figures/claude-agents.png" class="img-shadow"></p>
+</div>
+</section>
+<section id="section-3" class="slide level2" data-background-iframe="https://en.wikipedia.org/wiki/AI_agent" data-background-interactive="true" data-menu-title="AI agents">
+<h2></h2>
+</section>
+<section id="section-4" class="slide level2" data-background-image="figures/mit-technology-review.png" data-background-size="contain" data-menu-title="OpenAI hack">
+<h2></h2>
+</section>
+<section id="section-5" class="slide level2" data-background-iframe="https://collusion.wiki/" data-background-interactive="true" data-menu-title="AI agent message board">
+<h2></h2>
+<!----------------------------------------------------------------------------->
+<!--
+## State of ML 2026
+
+Most noteworthy recent developments are within [_generative AI_]{.color-pink-dark}:
+
+::::{.columns}
+:::{.column width="50%"}
+Large language models 
+![](figures/chatgpt.png){style="border: 1px solid;" fig-align="center" width="80%"}
+:::
+:::{.column width="50%"}
+Image and video generation
+![](figures/midjourney.png){style="border: 1px solid;" fig-align="center" width="80%"}
+:::
+::::
+
+These are all machine learning models -- trained on known data, and used to make predictions
+on new data points.
+
 <!-- ![](figures/deeplearningtimeline.png) -->
 <!----------------------------------------------------------------------------->
 </section>
-<section id="state-of-ml-2025-1" class="slide level2">
-<h2>State of ML 2025</h2>
+<section id="state-of-ml-2026-2" class="slide level2">
+<h2>State of ML 2026</h2>
 <p>Most noteworthy recent developments are within <span class="color-pink-dark"><em>generative AI</em></span></p>
 <p>Still, the majority of ML tasks are <span class="color-green-dark">deterministic</span> – a data point should get the same predicted result every time:</p>
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.85em;">
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -714,20 +752,18 @@ sma@hvl.no
 </div></div>
 </div>
 <!----------------------------------------------------------------------------->
-</section>
-<section id="state-of-ml-2025-2" class="slide level2">
-<h2>State of ML 2025</h2>
-<p>Nevertheless, this is the time to ride the AI wave 🏄</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/ai-funding.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
-</figure>
-</div>
+<!--
+## State of ML 2025
+
+Nevertheless, this is the time to ride the AI wave 🏄
+
+![](figures/ai-funding){fig-align="center" width="60%"}
+-->
 <!----------------------------------------------------------------------------->
 </section>
 <section id="future-of-ml-keeping-up-with-progress" class="slide level2">
 <h2>Future of ML: keeping up with progress</h2>
-<p>Machine learning research is moving <span class="color-blue-dark"><em>fast</em></span></p>
+<p>Machine learning research is moving fast</p>
 <p>… and there is also much hype.</p>
 <div style="padding-top: 50px;">
 
@@ -736,11 +772,11 @@ sma@hvl.no
 <p>Cutting edge research typically presented at conferences such as <a href="https://icml.cc/">ICML</a>, <a href="https://neurips.cc/">NeurIPS</a></p>
 <p><span class="color-green-dark" style="font-weight: 400;"><em>Good sources of information</em></span>:<br> Documentation of major ML frameworks, reputable books</p>
 <p><span class="color-red" style="font-weight: 400;"><em>Bad sources of information</em></span>:<br> medium.com articles and similar SEO spam</p>
-<p><span class="color-indigo">Remember that main concepts from this course <em>always</em> applies.</span></p>
+<p><span class="color-indigo">Remember that main concepts from this course always applies.</span></p>
 </div>
 <!----------------------------------------------------------------------------->
 </section>
-<section id="section-3" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
+<section id="section-6" class="slide level2" data-background-color="#fff" data-menu-title="Fin">
 <h2></h2>
 <div class="absolute" style="top: 60%; left: 40%; width: 20%; ">
 <p><img data-src="../1-intro/figures/hvl_logo_engelsk.png"></p>
